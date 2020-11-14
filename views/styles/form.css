@@ -1,0 +1,12 @@
+form{
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+}
+.terms{
+    color: rgb(79, 80, 172);
+    cursor: pointer;
+}
+.terms:hover{
+    text-decoration: underline;
+}

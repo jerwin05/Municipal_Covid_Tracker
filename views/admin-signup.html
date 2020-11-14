@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/form.css">
+    <title>Sign Up</title>
+</head>
+<body>
+    <div>Sign Up</div>
+    <a href="admin-login.html">Sign In</a>
+    <div id="error-message"></div>
+    <div id="success-message"></div>
+    <form id="form" role="form" method="post">
+        <label for="first_name">First Name</label>
+        <input type="text"  name="first_name" placeholder="First Name">
+        <label for="middle_name">Middle Name</label>
+        <input type="text"  name="middle_name" placeholder="Middle Name">
+        <label for="last_name">Last Name</label>
+        <input type="text"  name="last_name" placeholder="Last Name">
+        <label for="mob_no">Mobile Number</label>
+        <input type="number"  name="mob_no" placeholder="Mobile Number">
+        <label for="user_name">User Name</label>
+        <input type="text"  name="user_name" placeholder="User Name">
+        <label for="password">Password</label>
+        <input type="password"  name="password" placeholder="Password">
+        <button type="submit">Sign Up</button>
+    </form>
+    <script type="module" src="./js/admin-signup.js"></script>
+</body>
+</html>
