@@ -156,6 +156,10 @@ i{
     flex-direction: column;
 }
 
+.residentsFormContainer span{
+    margin-right: 15px;
+}
+
 .residentsForm input{
     position: absolute;
     right: 60px;

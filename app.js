@@ -27,7 +27,7 @@ let sessionStore = new MySQLStore({}, connection);
 // all environments
 // app.use(helmet());
 // app.use(compression()); //Compress all routes
-app.use(express.static('client'));
+app.use(express.static('views'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // app.use(cors({

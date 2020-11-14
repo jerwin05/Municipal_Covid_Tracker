@@ -113,13 +113,16 @@ function getResidents(){
         const label = document.createElement('label');
         const input = document.createElement('input');
         const button = document.createElement('button');
+        const span1 = document.createElement('span');
+        const span2 = document.createElement('span');
+        const span3 = document.createElement('span');
+        const span4 = document.createElement('span');
         const div = document.createElement('div');
         const div1 = document.createElement('div');
         const p = document.createElement('p');
         const button1 = document.createElement('button');
         const button2 = document.createElement('button');
 
-        label.textContent=`${resident.first_name} ${resident.middle_name} ${resident.last_name} ${resident.mob_no}`;
         label.setAttribute("for", `remarks${resident.id}`);
         input.setAttribute("name", `remarks${resident.id}`);
         input.setAttribute("value", "positive");
@@ -127,6 +130,10 @@ function getResidents(){
         input.className='residentRemarksInput';
         button.setAttribute("type", "button");
         button.textContent='Delete';
+        span1.textContent=`${resident.first_name}`;
+        span2.textContent=`${resident.middle_name}`;
+        span3.textContent=`${resident.last_name}`;
+        span4.textContent=`${resident.mob_no}`;
         div.className='overlay';
         div1.className='popUp-container';
         p.textContent='Are you sure you want to delete this resident?';
@@ -175,6 +182,10 @@ function getResidents(){
         div.appendChild(div1);
         body.appendChild(div);
 
+        label.appendChild(span1);
+        label.appendChild(span2);
+        label.appendChild(span3);
+        label.appendChild(span4);
         label.appendChild(input);
         label.appendChild(button);
       
