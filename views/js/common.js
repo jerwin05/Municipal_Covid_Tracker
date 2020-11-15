@@ -18,14 +18,15 @@ const getAnnouncements=()=>{
         result.reverse();
         result.forEach(announcement => {
           const div = document.createElement('div');
-  
           const title = document.createElement('h3');
-          title.textContent = announcement.title;
-  
           const body = document.createElement('p');
-          body.textContent = announcement.body;
-  
           const date = document.createElement('small');
+  
+          body.textContent = announcement.body;
+          body.className = 'announcementElement';
+          title.className = 'announcementElement';
+          date.className = 'announcementElement';
+          title.textContent = announcement.title;
           date.textContent = new Date(announcement.date);
   
           div.appendChild(title);

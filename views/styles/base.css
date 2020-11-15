@@ -18,7 +18,7 @@ time, mark, audio, video {
     vertical-align:baseline;
     background:transparent;
     font-family: 'Poppins', sans-serif;
-
+    scroll-behavior: smooth;
 }
 body {
     line-height:1;
