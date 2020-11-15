@@ -4,13 +4,14 @@ function init (){
   const residentPositiveCoordinatesAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/positive-coordinates' : 'https://meower-api.now.sh/v2/mews';
   const map= new ol.Map({
       view:new ol.View({
-          center:[121.21432681865336,14.5564078852835],
-          // center:[0,0],
-          projection:'EPSG:4326',
-          zoom:15,
-          // maxZoom:7,
-          // minZoom:4,
-          // rotation:0.5
+        projection:'EPSG:4326',
+        center:[121.21590561149567, 14.554211974185318],
+        zoom:15,
+        maxZoom:19,
+        minZoom:13,
+
+        // extent: [minx, miny, maxx, maxy]
+        // extent: [121.20594589887112,14.546594500583023, 121.22581570325345, 14.564833521884292],
       }),
       target:'js-map'
   });
@@ -145,16 +146,10 @@ function init (){
   // });
 
   // const strokeStyle=new ol.style.Stroke({
-  //     color:[46,45,45,1],
-  //     width:1.2
-  // });
-
-  // const circleStyle= new ol.style.Circle({
-  //     fill: new ol.style.Fill({
-  //         color:[245,49,5,1]
-  //     }),
-  //     radius:7,
-  //     stroke:strokeStyle
+  //     color:[155,145,105,1],
+  //     // color:[0,0,0,0.2],
+  //     // color:'#D2B336',
+  //     width:4
   // });
 
   // const antipoloGeojson= new ol.layer.VectorImage({
@@ -166,8 +161,7 @@ function init (){
   //     title:'antipoloSquare',
   //     style: new ol.style.Style({
   //         fill:fillStyle,
-  //         stroke:strokeStyle,
-  //         image:circleStyle
+  //         stroke:strokeStyle
   //     })
   // });
 
@@ -193,7 +187,7 @@ function init (){
 
   // map.addLayer(stamenTerrain); // call a single layer
 
-//   map.on('click',function(e){
-//       console.log(e.coordinate);// logs coordinates from the location clicked
-// }) 
+  map.on('click',function(e){
+      console.log(e.coordinate);// logs coordinates from the location clicked
+  }) 
 };

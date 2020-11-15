@@ -8,13 +8,11 @@ function init (){
   
   const map= new ol.Map({
       view:new ol.View({
-          center:[121.21432681865336,14.5564078852835],
-          // center:[0,0],
           projection:'EPSG:4326',
+          center:[121.21590561149567, 14.554211974185318],
           zoom:15,
-          // maxZoom:7,
-          // minZoom:4,
-          // rotation:0.5
+          maxZoom:19,
+          minZoom:13
       }),
       target:'js-map'
   });
@@ -222,7 +220,7 @@ function init (){
 
   // map.addLayer(stamenTerrain); // call a single layer
 
-  map.on('click',function(e){
-      console.log(e.coordinate);// logs coordinates from the location clicked
-}) 
+//   map.on('click',function(e){
+//       console.log(e.coordinate);// logs coordinates from the location clicked
+// }) 
 };
