@@ -1,12 +1,20 @@
-form{
-    display: flex;
-    flex-direction: column;
-    width: 15rem;
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 15rem;
 }
-.terms{
-    color: rgb(79, 80, 172);
-    cursor: pointer;
+
+.terms {
+  color: #4f50ac;
+  cursor: pointer;
 }
-.terms:hover{
-    text-decoration: underline;
+
+.terms:hover {
+  text-decoration: underline;
 }
+/*# sourceMappingURL=form.css.map */
