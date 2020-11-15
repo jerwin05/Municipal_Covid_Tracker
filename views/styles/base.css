@@ -17,10 +17,13 @@ time, mark, audio, video {
     font-size:100%;
     vertical-align:baseline;
     background:transparent;
-}
+    font-family: 'Poppins', sans-serif;
 
+}
 body {
     line-height:1;
+    background-color:#9ad3bc2d;
+    overflow-x: hidden;
 }
 
 article,aside,details,figcaption,figure,
@@ -28,7 +31,7 @@ footer,header,hgroup,menu,nav,section {
     display:block;
 }
 
-nav ul {
+nav ul, ul {
     list-style:none;
 }
 
@@ -92,8 +95,4 @@ hr {
 
 input, select {
     vertical-align:middle;
-}
-
-ul {
-    list-style-type: none;
 }

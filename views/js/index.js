@@ -18,16 +18,3 @@ fetch(authenticateAPI_URL,{
       }
   })
 })
-
-// const emptyArray=[];
-// if(emptyArray.length){
-//         console.log('hello');
-// }else{
-//         console.log('hi');
-// }
-
-// let arrayobj={
-//         theArray:[3,12,3]
-// }
-// arrayobj.theArray=[];
-// console.log(arrayobj.theArray);
