@@ -22,7 +22,9 @@ const options={
 };
 
 let connection = mysql.createConnection(options);
-let sessionStore = new MySQLStore({}, connection);
+let sessionStore = new MySQLStore({
+  connectionLimit: 2
+}, connection);
 
 // all environments
 // app.use(helmet());

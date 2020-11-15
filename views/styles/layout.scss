@@ -9,7 +9,7 @@ nav{
     display: flex;
 
     padding: 15px 20px;
-    width: 100vw;
+    width: 100%;
 
     border-radius: 0 0 7px 7px;
 
@@ -227,7 +227,7 @@ nav{
         width: 70%;
         flex: 2;
         font-size: 27px;
-        margin: 0 0 0 4px;
+        margin-left: 4px;
         padding: 0;
     }
     .nav-options{
