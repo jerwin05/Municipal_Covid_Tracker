@@ -157,7 +157,7 @@ i{
 }
 
 .residentsFormContainer span{
-    margin-right: 15px;
+    display:block;
 }
 
 .residentsForm input{

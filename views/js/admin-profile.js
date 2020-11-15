@@ -130,10 +130,8 @@ function getResidents(){
         input.className='residentRemarksInput';
         button.setAttribute("type", "button");
         button.textContent='Delete';
-        span1.textContent=`${resident.first_name}`;
-        span2.textContent=`${resident.middle_name}`;
-        span3.textContent=`${resident.last_name}`;
-        span4.textContent=`${resident.mob_no}`;
+        span1.textContent=`${resident.last_name}, ${resident.first_name} ${resident.middle_name}`;
+        span2.textContent=`${resident.mob_no}`;
         div.className='overlay';
         div1.className='popUp-container';
         p.textContent='Are you sure you want to delete this resident?';
@@ -184,8 +182,6 @@ function getResidents(){
 
         label.appendChild(span1);
         label.appendChild(span2);
-        label.appendChild(span3);
-        label.appendChild(span4);
         label.appendChild(input);
         label.appendChild(button);
       
