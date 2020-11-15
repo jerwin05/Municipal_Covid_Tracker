@@ -3,33 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/base.css">
     <link rel="stylesheet" href="./styles/form.css">
     <title>Sign Up</title>
 </head>
 <body>
-    <div>Sign Up</div>
-    <a href="member-login.html">Sign In</a>
-    <div id="error-message"></div>
-    <div id="success-message"></div>
-    <form id='form' role="form" method="post">
-        <label for="first_name" >First Name</label>
-        <input type="text" name="first_name" placeholder="First Name">
-        <label for="middle_name" >Middle Name</label>
-        <input type="text" name="middle_name" placeholder="Middle Name">
-        <label for="last_name" >Last Name</label>
-        <input type="text" name="last_name" placeholder="Last Name">
-        <label for="mob_no" >Mobile Number</label>
-        <input type="number" name="mob_no" placeholder="Mobile Number">
-        <label for="user_name" >User Name</label>
-        <input type="text" name="user_name" placeholder="User Name">
-        <label for="password" >Password</label>
-        <input type="password" name="password" placeholder="Password">
-        <!-- <label for="terms_of_service">
-            <input type="checkbox" name="terms_of_service" required>
-            I agree to the<span class='terms'> terms and conditions</span> 
-        </label> -->
-        <button type="submit">Sign Up</button>
-    </form>
+    <div class="form--container">
+        <div>Sign Up</div>
+        <a href="member-login.html">Sign In</a>
+        <div class="form--element" id="error-message"></div>
+        <div class="form--element" id="success-message"></div>
+        <form id='form' role="form" method="post">
+            <label for="first_name" >First Name</label>
+             <input class="form--element" type="text" name="first_name" placeholder="First Name">
+            <label for="middle_name" >Middle Name</label>
+            <input  class="form--element" type="text" name="middle_name" placeholder="Middle Name">
+            <label for="last_name" >Last Name</label>
+            <input  class="form--element" type="text" name="last_name" placeholder="Last Name">
+            <label for="mob_no" >Mobile Number</label>
+            <input  class="form--element" type="number" name="mob_no" placeholder="Mobile Number">
+            <label for="user_name" >User Name</label>
+            <input  class="form--element" type="text" name="user_name" placeholder="User Name">
+            <label for="password" >Password</label>
+            <input  class="form--element" type="password" name="password" placeholder="Password">
+            <button  class="form--element" type="submit">Sign Up</button>
+        </form>
+     
+    </div>
     <script type="module" src="./js/member-signup.js"></script>
 </body>
 </html>

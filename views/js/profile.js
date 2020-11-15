@@ -1,3 +1,7 @@
+// function preventBack(){window.history.forward();}
+// setTimeout("preventBack()", 0);
+// window.onunload=function(){null};
+
 function openTab(evt, pageName) {
     // Declare all variables
     var i, tabcontent, tablinks;
