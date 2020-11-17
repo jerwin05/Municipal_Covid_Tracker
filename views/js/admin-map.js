@@ -42,7 +42,7 @@ function init (){
   map.addLayer(baseLayerGroup);
 
   //layer switcher logic for basemaps
-  const baseLayerElements=document.querySelectorAll('.map-layer >input[type=radio]');
+  const baseLayerElements=document.querySelectorAll('.map--layer >input[type=radio]');
   for (let baseLayerElemet of baseLayerElements){
       baseLayerElemet.addEventListener('change',function(){
           let baseLayerElementValue =this.value;

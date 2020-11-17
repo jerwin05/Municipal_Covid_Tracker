@@ -115,8 +115,6 @@ function getResidents(){
         const button = document.createElement('button');
         const span1 = document.createElement('span');
         const span2 = document.createElement('span');
-        const span3 = document.createElement('span');
-        const span4 = document.createElement('span');
         const div = document.createElement('div');
         const div1 = document.createElement('div');
         const p = document.createElement('p');

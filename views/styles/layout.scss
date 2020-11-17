@@ -1,4 +1,4 @@
-.main-container{
+.main--container{
     margin: 0 25px ;
 }
 
@@ -285,6 +285,7 @@ nav{
         background-color: #f5e9b0;
         margin:0;
         z-index:-1;
+        transition: all .2s ease;
 
         li{
             margin:10px 0;
