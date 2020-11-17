@@ -4,7 +4,6 @@ import {errorMessage} from './common.js';
 //grab elements here
 const errorElement = document.getElementById('error-message');
 //element initial state
-errorElement.style.display = 'none';
 const form =document.getElementById('form');
 
 //API URLS here

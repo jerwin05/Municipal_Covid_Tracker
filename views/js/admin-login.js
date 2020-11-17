@@ -3,8 +3,6 @@ import {errorMessage} from './common.js';
 
 //get elements here
 const errorElement = document.getElementById('error-message');
-//initial element sate
-errorElement.style.display = 'none';
 const form =document.getElementById('form');
 
 //API URLS here

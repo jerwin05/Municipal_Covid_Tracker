@@ -18,7 +18,7 @@ body {
 }
 
 .form--container {
-  background-color: #f0d3ae;
+  background-color: #f5e9b0;
   padding: 20px;
   border-radius: 5px;
 }
@@ -33,6 +33,26 @@ form {
           flex-direction: column;
 }
 
+.form--header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  margin-bottom: 9px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.form--header div {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.form--header a {
+  text-decoration: underline;
+}
+
 .form--element {
   width: 300px;
   margin: 5px 0;
@@ -42,17 +62,17 @@ form {
 }
 
 .form--element:last-child {
-  background-color: #9ad3bc93;
+  background-color: #f5b461;
 }
 
-#error-message, #success-message {
+.responseMessage {
+  display: none;
+}
+
+#error-message {
   font-size: 17px;
-  background-color: #ecebe4;
+  background-color: #f7f7f7;
   border: 2px solid  #ec524b;
   padding: 10px;
-}
-
-#success-message {
-  border: 2px solid  #51ca62;
 }
 /*# sourceMappingURL=form.css.map */

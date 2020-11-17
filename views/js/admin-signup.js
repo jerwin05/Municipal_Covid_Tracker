@@ -4,9 +4,6 @@ import {errorMessage,capitalize,registerSuccess} from './common.js';
 //get elemets here
 const errorElement = document.getElementById('error-message');
 const successElement = document.getElementById('success-message');
-//initial element state
-successElement.style.display="none";
-errorElement.style.display = 'none';
 const form = document.getElementById('form');
 
 //API URLS here
@@ -15,16 +12,20 @@ const API_URL = (window.location.hostname === '127.0.0.1' || window.location.hos
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(form);//store form credentials
-  const first_name = capitalize(formData.get('first_name'));
-  const middle_name = capitalize(formData.get('middle_name'));
-  const last_name = capitalize(formData.get('last_name'));
+  const fname = formData.get('first_name');
+  const mname = formData.get('middle_name');
+  const lname = formData.get('last_name');
   const mob_no = formData.get('mob_no');
   const user_name = formData.get('user_name');
   const password = formData.get('password');
 
-  if (first_name.trim() && last_name.trim()//execute if form fields are all filled
+  if (fname.trim() && lname.trim()//execute if form fields are all filled
     &&password.trim()&&user_name.trim()
-    &&mob_no.trim()&&middle_name.trim()) {
+    &&mob_no.trim()&&mname.trim()) {
+
+    const first_name = capitalize(fname);
+    const middle_name = capitalize(mname);
+    const last_name = capitalize(lname);
   
     const user = {//put admin credentials into object
       first_name,

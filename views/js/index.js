@@ -9,12 +9,12 @@ getAnnouncements();
 
 fetch(authenticateAPI_URL,{
 }).then(response=>{
-    response.text().then(result=>{
-      console.log(result);
-      if (result==='true'){
-        window.location.replace(adminIndexUrl);
-      }else{
-        window.location.replace(memberIndexUrl);   
-      }
+  response.text().then(result=>{
+    console.log(result);
+    if (result==='true'){
+      window.location.replace(adminIndexUrl);
+    }else{
+      window.location.replace(memberIndexUrl);   
+    }
   })
 })

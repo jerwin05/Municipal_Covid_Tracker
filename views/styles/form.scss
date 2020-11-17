@@ -11,7 +11,7 @@ body{
 }
 
 .form--container{
-    background-color: #f0d3ae;
+    background-color: #f5e9b0;
     padding:20px;
     border-radius: 5px;
 }
@@ -19,6 +19,21 @@ body{
 form{
     display: flex;
     flex-direction: column;
+}
+
+.form--header{
+    display: flex;
+    width: 100%;
+    margin-bottom: 9px;
+    
+    div{
+        font-size: 19px;
+        font-weight: bold;
+    }
+    justify-content: space-between;
+    a{
+        text-decoration: underline;
+    }
 }
 
 .form--element{
@@ -29,15 +44,16 @@ form{
     font-size: 14px;
 }
 .form--element:last-child{
-    background-color: #9ad3bc93;
+    background-color: #f5b461;
 }
 
-#error-message,#success-message{
+.responseMessage{
+    display: none;
+}
+
+#error-message{
     font-size: 17px;
-    background-color: #ecebe4;
+    background-color: #f7f7f7;
     border: 2px solid  #ec524b;
     padding: 10px;
-}
-#success-message{
-    border: 2px solid  #51ca62;
 }

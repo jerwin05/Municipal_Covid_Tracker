@@ -1,12 +1,12 @@
 const errorMessage=(errorElement,message)=>{
     errorElement.textContent=message;
-    errorElement.style.display='';
+    errorElement.style.display='block';
 }
 
 const registerSuccess=(form,errorElement,successElement,message)=>{
   form.style.display='none';
   successElement.textContent=message;
-  successElement.style.display='';
+  successElement.style.display='block';
   errorElement.style.display='none';
 }
 

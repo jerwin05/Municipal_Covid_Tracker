@@ -10,10 +10,12 @@
 </head>
 <body>
     <div class="form--container">
-    <div>Sign Up</div>
-    <a href="admin-login.html">Sign In</a>
-    <div class="form--element" id="error-message"></div>
-    <div class="form--element" id="success-message"></div>
+    <div class="form--header">
+        <div>Sign Up</div>
+        <a href="admin-login.html">Sign In</a>
+    </div>
+    <div class="form--element responseMessage" id="error-message"></div>
+    <div class="form--element responseMessage" id="success-message"></div>
     <form id="form" role="form" method="post">
         <label for="first_name">First Name</label>
         <input class="form--element" type="text"  name="first_name" placeholder="First Name">
