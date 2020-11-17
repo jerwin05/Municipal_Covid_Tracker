@@ -13,7 +13,6 @@ const announcementSection=document.getElementById('announcementSection');
 const announcementForm=document.getElementById('announcementForm');
 const residentsFormSection=document.getElementById('residentsFormContainer');
 const deleteAccountButton=document.getElementById('deleteAccount');
-const overlayMessage=document.getElementById('overlayMessage');
 const overlayNoButton=document.getElementById('overlayNoButton');
 const overlayYesButton=document.getElementById('overlayYesButton');
 const logoutButton=document.getElementById('logout');
@@ -251,7 +250,6 @@ logoutButton.addEventListener('click',()=>{
 
 //logout process
 deleteAccountButton.addEventListener('click',()=>{
-  overlayMessage.textContent='Are you sure you want to delete your account?';
   overlay.style.display='flex';//popup overlay if admin wish to delete his/her account
 });
 overlayNoButton.addEventListener('click',()=>{

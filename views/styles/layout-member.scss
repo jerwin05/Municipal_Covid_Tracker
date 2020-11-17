@@ -5,13 +5,11 @@
 nav{
     background-color: #f5e9b0;
     z-index: 3;
-    
+
     display: flex;
+    flex-direction: column;
 
-    padding: 15px 20px;
-    width: 100%;
-
-    border-radius: 0 0 7px 7px;
+    width: 100vw;
 
     font-size: 22px;
 
@@ -20,91 +18,52 @@ nav{
     left: 0;
 }
 
-.burger{
-    margin-left: 3px;
-    padding-top:3px ;
-    cursor: pointer;
-    z-index: 4;
-
-    div{
-        height: 3px;
-        width: 22px;
-        background-color: rgba(0, 0, 0, 0.712);
-        margin: 4.7px 0;
-        transition: all 0.3s ease;
-    }
-}
-
-.toggle {
-    .line1{
-        transform: rotate(-45deg) translate(-5px, 6px);  
-    }
-    .line2{
-        opacity: 0;
-    }
-    .line3{
-        transform: rotate(45deg) translate(-5px, -6px);   
-    }
+.nav--content{
+    // border:1px solid black;
 }
 
 .heading{
-    padding-top:4px ;
-    margin:0 30px 0 15px ;
-    color: black;
+    padding: 10px 25px 5px;
+    a{
+        color: black;
+    }
 }
 
 .nav-options{
-    background-image: url(../images/patternpad.jpeg);
-    background-position: -180px 0;
-    background-repeat: no-repeat;
-    background-color: #f5e9b0;
-
-    height: 100vh;
-    width: 250px;
-
-    font-size: 1em;
-    font-weight: 500;
-    z-index: 3;
-
-    position: fixed;
-    left: 0;
-    top: 0;
-
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-
-    transform: translateX(-100%);
-    transition: transform .5s ease;
-
     li{
-        opacity: 0;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 6px 0 11px;
+        text-align: center;
+
+        div{
+            position: absolute;
+            height: 1px ;
+            background-color: black;
+            bottom: 0;
+        }
+
+        button{
+            font-size: 15px;
+            font-weight: 500;
+            background-color:inherit;
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
     }
 }
 
-.nav-options>li{
-    margin:10px 0;
+.tab--marker{
+    border-bottom:2px solid black ;
 }
 
-.nav-options-active{
-    transform: translateX(0);
-}
-.dropdown i{
-    display: none;
-}
-
-.dropdown-menu{
-    margin: 10px 0 0 15px;
-
-    li{
-        margin: 5px 0;
-    }
-}
-
-.tabs{
-    margin-top: 95px;
-    border: 1px solid black;
+.tabcontent{
+    margin-top: 110px;
 }
 
 .container{
@@ -112,7 +71,6 @@ nav{
     border-radius: 6px;
     margin:20px 0 20px;
 }
-
 .container-1{
     position: relative;
     width: 100%;
@@ -183,33 +141,25 @@ nav{
     }
 }
 
+.locationAdded{
+    display: none;
+}
+
 .overlay{
     display: none;
 }
 
-@keyframes navLinksFade{
-    from{
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to{
-        opacity: 1;
-        transform: translateX(0px);
-    }
-}
+// @media only screen and (min-width: 634px) {
+
+// }
 
 @media only screen and (min-width: 634px) {
-    .heading{
-        padding-top:7px;
-    }
-    .burger{
-        position: absolute;
-        top: 15px;
-        left: 20px;
-    }
     nav{
         display: flex;
         justify-content: center;
+    }
+    .heading{
+        padding-top:7px;
     }
     .container-1{
         margin-top: 75px;
@@ -245,9 +195,6 @@ nav{
         justify-content: space-between;
         padding-top: 14px;
     }
-    .burger{
-        display: none;
-    }
     .heading{
         width: 70%;
         flex: 2;
@@ -268,43 +215,6 @@ nav{
         font-size: 18px;
         flex: .6;
         margin-right:30px;
-
-        li{
-            opacity: 1;
-            margin: 0;
-        }
-    }
-    .dropdown{
-        position: relative;
-
-        i{
-        display: inline;
-        position: relative;
-        top:1px;
-        }
-    }
-    .dropdown-menu{
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding:25px 20px 8px 12px;
-        display: none;
-        background-color: #f5e9b0;
-        margin:0;
-        z-index:-1;
-
-        li{
-            margin:10px 0;
-            padding-bottom:5px;
-            border-bottom: 1.7px solid black ;
-        }
-    }
-    .announcementHeading{
-        font-size: 1.35em;
-        border-bottom: 2.9px solid black;
-    }
-    .dropdown:hover .dropdown-menu{
-        display: block;
     }
 }
 

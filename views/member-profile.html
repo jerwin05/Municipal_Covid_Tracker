@@ -12,59 +12,49 @@
     <body>
         <div class="main--container">
             <nav>
-                <div class="burger" id="burger">
-                    <div class="line1"></div>
-                    <div class="line2"></div>
-                    <div class="line3"></div>
-                </div>
-                <h1 class="heading"><a href="member-profile.html">Barangay San Roque Teresa, Rizal - Covid Map</a></h1>
-                <ul class="nav-options" id="nav-options">
-                    <li class="dropdown"><button id="logout" type="button">Logout</button></li>
-                    <li class="dropdown"><button id="deleteAccount" type="button">Delete my Account</button></li>
+                <h1 class="heading nav--content"><a href="member-profile.html">Barangay San Roque Teresa, Rizal - Covid Map</a></h1>
+                <ul class="nav-options nav--content" id="nav-options">
+                    <li> <div .border--bottom></div> <button class="tablinks tab1" onclick="openTab(event, 'HomeTab')">Home</button></li>
+                    <li><button class="tablinks tab2" onclick="openTab(event, 'ProfileTab')">Profile</button></li>
                 </ul>
             </nav>
             <div class="main">
-                <div class="tabs"> 
-                    <button class="tablinks" onclick="openTab(event, 'HomeTab')">Home</button>
-                    <button class="tablinks" onclick="openTab(event, 'ProfileTab')">Profile</button>
+                <div id="HomeTab" class="tabcontent">
+                    <div class="container container-1">
+                        <div class="map--layer">
+                            <h2>Base Layers</h2>
+                            <input type="radio" name='baseLayerRadioButton' value='OSMStandard' checked>Standard<br>
+                            <input type="radio" name='baseLayerRadioButton' value='OSMHumanitarian'>Humanitarian<br>        
+                        </div>
+                        <button id='refresh' type="button">Refresh</button>
+                        <div id="js-map" class='map'></div>
+                    </div>
+                    <div id='announcementSection' class="container container-2">
+                        <h2 class="announcementHeading">Announcements</h2>
+                    </div>
+            
+                    <!-- <div class="overlay-container">
+                        <span class="overlay-text" id="feature-name"></span>
+                        <span class="overlay-text" id="feature-additional-info"></span>
+                    </div> -->
                 </div>
-                <div class="tab--container">
-                    <div id="HomeTab" class="tabcontent">
-                        <div class="container container-1">
-                            <div class="map--layer">
-                                <h2>Base Layers</h2>
-                                <input type="radio" name='baseLayerRadioButton' value='OSMStandard' checked>Standard<br>
-                                <input type="radio" name='baseLayerRadioButton' value='OSMHumanitarian'>Humanitarian<br>        
-                            </div>
-                            <button id='refresh' type="button">Refresh</button>
-                            <div id="js-map" class='map'></div>
-                        </div>
-                        <div id='announcementSection' class="container container-2">
-                            <h2 class="announcementHeading">Announcements</h2>
-                        </div>
-                
-                        <!-- <div class="overlay-container">
-                            <span class="overlay-text" id="feature-name"></span>
-                            <span class="overlay-text" id="feature-additional-info"></span>
-                        </div> -->
-                    </div>
-                    <div id="ProfileTab" class="tabcontent">
-                        <div id="profile"></div>
-                        <p id="locationAdded"></p>
-                        <button id="addLocation" type="button">Add my Location</button>
-                    </div>
+                <div id="ProfileTab" class="tabcontent">
+                    <div id="profile"></div>
+                    <p id="locationAdded" class="locationAdded"></p>
+                    <button id="addLocation" type="button">Add my Location</button>
+                    <button id="logout" type="button">Logout</button>
+                    <button id="deleteAccount" type="button">Delete my Account</button>
                 </div>
             </div>
         </div>
         <div class="overlay" id="overlay">
             <div class="popUp-container">
-                <p>Are you sure you want to delete your accout?</p>
+                <p class="overlayMessage">Are you sure you want to delete your account?</p>
                 <button id='overlayYesButton' type="button">Yes</button>
                 <button id='overlayNoButton' type="button">No</button>
             </div>
         </div>
         <script type='module' src="./js/member-profile.js"></script>
-        <script src="./js/burger.js"></script>
         <script src="./js/profile.js"></script>
         <script src="./js/map.js"></script>
         <script src="./libs/v6.4.3-dist/ol.js"></script>

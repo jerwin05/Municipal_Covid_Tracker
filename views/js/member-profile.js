@@ -2,10 +2,9 @@
 import {getAnnouncements} from './common.js';
 
 //get elements here
-const addedlocationElement=document.getElementById('locationAdded');
 const overlay=document.getElementById('overlay');
 //element initial state
-addedlocationElement.style.display='none';
+const addedlocationElement=document.getElementById('locationAdded');
 const overlayNoButton=document.getElementById('overlayNoButton');
 const overlayYesButton=document.getElementById('overlayYesButton');
 const deleteAccountButton=document.getElementById('deleteAccount');

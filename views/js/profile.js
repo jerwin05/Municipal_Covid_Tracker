@@ -15,11 +15,11 @@ function openTab(evt, pageName) {
     // Get all elements with class="tablinks" and remove the class "active"
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+        tablinks[i].className = tablinks[i].className.replace(" active .tab--marker", "");
     }
 
     // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(pageName).style.display = "block";
-    evt.currentTarget.className += " active";
+    evt.currentTarget.className += " active .tab--marker";
     }
     openTab(Event,'HomeTab');
