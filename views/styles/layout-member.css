@@ -291,16 +291,6 @@ nav {
   }
   .nav-options {
     display: none;
-    min-width: 200px;
-  }
-  .nav-options li {
-    position: relative;
-    padding: 0;
-    text-align: center;
-  }
-  .nav-options li button {
-    font-size: 17px;
-    font-weight: bold;
   }
   .page--transition {
     -webkit-transition: none;
@@ -362,30 +352,11 @@ nav {
   }
 }
 
-@media only screen and (min-width: 850px) {
-  .nav-options {
-    width: 30%;
-  }
-}
-
 @media only screen and (min-width: 1000px) {
-  .nav-options {
-    margin-right: 25px;
-  }
-  .nav-options li button {
-    font-size: 18px;
-    font-weight: bold;
-  }
   .map--layer {
     font-size: 18px;
     bottom: 15px;
     left: 15px;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  .nav-options {
-    margin-right: 45px;
   }
 }
 /*# sourceMappingURL=layout-member.css.map */

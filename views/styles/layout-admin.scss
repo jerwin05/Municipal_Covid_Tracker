@@ -1,17 +1,14 @@
 .main--container{
-    margin: 0 25px ;
+    position: relative;
 }
 
 nav{
     background-color: #f5e9b0;
     z-index: 3;
-    
-    display: flex;
 
-    padding: 15px 20px;
-    width: 100%;
+    justify-content: center;
 
-    border-radius: 0 0 7px 7px;
+    width: 100vw;
 
     font-size: 22px;
 
@@ -20,106 +17,109 @@ nav{
     left: 0;
 }
 
-.burger{
-    margin-left: 3px;
-    padding-top:3px ;
-    cursor: pointer;
-    z-index: 4;
-
-    div{
-        height: 3px;
-        width: 22px;
-        background-color: rgba(0, 0, 0, 0.712);
-        margin: 4.7px 0;
-        transition: all 0.3s ease;
-    }
-}
-
-.toggle {
-    .line1{
-        transform: rotate(-45deg) translate(-5px, 6px);  
-    }
-    .line2{
-        opacity: 0;
-    }
-    .line3{
-        transform: rotate(45deg) translate(-5px, -6px);   
-    }
-}
-
 .heading{
-    padding-top:4px ;
-    margin:0 30px 0 15px ;
-    color: black;
+    padding: 15px 37px 5px 25px;
 }
 
 .nav-options{
-    background-image: url(../images/patternpad.jpeg);
-    background-position: -180px 0;
-    background-repeat: no-repeat;
-    background-color: #f5e9b0;
-
-    height: 100vh;
-    width: 250px;
-
-    font-size: 1em;
-    font-weight: 500;
-    z-index: 3;
-
-    position: fixed;
-    left: 0;
-    top: 0;
-
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-
-    transform: translateX(-100%);
-    transition: transform .5s ease;
-
+    
     li{
-        opacity: 0;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 1px 0 11px;
+        text-align: center;
+
+        button{
+            font-size: 15px;
+            font-weight: 500;
+            height:inherit ;
+            width:inherit ;
+            background-color:inherit;
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
     }
 }
 
-.nav-options>li{
-    margin:10px 0;
+.border--bottom{
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background-color: #f5b461;
+    bottom: 0;
 }
 
-.nav-options-active{
-    transform: translateX(0);
-}
-.dropdown i{
-    display: none;
+.main{
+    width: 200%;
+    position: absolute;
+    display: flex;
+    padding-top: 110px;
 }
 
-.dropdown-menu{
-    margin: 10px 0 0 15px;
+.page--transition{
+    transition: transform .15s ease-out;
+}
 
-    li{
-        margin: 5px 0;
+.tab--slide{
+    transform: translateX(100%);
+}
+.page--slide{
+    transform: translateX(-50%);
+}
+
+.profile--name{
+    font-size: 20px;
+    margin-bottom: 9px;
+}
+
+.profile--details{
+    font-size: 17px;
+}
+
+.profile--button{
+    background-color: #f5b461;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-right: 4px;
+    padding:5px 8px;
+}
+
+.addLocation--button{
+    margin-top: 10px;
+}
+
+.profile--options{
+    margin: 18px 0 0;
+    button{
+        background-color: #c4dfd5;
     }
 }
 
-.tabs{
-    margin-top: 95px;
-    border: 1px solid black;
+.tab--contents{
+    width: 100%;
+    padding:0 25px;
+    position: relative;
 }
 
-.container{
+.hometab--containers{
     background-color: #f3eac2;
     border-radius: 6px;
-    margin:20px 0 20px;
+    margin-bottom:20px;
 }
 
-.container-1{
+.map--container{
     position: relative;
-    width: 100%;
     height: 71vh;
 }
-.container-2{
-    height: 82vh;
+
+.announcement--container{
+    height: 80vh;
     overflow-y: scroll;
     padding: 20px;
 }
@@ -149,23 +149,25 @@ nav{
     font-size: 12px;
 }
 
-.announcementHeading{
+.announcement--heading{
     font-size: 1.25em;
     padding-bottom:10px;
     border-bottom: 2px solid black;
 }
 
-.announcementElement{
+.announcement--element{
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
     line-height: 15px;
 }
-.announcementElement:last-child{
-    margin-bottom: 0;
+.announcement--element:nth-child(3){
+    border-bottom: 1px solid #f5b461;
+    padding-bottom: 11px;
 }
 
-.container-2 {
-    div{
+.announcement--container{
+    .announcement--post{
+        position: relative;
         border: 1px solid #ec524b;
         border-radius: 5px;
         margin-top:10px;
@@ -173,7 +175,7 @@ nav{
     }
     h3{
         font-size: 1.17em;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
     p{
         font-size: 15.5px;
@@ -181,132 +183,190 @@ nav{
     small{
         font-size: 12px;
     }
+    button{
+        margin-top: 7px;
+        background-color: #f5b461;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        margin-right: 4px;
+        padding:5px 8px;   
+    }
+}
+
+.location--added{
+    display: none;
 }
 
 .overlay{
     display: none;
+
+    // background-color: #f3eac291;
+    background-color: rgba(0, 0, 0, 0.63);
+    z-index: 5;
+
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top:0;
+    left: 0;
+    
+    width: 100%;
+    height: 100vh;
 }
 
-@keyframes navLinksFade{
-    from{
-        opacity: 0;
-        transform: translateX(-50px);
+.popUp--container{
+    display: grid;
+    grid-template-areas: 
+        "item1 item1"
+         "item2 item3";
+    gap: 10px;
+
+    background-color: #fff;
+    border-radius: 5px;
+    padding:30px;
+    margin: 0 10px;
+
+    p{
+        margin: 10px 0;
     }
-    to{
-        opacity: 1;
-        transform: translateX(0px);
+
+    button{
+        border: 1px solid #97e0c6;
+        padding: 2px 0;
+    }
+}
+
+.item1{
+    grid-area: item1;
+    text-align: center;
+}
+.item2{
+    grid-area: item2;
+}
+.item3{
+    grid-area: item3;
+}
+
+@media only screen and (min-width: 554px) {
+    .main{
+        padding-top: 90px;
     }
 }
 
 @media only screen and (min-width: 634px) {
-    .heading{
-        padding-top:7px;
-    }
-    .burger{
-        position: absolute;
-        top: 15px;
-        left: 20px;
-    }
-    nav{
-        display: flex;
-        justify-content: center;
-    }
-    .container-1{
-        margin-top: 75px;
-    }
     .map--layer{
         font-size: 15px;
-        padding:7px;
         bottom: 15px;
         left: 15px;
     }
 }
 
 @media only screen and (min-width: 820px) {
-    .main{
-        display: flex;
-        height: 85vh;
-        margin-top: 75px;
-    }
-    .container-1{
-        flex: 2;
-        height: 100%;
-        margin: 0;
-    }
-    .container-2{
-        margin:0 0 0 20px;
-        flex: 1;
-        height: 100%;
-    }
-}
-
-@media only screen and (min-width: 960px) {
     nav{
+        display: flex;
         justify-content: space-between;
-        padding-top: 14px;
+        padding:0 25px;
+        height: 50px;
     }
-    .burger{
-        display: none;
-    }
+
     .heading{
-        width: 70%;
-        flex: 2;
-        font-size: 27px;
-        margin-left: 4px;
-        padding: 0;
+        padding:0;
+        font-size: 25px;
+        align-self: center;
     }
+
     .nav-options{
-        position: static;
-        background-image: none;
-        transform: none;
-        min-width: 210px;
-        height: inherit;
-        z-index: 0;
-        flex-direction: row;
-        justify-content: space-around;
-        font-weight: bold;
-        font-size: 18px;
-        flex: .6;
-        margin-right:30px;
-
+        min-width: 200px;
         li{
-            opacity: 1;
-            margin: 0;
+            position: relative;
+            padding: 0;
+            text-align: center;
+            button{
+                font-size: 17px;
+                font-weight: bold;
+            }
         }
     }
-    .dropdown{
-        position: relative;
+    .page--transition{
+        transition: none;
+    }
+    .main{
+        width: 200%;
+        padding-top: 65px;
+        height: 97vh;
+    }
+    .home--tab{
+        display: flex;
+    }
+    .hometab--containers{
+        height: 100%;
+    }
+    .map--container{
+        flex: 2;
+    }
+    .announcement--container{
+        flex: 1;
+        margin-left: 20px;
+    }
 
-        i{
-        display: inline;
-        position: relative;
-        top:1px;
-        }
+    .profile--button{
+        font-size: 14px;
+        padding:4px 6px;
     }
-    .dropdown-menu{
+    .profile--options{
         position: absolute;
         top: 0;
-        left: 0;
-        padding:25px 20px 8px 12px;
-        display: none;
-        background-color: #f5e9b0;
-        margin:0;
-        z-index:-1;
-
-        li{
-            margin:10px 0;
-            padding-bottom:5px;
-            border-bottom: 1.7px solid black ;
+        right: 25;
+        margin: 0;
+    }
+    .addLocation{
+        position: absolute;
+        top: 21;
+        right:25;
+    }
+    .location--added{
+        margin: 9px 5px 0 0;
+    }
+    .popUp--container{    
+        font-size: 18px;
+        button{
+            font-size: 14px;
+            padding: 4px 0;
         }
-    }
-    .announcementHeading{
-        font-size: 1.35em;
-        border-bottom: 2.9px solid black;
-    }
-    .dropdown:hover .dropdown-menu{
-        display: block;
     }
 }
 
-/* @media only screen and (min-width: 401px) and (max-width: 400px) {
-} */
+@media only screen and (min-width: 850px) {
+    .nav-options{
+        width: 30%;  
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .nav-options{
+        margin-right: 25px;
+        li button{
+            font-size: 18px;
+            font-weight: bold;
+        }
+    }
+    .map--layer{
+        font-size: 18px;
+        bottom: 15px;
+        left: 15px;
+    }
+    // .profile--name{
+    //     font-size: 23px;
+    // }    
+    // .profile--details{
+    //     font-size: 20px;
+    // }
+}
+
+@media only screen and (min-width: 1200px) {
+    .nav-options{
+        margin-right: 45px;      
+    }
+}

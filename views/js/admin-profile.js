@@ -71,8 +71,11 @@ const getAnnouncements=()=>{
         const date = document.createElement('small');
         const button =document.createElement('button');
 
+        div.className='announcement--post';
         title.textContent = announcement.title;
         body.textContent = announcement.body;
+        body.className = 'announcement--element';
+        date.className = 'announcement--element';
         date.textContent = new Date(announcement.date);
         button.textContent ='delete';
 
@@ -132,9 +135,11 @@ function getResidents(){
         span1.textContent=`${resident.last_name}, ${resident.first_name} ${resident.middle_name}`;
         span2.textContent=`${resident.mob_no}`;
         div.className='overlay';
-        div1.className='popUp-container';
+        div1.className='popUp--container';
         p.textContent='Are you sure you want to delete this resident?';
-        button1.setAttribute("class", `deleteResident${resident.id}`);
+        p.setAttribute("class", `item1`);
+        button1.setAttribute("class", `item2 deleteResident${resident.id}`);
+        button2.setAttribute("class", `item3`);
         button1.setAttribute("type", `button`);
         button2.setAttribute("type", `button`);
         button1.textContent='Yes';

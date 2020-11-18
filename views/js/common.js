@@ -24,7 +24,6 @@ const getAnnouncements=()=>{
   
           body.textContent = announcement.body;
           body.className = 'announcement--element';
-          title.className = 'announcement--element';
           date.className = 'announcement--element';
           title.textContent = announcement.title;
           date.textContent = new Date(announcement.date);
