@@ -1,5 +1,5 @@
-.main--container {
-  margin: 0 25px;
+body {
+  position: relative;
 }
 
 nav {
@@ -20,11 +20,7 @@ nav {
 }
 
 .heading {
-  padding: 10px 25px 5px;
-}
-
-.heading a {
-  color: black;
+  padding: 15px 25px 5px;
 }
 
 .nav-options {
@@ -42,32 +38,60 @@ nav {
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 6px 0 11px;
+  padding: 1px 0 11px;
   text-align: center;
-}
-
-.nav-options li div {
-  position: absolute;
-  height: 1px;
-  background-color: black;
-  bottom: 0;
 }
 
 .nav-options li button {
   font-size: 15px;
   font-weight: 500;
+  height: inherit;
+  width: inherit;
   background-color: inherit;
   outline: none;
   border: none;
   cursor: pointer;
 }
 
-.tab--marker {
-  border-bottom: 2px solid black;
+.border--bottom {
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background-color: black;
+  bottom: 0;
 }
 
-.tabcontent {
-  margin-top: 110px;
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 110px 25px 0;
+}
+
+.page--transition {
+  -webkit-transition: -webkit-transform 0.35s cubic-bezier(0.34, 0.71, 0.19, 0.66);
+  transition: -webkit-transform 0.35s cubic-bezier(0.34, 0.71, 0.19, 0.66);
+  transition: transform 0.35s cubic-bezier(0.34, 0.71, 0.19, 0.66);
+  transition: transform 0.35s cubic-bezier(0.34, 0.71, 0.19, 0.66), -webkit-transform 0.35s cubic-bezier(0.34, 0.71, 0.19, 0.66);
+}
+
+.tab2 {
+  padding: 0 25px;
+  position: absolute;
+  top: 110px;
+  width: 100%;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+.tab--slide {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+.page--slide {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
 }
 
 .container {
@@ -77,6 +101,7 @@ nav {
 }
 
 .container-1 {
+  margin-top: 0;
   position: relative;
   width: 100%;
   height: 71vh;
@@ -154,92 +179,6 @@ nav {
 
 .overlay {
   display: none;
-}
-
-@media only screen and (min-width: 634px) {
-  nav {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-  .heading {
-    padding-top: 7px;
-  }
-  .container-1 {
-    margin-top: 75px;
-  }
-  .map--layer {
-    font-size: 15px;
-    padding: 7px;
-    bottom: 15px;
-    left: 15px;
-  }
-}
-
-@media only screen and (min-width: 820px) {
-  .main {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    height: 85vh;
-    margin-top: 75px;
-  }
-  .container-1 {
-    -webkit-box-flex: 2;
-        -ms-flex: 2;
-            flex: 2;
-    height: 100%;
-    margin: 0;
-  }
-  .container-2 {
-    margin: 0 0 0 20px;
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
-    height: 100%;
-  }
-}
-
-@media only screen and (min-width: 960px) {
-  nav {
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    padding-top: 14px;
-  }
-  .heading {
-    width: 70%;
-    -webkit-box-flex: 2;
-        -ms-flex: 2;
-            flex: 2;
-    font-size: 27px;
-    margin-left: 4px;
-    padding: 0;
-  }
-  .nav-options {
-    position: static;
-    background-image: none;
-    -webkit-transform: none;
-            transform: none;
-    min-width: 210px;
-    height: inherit;
-    z-index: 0;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    font-weight: bold;
-    font-size: 18px;
-    -webkit-box-flex: .6;
-        -ms-flex: .6;
-            flex: .6;
-    margin-right: 30px;
-  }
 }
 
 /* @media only screen and (min-width: 401px) and (max-width: 400px) {

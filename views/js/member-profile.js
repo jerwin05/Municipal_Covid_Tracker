@@ -32,7 +32,7 @@ fetch(authenticateAPI_URL,{
 
 function locationAdd(){//update the DOM if location is already added
   addedlocationElement.textContent='Location Added';
-  addedlocationElement.style.display='';
+  addedlocationElement.style.display='block';
   locationButton.style.display='none';
 }
 

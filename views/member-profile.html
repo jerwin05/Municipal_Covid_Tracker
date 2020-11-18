@@ -14,12 +14,12 @@
             <nav>
                 <h1 class="heading nav--content"><a href="member-profile.html">Barangay San Roque Teresa, Rizal - Covid Map</a></h1>
                 <ul class="nav-options nav--content" id="nav-options">
-                    <li> <div .border--bottom></div> <button class="tablinks tab1" onclick="openTab(event, 'HomeTab')">Home</button></li>
-                    <li><button class="tablinks tab2" onclick="openTab(event, 'ProfileTab')">Profile</button></li>
+                    <li> <div class='border--bottom page--transition' id='border--bottom'></div> <button class="tablinks" onclick="openTab(event, 'HomeTab')">Home</button></li>
+                    <li><button class="tablinks" onclick="openTab(event, 'ProfileTab')">Profile</button></li>
                 </ul>
             </nav>
-            <div class="main">
-                <div id="HomeTab" class="tabcontent">
+            <div class="main page--transition" id="main">
+                <div id="HomeTab" class="tabcontent tab1">
                     <div class="container container-1">
                         <div class="map--layer">
                             <h2>Base Layers</h2>
@@ -38,7 +38,7 @@
                         <span class="overlay-text" id="feature-additional-info"></span>
                     </div> -->
                 </div>
-                <div id="ProfileTab" class="tabcontent">
+                <div id="ProfileTab" class="tabcontent tab2">
                     <div id="profile"></div>
                     <p id="locationAdded" class="locationAdded"></p>
                     <button id="addLocation" type="button">Add my Location</button>

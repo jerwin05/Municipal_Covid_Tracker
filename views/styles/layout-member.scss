@@ -1,7 +1,6 @@
-.main--container{
-    margin: 0 25px ;
+body{
+    position: relative;
 }
-
 nav{
     background-color: #f5e9b0;
     z-index: 3;
@@ -23,33 +22,26 @@ nav{
 }
 
 .heading{
-    padding: 10px 25px 5px;
-    a{
-        color: black;
-    }
+    padding: 15px 25px 5px;
 }
 
 .nav-options{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    
     li{
         position: relative;
         width: 100%;
         height: 100%;
-        padding: 6px 0 11px;
+        padding: 1px 0 11px;
         text-align: center;
-
-        div{
-            position: absolute;
-            height: 1px ;
-            background-color: black;
-            bottom: 0;
-        }
 
         button{
             font-size: 15px;
             font-weight: 500;
+            height:inherit ;
+            width:inherit ;
             background-color:inherit;
             outline: none;
             border: none;
@@ -58,13 +50,45 @@ nav{
     }
 }
 
-.tab--marker{
-    border-bottom:2px solid black ;
+.border--bottom{
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background-color: black;
+    bottom: 0;
 }
 
-.tabcontent{
-    margin-top: 110px;
+.main{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    padding: 110px 25px 0;
 }
+
+.page--transition{
+    transition: transform .35s cubic-bezier(.34,.71,.19,.66);
+}
+
+.tab2{
+    padding:0 25px;
+    position: absolute;
+    top:110px;
+    width: 100%;
+    transform: translateX(100%);
+}
+
+.tab--slide{
+    transform: translateX(100%);
+}
+
+.page--slide{
+    transform: translateX(-100%);
+}
+
+// .tabcontent{
+//     border: 1px solid black;
+// }
 
 .container{
     background-color: #f3eac2;
@@ -72,6 +96,7 @@ nav{
     margin:20px 0 20px;
 }
 .container-1{
+    margin-top: 0;
     position: relative;
     width: 100%;
     height: 71vh;
@@ -153,70 +178,70 @@ nav{
 
 // }
 
-@media only screen and (min-width: 634px) {
-    nav{
-        display: flex;
-        justify-content: center;
-    }
-    .heading{
-        padding-top:7px;
-    }
-    .container-1{
-        margin-top: 75px;
-    }
-    .map--layer{
-        font-size: 15px;
-        padding:7px;
-        bottom: 15px;
-        left: 15px;
-    }
-}
+// @media only screen and (min-width: 634px) {
+//     nav{
+//         display: flex;
+//         justify-content: center;
+//     }
+//     .heading{
+//         padding-top:7px;
+//     }
+//     .container-1{
+//         margin-top: 75px;
+//     }
+//     .map--layer{
+//         font-size: 15px;
+//         padding:7px;
+//         bottom: 15px;
+//         left: 15px;
+//     }
+// }
 
-@media only screen and (min-width: 820px) {
-    .main{
-        display: flex;
-        height: 85vh;
-        margin-top: 75px;
-    }
-    .container-1{
-        flex: 2;
-        height: 100%;
-        margin: 0;
-    }
-    .container-2{
-        margin:0 0 0 20px;
-        flex: 1;
-        height: 100%;
-    }
-}
+// @media only screen and (min-width: 820px) {
+//     .main{
+//         display: flex;
+//         height: 85vh;
+//         margin-top: 75px;
+//     }
+//     .container-1{
+//         flex: 2;
+//         height: 100%;
+//         margin: 0;
+//     }
+//     .container-2{
+//         margin:0 0 0 20px;
+//         flex: 1;
+//         height: 100%;
+//     }
+// }
 
-@media only screen and (min-width: 960px) {
-    nav{
-        justify-content: space-between;
-        padding-top: 14px;
-    }
-    .heading{
-        width: 70%;
-        flex: 2;
-        font-size: 27px;
-        margin-left: 4px;
-        padding: 0;
-    }
-    .nav-options{
-        position: static;
-        background-image: none;
-        transform: none;
-        min-width: 210px;
-        height: inherit;
-        z-index: 0;
-        flex-direction: row;
-        justify-content: space-around;
-        font-weight: bold;
-        font-size: 18px;
-        flex: .6;
-        margin-right:30px;
-    }
-}
+// @media only screen and (min-width: 960px) {
+//     nav{
+//         justify-content: space-between;
+//         padding-top: 14px;
+//     }
+//     .heading{
+//         width: 70%;
+//         flex: 2;
+//         font-size: 27px;
+//         margin-left: 4px;
+//         padding: 0;
+//     }
+//     .nav-options{
+//         position: static;
+//         background-image: none;
+//         transform: none;
+//         min-width: 210px;
+//         height: inherit;
+//         z-index: 0;
+//         flex-direction: row;
+//         justify-content: space-around;
+//         font-weight: bold;
+//         font-size: 18px;
+//         flex: .6;
+//         margin-right:30px;
+//     }
+// }
 
 /* @media only screen and (min-width: 401px) and (max-width: 400px) {
 } */

@@ -2,24 +2,37 @@
 // setTimeout("preventBack()", 0);
 // window.onunload=function(){null};
 
+const borderBottom=document.getElementById('border--bottom');
+const main=document.getElementById('main');
+
 function openTab(evt, pageName) {
+
+    //update tab button border
+    if(pageName=='HomeTab'){
+        borderBottom.className='border--bottom';
+        main.className='main';
+    }else{
+        borderBottom.className='border--bottom tab--slide';
+        main.className='main page--slide';
+    }
+
     // Declare all variables
-    var i, tabcontent, tablinks;
+    // var i, tabcontent, tablinks;
 
     // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
+    // tabcontent = document.getElementsByClassName("tabcontent");
+    // for (i = 0; i < tabcontent.length; i++) {
+    //     tabcontent[i].style.display = "none";
+    // }
 
     // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active .tab--marker", "");
-    }
+    // tablinks = document.getElementsByClassName("tablinks");
+    // for (i = 0; i < tablinks.length; i++) {
+    //     tablinks[i].className = tablinks[i].className.replace(" active", "");
+    // }
 
     // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(pageName).style.display = "block";
-    evt.currentTarget.className += " active .tab--marker";
-    }
-    openTab(Event,'HomeTab');
+    // document.getElementById(pageName).style.display = "block";
+    // evt.currentTarget.className += " active";
+}
+openTab(Event,'HomeTab');
