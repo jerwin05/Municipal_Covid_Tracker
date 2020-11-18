@@ -12,15 +12,15 @@
     <body>
         <div class="main--container">
             <nav>
-                <h1 class="heading nav--content"><a href="member-profile.html">Barangay San Roque Teresa, Rizal - Covid Map</a></h1>
-                <ul class="nav-options nav--content" id="nav-options">
-                    <li> <div class='border--bottom page--transition' id='border--bottom'></div> <button class="tablinks" onclick="openTab(event, 'HomeTab')">Home</button></li>
-                    <li><button class="tablinks" onclick="openTab(event, 'ProfileTab')">Profile</button></li>
+                <h1 class="heading"><a href="member-profile.html">Barangay San Roque Teresa, Rizal - Covid Map</a></h1>
+                <ul class="nav-options" id="nav-options">
+                    <li> <div class='border--bottom page--transition' id='border--bottom'></div><button class="tablinks" onclick="openTab('HomeTab')">Home</button></li>
+                    <li><button class="tablinks" onclick="openTab('ProfileTab')">Profile</button></li>
                 </ul>
             </nav>
             <div class="main page--transition" id="main">
-                <div id="HomeTab" class="tabcontent tab1">
-                    <div class="container container-1">
+                <div id="HomeTab" class="tab--contents home--tab">
+                    <div class="hometab--containers map--container">
                         <div class="map--layer">
                             <h2>Base Layers</h2>
                             <input type="radio" name='baseLayerRadioButton' value='OSMStandard' checked>Standard<br>
@@ -29,8 +29,8 @@
                         <button id='refresh' type="button">Refresh</button>
                         <div id="js-map" class='map'></div>
                     </div>
-                    <div id='announcementSection' class="container container-2">
-                        <h2 class="announcementHeading">Announcements</h2>
+                    <div id='announcementSection' class="hometab--containers announcement--container">
+                        <h2 class="announcement--heading">Announcements</h2>
                     </div>
             
                     <!-- <div class="overlay-container">
@@ -38,20 +38,23 @@
                         <span class="overlay-text" id="feature-additional-info"></span>
                     </div> -->
                 </div>
-                <div id="ProfileTab" class="tabcontent tab2">
+                <div id="ProfileTab" class="tab--contents profile--tab">
                     <div id="profile"></div>
-                    <p id="locationAdded" class="locationAdded"></p>
+                    <p id="locationAdded" class="location--added profile--details"></p>
                     <button id="addLocation" type="button">Add my Location</button>
-                    <button id="logout" type="button">Logout</button>
-                    <button id="deleteAccount" type="button">Delete my Account</button>
+                    <div class="profile--options">
+                        <button id="logout" type="button">Logout</button>
+                        <button id="deleteAccount" type="button">Delete my Account</button>
+    
+                    </div>
                 </div>
             </div>
         </div>
         <div class="overlay" id="overlay">
-            <div class="popUp-container">
-                <p class="overlayMessage">Are you sure you want to delete your account?</p>
-                <button id='overlayYesButton' type="button">Yes</button>
-                <button id='overlayNoButton' type="button">No</button>
+            <div class="popUp--container">
+                <p class="overlayMessage item1">Are you sure you want to delete your account?</p>
+                <button class="item2" id='overlayYesButton' type="button">Yes</button>
+                <button class="item3" id='overlayNoButton' type="button">No</button>
             </div>
         </div>
         <script type='module' src="./js/member-profile.js"></script>

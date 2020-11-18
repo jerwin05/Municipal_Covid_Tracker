@@ -47,7 +47,9 @@ function getProfile(){
       //append user credentials
       const name=document.createElement('h2');
       name.textContent=`Name: ${result.fname} ${result.mname} ${result.lname}`;
-      const number=document.createElement('h2');
+      const number=document.createElement('p');
+
+      number.className='profile--details';
       number.textContent=`Mobile Number: ${result.mob_no}`;
       profileElement.appendChild(name);
       profileElement.appendChild(number);

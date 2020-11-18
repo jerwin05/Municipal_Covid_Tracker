@@ -5,22 +5,24 @@
 const borderBottom=document.getElementById('border--bottom');
 const main=document.getElementById('main');
 
-function openTab(evt, pageName) {
+function openTab(pageName) {
+    borderBottom.className = borderBottom.className.replace(" tab--slide", "");
+    main.className = main.className.replace(" page--slide", "");
 
     //update tab button border
     if(pageName=='HomeTab'){
-        borderBottom.className='border--bottom';
-        main.className='main';
+        borderBottom.className = borderBottom.className.replace(" tab--slide", "");
+        main.className = main.className.replace(" page--slide", "");
     }else{
-        borderBottom.className='border--bottom tab--slide';
-        main.className='main page--slide';
+        borderBottom.className += " tab--slide";
+        main.className += " page--slide";
     }
 
     // Declare all variables
     // var i, tabcontent, tablinks;
 
-    // Get all elements with class="tabcontent" and hide them
-    // tabcontent = document.getElementsByClassName("tabcontent");
+    // Get all elements with class="tab--contents" and hide them
+    // tabcontent = document.getElementsByClassName("tab--contents");
     // for (i = 0; i < tabcontent.length; i++) {
     //     tabcontent[i].style.display = "none";
     // }
@@ -35,4 +37,4 @@ function openTab(evt, pageName) {
     // document.getElementById(pageName).style.display = "block";
     // evt.currentTarget.className += " active";
 }
-openTab(Event,'HomeTab');
+openTab('HomeTab');
