@@ -3,7 +3,6 @@ import {getAnnouncements} from './common.js';
 
 //get elements here
 const overlay=document.getElementById('overlay');
-//element initial state
 const addedlocationElement=document.getElementById('locationAdded');
 const overlayNoButton=document.getElementById('overlayNoButton');
 const overlayYesButton=document.getElementById('overlayYesButton');
@@ -47,6 +46,7 @@ function getProfile(){
       const name=document.createElement('h2');
       const number=document.createElement('p');
 
+      name.className='profile--name';
       number.className='profile--details';
       name.textContent=`Name: ${result.fname} ${result.mname} ${result.lname}`;
       number.textContent=`Mobile Number: ${result.mob_no}`;

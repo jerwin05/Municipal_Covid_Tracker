@@ -155,15 +155,15 @@ nav {
   font-size: 12px;
 }
 
-.announcementHeading {
+.announcement--heading {
   font-size: 1.25em;
   padding-bottom: 10px;
   border-bottom: 2px solid black;
 }
 
-.announcementElement {
+.announcement--element {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   line-height: 15px;
 }
 
@@ -180,7 +180,7 @@ nav {
 
 .container-2 h3 {
   font-size: 1.17em;
-  margin-bottom: 15px;
+  margin-bottom: 9px;
 }
 
 .container-2 p {
@@ -224,7 +224,7 @@ nav {
   }
 }
 
-@media only screen and (min-width: 634px) {
+@media only screen and (min-width: 660px) {
   .heading {
     padding-top: 7px;
   }
@@ -345,7 +345,7 @@ nav {
     padding-bottom: 5px;
     border-bottom: 1.7px solid black;
   }
-  .announcementHeading {
+  .announcement--heading {
     font-size: 1.35em;
     border-bottom: 2.9px solid black;
   }

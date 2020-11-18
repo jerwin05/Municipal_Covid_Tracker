@@ -77,4 +77,17 @@ form {
   border: 2px solid  #ec524b;
   padding: 10px;
 }
+
+@media only screen and (min-width: 750px) {
+  .form--header div {
+    font-size: 21px;
+  }
+  .form--element {
+    font-size: 16px;
+    width: 350px;
+  }
+  #error-message {
+    font-size: 19px;
+  }
+}
 /*# sourceMappingURL=form.css.map */

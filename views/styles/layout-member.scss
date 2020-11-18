@@ -6,8 +6,7 @@ nav{
     background-color: #f5e9b0;
     z-index: 3;
 
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
 
     width: 100vw;
 
@@ -63,7 +62,7 @@ nav{
 }
 
 .page--transition{
-    transition: transform .25s cubic-bezier(.34,.71,.19,.66);
+    transition: transform .15s ease-out;
 }
 
 .tab--slide{
@@ -73,32 +72,39 @@ nav{
     transform: translateX(-50%);
 }
 
-.profile--tab{
-    h2{
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
+.profile--name{
+    font-size: 20px;
+    margin-bottom: 9px;
 }
 
 .profile--details{
     font-size: 17px;
 }
 
+.profile--button{
+    background-color: #f5b461;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-right: 4px;
+    padding:5px 8px;
+}
+
+.addLocation--button{
+    margin-top: 10px;
+}
+
 .profile--options{
     margin: 18px 0 0;
     button{
         background-color: #c4dfd5;
-        border-radius: 5px;
-        border: none;
-        outline: none;
-        margin-right: 5px;
-        padding:5px 8px;
     }
 }
 
 .tab--contents{
     width: 100%;
     padding:0 25px;
+    position: relative;
 }
 
 .hometab--containers{
@@ -151,7 +157,7 @@ nav{
 
 .announcement--element{
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
     line-height: 15px;
 }
 .announcement--element:last-child{
@@ -167,7 +173,7 @@ nav{
     }
     h3{
         font-size: 1.17em;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
     p{
         font-size: 15.5px;
@@ -216,7 +222,7 @@ nav{
     }
 
     button{
-        border: 1px solid #f5b461;
+        border: 1px solid #97e0c6;
         padding: 2px 0;
     }
 }
@@ -238,100 +244,125 @@ nav{
     }
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 634px) {
+    .map--layer{
+        font-size: 15px;
+        bottom: 15px;
+        left: 15px;
+    }
+}
+
+@media only screen and (min-width: 820px) {
     nav{
-        flex-direction: row;
+        display: flex;
         justify-content: space-between;
-        padding:0 25px ;
+        padding:0 25px;
+        height: 50px;
     }
 
     .heading{
-        padding: 0;
-        border: 1px solid black;
+        padding:0;
+        font-size: 25px;
+        align-self: center;
     }
 
     .nav-options{
+        display: none;
         min-width: 200px;
-        margin-right: 70px;
-        border: 1px solid black;
         li{
-            height: 40px;
             position: relative;
             padding: 0;
             text-align: center;
-
             button{
-
+                font-size: 17px;
+                font-weight: bold;
             }
         }
     }
-        
+    .page--transition{
+        transition: none;
+    }
+    .main{
+        width: 100%;
+        padding-top: 130px;
+        height: 97vh;
+    }
+    .home--tab{
+        display: flex;
+    }
+    .hometab--containers{
+        height: 100%;
+    }
+    .map--container{
+        flex: 2;
+    }
+    .announcement--container{
+        flex: 1;
+        margin-left: 20px;
+    }
+
+    .profile--tab{
+        position: absolute;
+        top: 65px;
+        left:0;
+    }
+
+    .profile--button{
+        font-size: 14px;
+        padding:4px 6px;
+    }
+    .profile--options{
+        position: absolute;
+        top: 0;
+        right: 25;
+        margin: 0;
+    }
+    .addLocation{
+        position: absolute;
+        top: 21;
+        right:25;
+    }
+    .location--added{
+        margin: 9px 5px 0 0;
+    }
+    .popUp--container{    
+        font-size: 18px;
+        button{
+            font-size: 14px;
+            padding: 4px 0;
+        }
+    }
 }
 
-// @media only screen and (min-width: 634px) {
-//     nav{
-//         display: flex;
-//         justify-content: center;
-//     }
-//     .heading{
-//         padding-top:7px;
-//     }
-//     .container-1{
-//         margin-top: 75px;
-//     }
-//     .map--layer{
-//         font-size: 15px;
-//         padding:7px;
-//         bottom: 15px;
-//         left: 15px;
-//     }
-// }
+@media only screen and (min-width: 850px) {
+    .nav-options{
+        width: 30%;  
+    }
+}
 
-// @media only screen and (min-width: 820px) {
-//     .main{
-//         display: flex;
-//         height: 85vh;
-//         margin-top: 75px;
-//     }
-//     .container-1{
-//         flex: 2;
-//         height: 100%;
-//         margin: 0;
-//     }
-//     .container-2{
-//         margin:0 0 0 20px;
-//         flex: 1;
-//         height: 100%;
-//     }
-// }
+@media only screen and (min-width: 1000px) {
+    .nav-options{
+        margin-right: 25px;
+        li button{
+            font-size: 18px;
+            font-weight: bold;
+        }
+    }
+    .map--layer{
+        font-size: 18px;
+        bottom: 15px;
+        left: 15px;
+    }
+    // .profile--name{
+    //     font-size: 23px;
+    // }    
+    // .profile--details{
+    //     font-size: 20px;
+    // }
+}
 
-// @media only screen and (min-width: 960px) {
-//     nav{
-//         justify-content: space-between;
-//         padding-top: 14px;
-//     }
-//     .heading{
-//         width: 70%;
-//         flex: 2;
-//         font-size: 27px;
-//         margin-left: 4px;
-//         padding: 0;
-//     }
-//     .nav-options{
-//         position: static;
-//         background-image: none;
-//         transform: none;
-//         min-width: 210px;
-//         height: inherit;
-//         z-index: 0;
-//         flex-direction: row;
-//         justify-content: space-around;
-//         font-weight: bold;
-//         font-size: 18px;
-//         flex: .6;
-//         margin-right:30px;
-//     }
-// }
-
-/* @media only screen and (min-width: 401px) and (max-width: 400px) {
-} */
+@media only screen and (min-width: 1200px) {
+    .nav-options{
+        margin-right: 45px;      
+    }
+}
