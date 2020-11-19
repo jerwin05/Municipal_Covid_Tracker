@@ -36,18 +36,23 @@
                     </div> -->
                 </div>
                 <div id="ProfileTab" class="tab--contents profile--tab">
-                    <section class="residents">
+                    <section class="profiletab--containers residents--container">
                         <h3>Residents</h3>
-                        <form id='residentsForm' class="residentsForm" role='form' method="put">
+                        <form class="residents--form" id='residentsForm' role='form' method="put">
                             <div id="updatedResidentRemarkMessage"></div>
-                            <div class='residentsFormContainer' id="residentsFormContainer"></div>
-                            <button id  ='residentUpdateButton' type="submit">Update</button>
+                            <div class='residents--profile' id="residentsFormContainer">
+                                <label for="">
+                                    <h2>Name</h2>
+                                    <h2>Contact Number</h2>
+                                    <h2>Positive</h2>
+                                    <h2>Delete Resident</h2>
+                                </label>
+                            </div>
+                            <button class="residents--submitbutton" id='residentUpdateButton' type="submit">Update</button>
                         </form>
                     </section>
-                    <section class="announcementSection">
+                    <section class="profiletab--containers post--container announcementSection">
                         <div id="profile"></div>
-                        <button class="profile--button" id="logout" type="button">Logout</button>
-                        <button class="profile--button" id="deleteAccount" type="button">Delete my Account</button>
                         <div class="announcement">
                             <h3>Post announcement</h3>
                             <div id="successMessage"></div>
@@ -58,6 +63,8 @@
                                 <button id='postAnnouncementButton' type="submit">Post</button>
                             </form>
                         </div>
+                        <button class="profile--button" id="logout" type="button">Logout</button>
+                        <button class="profile--button" id="deleteAccount" type="button">Delete my Account</button>
                     </section>
                 </div>
             </div>

@@ -1,9 +1,3 @@
-
-
-
-
-
-
 /* Feature Overlay */
 .overlay-container{
     background-color: gray;
@@ -29,3 +23,6 @@
     border-style: solid;
     border-color: gray transparent transparent transparent;
 }
+
+/* ----------------------------------------------------------- */
+

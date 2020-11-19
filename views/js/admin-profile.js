@@ -74,6 +74,7 @@ const getAnnouncements=()=>{
         div.className='announcement--post';
         title.textContent = announcement.title;
         body.textContent = announcement.body;
+        title.className = 'announcement--element';
         body.className = 'announcement--element';
         date.className = 'announcement--element';
         date.textContent = new Date(announcement.date);
@@ -114,11 +115,12 @@ function getResidents(){
   fetch(residentsAPI_URL,{}).then(response=>{
     response.json().then(result=>{
       result.forEach(resident => {
+
         const label = document.createElement('label');
         const input = document.createElement('input');
         const button = document.createElement('button');
-        const span1 = document.createElement('span');
-        const span2 = document.createElement('span');
+        const p1 = document.createElement('p');
+        const p2 = document.createElement('p');
         const div = document.createElement('div');
         const div1 = document.createElement('div');
         const p = document.createElement('p');
@@ -132,8 +134,8 @@ function getResidents(){
         input.className='residentRemarksInput';
         button.setAttribute("type", "button");
         button.textContent='Delete';
-        span1.textContent=`${resident.last_name}, ${resident.first_name} ${resident.middle_name}`;
-        span2.textContent=`${resident.mob_no}`;
+        p1.textContent=`${resident.last_name}, ${resident.first_name} ${resident.middle_name}`;
+        p2.textContent=`${resident.mob_no}`;
         div.className='overlay';
         div1.className='popUp--container';
         p.textContent='Are you sure you want to delete this resident?';
@@ -184,8 +186,8 @@ function getResidents(){
         div.appendChild(div1);
         body.appendChild(div);
 
-        label.appendChild(span1);
-        label.appendChild(span2);
+        label.appendChild(p1);
+        label.appendChild(p2);
         label.appendChild(input);
         label.appendChild(button);
       

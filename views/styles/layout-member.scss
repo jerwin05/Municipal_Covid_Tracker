@@ -62,7 +62,7 @@ nav{
 }
 
 .page--transition{
-    transition: transform .15s ease-out;
+    transition: transform .23s cubic-bezier(.1,.93,.1,.93);
 }
 
 .tab--slide{
@@ -157,7 +157,7 @@ nav{
 
 .announcement--element{
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     line-height: 15px;
 }
 .announcement--element:last-child{
@@ -173,7 +173,6 @@ nav{
     }
     h3{
         font-size: 1.17em;
-        margin-bottom: 10px;
     }
     p{
         font-size: 15.5px;

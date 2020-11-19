@@ -67,10 +67,10 @@ nav {
 }
 
 .page--transition {
-  -webkit-transition: -webkit-transform .15s ease-out;
-  transition: -webkit-transform .15s ease-out;
-  transition: transform .15s ease-out;
-  transition: transform .15s ease-out, -webkit-transform .15s ease-out;
+  -webkit-transition: -webkit-transform 0.23s cubic-bezier(0.1, 0.93, 0.1, 0.93);
+  transition: -webkit-transform 0.23s cubic-bezier(0.1, 0.93, 0.1, 0.93);
+  transition: transform 0.23s cubic-bezier(0.1, 0.93, 0.1, 0.93);
+  transition: transform 0.23s cubic-bezier(0.1, 0.93, 0.1, 0.93), -webkit-transform 0.23s cubic-bezier(0.1, 0.93, 0.1, 0.93);
 }
 
 .tab--slide {
@@ -168,12 +168,12 @@ nav {
 
 .announcement--element {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   line-height: 15px;
 }
 
 .announcement--element:nth-child(3) {
-  border-bottom: 1px solid #f5b461;
+  border-bottom: 2px solid #f5b461;
   padding-bottom: 11px;
 }
 
@@ -187,7 +187,6 @@ nav {
 
 .announcement--container h3 {
   font-size: 1.17em;
-  margin-bottom: 10px;
 }
 
 .announcement--container p {
@@ -199,12 +198,10 @@ nav {
 }
 
 .announcement--container button {
-  margin-top: 7px;
   background-color: #f5b461;
   border-radius: 5px;
   border: none;
   outline: none;
-  margin-right: 4px;
   padding: 5px 8px;
 }
 
@@ -280,6 +277,13 @@ nav {
     font-size: 15px;
     bottom: 15px;
     left: 15px;
+  }
+}
+
+@media only screen and (min-width: 660px) {
+  .announcement--container button {
+    font-size: 16px;
+    font-weight: 500;
   }
 }
 
@@ -393,5 +397,72 @@ nav {
   .nav-options {
     margin-right: 45px;
   }
+}
+
+.profiletab--containers {
+  padding: 20px;
+}
+
+.profile--tab {
+  border: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.post--container {
+  border: 1px solid black;
+  margin-left: 20px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.residents--container {
+  border: 1px solid black;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+.residents--container h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.residents--profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: inherit;
+  overflow-y: scroll;
+}
+
+.residents--profile label {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-grid-columns: 1.5fr 1fr 1fr .66fr;
+      grid-template-columns: 1.5fr 1fr 1fr .66fr;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.residents--profile label :nth-child(4) {
+  min-width: 135px;
+}
+
+.residents--submitbutton {
+  margin-top: 7px;
 }
 /*# sourceMappingURL=layout-admin.css.map */

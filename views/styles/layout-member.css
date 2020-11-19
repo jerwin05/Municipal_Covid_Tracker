@@ -67,10 +67,10 @@ nav {
 }
 
 .page--transition {
-  -webkit-transition: -webkit-transform .15s ease-out;
-  transition: -webkit-transform .15s ease-out;
-  transition: transform .15s ease-out;
-  transition: transform .15s ease-out, -webkit-transform .15s ease-out;
+  -webkit-transition: -webkit-transform 0.23s cubic-bezier(0.1, 0.93, 0.1, 0.93);
+  transition: -webkit-transform 0.23s cubic-bezier(0.1, 0.93, 0.1, 0.93);
+  transition: transform 0.23s cubic-bezier(0.1, 0.93, 0.1, 0.93);
+  transition: transform 0.23s cubic-bezier(0.1, 0.93, 0.1, 0.93), -webkit-transform 0.23s cubic-bezier(0.1, 0.93, 0.1, 0.93);
 }
 
 .tab--slide {
@@ -168,7 +168,7 @@ nav {
 
 .announcement--element {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   line-height: 15px;
 }
 
@@ -185,7 +185,6 @@ nav {
 
 .announcement--container h3 {
   font-size: 1.17em;
-  margin-bottom: 10px;
 }
 
 .announcement--container p {

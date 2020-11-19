@@ -1,6 +1,6 @@
 window.onload=init;
 function init (){
-  const button=document.querySelector('#refresh');
+  const button=document.getElementById('refresh');
   const residentPositiveCoordinatesAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/positive-coordinates' : 'https://meower-api.now.sh/v2/mews';
   const map= new ol.Map({
       view:new ol.View({
@@ -41,7 +41,7 @@ function init (){
   map.addLayer(baseLayerGroup);
 
   //layer switcher logic for basemaps
-  const baseLayerElements=document.querySelectorAll('.map--layer >input[type=radio]');
+  const baseLayerElements=document.querySelectorAll('.map--layer>input[type=radio]');
   for (let baseLayerElemet of baseLayerElements){
       baseLayerElemet.addEventListener('change',function(){
           let baseLayerElementValue =this.value;

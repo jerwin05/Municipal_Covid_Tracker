@@ -163,11 +163,11 @@ nav {
 
 .announcement--element {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   line-height: 15px;
 }
 
-.announcementElement:last-child {
+.announcement--element:last-child {
   margin-bottom: 0;
 }
 
@@ -180,7 +180,6 @@ nav {
 
 .container-2 h3 {
   font-size: 1.17em;
-  margin-bottom: 9px;
 }
 
 .container-2 p {
