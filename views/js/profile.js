@@ -34,4 +34,4 @@ function openTab(pageName) {
     // document.getElementById(pageName).style.display = "block";
     // evt.currentTarget.className += " active";
 }
-openTab('ProfileTab');
+openTab('HomeTab');

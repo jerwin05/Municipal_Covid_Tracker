@@ -42,22 +42,23 @@
                     <section class="profiletab--containers residents--container">
                         <form id='residentsForm' role='form' method="put">
                             <h3>Residents</h3>
-                            <div class='residents--profile' id="residentsFormContainer">
-                                <label class="formtable--header">
-                                    <h2>Name</h2>
-                                    <h2>Contact Number</h2>
-                                    <h2>Positive</h2>
-                                    <h2>Delete Resident</h2>
-                                </label>
+                            <div class="formtable--header">
+                                <div>
+                                    <p class="resident--details">Name</p>
+                                    <p class="resident--details">Contact Number</p>
+                                </div>
+                                <p>Positive</p>
+                                <p>Delete Resident</p>
                             </div>
+                            <div class='residents--profile' id="residentsFormContainer"></div>
                             <button class="residents--submitbutton profile--button blue--button" id='residentUpdateButton' type="submit">Update</button>
                         </form>
                     </section>
                     <section class="profiletab--containers post--container">
                         <form id='announcementForm' role="form" method="post">
                             <h3 class="form--element">Post announcement</h3>
-                            <div class="form--element" id="errorMessage"></div>
-                            <input class="form--element" type="text"  name="Title" placeholder="Title">
+                            <div class="form--element error-message" id="errorMessage"></div>
+                            <input class="form--element" type="text" name="Title" placeholder="Title">
                             <textarea class="form--element  " name="Body" placeholder="Body" cols="30" rows="10"></textarea>
                             <button class="form--element profile--button blue--button" id='postAnnouncementButton' type="submit">Post</button>
                         </form>
@@ -65,11 +66,11 @@
                     <div class='profile--options'>
                         <button class="profile--button blue--button id="logout" type="button">Logout</button>
                         <button class="profile--button blue--button" id="deleteAccount" type="button">Delete my Account</button>
-                    </div>
+                    </div>  
                 </div>
             </div>
         </div>
-        <div id="successMessage"></div>
+        <div id="successMessage" class="success-message"></div>
         <div class="overlay" id="overlay">
             <div class="popUp--container">
                 <p class="overlayMessage message">Are you sure you want to delete your account?</p>

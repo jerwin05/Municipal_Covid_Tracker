@@ -203,21 +203,81 @@ nav {
   padding: 5px 8px;
 }
 
+.residents--container label:first-of-type {
+  border-top: 1px solid black;
+  padding-top: 5px;
+}
+
+.residents--container label {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr .35fr .55fr;
+      grid-template-columns: 2fr .35fr .55fr;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid black;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.residents--container label input {
+  -ms-grid-column-align: end;
+      justify-self: end;
+  margin-right: 33px;
+}
+
+.residents--container label button {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  width: 60px;
+  height: 25px;
+}
+
 .formtable--header {
-  font-weight: normal;
-  display: none;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr .35fr .55fr;
+      grid-template-columns: 2fr .35fr .55fr;
+  padding-right: 18px;
+  margin-bottom: 10px;
+}
+
+.formtable--header div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.formtable--header .residents--details {
+  padding-right: 0;
+}
+
+.formtable--header p {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-align: end;
+  padding-right: 10px;
+  font-weight: bold;
+}
+
+.formtable--header p:last-of-type {
+  text-align: center;
+  padding-right: 0;
 }
 
 .residents--profile {
   overflow-y: scroll;
-  height: 55.5vh;
+  height: 50vh;
 }
 
-.residents--profile label {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+.resident--details {
+  display: none;
+}
+
+.resident--name {
+  margin-bottom: 5px;
 }
 
 .residents--submitbutton {
@@ -257,6 +317,14 @@ nav {
   padding: 9px 10px;
 }
 
+.form--element:nth-child(2) {
+  border-radius: 5px;
+  border: none;
+  border: 1px solid #ec524b;
+  background-color: #FFFFFF;
+  padding: 8px;
+}
+
 .form--element:last-child {
   margin: 0;
 }
@@ -267,6 +335,22 @@ nav {
 
 .blue--button {
   background-color: #9ad3bc;
+}
+
+.error-message {
+  display: none;
+}
+
+.success-message {
+  position: fixed;
+  z-index: 4;
+  padding: 10px;
+  border-radius: 5px 7px;
+  background-color: #9ad3bc;
+  -webkit-transition: bottom .5s ease;
+  transition: bottom .5s ease;
+  bottom: -45;
+  right: 25;
 }
 
 .ol-attribution li {
@@ -335,6 +419,34 @@ nav {
 @media only screen and (min-width: 554px) {
   .main {
     padding-top: 90px;
+  }
+}
+
+@media only screen and (min-width: 610px) {
+  .residents--container label div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .formtable--header div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .formtable--header div p:last-of-type {
+    margin-right: 15px;
+  }
+  .resident--details {
+    display: inline;
+  }
+  .resident--mobNo {
+    margin: 0 30px 0 10px;
   }
 }
 
@@ -411,6 +523,38 @@ nav {
             flex: 1;
     margin-left: 20px;
   }
+  .profile--tab {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 2fr 1fr;
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas: 'adminProfile adminProfile' 'residents post';
+    gap: 20px;
+  }
+  .profile--container {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-area: adminProfile;
+    height: 5vh;
+  }
+  .residents--container {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    grid-area: residents;
+  }
+  .post--container {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    grid-area: post;
+    margin: 0;
+    -ms-flex-item-align: start;
+        -ms-grid-row-align: start;
+        align-self: start;
+  }
+  .profile--details {
+    margin: 0;
+  }
   .profile--button {
     font-size: 14px;
     padding: 4px 6px;
@@ -421,20 +565,15 @@ nav {
     right: 25;
     margin: 0;
   }
-  .addLocation {
-    position: absolute;
-    top: 21;
-    right: 25;
-  }
-  .location--added {
-    margin: 9px 5px 0 0;
-  }
   .popUp--container {
     font-size: 18px;
   }
   .popUp--container button {
     font-size: 14px;
     padding: 4px 0;
+  }
+  .residents--profile {
+    height: 55vh;
   }
 }
 
@@ -456,6 +595,9 @@ nav {
     font-size: 18px;
     bottom: 15px;
     left: 15px;
+  }
+  .success-message {
+    right: 65;
   }
 }
 

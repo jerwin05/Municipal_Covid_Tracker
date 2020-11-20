@@ -3,8 +3,6 @@
 const overlay=document.getElementById('overlay');
 const successMessage=document.getElementById('successMessage');
 const errorMessage=document.getElementById('errorMessage');
-successMessage.style.display='none';
-errorMessage.style.display='none';
 const profileElement=document.getElementById('profile');
 const body=document.querySelector('body');
 const announcementSection=document.getElementById('announcementSection');
@@ -117,12 +115,13 @@ function getResidents(){
       result.forEach(resident => {
 
         const label = document.createElement('label');
+        const residentDiv = document.createElement('div');
+        const residentName = document.createElement('p');
+        const residentDetail = document.createElement('p');
         const input = document.createElement('input');
         const button = document.createElement('button');
-        const p1 = document.createElement('p');
-        const p2 = document.createElement('p');
-        const div = document.createElement('div');
-        const div1 = document.createElement('div');
+        const overlaydiv = document.createElement('div');
+        const overlaydiv1 = document.createElement('div');
         const p = document.createElement('p');
         const button1 = document.createElement('button');
         const button2 = document.createElement('button');
@@ -132,13 +131,15 @@ function getResidents(){
         input.setAttribute("value", "positive");
         input.setAttribute("type", "checkbox");
         input.className='residentRemarksInput';
-        button.className = 'profile--button orange--button';
+        button.className = 'profile--button blue--button';
         button.setAttribute("type", "button");
         button.textContent='Delete';
-        p1.textContent=`${resident.last_name}, ${resident.first_name} ${resident.middle_name}`;
-        p2.textContent=`${resident.mob_no}`;
-        div.className='overlay';
-        div1.className='popUp--container';
+        residentName.textContent=`${resident.last_name}, ${resident.first_name} ${resident.middle_name}`;
+        residentName.className='resident--name';
+        residentDetail.textContent=`${resident.mob_no}`;
+        residentDetail.className='resident--mobNo';
+        overlaydiv.className='overlay';
+        overlaydiv1.className='popUp--container';
         p.textContent='Are you sure you want to delete this resident?';
         p.setAttribute("class", `message`);
         button1.setAttribute("class", `yes deleteResident${resident.id}`);
@@ -159,14 +160,14 @@ function getResidents(){
         }
 
         button.addEventListener('click',()=>{
-          div.style.display='flex';
+          overlaydiv.style.display='flex';
         });
         button2.addEventListener('click',()=>{
-          div.style.display='none';
+          overlaydiv.style.display='none';
         });
 
         button1.addEventListener('click',()=>{
-          div.style.display='none';
+          overlaydiv.style.display='none';
           fetch(residentsAPI_URL, {//send object to the server
             method: 'DELETE',
             body: JSON.stringify(residentid),//make object in json format
@@ -181,14 +182,17 @@ function getResidents(){
           },100);
         });
 
-        div1.appendChild(p);
-        div1.appendChild(button1);
-        div1.appendChild(button2);
-        div.appendChild(div1);
-        body.appendChild(div);
+        overlaydiv1.appendChild(p);
+        overlaydiv1.appendChild(button1);
+        overlaydiv1.appendChild(button2);
+        overlaydiv.appendChild(overlaydiv1);
+        body.appendChild(overlaydiv);
 
-        label.appendChild(p1);
-        label.appendChild(p2);
+        
+
+        residentDiv.appendChild(residentName);
+        residentDiv.appendChild(residentDetail);
+        label.appendChild(residentDiv);
         label.appendChild(input);
         label.appendChild(button);
       
@@ -227,11 +231,11 @@ announcementForm.addEventListener('submit', (event) => {
         if(result==='true'){//display success message
           announcementForm.reset();
           successMessage.textContent='Post Added';
-          successMessage.style.display='';
+          successMessage.style.bottom='30';
           errorMessage.style.display='none';
           setTimeout(()=>{
-            successMessage.style.display='none';
-          },5000);
+            successMessage.style.bottom='-45';
+          },3000);
         }
       });
     });
@@ -241,8 +245,8 @@ announcementForm.addEventListener('submit', (event) => {
     },100);
   } else {
     errorMessage.textContent='Title and Body are required!';
-    errorMessage.style.display='';
-    successMessage.style.display='none';
+    errorMessage.style.display='block';
+    successMessage.style.display='-45';
   }
 });
 

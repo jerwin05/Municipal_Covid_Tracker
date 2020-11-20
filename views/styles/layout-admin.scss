@@ -188,18 +188,68 @@ nav{
     padding:5px 8px;
 }
 
+.residents--container{
+    label:first-of-type{
+        border-top: 1px solid black;
+        padding-top: 5px;
+    }
+    label{
+        display: grid;
+        grid-template-columns:2fr .35fr .55fr;
+
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+
+        border-bottom: 1px solid black;
+        align-items: center;
+
+        input{
+            justify-self: end;
+            margin-right: 33px;
+        }
+        button{
+            justify-self: center;
+            width: 60px;
+            height: 25px;
+        }
+    }
+}
+
 .formtable--header{
-    font-weight:normal;
-    display: none;
+    display: grid;
+    grid-template-columns:2fr .35fr .55fr;
+    padding-right: 18px;
+    margin-bottom: 10px;
+    
+    div{
+        display: flex;
+    }
+    .residents--details{
+        padding-right: 0;
+    }
+    p{
+        align-self: center;
+        text-align: end;
+        padding-right: 10px;
+        font-weight: bold;
+    }
+    p:last-of-type{
+        text-align: center;
+        padding-right: 0;
+    }
 }
 
 .residents--profile{
     overflow-y: scroll;
-    height: 55.5vh;
-    label{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
+    height: 50vh;
+}
+
+.resident--details{
+    display: none;
+}
+
+.resident--name{
+    margin-bottom: 5px;
 }
 
 .residents--submitbutton{
@@ -230,6 +280,13 @@ nav{
     border: none;
     padding: 9px 10px;
 }
+.form--element:nth-child(2){
+    border-radius: 5px;
+    border: none;
+    border: 1px solid #ec524b;
+    background-color: #FFFFFF;
+    padding:8px;
+}
 .form--element:last-child{
     margin: 0;
 }
@@ -240,6 +297,24 @@ nav{
 .blue--button{
     // background-color: #9ad3bc;
     background-color: #9ad3bc;
+}
+
+
+.error-message{
+    display: none;
+}
+.success-message{
+    position: fixed;
+    z-index: 4;
+
+    padding: 10px;
+    border-radius: 5px 7px;
+    background-color: #9ad3bc;
+
+    transition: bottom .5s ease;
+
+    bottom: -45;
+    right: 25;
 }
 
 .ol-attribution li {
@@ -300,6 +375,30 @@ nav{
 @media only screen and (min-width: 554px) {
     .main{
         padding-top: 90px;
+    }
+}
+
+@media only screen and (min-width: 610px) {
+    .residents--container label div{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .formtable--header {
+        div{
+            display: flex;
+            justify-content: space-between;
+            p:last-of-type{
+                margin-right: 15px;
+            }
+        }     
+    }
+    .resident--details{
+        display: inline;
+    }
+    
+    .resident--mobNo{
+        margin:0 30px 0 10px;
     }
 }
 
@@ -371,6 +470,32 @@ nav{
         margin-left: 20px;
     }
 
+    .profile--tab{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas:
+            'adminProfile adminProfile'
+            'residents post';
+        gap: 20px;
+    }
+
+    .profile--container{
+        grid-area: adminProfile;
+        height: 5vh;
+    }
+    .residents--container{
+        grid-area: residents;
+    }
+    .post--container{
+        grid-area: post;
+        margin: 0;
+        align-self: start;
+    }
+
+    .profile--details {
+        margin:0;
+    }
+
     .profile--button{
         font-size: 14px;
         padding:4px 6px;
@@ -381,20 +506,15 @@ nav{
         right: 25;
         margin: 0;
     }
-    .addLocation{
-        position: absolute;
-        top: 21;
-        right:25;
-    }
-    .location--added{
-        margin: 9px 5px 0 0;
-    }
     .popUp--container{    
         font-size: 18px;
         button{
             font-size: 14px;
             padding: 4px 0;
         }
+    }
+    .residents--profile{
+        height: 55vh;
     }
 }
 
@@ -417,12 +537,9 @@ nav{
         bottom: 15px;
         left: 15px;
     }
-    // .profile--name{
-    //     font-size: 23px;
-    // }    
-    // .profile--details{
-    //     font-size: 20px;
-    // }
+    .success-message{
+        right: 65;
+    }
 }
 
 @media only screen and (min-width: 1200px) {

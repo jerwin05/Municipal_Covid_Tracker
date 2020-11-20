@@ -157,13 +157,13 @@ function init (){
     }
  
     successMessage.textContent='Remarks Updated';
-    successMessage.style.display='';
+    successMessage.style.bottom='30';
     setTimeout(()=>{
       getPositiveResidentCoordinates();
     },500);
     setTimeout(()=>{
-      successMessage.style.display='none';
-    },5000);
+      successMessage.style.bottom='-45';
+    },3000);
   });
   //--------------------------------------------------------------------------------------------------------------------------------------
 
