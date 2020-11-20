@@ -1,7 +1,7 @@
 window.onload=init;
 function init (){
   const residentsForm=document.getElementById('residentsForm');
-  const updatedResidentRemarkMessage=document.getElementById('updatedResidentRemarkMessage');
+  const successMessage=document.getElementById('successMessage');
 
   const residentPositiveCoordinatesAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/positive-coordinates' : 'https://meower-api.now.sh/v2/mews';
   const residentsAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/residentList' : 'https://meower-api.now.sh/v2/mews';
@@ -156,13 +156,13 @@ function init (){
       });
     }
  
-    updatedResidentRemarkMessage.textContent='Remarks Updated';
-    updatedResidentRemarkMessage.style.display='';
+    successMessage.textContent='Remarks Updated';
+    successMessage.style.display='';
     setTimeout(()=>{
       getPositiveResidentCoordinates();
     },500);
     setTimeout(()=>{
-      updatedResidentRemarkMessage.style.display='none';
+      successMessage.style.display='none';
     },5000);
   });
   //--------------------------------------------------------------------------------------------------------------------------------------

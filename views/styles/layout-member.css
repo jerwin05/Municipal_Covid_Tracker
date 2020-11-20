@@ -296,7 +296,7 @@ nav {
     transition: none;
   }
   .main {
-    width: 100%;
+    width: 100vw;
     padding-top: 130px;
     height: 97vh;
   }

@@ -11,69 +11,70 @@
         <div class="main--container">
             <nav>
                 <h1 class="heading"><a href="admin-profile.html">Barangay San Roque Teresa, Rizal - Covid Map</a></h1>
-                <ul class="nav-options" id="nav-options">
+                <ul class="nav--options" id="nav-options">
                     <li> <div class='border--bottom page--transition' id='border--bottom'></div><button class="tablinks" onclick="openTab('HomeTab')">Home</button></li>
                     <li><button class="tablinks" onclick="openTab('ProfileTab')">Profile</button></li>
                 </ul>
             </nav>
             <div class="main page--transition" id="main">
                 <div id="HomeTab" class="tab--contents home--tab">
-                    <div class="hometab--containers map--container">
+                    <section class="hometab--containers map--container">
                         <div class="map--layer">
                             <h2>Base Layers</h2>
                             <input type="radio" name='baseLayerRadioButton' value='OSMStandard' checked>Standard<br>
                             <input type="radio" name='baseLayerRadioButton' value='OSMHumanitarian'>Humanitarian<br>        
                         </div>
                         <div id="js-map" class='map'></div>
-                    </div>
-                    <div class="hometab--containers announcement--container">
+                    </section>
+                    <section class="hometab--containers announcement--container">
                         <h2 class="announcement--heading">Announcements</h2>
-                        <div id="announcementSection" class=""></div>
-                    </div>
+                        <div id="announcementSection"></div>
+                    </section>
                     <!-- <div class="overlay-container">
                         <span class="overlay-text" id="feature-name"></span>
                         <span class="overlay-text" id="feature-additional-info"></span>
                     </div> -->
                 </div>
                 <div id="ProfileTab" class="tab--contents profile--tab">
+                    <section class="profiletab--containers profile--container"> 
+                        <div id="profile"></div>
+                    </section>
                     <section class="profiletab--containers residents--container">
-                        <h3>Residents</h3>
-                        <form class="residents--form" id='residentsForm' role='form' method="put">
-                            <div id="updatedResidentRemarkMessage"></div>
+                        <form id='residentsForm' role='form' method="put">
+                            <h3>Residents</h3>
                             <div class='residents--profile' id="residentsFormContainer">
-                                <label for="">
+                                <label class="formtable--header">
                                     <h2>Name</h2>
                                     <h2>Contact Number</h2>
                                     <h2>Positive</h2>
                                     <h2>Delete Resident</h2>
                                 </label>
                             </div>
-                            <button class="residents--submitbutton" id='residentUpdateButton' type="submit">Update</button>
+                            <button class="residents--submitbutton profile--button blue--button" id='residentUpdateButton' type="submit">Update</button>
                         </form>
                     </section>
-                    <section class="profiletab--containers post--container announcementSection">
-                        <div id="profile"></div>
-                        <div class="announcement">
-                            <h3>Post announcement</h3>
-                            <div id="successMessage"></div>
-                            <div id="errorMessage"></div>
-                            <form id='announcementForm' role="form" method="post">
-                                <input type="text"  name="Title" placeholder="Title">
-                                <textarea name="Body" placeholder="Body" cols="30" rows="10"></textarea>
-                                <button id='postAnnouncementButton' type="submit">Post</button>
-                            </form>
-                        </div>
-                        <button class="profile--button" id="logout" type="button">Logout</button>
-                        <button class="profile--button" id="deleteAccount" type="button">Delete my Account</button>
+                    <section class="profiletab--containers post--container">
+                        <form id='announcementForm' role="form" method="post">
+                            <h3 class="form--element">Post announcement</h3>
+                            <div class="form--element" id="errorMessage"></div>
+                            <input class="form--element" type="text"  name="Title" placeholder="Title">
+                            <textarea class="form--element  " name="Body" placeholder="Body" cols="30" rows="10"></textarea>
+                            <button class="form--element profile--button blue--button" id='postAnnouncementButton' type="submit">Post</button>
+                        </form>
                     </section>
+                    <div class='profile--options'>
+                        <button class="profile--button blue--button id="logout" type="button">Logout</button>
+                        <button class="profile--button blue--button" id="deleteAccount" type="button">Delete my Account</button>
+                    </div>
                 </div>
             </div>
         </div>
+        <div id="successMessage"></div>
         <div class="overlay" id="overlay">
             <div class="popUp--container">
-                <p class="overlayMessage item1">Are you sure you want to delete your account?</p>
-                <button class="item2" id='overlayYesButton' type="button">Yes</button>
-                <button class="item3" id='overlayNoButton' type="button">No</button>
+                <p class="overlayMessage message">Are you sure you want to delete your account?</p>
+                <button class="yes" id='overlayYesButton' type="button">Yes</button>
+                <button class="no" id='overlayNoButton' type="button">No</button>
             </div>
         </div>
         <script type="module" src="./js/admin-profile.js"></script>

@@ -19,7 +19,7 @@ nav {
   padding: 15px 37px 5px 25px;
 }
 
-.nav-options {
+.nav--options {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -30,7 +30,7 @@ nav {
           align-items: center;
 }
 
-.nav-options li {
+.nav--options li {
   position: relative;
   width: 100%;
   height: 100%;
@@ -38,7 +38,7 @@ nav {
   text-align: center;
 }
 
-.nav-options li button {
+.nav--options li button {
   font-size: 15px;
   font-weight: 500;
   height: inherit;
@@ -83,36 +83,6 @@ nav {
           transform: translateX(-50%);
 }
 
-.profile--name {
-  font-size: 20px;
-  margin-bottom: 9px;
-}
-
-.profile--details {
-  font-size: 17px;
-}
-
-.profile--button {
-  background-color: #f5b461;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  margin-right: 4px;
-  padding: 5px 8px;
-}
-
-.addLocation--button {
-  margin-top: 10px;
-}
-
-.profile--options {
-  margin: 18px 0 0;
-}
-
-.profile--options button {
-  background-color: #c4dfd5;
-}
-
 .tab--contents {
   width: 100%;
   padding: 0 25px;
@@ -145,19 +115,6 @@ nav {
   padding: 7px;
   border-radius: 6px;
   background-color: rgba(255, 255, 255, 0.685);
-}
-
-#refresh {
-  position: absolute;
-  top: 12px;
-  left: 45px;
-  z-index: 2;
-}
-
-.ol-attribution li {
-  display: inline;
-  list-style: none;
-  font-size: 12px;
 }
 
 .announcement--heading {
@@ -198,15 +155,124 @@ nav {
 }
 
 .announcement--container button {
-  background-color: #f5b461;
   border-radius: 5px;
   border: none;
   outline: none;
   padding: 5px 8px;
 }
 
-.location--added {
+.profiletab--containers {
+  background-color: #f3eac2;
+  border-radius: 5px;
+  padding: 15px 10px;
+}
+
+.profiletab--containers h3 {
+  margin-bottom: 10px;
+  font-size: 19px;
+}
+
+.profile--container {
+  background-color: inherit;
+  border-radius: 0;
+  padding: 0;
+}
+
+.profile--name {
+  font-size: 19px;
+  margin-bottom: 9px;
+}
+
+.profile--details {
+  font-size: 17px;
+  margin-bottom: 17px;
+}
+
+.profile--options {
+  margin: 60px 0 0;
+}
+
+.profile--options button {
+  margin-right: 4px;
+}
+
+.profile--button {
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding: 5px 8px;
+}
+
+.formtable--header {
+  font-weight: normal;
   display: none;
+}
+
+.residents--profile {
+  overflow-y: scroll;
+  height: 55.5vh;
+}
+
+.residents--profile label {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.residents--submitbutton {
+  margin-top: 20px;
+}
+
+.post--container {
+  margin-top: 40px;
+}
+
+.post--container form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.post--container form h3 {
+  padding: 0 5px;
+}
+
+.post--container form textarea {
+  height: 100px;
+}
+
+.post--container form button {
+  font-size: 15px;
+}
+
+.form--element {
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+  padding: 9px 10px;
+}
+
+.form--element:last-child {
+  margin: 0;
+}
+
+.orange--button {
+  background-color: #f5b461;
+}
+
+.blue--button {
+  background-color: #9ad3bc;
+}
+
+.ol-attribution li {
+  display: inline;
+  list-style: none;
+  font-size: 12px;
 }
 
 .overlay {
@@ -229,7 +295,7 @@ nav {
 .popUp--container {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "item1 item1" "item2 item3";
+      grid-template-areas: "message message" "yes no";
   gap: 10px;
   background-color: #fff;
   border-radius: 5px;
@@ -246,24 +312,24 @@ nav {
   padding: 2px 0;
 }
 
-.item1 {
+.message {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
-  grid-area: item1;
+  grid-area: message;
   text-align: center;
 }
 
-.item2 {
+.yes {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
-  grid-area: item2;
+  grid-area: yes;
 }
 
-.item3 {
+.no {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
-  grid-area: item3;
+  grid-area: no;
 }
 
 @media only screen and (min-width: 554px) {
@@ -305,15 +371,15 @@ nav {
         -ms-grid-row-align: center;
         align-self: center;
   }
-  .nav-options {
+  .nav--options {
     min-width: 200px;
   }
-  .nav-options li {
+  .nav--options li {
     position: relative;
     padding: 0;
     text-align: center;
   }
-  .nav-options li button {
+  .nav--options li button {
     font-size: 17px;
     font-weight: bold;
   }
@@ -373,16 +439,16 @@ nav {
 }
 
 @media only screen and (min-width: 850px) {
-  .nav-options {
+  .nav--options {
     width: 30%;
   }
 }
 
 @media only screen and (min-width: 1000px) {
-  .nav-options {
+  .nav--options {
     margin-right: 25px;
   }
-  .nav-options li button {
+  .nav--options li button {
     font-size: 18px;
     font-weight: bold;
   }
@@ -394,75 +460,8 @@ nav {
 }
 
 @media only screen and (min-width: 1200px) {
-  .nav-options {
+  .nav--options {
     margin-right: 45px;
   }
-}
-
-.profiletab--containers {
-  padding: 20px;
-}
-
-.profile--tab {
-  border: 1px solid black;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.post--container {
-  border: 1px solid black;
-  margin-left: 20px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-
-.residents--container {
-  border: 1px solid black;
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
-}
-
-.residents--container h3 {
-  font-size: 20px;
-  margin-bottom: 20px;
-}
-
-.residents--profile {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  height: inherit;
-  overflow-y: scroll;
-}
-
-.residents--profile label {
-  display: -ms-grid;
-  display: grid;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -ms-grid-columns: 1.5fr 1fr 1fr .66fr;
-      grid-template-columns: 1.5fr 1fr 1fr .66fr;
-  margin-bottom: 5px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid black;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.residents--profile label :nth-child(4) {
-  min-width: 135px;
-}
-
-.residents--submitbutton {
-  margin-top: 7px;
 }
 /*# sourceMappingURL=layout-admin.css.map */

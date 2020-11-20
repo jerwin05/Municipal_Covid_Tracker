@@ -1,10 +1,8 @@
 //get elements here
 //element initial state
 const overlay=document.getElementById('overlay');
-const updatedResidentRemarkMessage=document.getElementById('updatedResidentRemarkMessage');
 const successMessage=document.getElementById('successMessage');
 const errorMessage=document.getElementById('errorMessage');
-updatedResidentRemarkMessage.style.display='none';
 successMessage.style.display='none';
 errorMessage.style.display='none';
 const profileElement=document.getElementById('profile');
@@ -49,6 +47,7 @@ function getProfile(){
       name.textContent=`Name: ${result.fname} ${result.mname} ${result.lname}`;
       const number=document.createElement('p');
 
+      name.className='profile--name';
       number.className='profile--details';
       number.textContent=`Mobile Number: ${result.mob_no}`;
       profileElement.appendChild(name);
@@ -78,6 +77,7 @@ const getAnnouncements=()=>{
         body.className = 'announcement--element';
         date.className = 'announcement--element';
         date.textContent = new Date(announcement.date);
+        button.className = 'orange--button';
         button.textContent ='delete';
 
         const announcementid={
@@ -132,6 +132,7 @@ function getResidents(){
         input.setAttribute("value", "positive");
         input.setAttribute("type", "checkbox");
         input.className='residentRemarksInput';
+        button.className = 'profile--button orange--button';
         button.setAttribute("type", "button");
         button.textContent='Delete';
         p1.textContent=`${resident.last_name}, ${resident.first_name} ${resident.middle_name}`;
@@ -139,9 +140,9 @@ function getResidents(){
         div.className='overlay';
         div1.className='popUp--container';
         p.textContent='Are you sure you want to delete this resident?';
-        p.setAttribute("class", `item1`);
-        button1.setAttribute("class", `item2 deleteResident${resident.id}`);
-        button2.setAttribute("class", `item3`);
+        p.setAttribute("class", `message`);
+        button1.setAttribute("class", `yes deleteResident${resident.id}`);
+        button2.setAttribute("class", `no`);
         button1.setAttribute("type", `button`);
         button2.setAttribute("type", `button`);
         button1.textContent='Yes';
