@@ -44,7 +44,6 @@ app.use(session({
     originalMaxAge: 1000*60*60*24*200
   }
 }));
-// app.use(cookieParser());
 
 connection.connect((err)=>{
   if (!err){
