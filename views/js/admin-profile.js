@@ -1,13 +1,10 @@
 //get elements here
-//element initial state
 const overlay=document.getElementById('overlay');
 const successMessage=document.getElementById('successMessage');
 const errorMessage=document.getElementById('errorMessage');
 const profileElement=document.getElementById('profile');
-const body=document.querySelector('body');
 const announcementSection=document.getElementById('announcementSection');
 const announcementForm=document.getElementById('announcementForm');
-const residentsFormSection=document.getElementById('residentsFormContainer');
 const deleteAccountButton=document.getElementById('deleteAccount');
 const overlayNoButton=document.getElementById('overlayNoButton');
 const overlayYesButton=document.getElementById('overlayYesButton');
@@ -17,7 +14,6 @@ const logoutButton=document.getElementById('logout');
 const logoutAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/profile-logout' : 'https://meower-api.now.sh/v2/mews';
 const profileAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/profile' : 'https://meower-api.now.sh/v2/mews';
 const announcementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/announcement' : 'https://meower-api.now.sh/v2/mews';
-const residentsAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/residentList' : 'https://meower-api.now.sh/v2/mews';
 const IndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/index.html' : 'https://meower-api.now.sh/v2/mews';
 const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-admin' : 'https://meower-api.now.sh/v2/mews';
 const memberIndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/member-profile.html' : 'https://meower-api.now.sh/v2/mews';
@@ -25,7 +21,6 @@ const memberIndexUrl = (window.location.hostname === '127.0.0.1' || window.locat
 fetch(authenticateAPI_URL,{
 }).then(response=>{
     response.text().then(result=>{
-      console.log(result);
       if (result==='member'){
         window.location.replace(memberIndexUrl);
       }else{
@@ -42,9 +37,9 @@ function getProfile(){
       
       //append user credentials
       const name=document.createElement('h2');
-      name.textContent=`Name: ${result.fname} ${result.mname} ${result.lname}`;
       const number=document.createElement('p');
-
+      
+      name.textContent=`Name: ${result.fname} ${result.mname} ${result.lname}`;
       name.className='profile--name';
       number.className='profile--details';
       number.textContent=`Mobile Number: ${result.mob_no}`;
@@ -108,102 +103,7 @@ const getAnnouncements=()=>{
   });
 }
 
-//get residents and populate the residents form
-function getResidents(){
-  fetch(residentsAPI_URL,{}).then(response=>{
-    response.json().then(result=>{
-      result.forEach(resident => {
-
-        const label = document.createElement('label');
-        const residentDiv = document.createElement('div');
-        const residentName = document.createElement('p');
-        const residentDetail = document.createElement('p');
-        const input = document.createElement('input');
-        const button = document.createElement('button');
-        const overlaydiv = document.createElement('div');
-        const overlaydiv1 = document.createElement('div');
-        const p = document.createElement('p');
-        const button1 = document.createElement('button');
-        const button2 = document.createElement('button');
-
-        label.setAttribute("for", `remarks${resident.id}`);
-        input.setAttribute("name", `remarks${resident.id}`);
-        input.setAttribute("value", "positive");
-        input.setAttribute("type", "checkbox");
-        input.className='residentRemarksInput';
-        button.className = 'profile--button blue--button';
-        button.setAttribute("type", "button");
-        button.textContent='Delete';
-        residentName.textContent=`${resident.last_name}, ${resident.first_name} ${resident.middle_name}`;
-        residentName.className='resident--name';
-        residentDetail.textContent=`${resident.mob_no}`;
-        residentDetail.className='resident--mobNo';
-        overlaydiv.className='overlay';
-        overlaydiv1.className='popUp--container';
-        p.textContent='Are you sure you want to delete this resident?';
-        p.setAttribute("class", `message`);
-        button1.setAttribute("class", `yes deleteResident${resident.id}`);
-        button2.setAttribute("class", `no`);
-        button1.setAttribute("type", `button`);
-        button2.setAttribute("type", `button`);
-        button1.textContent='Yes';
-        button2.textContent='No';
-
-        if(resident.remarks=='positive'){
-          input.checked=true;
-        }else{
-          input.checked=false;
-        }
-
-        const residentid={
-          id:resident.id
-        }
-
-        button.addEventListener('click',()=>{
-          overlaydiv.style.display='flex';
-        });
-        button2.addEventListener('click',()=>{
-          overlaydiv.style.display='none';
-        });
-
-        button1.addEventListener('click',()=>{
-          overlaydiv.style.display='none';
-          fetch(residentsAPI_URL, {//send object to the server
-            method: 'DELETE',
-            body: JSON.stringify(residentid),//make object in json format
-            headers: {
-              'content-type': 'application/json'
-            }
-          });
-          
-          setTimeout(()=>{  
-            residentsFormSection.innerHTML = "";
-            getResidents();
-          },100);
-        });
-
-        overlaydiv1.appendChild(p);
-        overlaydiv1.appendChild(button1);
-        overlaydiv1.appendChild(button2);
-        overlaydiv.appendChild(overlaydiv1);
-        body.appendChild(overlaydiv);
-
-        
-
-        residentDiv.appendChild(residentName);
-        residentDiv.appendChild(residentDetail);
-        label.appendChild(residentDiv);
-        label.appendChild(input);
-        label.appendChild(button);
-      
-        residentsFormSection.appendChild(label);
-      });
-    });
-  });
-}
-
 getProfile();
-getResidents();
 getAnnouncements(); 
 
 //execute event on click of post on announcement

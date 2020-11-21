@@ -14,6 +14,11 @@ exports.get_positive_coordinates=(req,res)=>{
       if(result.length){
            res.json(result);
       }
+      else{
+         res.json({
+            message:'no resident'
+         });
+      }
   });
 }
 

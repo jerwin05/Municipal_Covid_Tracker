@@ -197,6 +197,7 @@ nav {
 
 .location--added {
   display: none;
+  margin-top: 3px;
 }
 
 .overlay {

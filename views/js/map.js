@@ -94,8 +94,10 @@ function init (){
     features: new ol.format.GeoJSON().readFeatures(geojsonObject)
   });
 
+  var vectorLayer;
+
   function callvector(){
-    var vectorLayer = new ol.layer.Vector({
+    vectorLayer = new ol.layer.Vector({
       source: vectorSource,
       style: styleFunction,
     });
@@ -108,8 +110,9 @@ function init (){
     }).then(response=>{
       response.json().then(result=>{
         if(result.length){
+          let newPoint;
           result.forEach((coordinates)=>{
-            let newPoint={
+            newPoint={
               'type':'Point',
               'coordinates':[coordinates.longitude,coordinates.latitude]
             };    

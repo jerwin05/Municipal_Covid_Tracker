@@ -153,7 +153,7 @@ nav{
     border-radius: 5px;
     padding: 15px 10px;
     h3{
-        margin-bottom: 10px;
+        margin-bottom: 6px;
         font-size: 19px;
     }
 }
@@ -195,7 +195,7 @@ nav{
     }
     label{
         display: grid;
-        grid-template-columns:2fr .35fr .55fr;
+        grid-template-columns:2fr .40fr .85fr;
 
         padding-bottom: 5px;
         margin-bottom: 5px;
@@ -217,7 +217,7 @@ nav{
 
 .formtable--header{
     display: grid;
-    grid-template-columns:2fr .35fr .55fr;
+    grid-template-columns:2fr .40fr .85fr;
     padding-right: 18px;
     margin-bottom: 10px;
     
@@ -250,6 +250,10 @@ nav{
 
 .resident--name{
     margin-bottom: 5px;
+}
+
+.resident--mobNo{
+    margin:0 ;
 }
 
 .residents--submitbutton{
@@ -311,7 +315,7 @@ nav{
     border-radius: 5px 7px;
     background-color: #9ad3bc;
 
-    transition: bottom .5s ease;
+    transition: bottom .2s ease;
 
     bottom: -45;
     right: 25;
@@ -393,12 +397,13 @@ nav{
             }
         }     
     }
+
+    .resident--mobNo{
+        margin:0 36px 0 10px;
+    }
+
     .resident--details{
         display: inline;
-    }
-    
-    .resident--mobNo{
-        margin:0 30px 0 10px;
     }
 }
 
@@ -479,32 +484,56 @@ nav{
         gap: 20px;
     }
 
+    .profiletab--containers{
+        padding: 20px;
+    }
+
     .profile--container{
         grid-area: adminProfile;
         height: 5vh;
+        padding: 0;
     }
-    .residents--container{
-        grid-area: residents;
-    }
-    .post--container{
-        grid-area: post;
-        margin: 0;
-        align-self: start;
+
+    .profile--button {
+        padding: 7px;
     }
 
     .profile--details {
         margin:0;
     }
 
-    .profile--button{
-        font-size: 14px;
-        padding:4px 6px;
+    .residents--container{
+        grid-area: residents;
+        label button{
+            width: 75px;
+            height: 27px;
+        }
     }
+
+    .resident--name {
+        margin: 0;
+    }
+
+    .residents--submitbutton {
+        font-size: 16px;
+    }
+
+    .post--container{
+        grid-area: post;
+        margin: 0;
+        align-self: start;
+    }
+
     .profile--options{
         position: absolute;
         top: 0;
         right: 25;
         margin: 0;
+        button{
+            font-size: 15px;
+            cursor: pointer;
+            z-index: 5;
+        }
     }
     .popUp--container{    
         font-size: 18px;
@@ -538,7 +567,7 @@ nav{
         left: 15px;
     }
     .success-message{
-        right: 65;
+        right: 30;
     }
 }
 

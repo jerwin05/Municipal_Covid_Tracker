@@ -168,7 +168,7 @@ nav {
 }
 
 .profiletab--containers h3 {
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   font-size: 19px;
 }
 
@@ -211,8 +211,8 @@ nav {
 .residents--container label {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 2fr .35fr .55fr;
-      grid-template-columns: 2fr .35fr .55fr;
+  -ms-grid-columns: 2fr .40fr .85fr;
+      grid-template-columns: 2fr .40fr .85fr;
   padding-bottom: 5px;
   margin-bottom: 5px;
   border-bottom: 1px solid black;
@@ -237,8 +237,8 @@ nav {
 .formtable--header {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 2fr .35fr .55fr;
-      grid-template-columns: 2fr .35fr .55fr;
+  -ms-grid-columns: 2fr .40fr .85fr;
+      grid-template-columns: 2fr .40fr .85fr;
   padding-right: 18px;
   margin-bottom: 10px;
 }
@@ -278,6 +278,10 @@ nav {
 
 .resident--name {
   margin-bottom: 5px;
+}
+
+.resident--mobNo {
+  margin: 0;
 }
 
 .residents--submitbutton {
@@ -347,8 +351,8 @@ nav {
   padding: 10px;
   border-radius: 5px 7px;
   background-color: #9ad3bc;
-  -webkit-transition: bottom .5s ease;
-  transition: bottom .5s ease;
+  -webkit-transition: bottom .2s ease;
+  transition: bottom .2s ease;
   bottom: -45;
   right: 25;
 }
@@ -442,11 +446,11 @@ nav {
   .formtable--header div p:last-of-type {
     margin-right: 15px;
   }
+  .resident--mobNo {
+    margin: 0 36px 0 10px;
+  }
   .resident--details {
     display: inline;
-  }
-  .resident--mobNo {
-    margin: 0 30px 0 10px;
   }
 }
 
@@ -531,17 +535,37 @@ nav {
         grid-template-areas: 'adminProfile adminProfile' 'residents post';
     gap: 20px;
   }
+  .profiletab--containers {
+    padding: 20px;
+  }
   .profile--container {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
     -ms-grid-column-span: 2;
     grid-area: adminProfile;
     height: 5vh;
+    padding: 0;
+  }
+  .profile--button {
+    padding: 7px;
+  }
+  .profile--details {
+    margin: 0;
   }
   .residents--container {
     -ms-grid-row: 2;
     -ms-grid-column: 1;
     grid-area: residents;
+  }
+  .residents--container label button {
+    width: 75px;
+    height: 27px;
+  }
+  .resident--name {
+    margin: 0;
+  }
+  .residents--submitbutton {
+    font-size: 16px;
   }
   .post--container {
     -ms-grid-row: 2;
@@ -552,18 +576,16 @@ nav {
         -ms-grid-row-align: start;
         align-self: start;
   }
-  .profile--details {
-    margin: 0;
-  }
-  .profile--button {
-    font-size: 14px;
-    padding: 4px 6px;
-  }
   .profile--options {
     position: absolute;
     top: 0;
     right: 25;
     margin: 0;
+  }
+  .profile--options button {
+    font-size: 15px;
+    cursor: pointer;
+    z-index: 5;
   }
   .popUp--container {
     font-size: 18px;
@@ -597,7 +619,7 @@ nav {
     left: 15px;
   }
   .success-message {
-    right: 65;
+    right: 30;
   }
 }
 

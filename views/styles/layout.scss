@@ -67,7 +67,7 @@ nav{
     z-index: 3;
 
     position: fixed;
-    left: 0;
+    left: -255;
     top: 0;
 
     display: flex;
@@ -75,8 +75,7 @@ nav{
     justify-content: center;
     align-items: center;
 
-    transform: translateX(-100%);
-    transition: transform .5s ease;
+    transition: left .5s ease;
 
     li{
         opacity: 0;
@@ -89,7 +88,7 @@ nav{
 }
 
 .nav-options-active{
-    transform: translateX(0);
+    left:0;
 }
 .dropdown i{
     display: none;
