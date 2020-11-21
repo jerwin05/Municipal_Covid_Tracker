@@ -5,15 +5,11 @@
   "main": "app.js",
   "dependencies": {
     "compression": "^1.7.4",
-    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
-    "cross-env": "^7.0.2",
-    "debug": "^4.2.0",
     "express": "^4.17.1",
     "express-mysql-session": "^2.1.4",
     "express-session": "^1.17.1",
     "helmet": "^4.2.0",
-    "joi": "^17.3.0",
     "mysql": "^2.18.1"
   },
   "devDependencies": {

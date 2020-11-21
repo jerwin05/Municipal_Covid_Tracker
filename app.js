@@ -1,8 +1,6 @@
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
-const debug = require('debug')('dev');
 const index = require('./routes/index')
-,cookieParser = require('cookie-parser')
 ,compression = require('compression')
 ,member = require('./routes/member')
 ,admin = require('./routes/admin')
@@ -10,7 +8,6 @@ const index = require('./routes/index')
 ,helmet = require('helmet')
 ,mysql = require('mysql')
 ,cors = require('cors')
-,path = require('path')
 ,app = express();
 
 const options={  
@@ -25,8 +22,8 @@ let connection = mysql.createConnection(options);
 let sessionStore = new MySQLStore({}, connection);
 
 // all environments
-// app.use(helmet());
-// app.use(compression()); //Compress all routes
+app.use(helmet());
+app.use(compression()); //Compress all routes
 app.use(express.static('views'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
