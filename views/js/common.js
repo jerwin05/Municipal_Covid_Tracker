@@ -11,7 +11,7 @@ const registerSuccess=(form,errorElement,successElement,message)=>{
 }
 
 const getAnnouncements=()=>{
-    const announcementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/announcement' : 'https://meower-api.now.sh/v2/mews';
+    const announcementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/announcement' : 'https://barangay-covid-map.herokuapp.com/announcement';
     fetch(announcementAPI_URL,{
     }).then(response=>{
       response.json().then(result=>{

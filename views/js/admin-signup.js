@@ -7,7 +7,7 @@ const successElement = document.getElementById('success-message');
 const form = document.getElementById('form');
 
 //API URLS here
-const API_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/signup' : 'https://meower-api.now.sh/v2/mews';
+const API_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/signup' : 'https://barangay-covid-map.herokuapp.com/admin/signup';
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();

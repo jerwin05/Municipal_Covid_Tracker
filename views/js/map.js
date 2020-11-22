@@ -1,7 +1,9 @@
 window.onload=init;
 function init (){
   const button=document.getElementById('refresh');
-  const residentPositiveCoordinatesAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/positive-coordinates' : 'https://meower-api.now.sh/v2/mews';
+
+  const residentPositiveCoordinatesAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/positive-coordinates' : 'https://barangay-covid-map.herokuapp.com/positive-coordinates';
+  
   const map= new ol.Map({
       view:new ol.View({
         projection:'EPSG:4326',
