@@ -38,8 +38,8 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    sameSite: 'strict',
-    secure: true,
+    // sameSite: 'strict',
+    // secure: app.get('env') === 'production',
     originalMaxAge: 1000*60*60*24*200
   }
 }));
