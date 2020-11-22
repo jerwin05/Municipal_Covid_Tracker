@@ -11,11 +11,11 @@ const index = require('./routes/index')
 ,app = express();
 
 const options={  
-  host     : 'localhost',
+  host     : 'sql12.freemysqlhosting.net',
   port     : 3306,
-  user     : 'root',
-  password : 'a09287811206',
-  database : 'brgy'
+  user     : 'sql12378014',
+  password : 'JWbYsgac5d',
+  database : 'brgsql12378014'
 };
 
 let connection = mysql.createConnection(options);
@@ -36,7 +36,7 @@ app.use(session({
   secret: 'brgy_covid_map',
   store: sessionStore,
   resave: false,
-  saveUninitialized: false,
+  saveUninitialized: true,
   cookie: {
     // sameSite: 'none',
     // secure: true,
