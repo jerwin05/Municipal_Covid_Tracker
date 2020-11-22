@@ -15,7 +15,7 @@ const options={
   port     : 3306,
   user     : 'sql12378014',
   password : 'JWbYsgac5d',
-  database : 'brgsql12378014'
+  database : 'sql12378014'
 };
 
 let connection = mysql.createConnection(options);
