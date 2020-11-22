@@ -6,7 +6,7 @@ const errorElement = document.getElementById('error-message');
 const form =document.getElementById('form');
 
 //API URLS here
-const API_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? '/admin/login' : 'https://meower-api.now.sh/v2/mews';
+const API_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/login' : 'https://meower-api.now.sh/v2/mews';
 const adminIndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin-profile.html' : 'https://meower-api.now.sh/v2/mews';
 
 //execute event on form submit
