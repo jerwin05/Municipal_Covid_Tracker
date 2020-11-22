@@ -36,10 +36,9 @@ app.use(session({
   secret: 'brgy_covid_map',
   store: sessionStore,
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: {
-    // sameSite: 'none',
-    // secure: true,
+    sameSite: 'strict',
     secure: process.env.NODE_ENV === 'production',
     originalMaxAge: 1000*60*60*24*200
   }
@@ -95,7 +94,7 @@ db.query(sql, function(err, result) {
     db.query(sql, function(err, result) {
       console.log('created announcements');
     });
-    sql = `CREATE TABLE session s (
+    sql = `CREATE TABLE sessions (
       data MEDIUMTEXT NULL,
       expires INT UNSIGNED NOT NULL,
       session_id VARCHAR(128) NOT NULL;`;
