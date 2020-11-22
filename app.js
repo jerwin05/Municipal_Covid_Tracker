@@ -36,7 +36,7 @@ app.use(session({
   secret: 'brgy_covid_map',
   store: sessionStore,
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: {
     // sameSite: 'none',
     // secure: true,
