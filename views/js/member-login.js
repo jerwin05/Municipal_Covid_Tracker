@@ -3,12 +3,11 @@ import {errorMessage} from './common.js';
 
 //grab elements here
 const errorElement = document.getElementById('error-message');
-//element initial state
 const form =document.getElementById('form');
 
 //API URLS here
-const API_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/member/login' : 'https://meower-api.now.sh/v2/mews';
-const memberIndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/member-profile.html' : 'https://meower-api.now.sh/v2/mews';
+const API_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/member/login' : 'https://barangay-covid-map.herokuapp.com/member/login';
+const memberIndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/member-profile.html' : 'https://barangay-covid-map.herokuapp.com/member-profile.html';
 
 //if the user sends the form, execute event listener
 form.addEventListener('submit',(event)=>{
