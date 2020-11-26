@@ -18,7 +18,7 @@ const create_table=()=>{
       db.query(sql, function(err, result) {
         console.log('created users');
       });
-      
+
       sql = `CREATE TABLE admin (
         id INT NOT NULL AUTO_INCREMENT,
         first_name TEXT NOT NULL,
@@ -45,3 +45,5 @@ const create_table=()=>{
     }
   });
 }
+
+module.exports.create=create_table;

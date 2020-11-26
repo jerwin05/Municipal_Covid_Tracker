@@ -8,7 +8,6 @@ const index = require('./routes/index')
 ,express = require('express')
 ,helmet = require('helmet')
 ,mysql = require('mysql')
-// ,cors = require('cors')
 ,app = express();
 
 //database configuration
@@ -38,10 +37,7 @@ app.use(compression()); //Compress all routes
 app.use(express.static('views'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(cors({
-//   origin: true,
-//   credentials: true 
-// }));
+
 app.use(session({
   key: 'Barangay_Covid_Map',
   secret: 'brgy_covid_map',
@@ -49,8 +45,8 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    // sameSite: 'strict',
-    // secure: app.get('env') === 'production',
+    sameSite: 'strict',
+    secure: app.get('env') === 'production',
     originalMaxAge: 1000*60*60*24*200// 200 days
   }
 }));
