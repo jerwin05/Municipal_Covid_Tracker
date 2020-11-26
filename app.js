@@ -1,15 +1,16 @@
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
-const index = require('./routes/index')
+const contentSecurityPolicy = require("helmet-csp")
+,index = require('./routes/index')
 ,compression = require('compression')
 ,member = require('./routes/member')
 ,admin = require('./routes/admin')
 ,express = require('express')
 ,helmet = require('helmet')
 ,mysql = require('mysql')
-,cors = require('cors')
 ,app = express();
 
+//database configuration
 const options={  
   host     : 'localhost',
   port     : 3306,
@@ -17,34 +18,8 @@ const options={
   password : 'a09287811206',
   database : 'brgy'
 };
-
 let connection = mysql.createConnection(options);
 let sessionStore = new MySQLStore({}, connection);
-
-// all environments
-app.use(helmet());
-app.use(compression()); //Compress all routes
-app.use(express.static('views'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-// app.use(cors({
-//   origin: true,
-//   credentials: true 
-// }));
-app.use(session({
-  key: 'Barangay_Covid_Map',
-  secret: 'brgy_covid_map',
-  store: sessionStore,
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    // sameSite: 'none',
-    // secure: true,
-    secure: process.env.NODE_ENV === 'production',
-    originalMaxAge: 1000*60*60*24*200
-  }
-}));
-
 connection.connect((err)=>{
   if (!err){
     console.log("Connected");
@@ -53,8 +28,41 @@ connection.connect((err)=>{
     console.log("Connection Failed : "+JSON.stringify(err,undefined,2));
   }
 });
- 
 global.db = connection;
+
+// all environments
+app.use(helmet());
+app.use(compression()); //Compress all routes
+app.use(express.static('views'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(session({
+  key: 'Barangay_Covid_Map',
+  secret: 'brgy_covid_map',
+  store: sessionStore,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    sameSite: 'lax',
+    secure: process.env.NODE_ENV === 'production',
+    originalMaxAge: 1000*60*60*24*200
+  }
+}));
+
+app.set('Content-Security-Policy',"img-src 'self' https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; script-src 'self'; styles-src 'self'");
+
+// app.use(
+//   contentSecurityPolicy({
+//     directives: {
+//       defaultSrc: ["'self'", "default.example"],
+//       scriptSrc: ["'self'", "'unsafe-inline'"],
+//       imgSrc: ["'self'", "'https://c.tile.openstreetmap.org'"],
+//       objectSrc: ["'none'"],
+//       upgradeInsecureRequests: [],
+//     },
+//     reportOnly: false,
+//   })
+// );
 
 var sql = `SELECT first_name FROM users;`;
 db.query(sql, function(err, result) {

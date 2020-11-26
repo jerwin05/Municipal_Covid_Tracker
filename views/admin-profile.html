@@ -2,10 +2,21 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:https://a.tile.openstreetmap.org;">         -->
+        <!-- <meta http-equiv="X-XSS-Protection" value="1; mode=block">      -->
+        <!-- <meta http-equiv="X-Content-Type-Options" value="nosniff">      -->
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src *;img-src 'self' data:https://a.tile.openstreetmap.org https://a.tile.openstreetmap.org; script-src 'self' 'unsafe-inline' 'unsafe-eval' *;style-src  'self' 'unsafe-inline'*"> -->
+
+
+
+        
         <title>Covid Map Plotter</title>
         <link rel="stylesheet" href="./styles/base.css">
         <link rel="stylesheet" href="./styles/layout-admin.css">
-        <link rel="stylesheet" href="./libs/v6.4.3-dist/ol.css">
+        <link rel="stylesheet" href="./openlayers/v6.4.3-dist/ol.css">
     </head>
     <body>
         <div class="main--container">
@@ -81,7 +92,6 @@
         <script type="module" src="./js/admin-profile.js"></script>
         <script src="./js/profile.js"></script>
         <script src="./js/admin-map.js"></script>
-        <script src="./libs/v6.4.3-dist/ol.js"></script>
-        <!-- <script type="module" src="./js/admin-announcement.js"></script> -->
+        <script src="./openlayers/v6.4.3-dist/ol.js"></script>
     </body>
 </html>
