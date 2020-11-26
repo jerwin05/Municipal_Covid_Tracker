@@ -94,13 +94,6 @@ db.query(sql, function(err, result) {
     db.query(sql, function(err, result) {
       console.log('created announcements');
     });
-    sql = `CREATE TABLE sessions (
-      data MEDIUMTEXT NULL,
-      expires INT UNSIGNED NOT NULL,
-      session_id VARCHAR(128) NOT NULL;`;
-    db.query(sql, function(err, result) {
-      console.log('created sessions');
-    });
   }
 });
 
