@@ -3,6 +3,7 @@ const MySQLStore = require('express-mysql-session')(session);
 const index = require('./routes/index')
 ,compression = require('compression')
 ,member = require('./routes/member')
+,table = require('./create_table')
 ,admin = require('./routes/admin')
 ,express = require('express')
 ,helmet = require('helmet')
@@ -10,6 +11,7 @@ const index = require('./routes/index')
 // ,cors = require('cors')
 ,app = express();
 
+//database configuration
 const options={  
   host     : 'sql12.freemysqlhosting.net',
   port     : 3306,
@@ -17,9 +19,18 @@ const options={
   password : 'JWbYsgac5d',
   database : 'sql12378014'
 };
-
 let connection = mysql.createConnection(options);
 let sessionStore = new MySQLStore({}, connection);
+connection.connect((err)=>{
+  if (!err){
+    console.log("Connected");
+  }
+  else{
+    console.log("Connection Failed : "+JSON.stringify(err,undefined,2));
+  }
+});
+global.db = connection;
+table.create();
 
 // all environments
 app.use(helmet());
@@ -40,66 +51,9 @@ app.use(session({
   cookie: {
     // sameSite: 'strict',
     // secure: app.get('env') === 'production',
-    originalMaxAge: 1000*60*60*24*200
+    originalMaxAge: 1000*60*60*24*200// 200 days
   }
 }));
-
-connection.connect((err)=>{
-  if (!err){
-    console.log("Connected");
-  }
-  else{
-    console.log("Connection Failed : "+JSON.stringify(err,undefined,2));
-  }
-});
- 
-global.db = connection;
-
-var sql = `SELECT first_name FROM users;`;
-db.query(sql, function(err, result) {
-   if(err){
-    sql = `CREATE TABLE users (
-      id INT NOT NULL AUTO_INCREMENT,
-      first_name TEXT NOT NULL,
-      last_name TEXT NOT NULL,
-      middle_name TEXT NOT NULL,
-      mob_no VARCHAR(11) NOT NULL,
-      user_name VARCHAR(50) NOT NULL,
-      password VARCHAR(50) NOT NULL,
-      longitude VARCHAR(150) NULL,
-      latitude VARCHAR(150) NULL,
-      remarks VARCHAR(20) NULL,
-      PRIMARY KEY (id));`;
-    db.query(sql, function(err, result) {
-      console.log('created users');
-    });
-    sql = `CREATE TABLE admin (
-      id INT NOT NULL AUTO_INCREMENT,
-      first_name TEXT NOT NULL,
-      last_name TEXT NOT NULL,
-      middle_name TEXT NOT NULL,
-      mob_no VARCHAR(11) NOT NULL,
-      user_name VARCHAR(50) NOT NULL,
-      password VARCHAR(50) NOT NULL,
-      PRIMARY KEY (id));`;
-    db.query(sql, function(err, result) {
-      console.log('created admin');
-    });
-    sql = `CREATE TABLE announcements (
-      id INT NOT NULL AUTO_INCREMENT,
-      title VARCHAR(200) NOT NULL,
-      body VARCHAR(2000) NOT NULL,
-      date VARCHAR(50) NOT NULL,
-      PRIMARY KEY (id));`;
-    db.query(sql, function(err, result) {
-      console.log('created announcements');
-    });
-  }
-});
-
-db.query(`SHOW TABLES;`, function(err, result) {
-  console.log(result);
-});
 
 app.use('/',index);
 app.use('/member',member);
