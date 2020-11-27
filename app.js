@@ -1,7 +1,6 @@
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
-const contentSecurityPolicy = require("helmet-csp")
-,index = require('./routes/index')
+const index = require('./routes/index')
 ,compression = require('compression')
 ,member = require('./routes/member')
 ,table = require('./create_table')
@@ -13,11 +12,11 @@ const contentSecurityPolicy = require("helmet-csp")
 
 //database configuration
 const options={  
-  host     : 'sql12.freemysqlhosting.net',
+  host     : 'localhost',
   port     : 3306,
-  user     : 'sql12378014',
-  password : 'JWbYsgac5d',
-  database : 'sql12378014'
+  user     : 'root',
+  password : 'a09287811206',
+  database : 'brgy'
 };
 let connection = mysql.createConnection(options);
 let sessionStore = new MySQLStore({}, connection);
