@@ -46,7 +46,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     sameSite: 'strict',
-    secure: 'true',
+    // secure: 'true',
     originalMaxAge: 1000*60*60*24*200// 200 days
   }
 }));
