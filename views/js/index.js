@@ -10,7 +10,6 @@ getAnnouncements();
 fetch(authenticateAPI_URL,{
 }).then(response=>{
   response.text().then(result=>{
-    console.log(result);
     if (result==='admin'){
       window.location.replace(adminIndexUrl);
     }else if(result==='index'){
