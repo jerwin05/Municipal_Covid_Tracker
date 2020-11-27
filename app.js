@@ -32,7 +32,7 @@ global.db = connection;
 table.create();
 
 // all environments
-// app.use(helmet());
+app.use(helmet());
 app.use(compression()); //Compress all routes
 app.use(express.static('views'));
 app.use(express.json());
@@ -46,7 +46,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     sameSite: 'strict',
-    // secure: app.get('env') === 'production',
+    secure: 'true',
     originalMaxAge: 1000*60*60*24*200// 200 days
   }
 }));
