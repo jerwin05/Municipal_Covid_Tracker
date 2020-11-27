@@ -33,6 +33,16 @@ table.create();
 
 // all environments
 // app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "example.com"],
+      objectSrc: ["'none'"],
+      upgradeInsecureRequests: [],
+    },
+  })
+);
 app.use(compression()); //Compress all routes
 app.use(express.static('views'));
 app.use(express.json());

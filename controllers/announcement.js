@@ -1,9 +1,14 @@
 exports.post_announcement=(req,res)=>{
     const date= new Date();
+    console.log('hello');
     var sql = "INSERT INTO announcements (`title`,`body`,`date`) VALUES ('" + req.body.title + "','" + req.body.body + "','" + date + "')";
     db.query(sql, function(err, result) {
         if(result){
             res.send('true');
+            console.log('true');
+        }
+        else{
+            console.log(err);
         }
     });
 }

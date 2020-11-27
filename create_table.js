@@ -16,7 +16,9 @@ const create_table=()=>{
         remarks VARCHAR(20) NULL,
         PRIMARY KEY (id));`;
       db.query(sql, function(err, result) {
-        console.log('created users');
+        if(result){
+          console.log('created users');
+        }
       });
 
       sql = `CREATE TABLE admin (
@@ -29,17 +31,21 @@ const create_table=()=>{
         password VARCHAR(50) NOT NULL,
         PRIMARY KEY (id));`;
       db.query(sql, function(err, result) {
-        console.log('created admin');
+        if(result){
+          console.log('created admin');
+        }
       });
 
       sql = `CREATE TABLE announcements (
         id INT NOT NULL AUTO_INCREMENT,
         title VARCHAR(200) NOT NULL,
         body VARCHAR(2000) NOT NULL,
-        date VARCHAR(50) NOT NULL,
+        date VARCHAR(100) NOT NULL,
         PRIMARY KEY (id));`;
       db.query(sql, function(err, result) {
-        console.log('created announcements');
+        if(result){
+          console.log('created announcements');
+        }
       });
 
     }
