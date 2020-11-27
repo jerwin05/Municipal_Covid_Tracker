@@ -11,9 +11,12 @@ fetch(authenticateAPI_URL,{
 }).then(response=>{
   response.text().then(result=>{
     console.log(result);
-    if (result==='true'){
+    if (result==='admin'){
       window.location.replace(adminIndexUrl);
-    }else{
+    }else if(result==='index'){
+        
+    }
+    else{
       window.location.replace(memberIndexUrl);   
     }
   })

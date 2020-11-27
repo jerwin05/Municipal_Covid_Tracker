@@ -27,11 +27,13 @@ exports.authenticate_index=(req,res)=>{
       var sql="SELECT first_name FROM admin WHERE `user_name`='"+req.session.username+"' and first_name = '"+req.session.fname+"' and last_name = '"+req.session.lname+"' and mob_no = '"+req.session.mNum+"'";
       db.query(sql, function(err, result) {
          if(result[0]){
-            res.send('true');
+            res.send('admin');
          }else{
-            res.send('false');
+            res.send('member');
          }
       });
+   }else{
+      res.send('index');
    }
 }
 
@@ -58,6 +60,9 @@ exports.authenticate_member=(req,res)=>{
       db.query(sql, function(err, result) {
          if(!result[0]){
             res.send('admin');
+         }
+         else{
+            res.send('member');
          }
       });
    }
