@@ -23,7 +23,10 @@ fetch(authenticateAPI_URL,{
     response.text().then(result=>{
       if (result==='admin'){
         window.location.replace(adminIndexUrl);
-      }else{
+      }else if(result==='member'){
+        
+      }
+      else{
         window.location.replace(IndexUrl);   
       }
   })
