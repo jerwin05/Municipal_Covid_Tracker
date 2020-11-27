@@ -8,6 +8,7 @@ const contentSecurityPolicy = require("helmet-csp")
 ,express = require('express')
 ,helmet = require('helmet')
 ,mysql = require('mysql')
+,cors = require('cors')
 ,app = express();
 
 //database configuration
@@ -31,8 +32,9 @@ connection.connect((err)=>{
 global.db = connection;
 
 // all environments
-app.use(helmet());
-app.use(compression()); //Compress all routes
+// app.use(helmet());
+// app.use(compression()); //Compress all routes
+app.use(cors());
 app.use(express.static('views'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -49,7 +51,7 @@ app.use(session({
   }
 }));
 
-app.set('Content-Security-Policy',"img-src 'self' https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; script-src 'self'; styles-src 'self'");
+// app.set('Content-Security-Policy',"img-src 'self' https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; script-src 'self'; styles-src 'self'");
 
 // app.use(
 //   contentSecurityPolicy({
