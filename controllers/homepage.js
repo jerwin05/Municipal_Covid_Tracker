@@ -42,6 +42,9 @@ exports.authenticate_admin=(req,res)=>{
          if(!result[0]){
             res.send('member');
          }
+         else{
+            res.send('admin');
+         }
       });
    }
    else{
