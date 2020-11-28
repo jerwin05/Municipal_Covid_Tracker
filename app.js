@@ -37,68 +37,13 @@ table.create();
 // app.use(
 //   helmet.contentSecurityPolicy({
 //     directives: {
-//       defaultSrc: ["'self'"],
-//       scriptSrc: ["'self'", "example.com"],
-//       objectSrc: ["'none'"],
-//       upgradeInsecureRequests: [],
-//     },
-//   })
-// );
-// app.use(
-//   helmet.contentSecurityPolicy({
-//     directives: {
 //       ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-//       "img-src": ["'self'", "https:", "*.a.tile.openstreetmap.org", "*.b.tile.openstreetmap.org", "*.c.tile.openstreetmap.org"],
-//     },
+//       "img-src": ["'self'", "https:"],
+//       "script-src-attr": ["'self'","'unsafe-inline'"]
+//     }
 //   })
 // );
-// app.use(
-//   helmet.contentSecurityPolicy({
-//     directives: {
-//       defaultSrc: ["'self'"],
-//       scriptSrc: ["'self'", "example.com"],
-//       objectSrc: ["'none'"],
-//       imgSrc: ["'self'","https:", 
-//       // "*.a.tile.openstreetmap.org", "*.b.tile.openstreetmap.org", "*.c.tile.openstreetmap.org"
-//     ],
-//       upgradeInsecureRequests: [],
-//     },
-//   })
-// );
-// app.use(
-//   helmet.contentSecurityPolicy({
-//     directives: {
-//       "default-src": ["'self'"],
-//       "script-src": ["'self'", "example.com"],
-//       "object-src": ["'none'"],
-//       "img-src": ["'self'","https:", 
-//       // "*.a.tile.openstreetmap.org", "*.b.tile.openstreetmap.org", "*.c.tile.openstreetmap.org"
-//     ],
-//     },
-//   })
-// );
-// app.use(helmet.contentSecurityPolicy({directives:{
-//   "defaultSrc": ["'self'"],
-//   "scriptSrc": ["'self'", "example.com"],
-//   "objectSrc": ["'none'"],
-//   "imgSrc": ["'self'","https:", 
-//         // "*.a.tile.openstreetmap.org", "*.b.tile.openstreetmap.org", "*.c.tile.openstreetmap.org"
-//       ]
-// }}));
-
-// app.disable("x-powered-by");
-// app.use(helmet.dnsPrefetchControl());
-// app.use(helmet.expectCt());
-// app.use(helmet.frameguard());
-// app.use(helmet.hidePoweredBy());
-// app.use(helmet.hsts());
-// app.use(helmet.ieNoOpen());
-// app.use(helmet.noSniff());
-// app.use(helmet.permittedCrossDomainPolicies());
-// app.use(helmet.referrerPolicy());
-// app.use(helmet.xssFilter());
-
-// app.use(compression()); //Compress all routes
+app.use(compression()); //Compress all routes
 app.use(express.static('views'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -111,7 +56,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     sameSite: 'strict',
-    // secure: app.get('env') === 'production',
+    // secure: 'true',
     originalMaxAge: 1000*60*60*24*200// 200 days
   }
 }));
