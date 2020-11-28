@@ -32,7 +32,7 @@ global.db = connection;
 table.create();
 
 // all environments
-// app.use(helmet());
+app.use(helmet());
 app.use(compression()); //Compress all routes
 app.use(express.static('views'));
 app.use(express.json());
