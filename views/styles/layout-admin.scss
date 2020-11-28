@@ -58,6 +58,8 @@ nav{
     width: 200%;
     position: absolute;
     display: flex;
+    left: 0;
+    top: 0;
     padding-top: 110px;
 }
 
@@ -87,13 +89,7 @@ nav{
 
 .map--container{
     position: relative;
-    height: 71vh;
-}
-
-.announcement--container{
-    height: 80vh;
-    overflow-y: scroll;
-    padding: 20px;
+    height: 54%;
 }
 
 .map--layer{
@@ -107,23 +103,12 @@ nav{
     border-radius: 6px;
     background-color: rgba(255, 255, 255, 0.685);
 }
-.announcement--heading{
-    font-size: 1.25em;
-    padding-bottom:10px;
-    border-bottom: 2px solid black;
-}
-
-.announcement--element{
-    display: block;
-    margin-bottom: 10px;
-    line-height: 15px;
-}
-.announcement--element:nth-child(3){
-    border-bottom: 2px solid #f5b461;
-    padding-bottom: 11px;
-}
 
 .announcement--container{
+    height: 50%;
+    overflow-y: scroll;
+    padding: 20px;
+
     .announcement--post{
         position: relative;
         border: 1px solid #ec524b;
@@ -146,6 +131,22 @@ nav{
         outline: none;
         padding:5px 8px;   
     }
+}
+
+.announcement--heading{
+    font-size: 1.25em;
+    padding-bottom:10px;
+    border-bottom: 2px solid black;
+}
+
+.announcement--element{
+    display: block;
+    margin-bottom: 10px;
+    line-height: 15px;
+}
+.announcement--element:nth-child(3){
+    border-bottom: 2px solid #f5b461;
+    padding-bottom: 11px;
 }
 
 .profiletab--containers{
