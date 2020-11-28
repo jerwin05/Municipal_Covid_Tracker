@@ -6,8 +6,7 @@ const index = require('./routes/index')
 ,table = require('./create_table')
 ,admin = require('./routes/admin')
 ,express = require('express')
-// ,csp = require('helmet-csp')
-// ,helmet = require('helmet')
+,helmet = require('helmet')
 ,mysql = require('mysql')
 ,app = express();
 
