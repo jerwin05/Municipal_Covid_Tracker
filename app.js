@@ -31,7 +31,16 @@ global.db = connection;
 table.create();
 
 // all environments
-app.use(helmet());
+// app.use(helmet());
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     directives: {
+//       ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+//       "img-src": ["'self'", "https:"],
+//       "script-src-attr": ["'self'","'unsafe-inline'"]
+//     }
+//   })
+// );
 app.use(compression()); //Compress all routes
 app.use(express.static('views'));
 app.use(express.json());
@@ -43,7 +52,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    sameSite: 'lax',
+    sameSite: 'strict',
     secure: process.env.NODE_ENV === 'production',
     originalMaxAge: 1000*60*60*24*200 //200 days
   }
