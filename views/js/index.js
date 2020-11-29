@@ -1,11 +1,29 @@
 //module imports
 // import {getAnnouncements} from './common.js';
 
+//get elements here
+const newCases=document.getElementById('newCases');
+const activeCases=document.getElementById('activeCases');
+const newCasesTitle=document.getElementById('newCasesTitle');
+const activeCasesTitle=document.getElementById('activeCasesTitle');
+const suspected=document.getElementById('suspected');
+const probable=document.getElementById('probable');
+const confirmedCases=document.getElementById('cofirmedCases');
+const testedNegative=document.getElementById('testedNegative');
+const recovered=document.getElementById('recovered');
+const death=document.getElementById('death');
+const covidUpdateDate=document.getElementById('covidUpdateDate');
+const notes=document.getElementById('notes');
+const covidPatientList=document.getElementById('covidPatientList');
+
 //api urls here
 const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-user' : 'https://barangay-covid-map.herokuapp.com/authenticate-user';
 const adminIndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin-profile.html' : 'https://barangay-covid-map.herokuapp.com/admin-profile.html';
 const announcementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/announcement' : 'https://barangay-covid-map.herokuapp.com/announcement';
+const covidupdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/covid-update' : 'https://barangay-covid-map.herokuapp.com/covid-update';
+const covidpositivelistAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/covid-positive-list' : 'https://barangay-covid-map.herokuapp.com/covid-positive-list';
 
+//authenticate user
 fetch(authenticateAPI_URL,{
 }).then(response=>{
   response.text().then(result=>{
@@ -15,8 +33,75 @@ fetch(authenticateAPI_URL,{
   })
 })
 
+const getCovidUpdates=()=>{
+  fetch(covidupdateAPI_URL)
+  .then(response=>{
+    response.json()
+    .then(result=>{
+      const pre=document.createElement('pre');
+
+      activeCases.textContent=result[0].active_cases;
+      newCases.textContent=result[0].new_cases;
+      suspected.textContent=result[0].suspected;
+      probable.textContent=result[0].probable;
+      confirmedCases.textContent=result[0].confirmed_cases;
+      testedNegative.textContent=result[0].tested_negative;
+      recovered.textContent=result[0].recovered;
+      death.textContent=result[0].death;
+
+      if(result[0].new_cases>1){
+        newCasesTitle.textContent='New Cases';
+      }else{
+        newCasesTitle.textContent='New Case';
+      }
+      if(result[0].active_cases>1){
+        activeCasesTitle.textContent='Active Cases';
+      }else{
+        activeCasesTitle.textContent='Active Case';
+      }
+
+      const updateDate=result[0].date_updated.substring(4, 16);
+      covidUpdateDate.textContent=`as of ${updateDate}`;
+
+      pre.textContent=result[0].notes;
+      notes.appendChild(pre);
+      
+    })
+  })
+};
+
+const getPositivePatients=()=>{
+  fetch(covidpositivelistAPI_URL)
+  .then(response=>{
+    response.json()
+    .then(result=>{
+      result.forEach((element,index,array)=>{
+        const div=document.createElement('div');
+        const patientNumber=document.createElement('p');
+        const age=document.createElement('p');
+        const gender=document.createElement('p');
+        const barangay=document.createElement('p');
+        const status=document.createElement('p');
+
+        patientNumber.textContent=element.patient_no;
+        age.textContent=element.age;
+        gender.textContent=element.gender;
+        barangay.textContent=element.barangay;
+        status.textContent=element.status;
+
+        div.appendChild(patientNumber);
+        div.appendChild(age);
+        div.appendChild(gender);
+        div.appendChild(barangay);
+        div.appendChild(status);
+        covidPatientList.appendChild(div);
+      });
+    })
+  })
+};
+
 const getAnnouncements=()=>{
-  fetch(announcementAPI_URL,{})
+  fetch(announcementAPI_URL)
   .then(response=>{
     response.json()
     .then(result=>{
@@ -44,4 +129,6 @@ const getAnnouncements=()=>{
   });
 }
 
+getCovidUpdates();
+getPositivePatients();
 getAnnouncements();

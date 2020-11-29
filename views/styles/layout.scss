@@ -107,49 +107,60 @@ nav{
     margin-top: 115px;
 }
 
+.main--heading{
+    font-size: 1.25em;
+    padding-bottom:10px;
+}
+
 .container{
     background-color: #f3eac2;
     border-radius: 6px;
     margin-bottom:20px;
-}
-
-.covidupdate--container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit());
-}
-
-.map--container{
-    position: relative;
-    width: 100%;
-    height: 71vh;
-}
-
-
-.map--layer{
-    position: absolute;
-    bottom: 20px;
-    left: 9px;
-    
-    font-size: 13px;
-    z-index: 2;
-    padding:7px;
-    border-radius: 6px;
-    background-color: rgba(255, 255, 255, 0.685);
-}
-
-.ol-attribution li {
-    display: inline;
-    list-style: none;
-    font-size: 12px;
-}
-
-.announcement--container{
     padding: 20px;
 }
 
+.covidupdate--section{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+}
+
+.covidupdate--date{
+    text-decoration: underline  ;
+}
+
+.covidupdate{
+    background-color: white;
+    padding: 5px;
+    line-height: 1.2;
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.covidupdate--count{
+    font-size: 30px;
+}
+
+.notes{
+    border: 1px solid #f5b461;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.covidpatientlist--container>div{
+    margin-bottom: 10px;
+}
+
+// .covidpatientlist{
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
+//     text-align: center;
+//     gap: 5px;
+// }
+
 .announcement--heading{
-    font-size: 1.25em;
-    padding-bottom:10px;
     border-bottom: 2px solid black;
 }
 
@@ -186,6 +197,32 @@ nav{
 
 .announcement--element:last-child{
     margin-bottom: 0;
+}
+
+.map--container{
+    position: relative;
+    width: 100%;
+    height: 71vh;
+    padding: 0;
+}
+
+
+.map--layer{
+    position: absolute;
+    bottom: 20px;
+    left: 9px;
+    
+    font-size: 13px;
+    z-index: 2;
+    padding:7px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.685);
+}
+
+.ol-attribution li {
+    display: inline;
+    list-style: none;
+    font-size: 12px;
 }
 
 #refresh{

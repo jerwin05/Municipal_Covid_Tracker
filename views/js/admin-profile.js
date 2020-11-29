@@ -11,7 +11,7 @@ const overlayYesButton=document.getElementById('overlayYesButton');
 const logoutButton=document.getElementById('logout');
 
 //API URLS here
-const logoutAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/profile-logout' : 'https://barangay-covid-map.herokuapp.com/profile-logout';
+const logoutAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/logout' : 'https://barangay-covid-map.herokuapp.com/admin/logout';
 const profileAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/profile' : 'https://barangay-covid-map.herokuapp.com/admin/profile';
 const announcementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/announcement' : 'https://barangay-covid-map.herokuapp.com/announcement';
 const IndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/index.html' : 'https://barangay-covid-map.herokuapp.com/index.html';
@@ -45,6 +45,10 @@ function getProfile(){
     })
   );
 }
+
+const getCovidUpdates=()=>{
+  // fetch()
+};
 
 //get announcements from db
 const getAnnouncements=()=>{
@@ -101,6 +105,7 @@ const getAnnouncements=()=>{
 }
 
 getProfile();
+getCovidUpdates();
 getAnnouncements(); 
 
 //execute event on click of post on announcement

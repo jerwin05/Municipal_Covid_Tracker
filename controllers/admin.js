@@ -10,7 +10,7 @@ exports.signup=(req,res)=>{
    var sql="SELECT first_name FROM admin WHERE `user_name`='"+name+"'";
    db.query(sql, function(err, result) {
         if(!result[0]){
-            var sql = "INSERT INTO admin (`first_name`,`middle_name`,`last_name`,`mob_no`,`user_name`, `password`) VALUES ('" + fname + "','" + mname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "')";
+            sql = "INSERT INTO admin (`first_name`,`middle_name`,`last_name`,`mob_no`,`user_name`, `password`) VALUES ('" + fname + "','" + mname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "')";
             db.query(sql, function(err, result) {
                 if(result){
                     res.send('true');
@@ -91,6 +91,12 @@ exports.delete_resident=(req,res)=>{
   });
 };
 
+exports.logout=(req,res)=>{
+   req.session.destroy(()=>{
+      res.send();//send response
+   });
+};
+
 exports.delete_profile=(req,res)=>{//delete current user from database
   
     var sql = `DELETE FROM admin WHERE id=${req.session.myID};`;
@@ -101,3 +107,4 @@ exports.delete_profile=(req,res)=>{//delete current user from database
        }
     });
  };
+

@@ -29,48 +29,50 @@
         </nav>
         <div class="main">
             <section class="container block1 covidupdate--container">
-                <h2>Covid Update <span id='covidUpdateDate'></span></h2>
-                <div>
-                    <h3 class='covidupdate--heading'>New Case</h3>
-                    <div id='newCase' class="covidupdate--count"></div>
-                </div>
-                <div>
-                    <h3 class='covidupdate--heading'>Active Cases</h3>
-                    <div id='activeCases' class="covidupdate--count"></div>
-                </div>
-                <div>
-                    <h3 class='covidupdate--heading'>Suspected</h3>
-                    <div id='suspected' class="covidupdate--count"></div>
-                </div>
-                <div>
-                    <h3 class='covidupdate--heading'>Probable</h3>
-                    <div id='probable' class="covidupdate--count"></div>
-                </div>
-                <div>
-                    <h3 class='covidupdate--heading'>Confirmed Cases</h3>
-                    <div id='cofirmedCases' class="covidupdate--count"></div>
-                </div>
-                <div>
-                    <h3 class='covidupdate--heading'>Tested Negative</h3>
-                    <div id='testedNegative' class="covidupdate--count"></div>
-                </div>
-                <div>
-                    <h3 class='covidupdate--heading'>Recovered</h3>
-                    <div id='recovered' class="covidupdate--count"></div>
-                </div>
-                <div>
-                    <h3 class='covidupdate--heading'>Death</h3>
-                    <div id='death' class="covidupdate--count"></div>
+                <h2 class='main--heading covidupdate--heading'>Covid Update <span id='covidUpdateDate'></span></h2>
+                <div class="covidupdate--section">
+                    <div class='covidupdate'>
+                        <h3 id='newCasesTitle' class='covidupdate--title'>New Case</h3>
+                        <div id='newCases' class="covidupdate--count"></div>
+                    </div>
+                    <div class='covidupdate'>
+                        <h3 id='activeCasesTitle' class='covidupdate--title'>Active Cases</h3>
+                        <div id='activeCases' class="covidupdate--count"></div>
+                    </div>
+                    <div class='covidupdate'>
+                        <h3 class='covidupdate--title'>Suspected</h3>
+                        <div id='suspected' class="covidupdate--count"></div>
+                    </div>
+                    <div class='covidupdate'>
+                        <h3 class='covidupdate--title'>Probable</h3>
+                        <div id='probable' class="covidupdate--count"></div>
+                    </div>
+                    <div class='covidupdate'>
+                        <h3 class='covidupdate--title'>Confirmed Cases</h3>
+                        <div id='cofirmedCases' class="covidupdate--count"></div>
+                    </div>
+                    <div class='covidupdate'>
+                        <h3 class='covidupdate--title'>Tested Negative</h3>
+                        <div id='testedNegative' class="covidupdate--count"></div>
+                    </div>
+                    <div class='covidupdate'>
+                        <h3 class='covidupdate--title'>Recovered</h3>
+                        <div id='recovered' class="covidupdate--count"></div>
+                    </div>
+                    <div class='covidupdate'>
+                        <h3 class='covidupdate--title'>Death</h3>
+                        <div id='death' class="covidupdate--count"></div>
+                    </div>
                 </div>
             </section>
             <section class="container block2 covidpatientlist--container">
                 <div class="covidupdate--notes">
-                    <h2 class="block2--heading">Notes</h2>
-                    <div id='notes'></div>
+                    <h2 class="main--heading block2--heading">Notes</h2>
+                    <div id='notes' class="notes"></div>
                 </div>
                 <div class="covidpatientlist--section">
-                    <h2 class='block2--heading'>Covid Patient List</h2>
-                    <div>
+                    <h2 class='main--heading block2--heading'>Covid Patient List</h2>
+                    <div class="covidpatientlist--title covidpatientlist">
                         <h3>Patient Number</h3>
                         <h3>Age</h3>
                         <h3>Gender</h3>
@@ -80,12 +82,12 @@
                     <div id='covidPatientList' class="covidpatientlist"></div>
                 </div>
                 <div class="covidpatientlist--history">
-                    <h2 class="block2--heading">History</h2>
+                    <h2 class="main--heading block2--heading">History</h2>
                     <div id="history"></div>
                 </div>
             </section>
             <section class="container block3 announcement--container">
-                <h2 class="announcement--heading">Announcements</h2>
+                <h2 class="main--heading announcement--heading">Announcements</h2>
                 <div class="announcement--section" id='announcementSection'></div>
             </section>
             <section class="container block4 map--container">

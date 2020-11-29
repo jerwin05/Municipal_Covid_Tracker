@@ -7,6 +7,7 @@ adminRouter
     .post   ('/signup',         admin.signup)
     .post   ('/login',          admin.login)
     .get    ('/profile',        admin.profile)
+    .post   ('/logout',         admin.logout)
     .get    ('/residentList',   admin.resident_list)
     .put    ('/residentList',   admin.update_resident_remarks)
     .delete ('/residentList',   admin.delete_resident)
