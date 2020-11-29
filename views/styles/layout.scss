@@ -104,7 +104,7 @@ nav{
 
 .main{
     padding: 0 25px;
-    margin-top: 110px;
+    margin-top: 115px;
 }
 
 .container{
@@ -201,14 +201,14 @@ nav{
     }
 }
 
-@media only screen and (max-width: 410px) {
-    .map--container{
-        height: 72vh;
-    }
-    .main{
-        margin-top: 120px;
-    }
-}
+// @media only screen and (max-width: 410px) {
+//     .map--container{
+//         height: 72vh;
+//     }
+//     .main{
+//         margin-top: 120px;
+//     }
+// }
 
 @media only screen and (min-width: 660px) {
     .heading{
