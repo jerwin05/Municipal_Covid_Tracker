@@ -160,6 +160,15 @@ nav {
   margin-bottom: 10px;
 }
 
+.covidpatientlist > div, .covidpatientlist--title {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(100px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  text-align: center;
+  gap: 5px;
+}
+
 .announcement--heading {
   border-bottom: 2px solid black;
 }

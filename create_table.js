@@ -103,7 +103,6 @@ const create_table=()=>{
       });
     }
   });
-  
 }
 
 module.exports.create=create_table;

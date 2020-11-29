@@ -11,7 +11,7 @@ exports.get_list=(req,res)=>{
    });
 }
 exports.update_active_cases=(req,res)=>{
-  var sql = `SELECT id FROM covid_positive_list`;
+  var sql = `SELECT id FROM covid_positive_list WHERE status IN ('admitted','strict isolation');`;
   db.query(sql, function(err, result) {
     if(result.length){
       sql = `UPDATE covid_updates
