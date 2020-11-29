@@ -2,15 +2,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Covid Map Plotter</title>
+        <title>Covid-19 Tracker</title>
         <link rel="stylesheet" href="./styles/base.css">
         <link rel="stylesheet" href="./styles/layout-admin.css">
-        <link rel="stylesheet" href="./libs/v6.4.3-dist/ol.css">
+        <link rel="stylesheet" href="./openlayers/v6.4.3-dist/ol.css">
     </head>
     <body>
-        <div class="main--container">
+        <!-- <div class="main--container"> -->
             <nav>
-                <h1 class="heading"><a href="admin-profile.html">Barangay San Roque Teresa, Rizal - Covid Map</a></h1>
+                <h1 class="heading"><a href="admin-profile.html">Covid-19 Tracker for the Municipality of Teresa, Rizal</a></h1>
                 <ul class="nav--options" id="nav-options">
                     <li> <div class='border--bottom page--transition' id='border--bottom'></div><button class="tablinks" onclick="openTab('HomeTab')">Home</button></li>
                     <li><button class="tablinks" onclick="openTab('ProfileTab')">Profile</button></li>
@@ -28,7 +28,7 @@
                     </section>
                     <section class="hometab--containers announcement--container">
                         <h2 class="announcement--heading">Announcements</h2>
-                        <div id="announcementSection"></div>
+                        <div class="announcement--section" id="announcementSection"></div>
                     </section>
                     <!-- <div class="overlay-container">
                         <span class="overlay-text" id="feature-name"></span>
@@ -69,7 +69,7 @@
                     </div>  
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
         <div id="successMessage" class="success-message"></div>
         <div class="overlay" id="overlay">
             <div class="popUp--container">
@@ -81,7 +81,7 @@
         <script type="module" src="./js/admin-profile.js"></script>
         <script src="./js/profile.js"></script>
         <script src="./js/admin-map.js"></script>
-        <script src="./libs/v6.4.3-dist/ol.js"></script>
+        <script src="./openlayers/v6.4.3-dist/ol.js"></script>
         <!-- <script type="module" src="./js/admin-announcement.js"></script> -->
     </body>
 </html>

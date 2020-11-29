@@ -102,23 +102,23 @@ nav{
     }
 }
 
+.main{
+    padding: 0 25px;
+    margin-top: 110px;
+}
+
 .container{
     background-color: #f3eac2;
     border-radius: 6px;
-    margin:20px 0 20px;
+    margin-bottom:20px;
 }
 
-.container-1{
-    margin-top: 95px;
+.map--container{
     position: relative;
     width: 100%;
     height: 71vh;
 }
-.container-2{
-    height: 82vh;
-    overflow-y: scroll;
-    padding: 20px;
-}
+
 
 .map--layer{
     position: absolute;
@@ -132,17 +132,14 @@ nav{
     background-color: rgba(255, 255, 255, 0.685);
 }
 
-#refresh{
-    position: absolute;
-    top: 12px;
-    left: 45px;
-    z-index: 2;
-}
-
 .ol-attribution li {
     display: inline;
     list-style: none;
     font-size: 12px;
+}
+
+.announcement--container{
+    padding: 20px;
 }
 
 .announcement--heading{
@@ -151,16 +148,14 @@ nav{
     border-bottom: 2px solid black;
 }
 
-.announcement--element{
-    display: block;
-    margin-bottom: 10px;
-    line-height: 15px;
-}
-.announcement--element:last-child{
-    margin-bottom: 0;
-}
+.announcement--section{
+    height: 67vh;
+    overflow-y: scroll;
+    margin-top: 10px;
 
-.container-2 {
+    div:first-child{
+        margin: 0;
+    }
     div{
         border: 1px solid #ec524b;
         border-radius: 5px;
@@ -178,6 +173,23 @@ nav{
     }
 }
 
+.announcement--element{
+    display: block;
+    margin-bottom: 10px;
+    line-height: 15px;
+}
+
+.announcement--element:last-child{
+    margin-bottom: 0;
+}
+
+#refresh{
+    position: absolute;
+    top: 12px;
+    left: 45px;
+    z-index: 2;
+}
+
 @keyframes navLinksFade{
     from{
         opacity: 0;
@@ -190,8 +202,10 @@ nav{
 }
 
 @media only screen and (max-width: 410px) {
-    .container-1{
-        height: 70vh;
+    .map--container{
+        height: 72vh;
+    }
+    .main{
         margin-top: 120px;
     }
 }
@@ -209,7 +223,7 @@ nav{
         display: flex;
         justify-content: center;
     }
-    .container-1{
+    .main{
         margin-top: 75px;
     }
     .map--layer{
@@ -226,12 +240,12 @@ nav{
         height: 85vh;
         margin-top: 75px;
     }
-    .container-1{
+    .map--container{
         flex: 2;
         height: 100%;
         margin: 0;
     }
-    .container-2{
+    .announcement--container{
         margin:0 0 0 20px;
         flex: 1;
         height: 100%;
@@ -240,7 +254,7 @@ nav{
 
 @media only screen and (min-width: 960px) {
     nav{
-        justify-content: space-between;
+        justify-content: space-around;
         padding-top: 14px;
     }
     .burger{
@@ -265,7 +279,7 @@ nav{
         font-weight: bold;
         font-size: 18px;
         flex: .6;
-        margin-right:30px;
+        // margin-right:5px;
 
         li{
             opacity: 1;
@@ -285,6 +299,7 @@ nav{
         position: absolute;
         top: 0;
         left: 0;
+        width: 106px;
         padding:25px 20px 8px 12px;
         display: none;
         background-color: #f5e9b0;

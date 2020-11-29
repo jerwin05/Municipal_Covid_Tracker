@@ -5,9 +5,20 @@ import {errorMessage,capitalize,registerSuccess} from './common.js';
 const errorElement = document.getElementById('error-message');
 const successElement = document.getElementById('success-message');
 const form = document.getElementById('form');
-
 //API URLS here
 const API_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/signup' : 'https://barangay-covid-map.herokuapp.com/admin/signup';
+const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-user' : 'https://barangay-covid-map.herokuapp.com/authenticate-user';
+const adminIndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin-profile.html' : 'https://barangay-covid-map.herokuapp.com/admin-profile.html';
+
+fetch(authenticateAPI_URL,{
+}).then(response=>{
+    response.text().then(result=>{
+      if (result==='true'){
+        window.location.replace(adminIndexUrl);
+      }
+  })
+})
+
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();

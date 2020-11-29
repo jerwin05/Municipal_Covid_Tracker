@@ -6,9 +6,7 @@ const homepage= require('../controllers/homepage.js');
 Router
 
     .get    ('/',                       homepage.index)
-    .get    ('/authenticate-index',     homepage.authenticate_index)
-    .get    ('/authenticate-admin',     homepage.authenticate_admin)
-    .get    ('/authenticate-member',    homepage.authenticate_member)
+    .get    ('/authenticate-user',      homepage.authenticate_user)
     .get    ('/positive-coordinates',   homepage.get_positive_coordinates)
     .post   ('/profile-logout',         homepage.logout)
     .get    ('/announcement',           announcement.get_announcement)

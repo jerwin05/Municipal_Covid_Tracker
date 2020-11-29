@@ -83,14 +83,13 @@ function init (){
         'name': 'EPSG:4326',
       },
     },
-    'features': [
-      {
-        'type': 'Feature',
-        'geometry': {
-          'type': 'GeometryCollection',
-          'geometries': []
-        },
-      }],
+    'features': [{
+      'type': 'Feature',
+      'geometry': {
+        'type': 'GeometryCollection',
+        'geometries': []
+      },
+    }],
   };
 
   var vectorSource = new ol.source.Vector({

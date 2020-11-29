@@ -1,7 +1,3 @@
-.main--container {
-  position: relative;
-}
-
 nav {
   background-color: #f5e9b0;
   z-index: 3;
@@ -63,8 +59,6 @@ nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  left: 0;
-  top: 0;
   padding-top: 110px;
 }
 
@@ -88,7 +82,6 @@ nav {
 .tab--contents {
   width: 100%;
   padding: 0 25px;
-  position: relative;
 }
 
 .hometab--containers {
@@ -98,8 +91,8 @@ nav {
 }
 
 .map--container {
+  height: 74vh;
   position: relative;
-  height: 54%;
 }
 
 .map--layer {
@@ -114,42 +107,49 @@ nav {
 }
 
 .announcement--container {
-  height: 50%;
-  overflow-y: scroll;
   padding: 20px;
-}
-
-.announcement--container .announcement--post {
-  position: relative;
-  border: 1px solid #ec524b;
-  border-radius: 5px;
-  margin-top: 10px;
-  padding: 13px;
-}
-
-.announcement--container h3 {
-  font-size: 1.17em;
-}
-
-.announcement--container p {
-  font-size: 15.5px;
-}
-
-.announcement--container small {
-  font-size: 12px;
-}
-
-.announcement--container button {
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  padding: 5px 8px;
 }
 
 .announcement--heading {
   font-size: 1.25em;
   padding-bottom: 10px;
   border-bottom: 2px solid black;
+}
+
+.announcement--section {
+  height: 67vh;
+  overflow-y: scroll;
+  margin-top: 10px;
+}
+
+.announcement--section .announcement--post:first-child {
+  margin: 0;
+}
+
+.announcement--section .announcement--post {
+  border: 1px solid #ec524b;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 13px;
+}
+
+.announcement--section h3 {
+  font-size: 1.17em;
+}
+
+.announcement--section p {
+  font-size: 15.5px;
+}
+
+.announcement--section small {
+  font-size: 12px;
+}
+
+.announcement--section button {
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding: 5px 8px;
 }
 
 .announcement--element {
@@ -161,6 +161,10 @@ nav {
 .announcement--element:nth-child(3) {
   border-bottom: 2px solid #f5b461;
   padding-bottom: 11px;
+}
+
+.profile--tab {
+  position: relative;
 }
 
 .profiletab--containers {
@@ -375,7 +379,7 @@ nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;

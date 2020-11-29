@@ -8,6 +8,17 @@ const form =document.getElementById('form');
 //API URLS here
 const API_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/login' : 'https://barangay-covid-map.herokuapp.com/admin/login';
 const adminIndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin-profile.html' : 'https://barangay-covid-map.herokuapp.com/admin-profile.html';
+const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-user' : 'https://barangay-covid-map.herokuapp.com/authenticate-user';
+
+fetch(authenticateAPI_URL,{
+}).then(response=>{
+    response.text().then(result=>{
+      if (result==='true'){
+        window.location.replace(adminIndexUrl);
+      }
+  })
+})
+
 
 //execute event on form submit
 form.addEventListener('submit',(event)=>{

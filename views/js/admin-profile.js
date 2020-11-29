@@ -15,16 +15,13 @@ const logoutAPI_URL = (window.location.hostname === '127.0.0.1' || window.locati
 const profileAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/profile' : 'https://barangay-covid-map.herokuapp.com/admin/profile';
 const announcementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/announcement' : 'https://barangay-covid-map.herokuapp.com/announcement';
 const IndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/index.html' : 'https://barangay-covid-map.herokuapp.com/index.html';
-const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-admin' : 'https://barangay-covid-map.herokuapp.com/authenticate-admin';
-const memberIndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/member-profile.html' : 'https://barangay-covid-map.herokuapp.com/member-profile.html';
+const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-user' : 'https://barangay-covid-map.herokuapp.com/authenticate-user';
 
 fetch(authenticateAPI_URL,{
 }).then(response=>{
     response.text().then(result=>{
-      if (result==='member'){
-        window.location.replace(memberIndexUrl);
-      }else{
-        window.location.replace(IndexUrl);   
+      if (result!=='true'){
+        window.location.replace(IndexUrl);
       }
   })
 })

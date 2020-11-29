@@ -79,6 +79,17 @@ const create_table=()=>{
           console.log('created covid_updates');
         }
       });
+      let currentDate=new Date();
+      sql = `INSERT INTO covid_updates
+        (probable,death,new_cases,active_cases,suspected,tested_negative,confirmed_cases,recovered,date_updated)
+        VALUES (0,0,0,0,0,0,0,0,'${currentDate}');`;
+      db.query(sql, function(err, result) {
+        if(result){
+          console.log('inserted covid_updates row');
+        }else{
+          console.log(err);
+        }
+      });
       
     }
   });
