@@ -60,8 +60,9 @@ const getCovidUpdates=()=>{
         activeCasesTitle.textContent='Active Case';
       }
 
+      covidUpdateDate.className='covidupdate--date';
       const updateDate=result[0].date_updated.substring(4, 16);
-      covidUpdateDate.textContent=`as of ${updateDate}`;
+      covidUpdateDate.textContent=`As of ${updateDate}`;
 
       pre.textContent=result[0].notes;
       notes.appendChild(pre);
@@ -76,7 +77,9 @@ const getPositivePatients=()=>{
     response.json()
     .then(result=>{
       result.forEach((element,index,array)=>{
-        const div=document.createElement('div');
+        const mainDiv=document.createElement('div');
+        const div1=document.createElement('div');
+        const div2=document.createElement('div');
         const patientNumber=document.createElement('p');
         const age=document.createElement('p');
         const gender=document.createElement('p');
@@ -89,12 +92,15 @@ const getPositivePatients=()=>{
         barangay.textContent=element.barangay;
         status.textContent=element.status;
 
-        div.appendChild(patientNumber);
-        div.appendChild(age);
-        div.appendChild(gender);
-        div.appendChild(barangay);
-        div.appendChild(status);
-        covidPatientList.appendChild(div);
+        div2.className='covidpatientlist--patientdetails';
+        div2.appendChild(age);
+        div2.appendChild(gender);
+        div1.appendChild(patientNumber);
+        div1.appendChild(div2);
+        mainDiv.appendChild(div1);
+        mainDiv.appendChild(barangay);
+        mainDiv.appendChild(status);
+        covidPatientList.appendChild(mainDiv);
       });
     })
   })
@@ -107,9 +113,9 @@ const getAnnouncements=()=>{
     .then(result=>{
       result.reverse();
       result.forEach(announcement => {
+        const body=document.createElement('pre');
         const div = document.createElement('div');
         const title = document.createElement('h3');
-        const body = document.createElement('p');
         const date = document.createElement('small');
 
         body.textContent = announcement.body;
@@ -118,6 +124,7 @@ const getAnnouncements=()=>{
         date.className = 'announcement--element';
         title.textContent = announcement.title;
         date.textContent = new Date(announcement.date);
+
 
         div.appendChild(title);
         div.appendChild(body);
