@@ -285,11 +285,12 @@ nav {
 }
 
 .announcement--section h3 {
-  font-size: 1.17em;
+  font-size: 1.2em;
 }
 
-.announcement--section p {
+.announcement--section pre {
   font-size: 15.5px;
+  line-height: 1.5;
 }
 
 .announcement--section small {
@@ -309,7 +310,7 @@ nav {
 .map--container {
   position: relative;
   width: 100%;
-  height: 73vh;
+  height: 60vh;
   padding: 0;
 }
 

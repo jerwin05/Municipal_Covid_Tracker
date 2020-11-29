@@ -93,6 +93,7 @@ nav {
 
 .hometab--containers:last-child {
   padding: 0;
+  margin-bottom: 60px;
 }
 
 .hometab--heading {
@@ -263,7 +264,7 @@ nav {
 }
 
 .announcement--section h3 {
-  font-size: 1.17em;
+  font-size: 1.2em;
 }
 
 .announcement--section pre {
@@ -294,7 +295,7 @@ nav {
 }
 
 .map--container {
-  height: 74vh;
+  height: 60vh;
   position: relative;
 }
 

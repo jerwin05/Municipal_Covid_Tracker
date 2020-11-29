@@ -82,6 +82,7 @@ nav{
 
 .hometab--containers:last-child{
     padding:0;
+    margin-bottom: 60px;
 }
 
 .hometab--heading{
@@ -221,12 +222,11 @@ nav{
         padding:13px;
     }
     h3{
-        font-size: 1.17em;
+        font-size: 1.2em;
     }
     pre{
         font-size: 15.5px;
         line-height: 1.5;
-        // margin-left: 5px;
     }
     small{
         font-size: 12px;
@@ -250,7 +250,7 @@ nav{
 }
 
 .map--container{
-    height: 74vh;
+    height: 60vh;
     position: relative;
   
 }
