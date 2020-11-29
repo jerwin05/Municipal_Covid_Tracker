@@ -88,22 +88,151 @@ nav {
   background-color: #f3eac2;
   border-radius: 6px;
   margin-bottom: 20px;
+  padding: 20px;
 }
 
-.map--container {
-  height: 74vh;
-  position: relative;
+.hometab--containers:last-child {
+  padding: 0;
 }
 
-.map--layer {
-  position: absolute;
-  bottom: 20px;
-  left: 9px;
-  font-size: 13px;
-  z-index: 2;
-  padding: 7px;
-  border-radius: 6px;
-  background-color: rgba(255, 255, 255, 0.685);
+.hometab--heading {
+  font-size: 1.25em;
+  padding-bottom: 15px;
+}
+
+.covidupdate--heading {
+  line-height: 1.2;
+  padding-bottom: 15px;
+}
+
+.covidupdate--section {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(130px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  gap: 10px;
+}
+
+.covidupdate--date {
+  display: block;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.covidupdate {
+  background-color: white;
+  padding: 10px;
+  line-height: 1.2;
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.covidupdate--count {
+  font-size: 30px;
+}
+
+.notes {
+  border: 1px solid #f5b461;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.notes pre {
+  font-size: 14px;
+}
+
+.covidpatientlist--container > div {
+  margin-bottom: 30px;
+}
+
+.covidpatientlist > div, .covidpatientlist--title {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
+}
+
+.covidpatientlist--title {
+  margin-bottom: 5px;
+}
+
+.covidpatientlist--title h3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.covidpatientlist--title > div h3 {
+  text-align: start;
+}
+
+.covidpatientlist p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  font-size: 14px;
+}
+
+.covidpatientlist > div:first-child {
+  border-top: 1px solid black;
+}
+
+.covidpatientlist > div {
+  border-bottom: 1px solid black;
+  padding: 2px;
+  line-height: 1.2;
+}
+
+.covidpatientlist > div div p {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.covidpatientlist--patientdetails h3 {
+  display: none;
+}
+
+.covidpatientlist--patientdetails p {
+  display: inline;
+}
+
+.covidpatientlist--patientdetails p:last-child {
+  margin-left: 7px;
 }
 
 .announcement--container {
@@ -137,8 +266,9 @@ nav {
   font-size: 1.17em;
 }
 
-.announcement--section p {
+.announcement--section pre {
   font-size: 15.5px;
+  line-height: 1.5;
 }
 
 .announcement--section small {
@@ -161,6 +291,28 @@ nav {
 .announcement--element:nth-child(3) {
   border-bottom: 2px solid #f5b461;
   padding-bottom: 11px;
+}
+
+.map--container {
+  height: 74vh;
+  position: relative;
+}
+
+.map--layer {
+  position: absolute;
+  bottom: 20px;
+  left: 9px;
+  font-size: 13px;
+  z-index: 2;
+  padding: 7px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.685);
+}
+
+.ol-attribution li {
+  display: inline;
+  list-style: none;
+  font-size: 12px;
 }
 
 .profile--tab {
@@ -361,12 +513,6 @@ nav {
   transition: bottom .2s ease;
   bottom: -45;
   right: 25;
-}
-
-.ol-attribution li {
-  display: inline;
-  list-style: none;
-  font-size: 12px;
 }
 
 .overlay {

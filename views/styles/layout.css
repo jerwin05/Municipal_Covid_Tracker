@@ -114,7 +114,7 @@ nav {
 
 .main--heading {
   font-size: 1.25em;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
 
 .container {
@@ -122,6 +122,10 @@ nav {
   border-radius: 6px;
   margin-bottom: 20px;
   padding: 20px;
+}
+
+.container:last-child {
+  margin-bottom: 60px;
 }
 
 .covidupdate--heading {
@@ -178,6 +182,10 @@ nav {
   border: 1px solid #f5b461;
   border-radius: 5px;
   padding: 15px;
+}
+
+.notes pre {
+  font-size: 14px;
 }
 
 .covidpatientlist--container > div {
@@ -301,7 +309,7 @@ nav {
 .map--container {
   position: relative;
   width: 100%;
-  height: 70vh;
+  height: 73vh;
   padding: 0;
 }
 
