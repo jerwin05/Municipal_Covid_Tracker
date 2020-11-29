@@ -118,6 +118,13 @@ nav {
   margin-bottom: 20px;
 }
 
+.covidupdate--container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: ()[auto-fit];
+      grid-template-columns: repeat(auto-fit());
+}
+
 .map--container {
   position: relative;
   width: 100%;
