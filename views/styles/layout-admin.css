@@ -285,6 +285,7 @@ nav {
 
 .announcement--section h3 {
   font-size: 1.2em;
+  margin-top: 6px;
 }
 
 .announcement--section pre {
@@ -301,6 +302,7 @@ nav {
   border: none;
   outline: none;
   padding: 5px 8px;
+  margin-bottom: 6px;
 }
 
 .announcement--element {
