@@ -240,90 +240,38 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
   const formDeath = formData.get('death');
   const formNotes = formData.get('notes');
 
-  let obj={};
+  let obj={};  
 
-  if(covidUpdateDate.textContent!==formDate){
-    obj={date_updated:formDate}
-    fetch(covidupdateAPI_URL,{
-      method:'PUT',
-      body: JSON.stringify(obj),//make object in json format
-      headers: {
-        'content-type': 'application/json'
-      }
-    });
-  }
-  if(newCases.textContent!=formNewCases){
-    obj={new_cases:formNewCases}
-    fetch(covidupdateAPI_URL,{
-      method:'PUT',
-      body: JSON.stringify(obj),//make object in json format
-      headers: {
-        'content-type': 'application/json'
-      }
-    });
-  }
-  if(editSuspected.value!==formSuspected){
-    obj={suspected:formSuspected}
-    fetch(covidupdateAPI_URL,{
-      method:'PUT',
-      body: JSON.stringify(obj),//make object in json format
-      headers: {
-        'content-type': 'application/json'
-      }
-    });
-  }
-  if(editProbable.value!==formProbable){
-    obj={probable:formProbable}
-    fetch(covidupdateAPI_URL,{
-      method:'PUT',
-      body: JSON.stringify(obj),//make object in json format
-      headers: {
-        'content-type': 'application/json'
-      }
-    });
-  }
-  if(editConfirmedCases.value!==formConfirmedCases){
-    obj={confirmed_cases:formConfirmedCases}
-    fetch(covidupdateAPI_URL,{  
-      method:'PUT',
-      body: JSON.stringify(obj),//make object in json format
-      headers: {
-        'content-type': 'application/json'
-      }
-    });
-  }
-  if(editTestedNegative.value!==formTestedNegative){
-    obj={tested_negative:formTestedNegative}
-    fetch(covidupdateAPI_URL,{
-      method:'PUT',
-      body: JSON.stringify(obj),//make object in json format
-      headers: {
-        'content-type': 'application/json'
-      }
-    });
-  }
-  if(editRecovered.value!==formRecovered){
-    obj={recovered:formRecovered}
-    fetch(covidupdateAPI_URL,{
-      method:'PUT',
-      body: JSON.stringify(obj),//make object in json format
-      headers: {
-        'content-type': 'application/json'
-      }
-    });
-  }
-  if(editDeath.value!==formDeath){
-    obj={death:formDeath}
-    fetch(covidupdateAPI_URL,{
-      method:'PUT',
-      body: JSON.stringify(obj),//make object in json format
-      headers: {
-        'content-type': 'application/json'
-      }
-    });
-  }
   if(formNotes){
-    obj={notes:formNotes}
+    obj={
+      date_updated:formDate,
+      new_cases:formNewCases,
+      suspected:formSuspected,
+      probable:formProbable,
+      confirmed_cases:formConfirmedCases,
+      tested_negative:formTestedNegative,
+      recovered:formRecovered,
+      death:formDeath,
+      notes:formNotes,
+    }
+    fetch(covidupdateAPI_URL,{
+      method:'PUT',
+      body: JSON.stringify(obj),//make object in json format
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }else{
+    obj={
+      date_updated:formDate,
+      new_cases:formNewCases,
+      suspected:formSuspected,
+      probable:formProbable,
+      confirmed_cases:formConfirmedCases,
+      tested_negative:formTestedNegative,
+      recovered:formRecovered,
+      death:formDeath
+    }
     fetch(covidupdateAPI_URL,{
       method:'PUT',
       body: JSON.stringify(obj),//make object in json format
