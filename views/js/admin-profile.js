@@ -20,6 +20,7 @@ const editDeath=document.getElementById('editDeath');
 const editDate=document.getElementById('editDate');
 const notes=document.getElementById('notes');
 const covidPatientList=document.getElementById('covidPatientList');
+const editCovidUpdateForm=document.getElementById('editCovidUpdateForm');
 const loadingElement=document.getElementById('loadingElement');
 const main=document.getElementById('main');
 
@@ -226,6 +227,118 @@ getCovidUpdates();
 getPositivePatients();
 getAnnouncements(); 
 
+editCovidUpdateForm.addEventListener('submit',(event)=>{
+  event.preventDefault();
+  const formData = new FormData(editCovidUpdateForm);
+  const formDate = formData.get('date');
+  const formNewCases = formData.get('newCases');
+  const formSuspected = formData.get('suspected');
+  const formProbable = formData.get('probable');
+  const formConfirmedCases = formData.get('confirmedCases');
+  const formTestedNegative = formData.get('testedNegative');
+  const formRecovered = formData.get('recovered');
+  const formDeath = formData.get('death');
+  const formNotes = formData.get('notes');
+
+  let obj={};
+
+  if(covidUpdateDate.textContent!==formDate){
+    obj={date_updated:formDate}
+    fetch(covidupdateAPI_URL,{
+      method:'PUT',
+      body: JSON.stringify(obj),//make object in json format
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
+  if(newCases.textContent!=formNewCases){
+    obj={new_cases:formNewCases}
+    fetch(covidupdateAPI_URL,{
+      method:'PUT',
+      body: JSON.stringify(obj),//make object in json format
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
+  if(editSuspected.value!==formSuspected){
+    obj={suspected:formSuspected}
+    fetch(covidupdateAPI_URL,{
+      method:'PUT',
+      body: JSON.stringify(obj),//make object in json format
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
+  if(editProbable.value!==formProbable){
+    obj={probable:formProbable}
+    fetch(covidupdateAPI_URL,{
+      method:'PUT',
+      body: JSON.stringify(obj),//make object in json format
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
+  if(editConfirmedCases.value!==formConfirmedCases){
+    obj={confirmed_cases:formConfirmedCases}
+    fetch(covidupdateAPI_URL,{  
+      method:'PUT',
+      body: JSON.stringify(obj),//make object in json format
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
+  if(editTestedNegative.value!==formTestedNegative){
+    obj={tested_negative:formTestedNegative}
+    fetch(covidupdateAPI_URL,{
+      method:'PUT',
+      body: JSON.stringify(obj),//make object in json format
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
+  if(editRecovered.value!==formRecovered){
+    obj={recovered:formRecovered}
+    fetch(covidupdateAPI_URL,{
+      method:'PUT',
+      body: JSON.stringify(obj),//make object in json format
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
+  if(editDeath.value!==formDeath){
+    obj={death:formDeath}
+    fetch(covidupdateAPI_URL,{
+      method:'PUT',
+      body: JSON.stringify(obj),//make object in json format
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
+  if(formNotes){
+    obj={notes:formNotes}
+    fetch(covidupdateAPI_URL,{
+      method:'PUT',
+      body: JSON.stringify(obj),//make object in json format
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
+
+  setTimeout(()=>{  
+    getCovidUpdates();
+  },200);
+
+})
+
 //execute event on click of post on announcement
 announcementForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -274,9 +387,9 @@ announcementForm.addEventListener('submit', (event) => {
 logoutButton.addEventListener('click',()=>{
     fetch(logoutAPI_URL, {//send request
         method: 'POST',
-        headers: {
-          'content-type': 'application/json'
-        }
+        // headers: {
+        //   'content-type': 'application/json'
+        // }
       }).then((response)=>{
           window.location.href=IndexUrl;//go to index page
       });

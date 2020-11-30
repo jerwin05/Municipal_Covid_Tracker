@@ -12,6 +12,7 @@ Router
     .get    ('/authenticate-user',      homepage.authenticate_user)
     .get    ('/positive-coordinates',   homepage.get_positive_coordinates)
     .get    ('/covid-update',           covidupdate.get_update)
+    .put    ('/covid-update',           covidupdate.update_data)
     .get    ('/covid-positive-list',    covidpositivelist.get_list)
     .get    ('/announcement',           announcement.get_announcement)
     .post   ('/announcement',           announcement.post_announcement)

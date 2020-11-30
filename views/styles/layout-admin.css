@@ -422,18 +422,19 @@ nav {
 }
 
 .editcovidupdate--container form label:last-of-type {
-  margin-top: 15px;
+  margin-top: 5px;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-column: 1 /span 2;
 }
 
 .editcovidupdate--container form label:last-of-type textarea {
-  height: 70px;
+  height: 20.7vh;
 }
 
 .editcovidupdate--container form button {
   margin-top: 10px;
+  width: 70%;
 }
 
 .residents--container label:first-of-type {
