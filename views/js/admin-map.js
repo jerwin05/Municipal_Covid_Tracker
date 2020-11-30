@@ -5,8 +5,8 @@ function init (){
   const successMessage=document.getElementById('successMessage');
   const body=document.querySelector('body');
 
-  const residentPositiveCoordinatesAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/positive-coordinates' : 'https://barangay-covid-map.herokuapp.com/positive-coordinates';
-  const residentsAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/residentList' : 'https://barangay-covid-map.herokuapp.com/admin/residentList';
+  // const residentPositiveCoordinatesAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/positive-coordinates' : 'https://barangay-covid-map.herokuapp.com/positive-coordinates';
+  // const residentsAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/residentList' : 'https://barangay-covid-map.herokuapp.com/admin/residentList';
   
   const map= new ol.Map({
       view:new ol.View({
@@ -106,163 +106,165 @@ function init (){
     map.addLayer(vectorLayer); 
   }
 
-  function getPositiveResidentCoordinates(){
-    geojsonObject.features[0].geometry.geometries=[];
-    fetch(residentPositiveCoordinatesAPI_URL,{
-    }).then(response=>{
-      response.json().then(result=>{
-        if(result.length){
-          result.forEach((coordinates)=>{
-            let newPoint={
-              'type':'Point',
-              'coordinates':[coordinates.longitude,coordinates.latitude]
-            };    
-            geojsonObject.features[0].geometry.geometries.push(newPoint);
-          });
-          vectorSource.clear();
-          vectorSource = new ol.source.Vector({
-            features: new ol.format.GeoJSON().readFeatures(geojsonObject)
-          });
-          callvector();
-        }
-        else{
-          vectorSource.clear();
-          callvector();
-        }
-      });
-    });
-  }
+  // function getPositiveResidentCoordinates(){
+  //   geojsonObject.features[0].geometry.geometries=[];
+  //   fetch(residentPositiveCoordinatesAPI_URL,{
+  //   }).then(response=>{
+  //     response.json().then(result=>{
+  //       if(result.length){
+  //         result.forEach((coordinates)=>{
+  //           let newPoint={
+  //             'type':'Point',
+  //             'coordinates':[coordinates.longitude,coordinates.latitude]
+  //           };    
+  //           geojsonObject.features[0].geometry.geometries.push(newPoint);
+  //         });
+  //         vectorSource.clear();
+  //         vectorSource = new ol.source.Vector({
+  //           features: new ol.format.GeoJSON().readFeatures(geojsonObject)
+  //         });
+  //         callvector();
+  //       }
+  //       else{
+  //         vectorSource.clear();
+  //         callvector();
+  //       }
+  //     });
+  //   });
+  // }
 
   //get residents and populate the residents form
-  function getResidents(){
-    fetch(residentsAPI_URL,{}).then(response=>{
-      response.json().then(result=>{
-        result.forEach(resident => {
+  // function getResidents(){
+  //   fetch(residentsAPI_URL,{}).then(response=>{
+  //     response.json().then(result=>{
+  //       result.forEach(resident => {
 
-          const label = document.createElement('label');
-          const residentDiv = document.createElement('div');
-          const residentName = document.createElement('p');
-          const residentDetail = document.createElement('p');
-          const input = document.createElement('input');
-          const button = document.createElement('button');
-          const overlaydiv = document.createElement('div');
-          const overlaydiv1 = document.createElement('div');
-          const p = document.createElement('p');
-          const button1 = document.createElement('button');
-          const button2 = document.createElement('button');
+  //         const label = document.createElement('label');
+  //         const residentDiv = document.createElement('div');
+  //         const residentName = document.createElement('p');
+  //         const residentDetail = document.createElement('p');
+  //         const input = document.createElement('input');
+  //         const button = document.createElement('button');
+  //         const overlaydiv = document.createElement('div');
+  //         const overlaydiv1 = document.createElement('div');
+  //         const p = document.createElement('p');
+  //         const button1 = document.createElement('button');
+  //         const button2 = document.createElement('button');
 
-          label.setAttribute("for", `remarks${resident.id}`);
-          input.setAttribute("name", `remarks${resident.id}`);
-          input.setAttribute("value", "positive");
-          input.setAttribute("type", "checkbox");
-          input.className='residentRemarksInput';
-          button.className = 'profile--button blue--button';
-          button.setAttribute("type", "button");
-          button.textContent='Delete';
-          residentName.textContent=`${resident.last_name}, ${resident.first_name} ${resident.middle_name}`;
-          residentName.className='resident--name';
-          residentDetail.textContent=`${resident.mob_no}`;
-          residentDetail.className='resident--mobNo';
-          overlaydiv.className='overlay';
-          overlaydiv1.className='popUp--container';
-          p.textContent='Are you sure you want to delete this resident?';
-          p.setAttribute("class", `message`);
-          button1.setAttribute("class", `yes deleteResident${resident.id}`);
-          button2.setAttribute("class", `no`);
-          button1.setAttribute("type", `button`);
-          button2.setAttribute("type", `button`);
-          button1.textContent='Yes';
-          button2.textContent='No';
+  //         label.setAttribute("for", `remarks${resident.id}`);
+  //         input.setAttribute("name", `remarks${resident.id}`);
+  //         input.setAttribute("value", "positive");
+  //         input.setAttribute("type", "checkbox");
+  //         input.className='residentRemarksInput';
+  //         button.className = 'profile--button blue--button';
+  //         button.setAttribute("type", "button");
+  //         button.textContent='Delete';
+  //         residentName.textContent=`${resident.last_name}, ${resident.first_name} ${resident.middle_name}`;
+  //         residentName.className='resident--name';
+  //         residentDetail.textContent=`${resident.mob_no}`;
+  //         residentDetail.className='resident--mobNo';
+  //         overlaydiv.className='overlay';
+  //         overlaydiv1.className='popUp--container';
+  //         p.textContent='Are you sure you want to delete this resident?';
+  //         p.setAttribute("class", `message`);
+  //         button1.setAttribute("class", `yes deleteResident${resident.id}`);
+  //         button2.setAttribute("class", `no`);
+  //         button1.setAttribute("type", `button`);
+  //         button2.setAttribute("type", `button`);
+  //         button1.textContent='Yes';
+  //         button2.textContent='No';
 
-          if(resident.remarks=='positive'){
-            input.checked=true;
-          }else{
-            input.checked=false;
-          }
+  //         if(resident.remarks=='positive'){
+  //           input.checked=true;
+  //         }else{
+  //           input.checked=false;
+  //         }
 
-          const residentid={
-            id:resident.id
-          }
+  //         const residentid={
+  //           id:resident.id
+  //         }
 
-          button.addEventListener('click',()=>{
-            overlaydiv.style.display='flex';
-          });
-          button2.addEventListener('click',()=>{
-            overlaydiv.style.display='none';
-          });
+  //         button.addEventListener('click',()=>{
+  //           overlaydiv.style.display='flex';
+  //         });
+  //         button2.addEventListener('click',()=>{
+  //           overlaydiv.style.display='none';
+  //         });
 
-          button1.addEventListener('click',(event)=>{
-            event.preventDefault();
-            getPositiveResidentCoordinates();
-            overlaydiv.style.display='none';
-            fetch(residentsAPI_URL, {//send object to the server
-              method: 'DELETE',
-              body: JSON.stringify(residentid),//make object in json format
-              headers: {
-                'content-type': 'application/json'
-              }
-            });
+  //         button1.addEventListener('click',(event)=>{
+  //           event.preventDefault();
+  //           getPositiveResidentCoordinates();
+  //           overlaydiv.style.display='none';
+  //           fetch(residentsAPI_URL, {//send object to the server
+  //             method: 'DELETE',
+  //             body: JSON.stringify(residentid),//make object in json format
+  //             headers: {
+  //               'content-type': 'application/json'
+  //             }
+  //           });
             
-            setTimeout(()=>{  
-              residentsFormSection.innerHTML = "";
-              getResidents();
-            },100);
-          });
+  //           setTimeout(()=>{  
+  //             residentsFormSection.innerHTML = "";
+  //             getResidents();
+  //           },100);
+  //         });
 
-          overlaydiv1.appendChild(p);
-          overlaydiv1.appendChild(button1);
-          overlaydiv1.appendChild(button2);
-          overlaydiv.appendChild(overlaydiv1);
-          body.appendChild(overlaydiv);          
+  //         overlaydiv1.appendChild(p);
+  //         overlaydiv1.appendChild(button1);
+  //         overlaydiv1.appendChild(button2);
+  //         overlaydiv.appendChild(overlaydiv1);
+  //         body.appendChild(overlaydiv);          
 
-          residentDiv.appendChild(residentName);
-          residentDiv.appendChild(residentDetail);
-          label.appendChild(residentDiv);
-          label.appendChild(input);
-          label.appendChild(button);
+  //         residentDiv.appendChild(residentName);
+  //         residentDiv.appendChild(residentDetail);
+  //         label.appendChild(residentDiv);
+  //         label.appendChild(input);
+  //         label.appendChild(button);
         
-          residentsFormSection.appendChild(label);
-        });
-      });
-    });
-  }
+  //         residentsFormSection.appendChild(label);
+  //       });
+  //     });
+  //   });
+  // }
 
-  getPositiveResidentCoordinates();
-  getResidents();
+  // getPositiveResidentCoordinates();
+  // getResidents();
 
   //execute if admin wish to update resident remarks
-  residentsForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const resident=document.querySelectorAll('.residentRemarksInput');//get all checkboxes
-    const formData = new FormData(residentsForm);//store form credentials
+  // residentsForm.addEventListener('submit', (event) => {
+  //   event.preventDefault();
+  //   const resident=document.querySelectorAll('.residentRemarksInput');//get all checkboxes
+  //   const formData = new FormData(residentsForm);//store form credentials
 
-    for(var x=0,y=resident.length;x<y;x++){//iterate over each checkbox 
-      const residentId=parseInt(resident[x].name.match(/\d+/)[0]);//get checkbox id
-      const remarks= formData.get(resident[x].name);// get checkbox value
+  //   for(var x=0,y=resident.length;x<y;x++){//iterate over each checkbox 
+  //     const residentId=parseInt(resident[x].name.match(/\d+/)[0]);//get checkbox id
+  //     const remarks= formData.get(resident[x].name);// get checkbox value
       
-      const residentDetails={//store data in a object
-        id:residentId,
-        remarks:remarks
-      }
+  //     const residentDetails={//store data in a object
+  //       id:residentId,
+  //       remarks:remarks
+  //     }
       
-      fetch(residentsAPI_URL, {//send object to the server
-          method: 'PUT',
-          body: JSON.stringify(residentDetails),//make object in json format
-          headers: {
-            'content-type': 'application/json'
-        }
-      });
-    }
+  //     fetch(residentsAPI_URL, {//send object to the server
+  //         method: 'PUT',
+  //         body: JSON.stringify(residentDetails),//make object in json format
+  //         headers: {
+  //           'content-type': 'application/json'
+  //       }
+  //     });
+  //   }
  
-    successMessage.textContent='Remarks Updated';
-    successMessage.style.bottom='30';
-    setTimeout(()=>{
-      getPositiveResidentCoordinates();
-    },500);
-    setTimeout(()=>{
-      successMessage.style.bottom='-45';
-    },3000);
-  });
+  //   successMessage.textContent='Remarks Updated';
+  //   successMessage.style.bottom='30';
+  //   setTimeout(()=>{
+  //     getPositiveResidentCoordinates();
+  //   },500);
+  //   setTimeout(()=>{
+  //     successMessage.style.bottom='-45';
+  //   },3000);
+  // });
+
+
   //--------------------------------------------------------------------------------------------------------------------------------------
 
   // // vector layers
