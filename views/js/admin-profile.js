@@ -12,6 +12,8 @@ const death=document.getElementById('death');
 const covidUpdateDate=document.getElementById('covidUpdateDate');
 const notes=document.getElementById('notes');
 const covidPatientList=document.getElementById('covidPatientList');
+const loadingElement=document.getElementById('loadingElement');
+const main=document.getElementById('main');
 
 const overlay=document.getElementById('overlay');
 const successMessage=document.getElementById('successMessage');
@@ -139,6 +141,10 @@ const getPositivePatients=()=>{
 const getAnnouncements=()=>{
   fetch(announcementAPI_URL,{
   }).then(response=>{
+
+    main.style.display='flex';    
+    loadingElement.style.display='none'; 
+
     response.json().then(result=>{
       result.reverse();
       result.forEach(announcement => {

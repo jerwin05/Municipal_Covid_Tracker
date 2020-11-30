@@ -15,6 +15,8 @@ const death=document.getElementById('death');
 const covidUpdateDate=document.getElementById('covidUpdateDate');
 const notes=document.getElementById('notes');
 const covidPatientList=document.getElementById('covidPatientList');
+const loadingElement=document.getElementById('loadingElement');
+const sectionContainer=document.getElementById('sectionContainer');
 
 //api urls here
 const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-user' : 'https://barangay-covid-map.herokuapp.com/authenticate-user';
@@ -36,6 +38,7 @@ fetch(authenticateAPI_URL,{
 const getCovidUpdates=()=>{
   fetch(covidupdateAPI_URL)
   .then(response=>{
+
     response.json()
     .then(result=>{
       const pre=document.createElement('pre');
@@ -109,6 +112,10 @@ const getPositivePatients=()=>{
 const getAnnouncements=()=>{
   fetch(announcementAPI_URL)
   .then(response=>{
+
+    sectionContainer.style.display='block';    
+    loadingElement.style.display='none';  
+
     response.json()
     .then(result=>{
       result.reverse();

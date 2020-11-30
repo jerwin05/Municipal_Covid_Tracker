@@ -8,130 +8,132 @@
         <link rel="stylesheet" href="./openlayers/v6.4.3-dist/ol.css">
     </head>
     <body>
-        <!-- <div class="main--container"> -->
-            <nav>
-                <h1 class="heading"><a href="admin-profile.html">Covid-19 Tracker for the Municipality of Teresa, Rizal</a></h1>
-                <ul class="nav--options" id="nav-options">
-                    <li> <div class='border--bottom page--transition' id='border--bottom'></div><button class="tablinks" onclick="openTab('HomeTab')">Home</button></li>
-                    <li><button class="tablinks" onclick="openTab('ProfileTab')">Profile</button></li>
-                </ul>
-            </nav>
-            <div class="main page--transition" id="main">
-                <div id="HomeTab" class="tab--contents home--tab">
-                    <section class="hometab--containers block1 covidupdate--container">
-                        <h2 class='hometab--heading covidupdate--heading'>Covid Update <span id='covidUpdateDate'></span></h2>
-                        <div class="covidupdate--section">
-                            <div class='covidupdate'>
-                                <h3 id='newCasesTitle' class='covidupdate--title'>New Case</h3>
-                                <div id='newCases' class="covidupdate--count"></div>
-                            </div>
-                            <div class='covidupdate'>
-                                <h3 id='activeCasesTitle' class='covidupdate--title'>Active Cases</h3>
-                                <div id='activeCases' class="covidupdate--count"></div>
-                            </div>
-                            <div class='covidupdate'>
-                                <h3 class='covidupdate--title'>Suspected</h3>
-                                <div id='suspected' class="covidupdate--count"></div>
-                            </div>
-                            <div class='covidupdate'>
-                                <h3 class='covidupdate--title'>Probable</h3>
-                                <div id='probable' class="covidupdate--count"></div>
-                            </div>
-                            <div class='covidupdate'>
-                                <h3 class='covidupdate--title'>Confirmed Cases</h3>
-                                <div id='cofirmedCases' class="covidupdate--count"></div>
-                            </div>
-                            <div class='covidupdate'>
-                                <h3 class='covidupdate--title'>Tested Negative</h3>
-                                <div id='testedNegative' class="covidupdate--count"></div>
-                            </div>
-                            <div class='covidupdate'>
-                                <h3 class='covidupdate--title'>Recovered</h3>
-                                <div id='recovered' class="covidupdate--count"></div>
-                            </div>
-                            <div class='covidupdate'>
-                                <h3 class='covidupdate--title'>Death</h3>
-                                <div id='death' class="covidupdate--count"></div>
-                            </div>
+        <nav>
+            <h1 class="heading"><a href="admin-profile.html">Covid-19 Tracker for the Municipality of Teresa, Rizal</a></h1>
+            <ul class="nav--options" id="nav-options">
+                <li> <div class='border--bottom page--transition' id='border--bottom'></div><button class="tablinks" onclick="openTab('HomeTab')">Home</button></li>
+                <li><button class="tablinks" onclick="openTab('ProfileTab')">Profile</button></li>
+            </ul>
+        </nav>
+        <div class="main page--transition" id="main">
+            <div id="HomeTab" class="tab--contents home--tab">
+                <section class="hometab--containers block1 covidupdate--container">
+                    <h2 class='hometab--heading covidupdate--heading'>Covid Update <span id='covidUpdateDate'></span></h2>
+                    <div class="covidupdate--section">
+                        <div class='covidupdate'>
+                            <h3 id='newCasesTitle' class='covidupdate--title'>New Case</h3>
+                            <div id='newCases' class="covidupdate--count"></div>
                         </div>
-                    </section>
-                    <section class="hometab--containers block2 covidpatientlist--container">
-                        <div class="covidupdate--notes">
-                            <h2 class="hometab--heading block2--heading">Notes</h2>
-                            <div id='notes' class="notes"></div>
+                        <div class='covidupdate'>
+                            <h3 id='activeCasesTitle' class='covidupdate--title'>Active Cases</h3>
+                            <div id='activeCases' class="covidupdate--count"></div>
                         </div>
-                        <div class="covidpatientlist--section">
-                            <h2 class='hometab--heading block2--heading'>Covid Patient List</h2>
-                            <div class="covidpatientlist--title">
-                                <div>
-                                    <h3>Patient Number</h3>
-                                    <div class="covidpatientlist--patientdetails">
-                                        <h3>Age</h3>
-                                        <h3>Gender</h3>
-                                    </div>
+                        <div class='covidupdate'>
+                            <h3 class='covidupdate--title'>Suspected</h3>
+                            <div id='suspected' class="covidupdate--count"></div>
+                        </div>
+                        <div class='covidupdate'>
+                            <h3 class='covidupdate--title'>Probable</h3>
+                            <div id='probable' class="covidupdate--count"></div>
+                        </div>
+                        <div class='covidupdate'>
+                            <h3 class='covidupdate--title'>Confirmed Cases</h3>
+                            <div id='cofirmedCases' class="covidupdate--count"></div>
+                        </div>
+                        <div class='covidupdate'>
+                            <h3 class='covidupdate--title'>Tested Negative</h3>
+                            <div id='testedNegative' class="covidupdate--count"></div>
+                        </div>
+                        <div class='covidupdate'>
+                            <h3 class='covidupdate--title'>Recovered</h3>
+                            <div id='recovered' class="covidupdate--count"></div>
+                        </div>
+                        <div class='covidupdate'>
+                            <h3 class='covidupdate--title'>Death</h3>
+                            <div id='death' class="covidupdate--count"></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="hometab--containers block2 covidpatientlist--container">
+                    <div class="covidupdate--notes">
+                        <h2 class="hometab--heading block2--heading">Notes</h2>
+                        <div id='notes' class="notes"></div>
+                    </div>
+                    <div class="covidpatientlist--section">
+                        <h2 class='hometab--heading block2--heading'>Covid Patient List</h2>
+                        <div class="covidpatientlist--title">
+                            <div>
+                                <h3>Patient Number</h3>
+                                <div class="covidpatientlist--patientdetails">
+                                    <h3>Age</h3>
+                                    <h3>Gender</h3>
                                 </div>
-                                <h3>Barangay</h3>
-                                <h3>Status</h3>
                             </div>
-                            <div id='covidPatientList' class="covidpatientlist"></div>
+                            <h3>Barangay</h3>
+                            <h3>Status</h3>
                         </div>
-                        <div class="covidpatientlist--history">
-                            <h2 class="hometab--heading block2--heading">History</h2>
-                            <div id="history"></div>
-                        </div>
-                    </section>
-                    <section class="hometab--containers block3 announcement--container">
-                        <h2 class="hometab--heading announcement--heading">Announcements</h2>
-                        <div class="announcement--section" id='announcementSection'></div>
-                    </section>
-                    <section class="hometab--containers block4 map--container">
-                        <div class="map--layer">
-                            <h3>Base Layers</h3>
-                            <input type="radio" name='baseLayerRadioButton' value='OSMStandard' checked>Standard<br>
-                            <input type="radio" name='baseLayerRadioButton' value='OSMHumanitarian'>Humanitarian<br>        
-                        </div>
-                        <div id="js-map" class='map'></div>
-                    </section>
-                    <!-- <div class="overlay-container">
-                        <span class="overlay-text" id="feature-name"></span>
-                        <span class="overlay-text" id="feature-additional-info"></span>
-                    </div> -->
-                </div>
-                <div id="ProfileTab" class="tab--contents profile--tab">
-                    <section class="profiletab--containers profile--container"> 
-                        <div id="profile"></div>
-                    </section>
-                    <section class="profiletab--containers residents--container">
-                        <form id='residentsForm' role='form' method="put">
-                            <h3>Residents</h3>
-                            <div class="formtable--header">
-                                <div>
-                                    <p class="resident--details">Name</p>
-                                    <p class="resident--details">Contact Number</p>
-                                </div>
-                                <p>Positive</p>
-                                <p>Delete Resident</p>
-                            </div>
-                            <div class='residents--profile' id="residentsFormContainer"></div>
-                            <button class="residents--submitbutton profile--button blue--button" id='residentUpdateButton' type="submit">Update</button>
-                        </form>
-                    </section>
-                    <section class="profiletab--containers post--container">
-                        <form id='announcementForm' role="form" method="post">
-                            <h3 class="form--element">Post announcement</h3>
-                            <div class="form--element error-message" id="errorMessage"></div>
-                            <input class="form--element" type="text" name="Title" placeholder="Title">
-                            <textarea class="form--element  " name="Body" placeholder="Body" cols="30" rows="10"></textarea>
-                            <button class="form--element profile--button blue--button" id='postAnnouncementButton' type="submit">Post</button>
-                        </form>
-                    </section>
-                    <div class='profile--options'>
-                        <button class="profile--button blue--button" id="logout" type="button">Logout</button>
-                        <button class="profile--button blue--button" id="deleteAccount" type="button">Delete my Account</button>
-                    </div>  
-                </div>
+                        <div id='covidPatientList' class="covidpatientlist"></div>
+                    </div>
+                    <div class="covidpatientlist--history">
+                        <h2 class="hometab--heading block2--heading">History</h2>
+                        <div id="history"></div>
+                    </div>
+                </section>
+                <section class="hometab--containers block3 announcement--container">
+                    <h2 class="hometab--heading announcement--heading">Announcements</h2>
+                    <div class="announcement--section" id='announcementSection'></div>
+                </section>
+                <section class="hometab--containers block4 map--container">
+                    <div class="map--layer">
+                        <h3>Base Layers</h3>
+                        <input type="radio" name='baseLayerRadioButton' value='OSMStandard' checked>Standard<br>
+                        <input type="radio" name='baseLayerRadioButton' value='OSMHumanitarian'>Humanitarian<br>        
+                    </div>
+                    <div id="js-map" class='map'></div>
+                </section>
+                <!-- <div class="overlay-container">
+                    <span class="overlay-text" id="feature-name"></span>
+                    <span class="overlay-text" id="feature-additional-info"></span>
+                </div> -->
             </div>
-        <!-- </div> -->
+            <div id="ProfileTab" class="tab--contents profile--tab">
+                <section class="profiletab--containers profile--container"> 
+                    <div id="profile"></div>
+                </section>
+                <section class="profiletab--containers residents--container">
+                    <form id='residentsForm' role='form' method="put">
+                        <h3>Residents</h3>
+                        <div class="formtable--header">
+                            <div>
+                                <p class="resident--details">Name</p>
+                                <p class="resident--details">Contact Number</p>
+                            </div>
+                            <p>Positive</p>
+                            <p>Delete Resident</p>
+                        </div>
+                        <div class='residents--profile' id="residentsFormContainer"></div>
+                        <button class="residents--submitbutton profile--button blue--button" id='residentUpdateButton' type="submit">Update</button>
+                    </form>
+                </section>
+                <section class="profiletab--containers post--container">
+                    <form id='announcementForm' role="form" method="post">
+                        <h3 class="form--element">Post announcement</h3>
+                        <div class="form--element error-message" id="errorMessage"></div>
+                        <input class="form--element" type="text" name="Title" placeholder="Title">
+                        <textarea class="form--element  " name="Body" placeholder="Body" cols="30" rows="10"></textarea>
+                        <button class="form--element profile--button blue--button" id='postAnnouncementButton' type="submit">Post</button>
+                    </form>
+                </section>
+                <div class='profile--options'>
+                    <button class="profile--button blue--button" id="logout" type="button">Logout</button>
+                    <button class="profile--button blue--button" id="deleteAccount" type="button">Delete my Account</button>
+                </div>  
+            </div>
+        </div>
+            
+        <div id="loadingElement" class="loading--element">
+            <img src="./images/744.svg">
+        </div>
         <div id="successMessage" class="success-message"></div>
         <div class="overlay" id="overlay">
             <div class="popUp--container">

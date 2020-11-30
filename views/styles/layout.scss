@@ -102,6 +102,23 @@ nav{
     }
 }
 
+.loading--element{
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        height: 80px;
+        width: 80px;
+    }
+}
+
 .main{
     padding: 0 25px;
     margin-top: 115px;
@@ -110,6 +127,10 @@ nav{
 .main--heading{
     font-size: 1.25em;
     padding-bottom:15px;
+}
+
+.section--container{
+    display: none;
 }
 
 .container{
