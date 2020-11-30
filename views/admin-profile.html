@@ -17,7 +17,7 @@
         </nav>
         <div class="main page--transition" id="main">
             <div id="HomeTab" class="tab--contents home--tab">
-                <section class="hometab--containers block1 covidupdate--container">
+                <section class="tab--containers hometab--containers block1 covidupdate--container">
                     <h2 class='hometab--heading covidupdate--heading'>Covid Update <span id='covidUpdateDate'></span></h2>
                     <div class="covidupdate--section">
                         <div class='covidupdate'>
@@ -54,11 +54,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="hometab--containers block2 covidpatientlist--container">
-                    <div class="covidupdate--notes">
-                        <h2 class="hometab--heading block2--heading">Notes</h2>
-                        <div id='notes' class="notes"></div>
-                    </div>
+                <section class="tab--containers hometab--containers block2 covidpatientlist--container">
                     <div class="covidpatientlist--section">
                         <h2 class='hometab--heading block2--heading'>Covid Patient List</h2>
                         <div class="covidpatientlist--title">
@@ -74,16 +70,20 @@
                         </div>
                         <div id='covidPatientList' class="covidpatientlist"></div>
                     </div>
+                    <div class="covidupdate--notes">
+                        <h2 class="hometab--heading block2--heading">Notes</h2>
+                        <div id='notes' class="notes"></div>
+                    </div>
                     <div class="covidpatientlist--history">
                         <h2 class="hometab--heading block2--heading">History</h2>
                         <div id="history"></div>
                     </div>
                 </section>
-                <section class="hometab--containers block3 announcement--container">
+                <section class="tab--containers hometab--containers block3 announcement--container">
                     <h2 class="hometab--heading announcement--heading">Announcements</h2>
                     <div class="announcement--section" id='announcementSection'></div>
                 </section>
-                <section class="hometab--containers block4 map--container">
+                <section class="tab--containers hometab--containers block4 map--container">
                     <div class="map--layer">
                         <h3>Base Layers</h3>
                         <input type="radio" name='baseLayerRadioButton' value='OSMStandard' checked>Standard<br>
@@ -97,10 +97,42 @@
                 </div> -->
             </div>
             <div id="ProfileTab" class="tab--contents profile--tab">
-                <section class="profiletab--containers profile--container"> 
+                <section class="tab--containers profiletab--containers profile--container"> 
                     <div id="profile"></div>
                 </section>
-                <section class="profiletab--containers residents--container">
+                <section class="tab--containers profiletab--containers editcovidupdate--container"> 
+                    <form id='editCovidUpdate' method="put">
+                        <label for="date">Date
+                            <input class="form--element" type="text" name="date" id="editDate">
+                        </label>
+                        <label for="newCases">New Case
+                            <input class="form--element" type="number" name="newCases" id="editNewCases">
+                        </label>
+                        <label for="suspected">Suspected
+                            <input class="form--element" type="number" name="suspected" id="editSuspected">
+                        </label>
+                        <label for="probable">Probable
+                            <input class="form--element" type="number" name="probable" id="editProbable">
+                        </label>
+                        <label for="confirmedCases">Confirmed Cases
+                            <input class="form--element" type="number" name="confirmedCases" id="editConfirmedCases">
+                        </label>
+                        <label for="testedNegative">Tested Negative
+                            <input class="form--element" type="number" name="testedNegative" id="editTestedNegative">
+                        </label>
+                        <label for="recovered">Recovered
+                            <input class="form--element" type="number" name="recovered" id="editRecovered">
+                        </label>
+                        <label for="death">Death
+                            <input class="form--element" type="number" name="death" id="editDeath">
+                        </label>
+                        <label for="notes">Notes (Optional)
+                            <textarea class="form--element" name="notes" placeholder="Write notes"></textarea>
+                        </label>
+                        <button class='form--element profile--button blue--button' type="submit">Submit</button>
+                    </form>
+                </section>
+                <section class="tab--containers profiletab--containers residents--container">
                     <form id='residentsForm' role='form' method="put">
                         <h3>Residents</h3>
                         <div class="formtable--header">
@@ -115,13 +147,13 @@
                         <button class="residents--submitbutton profile--button blue--button" id='residentUpdateButton' type="submit">Update</button>
                     </form>
                 </section>
-                <section class="profiletab--containers post--container">
+                <section class="tab--containers profiletab--containers post--container">
                     <form id='announcementForm' role="form" method="post">
-                        <h3 class="form--element">Post announcement</h3>
-                        <div class="form--element error-message" id="errorMessage"></div>
-                        <input class="form--element" type="text" name="Title" placeholder="Title">
-                        <textarea class="form--element  " name="Body" placeholder="Body" cols="30" rows="10"></textarea>
-                        <button class="form--element profile--button blue--button" id='postAnnouncementButton' type="submit">Post</button>
+                        <h3 class="form--element announcementform--element">Post announcement</h3>
+                        <div class="form--element announcementform--element error-message" id="errorMessage"></div>
+                        <input class="form--element announcementform--element" type="text" name="Title" placeholder="Title">
+                        <textarea class="form--element announcementform--element  " name="Body" placeholder="Body"></textarea>
+                        <button class="form--element announcementform--element profile--button blue--button" id='postAnnouncementButton' type="submit">Post</button>
                     </form>
                 </section>
                 <div class='profile--options'>
@@ -132,7 +164,7 @@
         </div>
             
         <div id="loadingElement" class="loading--element">
-            <img src="./images/744.svg">
+            <img src="./images/loading.svg">
         </div>
         <div id="successMessage" class="success-message"></div>
         <div class="overlay" id="overlay">
@@ -142,10 +174,10 @@
                 <button class="no" id='overlayNoButton' type="button">No</button>
             </div>
         </div>
+        <script src="./openlayers/v6.4.3-dist/ol.js"></script>
         <script type="module" src="./js/admin-profile.js"></script>
         <script src="./js/profile.js"></script>
         <script src="./js/admin-map.js"></script>
-        <script src="./openlayers/v6.4.3-dist/ol.js"></script>
         <!-- <script type="module" src="./js/admin-announcement.js"></script> -->
     </body>
 </html>

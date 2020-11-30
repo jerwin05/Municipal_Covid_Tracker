@@ -104,10 +104,13 @@ nav {
   padding: 0 25px;
 }
 
-.hometab--containers {
+.tab--containers {
   background-color: #f3eac2;
   border-radius: 6px;
   margin-bottom: 20px;
+}
+
+.hometab--containers {
   padding: 20px;
 }
 
@@ -290,7 +293,7 @@ nav {
 
 .announcement--section pre {
   font-size: 15.5px;
-  line-height: 1.5;
+  line-height: 1.3;
 }
 
 .announcement--section small {
@@ -343,8 +346,6 @@ nav {
 }
 
 .profiletab--containers {
-  background-color: #f3eac2;
-  border-radius: 5px;
   padding: 15px 10px;
 }
 
@@ -382,6 +383,57 @@ nav {
   border: none;
   outline: none;
   padding: 5px 8px;
+}
+
+.form--element {
+  border-radius: 5px;
+  border: none;
+  padding: 9px 10px;
+  width: 100%;
+}
+
+.editcovidupdate--container form {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+}
+
+.editcovidupdate--container form label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.editcovidupdate--container form label input {
+  padding: 5px 7px;
+}
+
+.editcovidupdate--container form label input, .editcovidupdate--container form label textarea {
+  margin-top: 5px;
+}
+
+.editcovidupdate--container form label:last-of-type {
+  margin-top: 15px;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 /span 2;
+}
+
+.editcovidupdate--container form label:last-of-type textarea {
+  height: 70px;
+}
+
+.editcovidupdate--container form button {
+  margin-top: 10px;
 }
 
 .residents--container label:first-of-type {
@@ -469,10 +521,6 @@ nav {
   margin-top: 20px;
 }
 
-.post--container {
-  margin-top: 40px;
-}
-
 .post--container form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -495,14 +543,14 @@ nav {
   font-size: 15px;
 }
 
-.form--element {
+.announcementform--element {
   margin-bottom: 10px;
   border-radius: 5px;
   border: none;
   padding: 9px 10px;
 }
 
-.form--element:nth-child(2) {
+.announcementform--element:nth-child(2) {
   border-radius: 5px;
   border: none;
   border: 1px solid #ec524b;
@@ -510,7 +558,7 @@ nav {
   padding: 8px;
 }
 
-.form--element:last-child {
+.announcementform--element:last-child {
   margin: 0;
 }
 

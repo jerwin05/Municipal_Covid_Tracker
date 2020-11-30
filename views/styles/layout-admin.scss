@@ -90,10 +90,13 @@ nav{
     padding:0 25px;
 }
 
-.hometab--containers{
+.tab--containers{
     background-color: #f3eac2;
     border-radius: 6px;
     margin-bottom:20px;
+}
+
+.hometab--containers{
     padding: 20px;
 }
 
@@ -244,7 +247,7 @@ nav{
     }
     pre{
         font-size: 15.5px;
-        line-height: 1.5;
+        line-height: 1.3;
     }
     small{
         font-size: 12px;
@@ -297,8 +300,6 @@ nav{
 }
 
 .profiletab--containers{
-    background-color: #f3eac2;
-    border-radius: 5px;
     padding: 15px 10px;
     h3{
         margin-bottom: 6px;
@@ -334,6 +335,42 @@ nav{
     border: none;
     outline: none;
     padding:5px 8px;
+}
+
+.form--element{
+    border-radius: 5px;
+    border: none;
+    padding: 9px 10px;
+    width: 100%;
+}
+
+.editcovidupdate--container{
+    form{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        gap: 10px;
+        label{
+            display: flex;
+            flex-direction: column;
+            input{
+                padding: 5px 7px;
+            }
+            input, textarea{
+                margin-top: 5px;
+            }   
+        }
+        label:last-of-type{
+            margin-top: 15px;
+            grid-column: 1 /span 2;   
+            textarea{
+                height: 70px;
+            }   
+        }
+        button{
+            margin-top: 10px;
+        }
+    }
 }
 
 .residents--container{
@@ -409,7 +446,6 @@ nav{
 }
 
 .post--container{
-    margin-top: 40px;
     form{
         display: flex;
         flex-direction: column;
@@ -426,20 +462,20 @@ nav{
     }
 }
 
-.form--element{
+.announcementform--element{
     margin-bottom: 10px;
     border-radius: 5px;
     border: none;
     padding: 9px 10px;
 }
-.form--element:nth-child(2){
+.announcementform--element:nth-child(2){
     border-radius: 5px;
     border: none;
     border: 1px solid #ec524b;
     background-color: #FFFFFF;
     padding:8px;
 }
-.form--element:last-child{
+.announcementform--element:last-child{
     margin: 0;
 }
 

@@ -21,10 +21,10 @@ let connection = mysql.createConnection(options);
 let sessionStore = new MySQLStore({}, connection);
 connection.connect((err)=>{
   if (!err){
-    console.log("Connected");
+    console.log("Database Connected");
   }
   else{
-    console.log("Connection Failed : "+JSON.stringify(err,undefined,2));
+    console.log("Database Connection Failed : "+JSON.stringify(err,undefined,2));
   }
 });
 global.db = connection;

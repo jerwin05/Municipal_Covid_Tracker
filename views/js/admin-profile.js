@@ -10,6 +10,14 @@ const testedNegative=document.getElementById('testedNegative');
 const recovered=document.getElementById('recovered');
 const death=document.getElementById('death');
 const covidUpdateDate=document.getElementById('covidUpdateDate');
+const editNewCases=document.getElementById('editNewCases');
+const editSuspected=document.getElementById('editSuspected');
+const editProbable=document.getElementById('editProbable');
+const editConfirmedCases=document.getElementById('editConfirmedCases');
+const editTestedNegative=document.getElementById('editTestedNegative');
+const editRecovered=document.getElementById('editRecovered');
+const editDeath=document.getElementById('editDeath');
+const editDate=document.getElementById('editDate');
 const notes=document.getElementById('notes');
 const covidPatientList=document.getElementById('covidPatientList');
 const loadingElement=document.getElementById('loadingElement');
@@ -70,15 +78,32 @@ const getCovidUpdates=()=>{
     response.json()
     .then(result=>{
       const pre=document.createElement('pre');
+      const activeCasesResult= result[0].active_cases;
+      const newCasesResult= result[0].new_cases;
+      const suspectedResult= result[0].suspected;
+      const probableResult= result[0].probable;
+      const confirmedCasesResult= result[0].confirmed_cases;
+      const testedNegativeResult= result[0].tested_negative;
+      const recoveredResult= result[0].recovered;
+      const deathResult= result[0].death;
+      const dateResult=result[0].date_updated.substring(4, 16);
 
-      activeCases.textContent=result[0].active_cases;
-      newCases.textContent=result[0].new_cases;
-      suspected.textContent=result[0].suspected;
-      probable.textContent=result[0].probable;
-      confirmedCases.textContent=result[0].confirmed_cases;
-      testedNegative.textContent=result[0].tested_negative;
-      recovered.textContent=result[0].recovered;
-      death.textContent=result[0].death;
+      activeCases.textContent=activeCasesResult;
+      newCases.textContent=newCasesResult;
+      suspected.textContent=suspectedResult;
+      probable.textContent=probableResult;
+      confirmedCases.textContent=confirmedCasesResult;
+      testedNegative.textContent=testedNegativeResult;
+      recovered.textContent=recoveredResult;
+      death.textContent=deathResult;
+      editNewCases.value=newCasesResult;
+      editSuspected.value=suspectedResult;
+      editProbable.value=probableResult;
+      editConfirmedCases.value=confirmedCasesResult;
+      editTestedNegative.value=testedNegativeResult;
+      editRecovered.value=recoveredResult;
+      editDeath.value=deathResult;
+      editDate.value=dateResult;
 
       if(result[0].new_cases>1){
         newCasesTitle.textContent='New Cases';
@@ -92,8 +117,7 @@ const getCovidUpdates=()=>{
       }
 
       covidUpdateDate.className='covidupdate--date';
-      const updateDate=result[0].date_updated.substring(4, 16);
-      covidUpdateDate.textContent=`As of ${updateDate}`;
+      covidUpdateDate.textContent=`As of ${dateResult}`;
 
       pre.textContent=result[0].notes;
       notes.appendChild(pre);
@@ -139,6 +163,7 @@ const getPositivePatients=()=>{
 
 //get announcements from db
 const getAnnouncements=()=>{
+  loadingElement.style.display=''; 
   fetch(announcementAPI_URL,{
   }).then(response=>{
 
@@ -170,6 +195,7 @@ const getAnnouncements=()=>{
         }
 
         button.addEventListener('click',()=>{
+          loadingElement.style.display=''; 
           fetch(announcementAPI_URL, {//send object to the server
             method: 'DELETE',
             body: JSON.stringify(announcementid),//make object in json format
