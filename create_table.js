@@ -42,7 +42,7 @@ const create_table=()=>{
         }
       });
 
-      let currentDate=new Date();
+      let currentDate=new Date().toString().substring(4, 16);
       sql = `INSERT INTO covid_updates (probable,death,new_cases,active_cases,suspected,tested_negative,confirmed_cases,recovered,date_updated) VALUES (0,0,0,0,0,0,0,0,'${currentDate}');`;
       db.query(sql, function(err, result) {
         if(result){

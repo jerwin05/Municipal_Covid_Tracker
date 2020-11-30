@@ -7,7 +7,6 @@ exports.get_update=(req,res)=>{
    });
 }
 exports.update_data=(req,res)=>{
-  console.log('received');
   const date_updated=req.body.date_updated;
   const new_cases=req.body.new_cases;
   const suspected=req.body.suspected;
@@ -26,7 +25,6 @@ exports.update_data=(req,res)=>{
     db.query(sql, function(err, result) {
       if(result){
         res.send();
-        console.log('updated 1');
       }
     });
   }else{
@@ -36,7 +34,6 @@ exports.update_data=(req,res)=>{
     db.query(sql, function(err, result) {
      if(result){
           res.send();
-          console.log('updated 2');
      }
   });
 

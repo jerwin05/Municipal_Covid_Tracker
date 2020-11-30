@@ -87,7 +87,7 @@ const getCovidUpdates=()=>{
       const testedNegativeResult= result[0].tested_negative;
       const recoveredResult= result[0].recovered;
       const deathResult= result[0].death;
-      const dateResult=result[0].date_updated.substring(4, 16);
+      const dateResult=result[0].date_updated;
 
       activeCases.textContent=activeCasesResult;
       newCases.textContent=newCasesResult;
@@ -196,7 +196,6 @@ const getAnnouncements=()=>{
         }
 
         button.addEventListener('click',()=>{
-          loadingElement.style.display=''; 
           fetch(announcementAPI_URL, {//send object to the server
             method: 'DELETE',
             body: JSON.stringify(announcementid),//make object in json format
@@ -229,6 +228,7 @@ getAnnouncements();
 
 editCovidUpdateForm.addEventListener('submit',(event)=>{
   event.preventDefault();
+  loadingElement.style.display=''; 
   const formData = new FormData(editCovidUpdateForm);
   const formDate = formData.get('date');
   const formNewCases = formData.get('newCases');
@@ -260,6 +260,13 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
       headers: {
         'content-type': 'application/json'
       }
+    }).then(()=>{
+      loadingElement.style.display='none'; 
+      successMessage.textContent='Updated';
+      successMessage.style.bottom='30';
+      setTimeout(()=>{
+        successMessage.style.bottom='-45';
+      },3000);
     });
   }else{
     obj={
@@ -278,6 +285,13 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
       headers: {
         'content-type': 'application/json'
       }
+    }).then(()=>{
+      loadingElement.style.display='none'; 
+      successMessage.textContent='Updated';
+      successMessage.style.bottom='30';
+      setTimeout(()=>{
+        successMessage.style.bottom='-45';
+      },3000);
     });
   }
 
