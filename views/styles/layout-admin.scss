@@ -554,203 +554,222 @@ nav{
     grid-area: no;
 }
 
-@media only screen and (min-width: 554px) {
+
+@media only screen and (min-width: 472px) {
+    .covidpatientlist>div{
+        div p{
+            justify-content: center;
+        }
+        div{
+            text-align: center;
+        }
+    }
+}
+
+@media only screen and (min-width: 613px) {
     .main{
         padding-top: 90px;
     }
+
 }
 
-@media only screen and (min-width: 610px) {
-    .residents--container label div{
-        display: flex;
-        justify-content: space-between;
-    }
+// @media only screen and (min-width: 554px) {
+//     .main{
+//         padding-top: 90px;
+//     }
+// }
 
-    .formtable--header {
-        div{
-            display: flex;
-            justify-content: space-between;
-            p:last-of-type{
-                margin-right: 15px;
-            }
-        }     
-    }
+// @media only screen and (min-width: 610px) {
+//     .residents--container label div{
+//         display: flex;
+//         justify-content: space-between;
+//     }
 
-    .resident--mobNo{
-        margin:0 36px 0 10px;
-    }
+//     .formtable--header {
+//         div{
+//             display: flex;
+//             justify-content: space-between;
+//             p:last-of-type{
+//                 margin-right: 15px;
+//             }
+//         }     
+//     }
 
-    .resident--details{
-        display: inline;
-    }
-}
+//     .resident--mobNo{
+//         margin:0 36px 0 10px;
+//     }
 
-@media only screen and (min-width: 634px) {
-    .map--layer{
-        font-size: 15px;
-        bottom: 15px;
-        left: 15px;
-    }
-}
+//     .resident--details{
+//         display: inline;
+//     }
+// }
 
-@media only screen and (min-width: 660px) {
-    // .announcement--element:nth-child(3){
-    //     margin-bottom: 15px;
-    // }
-    .announcement--container{
-        button{
-            font-size: 16px;
-            font-weight: 500;
-        }
-    }
-}
+// @media only screen and (min-width: 634px) {
+//     .map--layer{
+//         font-size: 15px;
+//         bottom: 15px;
+//         left: 15px;
+//     }
+// }
 
-@media only screen and (min-width: 820px) {
-    nav{
-        display: flex;
-        justify-content: space-between;
-        padding:0 25px;
-        height: 50px;
-    }
+// @media only screen and (min-width: 660px) {
+//     // .announcement--element:nth-child(3){
+//     //     margin-bottom: 15px;
+//     // }
+//     .announcement--container{
+//         button{
+//             font-size: 16px;
+//             font-weight: 500;
+//         }
+//     }
+// }
 
-    .heading{
-        padding:0;
-        font-size: 25px;
-        align-self: center;
-    }
+// @media only screen and (min-width: 820px) {
+//     nav{
+//         display: flex;
+//         justify-content: space-between;
+//         padding:0 25px;
+//         height: 50px;
+//     }
 
-    .nav--options{
-        min-width: 200px;
-        li{
-            position: relative;
-            padding: 0;
-            text-align: center;
-            button{
-                font-size: 17px;
-                font-weight: bold;
-            }
-        }
-    }
-    .page--transition{
-        transition: none;
-    }
-    .main{
-        width: 200%;
-        padding-top: 65px;
-        height: 97vh;
-    }
-    .home--tab{
-        display: flex;
-    }
-    .hometab--containers{
-        height: 100%;
-    }
-    .map--container{
-        flex: 2;
-    }
-    .announcement--container{
-        flex: 1;
-        margin-left: 20px;
-    }
+//     .heading{
+//         padding:0;
+//         font-size: 25px;
+//         align-self: center;
+//     }
 
-    .profile--tab{
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        grid-template-areas:
-            'adminProfile adminProfile'
-            'residents post';
-        gap: 20px;
-    }
+//     .nav--options{
+//         min-width: 200px;
+//         li{
+//             position: relative;
+//             padding: 0;
+//             text-align: center;
+//             button{
+//                 font-size: 17px;
+//                 font-weight: bold;
+//             }
+//         }
+//     }
+//     .page--transition{
+//         transition: none;
+//     }
+//     .main{
+//         width: 200%;
+//         padding-top: 65px;
+//         height: 97vh;
+//     }
+//     .home--tab{
+//         display: flex;
+//     }
+//     .hometab--containers{
+//         height: 100%;
+//     }
+//     .map--container{
+//         flex: 2;
+//     }
+//     .announcement--container{
+//         flex: 1;
+//         margin-left: 20px;
+//     }
 
-    .profiletab--containers{
-        padding: 20px;
-    }
+//     .profile--tab{
+//         display: grid;
+//         grid-template-columns: 2fr 1fr;
+//         grid-template-areas:
+//             'adminProfile adminProfile'
+//             'residents post';
+//         gap: 20px;
+//     }
 
-    .profile--container{
-        grid-area: adminProfile;
-        height: 5vh;
-        padding: 0;
-    }
+//     .profiletab--containers{
+//         padding: 20px;
+//     }
 
-    .profile--button {
-        padding: 7px;
-    }
+//     .profile--container{
+//         grid-area: adminProfile;
+//         height: 5vh;
+//         padding: 0;
+//     }
 
-    .profile--details {
-        margin:0;
-    }
+//     .profile--button {
+//         padding: 7px;
+//     }
 
-    .residents--container{
-        grid-area: residents;
-        label button{
-            width: 75px;
-            height: 27px;
-        }
-    }
+//     .profile--details {
+//         margin:0;
+//     }
 
-    .resident--name {
-        margin: 0;
-    }
+//     .residents--container{
+//         grid-area: residents;
+//         label button{
+//             width: 75px;
+//             height: 27px;
+//         }
+//     }
 
-    .residents--submitbutton {
-        font-size: 16px;
-    }
+//     .resident--name {
+//         margin: 0;
+//     }
 
-    .post--container{
-        grid-area: post;
-        margin: 0;
-        align-self: start;
-    }
+//     .residents--submitbutton {
+//         font-size: 16px;
+//     }
 
-    .profile--options{
-        position: absolute;
-        top: 0;
-        right: 25;
-        margin: 0;
-        button{
-            font-size: 15px;
-            cursor: pointer;
-            z-index: 5;
-        }
-    }
-    .popUp--container{    
-        font-size: 18px;
-        button{
-            font-size: 14px;
-            padding: 4px 0;
-        }
-    }
-    .residents--profile{
-        height: 55vh;
-    }
-}
+//     .post--container{
+//         grid-area: post;
+//         margin: 0;
+//         align-self: start;
+//     }
 
-@media only screen and (min-width: 850px) {
-    .nav--options{
-        width: 30%;  
-    }
-}
+//     .profile--options{
+//         position: absolute;
+//         top: 0;
+//         right: 25;
+//         margin: 0;
+//         button{
+//             font-size: 15px;
+//             cursor: pointer;
+//             z-index: 5;
+//         }
+//     }
+//     .popUp--container{    
+//         font-size: 18px;
+//         button{
+//             font-size: 14px;
+//             padding: 4px 0;
+//         }
+//     }
+//     .residents--profile{
+//         height: 55vh;
+//     }
+// }
 
-@media only screen and (min-width: 1000px) {
-    .nav--options{
-        margin-right: 25px;
-        li button{
-            font-size: 18px;
-            font-weight: bold;
-        }
-    }
-    .map--layer{
-        font-size: 18px;
-        bottom: 15px;
-        left: 15px;
-    }
-    .success-message{
-        right: 30;
-    }
-}
+// @media only screen and (min-width: 850px) {
+//     .nav--options{
+//         width: 30%;  
+//     }
+// }
 
-@media only screen and (min-width: 1200px) {
-    .nav--options{
-        margin-right: 45px;      
-    }
-}
+// @media only screen and (min-width: 1000px) {
+//     .nav--options{
+//         margin-right: 25px;
+//         li button{
+//             font-size: 18px;
+//             font-weight: bold;
+//         }
+//     }
+//     .map--layer{
+//         font-size: 18px;
+//         bottom: 15px;
+//         left: 15px;
+//     }
+//     .success-message{
+//         right: 30;
+//     }
+// }
+
+// @media only screen and (min-width: 1200px) {
+//     .nav--options{
+//         margin-right: 45px;      
+//     }
+// }

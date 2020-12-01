@@ -121,6 +121,7 @@ const getCovidUpdates=()=>{
       covidUpdateDate.textContent=`As of ${dateResult}`;
 
       pre.textContent=result[0].notes;
+      notes.innerHTML='';
       notes.appendChild(pre);
       
     })
@@ -144,11 +145,13 @@ const getPositivePatients=()=>{
 
         patientNumber.textContent=element.patient_no;
         age.textContent=element.age;
-        gender.textContent=element.gender;
-        barangay.textContent=element.barangay;
-        status.textContent=element.status;
+        gender.textContent=element.gender.toLowerCase();
+        barangay.textContent=element.barangay.toLowerCase();
+        status.textContent=element.status.toLowerCase();
 
-        div2.className='covidpatientlist--patientdetails';
+        mainDiv.className='covidpatientlist--table-templatecolumns';
+        div1.className='covidpatientlist--table-grid';
+        div2.className='covidpatientlist--patientdetails covidpatientlist--table-grid';
         div2.appendChild(age);
         div2.appendChild(gender);
         div1.appendChild(patientNumber);
@@ -239,7 +242,7 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
   const formRecovered = formData.get('recovered');
   const formDeath = formData.get('death');
   const formNotes = formData.get('notes');
-
+  editCovidUpdateForm.reset();
   let obj={};  
 
   if(formNotes){
@@ -252,7 +255,7 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
       tested_negative:formTestedNegative,
       recovered:formRecovered,
       death:formDeath,
-      notes:formNotes,
+      notes:formNotes
     }
     fetch(covidupdateAPI_URL,{
       method:'PUT',
@@ -261,6 +264,7 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
         'content-type': 'application/json'
       }
     }).then(()=>{
+      getCovidUpdates();
       loadingElement.style.display='none'; 
       successMessage.textContent='Updated';
       successMessage.style.bottom='30';
@@ -286,6 +290,7 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
         'content-type': 'application/json'
       }
     }).then(()=>{
+      getCovidUpdates();
       loadingElement.style.display='none'; 
       successMessage.textContent='Updated';
       successMessage.style.bottom='30';
@@ -294,11 +299,6 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
       },3000);
     });
   }
-
-  setTimeout(()=>{  
-    getCovidUpdates();
-  },200);
-
 })
 
 //execute event on click of post on announcement
