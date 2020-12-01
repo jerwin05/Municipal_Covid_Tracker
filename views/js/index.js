@@ -64,8 +64,8 @@ const getCovidUpdates=()=>{
       }
 
       covidUpdateDate.className='covidupdate--date';
-      const updateDate=result[0].date_updated.substring(4, 16);
-      covidUpdateDate.textContent=`As of ${updateDate}`;
+      const updateDate=result[0].date_updated;
+      covidUpdateDate.textContent=`${updateDate}`;
 
       pre.textContent=result[0].notes;
       notes.appendChild(pre);
@@ -95,7 +95,10 @@ const getPositivePatients=()=>{
         barangay.textContent=element.barangay;
         status.textContent=element.status;
 
-        div2.className='covidpatientlist--patientdetails';
+        mainDiv.className='covidpatientlist--table-grid';
+        div1.className='covidpatientlist--table-grid covidpatientlist--table-templatecolumns';
+        div2.className='covidpatientlist--patientdetails covidpatientlist--table-grid';
+
         div2.appendChild(age);
         div2.appendChild(gender);
         div1.appendChild(patientNumber);

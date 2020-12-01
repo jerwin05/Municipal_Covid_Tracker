@@ -31,7 +31,7 @@
             <div id="sectionContainer" class="section--container">
                 <section class="container block1 covidupdate--container">
                     <h2 class='main--heading covidupdate--heading'>Covid Update <span id='covidUpdateDate'></span></h2>
-                    <div class="covidupdate--section">
+                    <div class="covidupdate--section customscrollbar">
                         <div class='covidupdate'>
                             <h3 id='newCasesTitle' class='covidupdate--title'>New Case</h3>
                             <div id='newCases' class="covidupdate--count"></div>
@@ -69,10 +69,10 @@
                 <section class="container block2 covidpatientlist--container">
                     <div class="covidpatientlist--section">
                         <h2 class='main--heading block2--heading'>Covid Patient List</h2>
-                        <div class="covidpatientlist--title">
-                            <div>
+                        <div class="covidpatientlist--title covidpatientlist--table-grid">
+                            <div class="covidpatientlist--table-templatecolumns covidpatientlist--table-grid">
                                 <h3>Patient Number</h3>
-                                <div class="covidpatientlist--patientdetails">
+                                <div class="covidpatientlist--patientdetails covidpatientlist--table-grid">
                                     <h3>Age</h3>
                                     <h3>Gender</h3>
                                 </div>
@@ -91,19 +91,21 @@
                         <div id="history"></div>
                     </div>
                 </section>
-                <section class="container block3 announcement--container">
-                    <h2 class="main--heading announcement--heading">Announcements</h2>
-                    <div class="announcement--section" id='announcementSection'></div>
-                </section>
-                <section class="container block4 map--container">
-                    <div class="map--layer">
-                        <h3>Base Layers</h3>
-                        <input type="radio" name='baseLayerRadioButton' value='OSMStandard' checked>Standard<br>
-                        <input type="radio" name='baseLayerRadioButton' value='OSMHumanitarian'>Humanitarian<br>        
-                    </div>
-                    <button id='refresh' type="button">Refresh</button>
-                    <div id="js-map" class='map'></div>
-                </section>
+                <div class="block3  customscrollbar">
+                    <section class="container announcement--container">
+                        <h2 class="main--heading announcement--heading">Announcements</h2>
+                        <div class="announcement--section customscrollbar" id='announcementSection'></div>
+                    </section>
+                    <section class="container map--container">
+                        <div class="map--layer">
+                            <h3>Base Layers</h3>
+                            <input type="radio" name='baseLayerRadioButton' value='OSMStandard' checked>Standard<br>
+                            <input type="radio" name='baseLayerRadioButton' value='OSMHumanitarian'>Humanitarian<br>        
+                        </div>
+                        <button id='refresh' type="button">Refresh</button>
+                        <div id="js-map" class='map'></div>
+                    </section>
+                </div>
             </div>
         </div>
     <!-- </div> -->

@@ -149,8 +149,8 @@ const getPositivePatients=()=>{
         barangay.textContent=element.barangay.toLowerCase();
         status.textContent=element.status.toLowerCase();
 
-        mainDiv.className='covidpatientlist--table-templatecolumns';
-        div1.className='covidpatientlist--table-grid';
+        mainDiv.className='covidpatientlist--table-grid';
+        div1.className='covidpatientlist--table-grid covidpatientlist--table-templatecolumns';
         div2.className='covidpatientlist--patientdetails covidpatientlist--table-grid';
         div2.appendChild(age);
         div2.appendChild(gender);

@@ -129,9 +129,25 @@ nav {
   width: 45px;
 }
 
+.customscrollbar::-webkit-scrollbar {
+  width: 3px;
+}
+
+.customscrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.customscrollbar::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.274);
+  border-radius: 5px;
+}
+
+.customscrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(85, 85, 85, 0.582);
+}
+
 .main {
-  padding: 0 25px;
-  margin-top: 115px;
+  padding: 115px 25px 0;
 }
 
 .main--heading {
@@ -175,6 +191,7 @@ nav {
   display: block;
   font-weight: 400;
   text-decoration: underline;
+  font-size: .9em;
 }
 
 .covidupdate {
@@ -311,11 +328,11 @@ nav {
 }
 
 .announcement--section h3 {
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 .announcement--section pre {
-  font-size: 15.5px;
+  font-size: 14px;
   line-height: 1.3;
 }
 
@@ -392,7 +409,7 @@ nav {
 
 @media only screen and (min-width: 441px) {
   .main {
-    margin-top: 95px;
+    padding-top: 95px;
   }
 }
 
@@ -427,14 +444,209 @@ nav {
     display: block;
   }
   .covidpatientlist > div, .covidpatientlist--title {
-    -ms-grid-columns: 2.3fr 1fr 1fr;
-        grid-template-columns: 2.3fr 1fr 1fr;
+    -ms-grid-columns: 2.5fr 1fr 1fr;
+        grid-template-columns: 2.5fr 1fr 1fr;
+  }
+  .covidpatientlist > div h3, .covidpatientlist--title h3 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .covidpatientlist > div p, .covidpatientlist--title p {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .main--heading {
+    font-size: 1.4em;
+  }
+  .covidpatientlist--title h3 {
+    font-size: 1.1em;
+  }
+  .covidpatientlist p {
+    font-size: 15.5px;
+  }
+  .notes pre {
+    font-size: 15.5px;
+  }
+  .announcement--section pre {
+    font-size: 15.5px;
+  }
+  .announcement--section h3 {
+    font-size: 1.1em;
+  }
+  .announcement--section small {
+    font-size: 13px;
   }
 }
 
 @media only screen and (min-width: 717px) {
   .main {
-    margin-top: 75px;
+    padding-top: 75px;
+  }
+  .heading {
+    padding-top: 7px;
+  }
+  .map--layer {
+    font-size: 15px;
+    padding: 7px;
+    bottom: 15px;
+    left: 15px;
+  }
+}
+
+@media only screen and (min-width: 740px) {
+  .burger {
+    position: absolute;
+    top: 15px;
+    left: 25px;
+  }
+  nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .main {
+    position: relative;
+  }
+  .container {
+    margin-bottom: 30px;
+  }
+  .block2, .block3 {
+    margin-left: 220px;
+  }
+  .covidupdate--container {
+    position: fixed;
+    width: 200px;
+  }
+  .covidupdate--section {
+    overflow-y: scroll;
+    height: 70.5vh;
+  }
+  .announcement--section {
+    height: 72vh;
+  }
+  .map--container {
+    width: unset;
+  }
+  .container:last-child {
+    margin-bottom: 18px;
+  }
+}
+
+@media only screen and (min-width: 901px) {
+  .main {
+    padding-top: 67px;
+  }
+  nav {
+    padding: 15px 25px;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    padding-top: 14px;
+  }
+  .burger {
+    display: none;
+  }
+  .heading {
+    width: 70%;
+    -webkit-box-flex: 2;
+        -ms-flex: 2;
+            flex: 2;
+    margin-left: 4px;
+    padding: 0;
+  }
+  .nav-options {
+    position: static;
+    background-image: none;
+    -webkit-transform: none;
+            transform: none;
+    min-width: 210px;
+    height: inherit;
+    z-index: 0;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    font-weight: bold;
+    font-size: 18px;
+    -webkit-box-flex: .6;
+        -ms-flex: .6;
+            flex: .6;
+  }
+  .nav-options li {
+    opacity: 1;
+    margin: 0;
+  }
+  .dropdown {
+    position: relative;
+    cursor: pointer;
+  }
+  .dropdown i {
+    display: inline;
+    position: relative;
+    top: 1px;
+  }
+  .dropdown-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 106px;
+    padding: 25px 20px 8px 12px;
+    display: none;
+    background-color: #f5e9b0;
+    margin: 0;
+    z-index: -1;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+  }
+  .dropdown-menu li {
+    margin: 10px 0;
+    padding-bottom: 5px;
+    border-bottom: 1.7px solid black;
+  }
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 1125px) {
+  .block2 {
+    margin-right: 28.5vw;
+  }
+  .block3 {
+    position: fixed;
+    right: 25;
+    width: 27vw;
+    margin-left: 0;
+    top: 67;
+    overflow-y: scroll;
+    height: 86vh;
+  }
+  .container:last-child {
+    margin-bottom: 0;
   }
 }
 
