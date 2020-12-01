@@ -150,9 +150,21 @@ nav {
   padding: 115px 25px 0;
 }
 
-.main--heading {
+.main--title {
   font-size: 1.25em;
   padding-bottom: 15px;
+}
+
+.main--heading h3 {
+  font-size: 1em;
+}
+
+.main--body p, .main--body pre {
+  font-size: 14px;
+}
+
+.main--body small {
+  font-size: 12px;
 }
 
 .section--container {
@@ -227,10 +239,6 @@ nav {
   padding: 15px;
 }
 
-.notes pre {
-  font-size: 14px;
-}
-
 .covidpatientlist--container > div {
   margin-bottom: 30px;
 }
@@ -275,7 +283,6 @@ nav {
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
-  font-size: 14px;
 }
 
 .covidpatientlist > div:first-child {
@@ -327,17 +334,8 @@ nav {
   padding: 13px;
 }
 
-.announcement--section h3 {
-  font-size: 1em;
-}
-
 .announcement--section pre {
-  font-size: 14px;
   line-height: 1.3;
-}
-
-.announcement--section small {
-  font-size: 12px;
 }
 
 .announcement--element {
@@ -472,25 +470,16 @@ nav {
 }
 
 @media only screen and (min-width: 700px) {
-  .main--heading {
+  .main--title {
     font-size: 1.4em;
   }
-  .covidpatientlist--title h3 {
+  .main--heading h3 {
     font-size: 1.1em;
   }
-  .covidpatientlist p {
+  .main--body p, .main--body pre {
     font-size: 15.5px;
   }
-  .notes pre {
-    font-size: 15.5px;
-  }
-  .announcement--section pre {
-    font-size: 15.5px;
-  }
-  .announcement--section h3 {
-    font-size: 1.1em;
-  }
-  .announcement--section small {
+  .main--body small {
     font-size: 13px;
   }
 }
@@ -561,8 +550,9 @@ nav {
   }
   nav {
     padding: 15px 25px;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     padding-top: 14px;
   }
   .burger {
@@ -570,9 +560,9 @@ nav {
   }
   .heading {
     width: 70%;
-    -webkit-box-flex: 2;
-        -ms-flex: 2;
-            flex: 2;
+    -webkit-box-flex: 5.9;
+        -ms-flex: 5.9;
+            flex: 5.9;
     margin-left: 4px;
     padding: 0;
   }
@@ -581,7 +571,7 @@ nav {
     background-image: none;
     -webkit-transform: none;
             transform: none;
-    min-width: 210px;
+    min-width: 100px;
     height: inherit;
     z-index: 0;
     -webkit-box-orient: horizontal;
@@ -592,9 +582,9 @@ nav {
         justify-content: space-around;
     font-weight: bold;
     font-size: 18px;
-    -webkit-box-flex: .6;
-        -ms-flex: .6;
-            flex: .6;
+    -webkit-box-flex: .7;
+        -ms-flex: .7;
+            flex: .7;
   }
   .nav-options li {
     opacity: 1;

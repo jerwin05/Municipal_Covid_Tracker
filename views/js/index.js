@@ -67,6 +67,7 @@ const getCovidUpdates=()=>{
       const updateDate=result[0].date_updated;
       covidUpdateDate.textContent=`${updateDate}`;
 
+      pre.className='main--body';
       pre.textContent=result[0].notes;
       notes.appendChild(pre);
       
@@ -129,8 +130,8 @@ const getAnnouncements=()=>{
         const date = document.createElement('small');
 
         body.textContent = announcement.body;
-        title.className = 'announcement--element';
-        body.className = 'announcement--element';
+        title.className = 'announcement--element main--heading';
+        body.className = 'announcement--element main--body';
         date.className = 'announcement--element';
         title.textContent = announcement.title;
         date.textContent = new Date(announcement.date);
