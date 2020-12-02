@@ -55,7 +55,7 @@
                     </div>
                 </section>
                 <section class="tab--containers hometab--containers block2 covidpatientlist--container">
-                    <div class="covidpatientlist--section">
+                    <form class="covidpatientlist--form" id='covidPatientListForm' role='form' method="put">
                         <h2 class='main--title block2--heading'>Covid Patient List</h2>
                         <div class="covidpatientlist--title covidpatientlist--table-grid main--heading">
                             <div class="covidpatientlist--table-templatecolumns covidpatientlist--table-grid">
@@ -68,8 +68,19 @@
                             <h3>Barangay</h3>
                             <h3>Status</h3>
                         </div>
-                        <div id='covidPatientList' class="covidpatientlist main--body"></div>
-                    </div>
+                        <div id='covidPatientList' class="covidpatientlist main--body">
+                            <form id='addPatientForm' role='form' method="POST">
+                                <input name="patient_number" placeholder="patient number" type="text">
+                                <input name="age" placeholder="age" type="number">
+                                <input name="gender" placeholder="gender" type="text">
+                                <input name="barangay" placeholder="barangay" type="text">
+                                <input name="status" placeholder="status" type="text">
+                                <button class="residents--submitbutton profile--button blue--button" id='addPatientButton2' type="button">Add</button>
+                            </form>
+                        </div>
+                        <button class="residents--submitbutton profile--button blue--button" id='addPatientButton1' type="button">Add Patient</button>
+                        <button class="residents--submitbutton profile--button blue--button" id='editPatientButton' type="submit">Update</button>
+                    </form>
                     <div class="covidupdate--notes">
                         <h2 class="main--title block2--heading">Notes</h2>
                         <div id='notes' class="notes main--body"></div>
@@ -130,7 +141,7 @@
                         <button class='form--element profile--button blue--button' type="submit">Submit</button>
                     </form>
                 </section>
-                <section class="tab--containers profiletab--containers residents--container">
+                <!-- <section class="tab--containers profiletab--containers residents--container">
                     <form id='residentsForm' role='form' method="put">
                         <h2 class="main--heading main--title">Update Patient Status</h2>
                         <div class="covidpatientlist--title">
@@ -144,11 +155,12 @@
                             <h3>Barangay</h3>
                             <h3>Status</h3>
                         </div>
-                        <!-- <div class='residents--profile' id="residentsFormContainer"></div> -->
+                        <div class='residents--profile' id="residentsFormContainer"></div>
                         <div id='covidPatientList' class="covidpatientlist"></div>
-                        <button class="residents--submitbutton profile--button blue--button" id='residentUpdateButton' type="submit">Update</button>
+                        <button class="residents--submitbutton profile--button blue--button" id='addPatientButton' type="button">Add</button>
+                        <button class="residents--submitbutton profile--button blue--button" id='editPatientButton' type="submit">Update</button>
                     </form>
-                </section>
+                </section> -->
                 <section class="tab--containers profiletab--containers post--container">
                     <form id='announcementForm' role="form" method="post">
                         <h3 class="form--element announcementform--element main--title">Post announcement</h3>

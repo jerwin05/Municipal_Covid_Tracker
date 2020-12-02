@@ -55,22 +55,40 @@ exports.profile=(req,res)=>{//send admin credentials
    });
 };
 
-exports.resident_list=(req,res)=>{
-    var sql="SELECT id,first_name,middle_name,last_name,mob_no,remarks FROM users";                         
-     
-    db.query(sql, function(err, results){// query resident list
-       if(results.length){
-          res.json(results);
+exports.update_covid_stats=(req,res)=>{
+   const date_updated=req.body.date_updated;
+   const new_cases=req.body.new_cases;
+   const suspected=req.body.suspected;
+   const probable=req.body.probable;
+   const tested_negative=req.body.tested_negative;
+   const confirmed_cases=req.body.confirmed_cases;
+   const recovered=req.body.recovered;
+   const death=req.body.death;
+   const notes=req.body.notes;
+ 
+   let sql='';
+   if(notes){
+     sql = `UPDATE covid_updates
+       SET new_cases='${new_cases}', date_updated='${date_updated}',suspected='${suspected}',probable='${probable}',tested_negative='${tested_negative}',confirmed_cases='${confirmed_cases}',recovered='${recovered}',death='${death}',notes='${notes}'
+       WHERE id=1;`;
+     db.query(sql, function(err, result) {
+       if(result){
+         res.send();
        }
-       else{
-          res.json({
-             errorMessage:'no results'
-          });
-       }
-    });
-};
+     });
+   }else{
+     sql = `UPDATE covid_updates
+       SET new_cases='${new_cases}', date_updated='${date_updated}',suspected='${suspected}',probable='${probable}',tested_negative='${tested_negative}',confirmed_cases='${confirmed_cases}',recovered='${recovered}',death='${death}'
+       WHERE id=1;`;
+     db.query(sql, function(err, result) {
+      if(result){
+           res.send();
+      }
+   });
+   }
+ }
 
-exports.update_resident_remarks=(req,res)=>{
+exports.update_patient_status=(req,res)=>{
     const remarks=req.body.remarks||'negative';
     var sql = `UPDATE users SET remarks = '${remarks}' WHERE id=${req.body.id};`;
     // var sql = `UPDATE users SET remarks = '${req.body.remarks}' WHERE id='${req.session.id}';`;
@@ -82,7 +100,7 @@ exports.update_resident_remarks=(req,res)=>{
    });
 };
 
-exports.delete_resident=(req,res)=>{
+exports.add_patient=(req,res)=>{
    var sql = `DELETE FROM users WHERE id=${req.body.id};`;
    db.query(sql, function(err, result) {
       if(result){
@@ -90,6 +108,33 @@ exports.delete_resident=(req,res)=>{
       }
   });
 };
+exports.delete_patient=(req,res)=>{
+   var sql = `DELETE FROM users WHERE id=${req.body.id};`;
+   db.query(sql, function(err, result) {
+      if(result){
+          res.send();
+      }
+  });
+};
+
+exports.post_announcement=(req,res)=>{
+   const date= new Date();
+   var sql = "INSERT INTO announcements (`title`,`body`,`date`) VALUES ('" + req.body.title + "','" + req.body.body + "','" + date + "')";
+   db.query(sql, function(err, result) {
+       if(result){
+           res.send('true');
+       }
+   });
+}
+
+exports.delete_announcement=(req,res)=>{
+   var sql = `DELETE FROM announcements WHERE id='${req.body.id}';`;
+   db.query(sql, function(err, result) {
+      if(result){
+          res.send();//if query successful, send response
+      }
+   });
+}
 
 exports.logout=(req,res)=>{
    req.session.destroy(()=>{

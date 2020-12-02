@@ -21,9 +21,14 @@ const editDate=document.getElementById('editDate');
 const notes=document.getElementById('notes');
 const covidPatientList=document.getElementById('covidPatientList');
 const editCovidUpdateForm=document.getElementById('editCovidUpdateForm');
+const addPatientForm=document.getElementById('addPatientForm');
+const addPatientButton1=document.getElementById('addPatientButton1');
+const addPatientButton2=document.getElementById('addPatientButton2');
+const editPatientButton=document.getElementById('editPatientButton');
 const loadingElement=document.getElementById('loadingElement');
 const main=document.getElementById('main');
 
+const body=document.querySelector('body');
 const overlay=document.getElementById('overlay');
 const successMessage=document.getElementById('successMessage');
 const errorMessage=document.getElementById('errorMessage');
@@ -132,7 +137,7 @@ const getPositivePatients=()=>{
   .then(response=>{
     response.json()
     .then(result=>{
-      result.forEach((element,index,array)=>{
+      result.forEach((patient)=>{
         const mainDiv=document.createElement('div');
         const div1=document.createElement('div');
         const div2=document.createElement('div');
@@ -140,17 +145,66 @@ const getPositivePatients=()=>{
         const age=document.createElement('p');
         const gender=document.createElement('p');
         const barangay=document.createElement('p');
-        const status=document.createElement('p');
+        const status=document.createElement('input');
+        const button = document.createElement('button');
+        const overlaydiv = document.createElement('div');
+        const overlaydiv1 = document.createElement('div');
+        const p = document.createElement('p');
+        const button1 = document.createElement('button');
+        const button2 = document.createElement('button');
 
-        patientNumber.textContent=element.patient_no;
-        age.textContent=element.age;
-        gender.textContent=element.gender.toLowerCase();
-        barangay.textContent=element.barangay.toLowerCase();
-        status.textContent=element.status.toLowerCase();
-
+        patientNumber.textContent=patient.patient_no;
+        age.textContent=patient.age;
+        gender.textContent=patient.gender.toLowerCase();
+        barangay.textContent=patient.barangay.toLowerCase();
+        status.value=patient.status.toLowerCase();
+        button.textContent='delete';
         mainDiv.className='covidpatientlist--table-grid';
         div1.className='covidpatientlist--table-grid covidpatientlist--table-templatecolumns';
         div2.className='covidpatientlist--patientdetails covidpatientlist--table-grid';
+        overlaydiv.className='overlay';
+        overlaydiv1.className='popUp--container';
+        p.textContent='Are you sure you want to delete this patient?';
+        p.setAttribute("class", `message`);
+        button1.setAttribute("class", `yes deleteResident${patient.id}`);
+        button2.setAttribute("class", `no`);
+        button1.setAttribute("type", `button`);
+        button2.setAttribute("type", `button`);
+        button1.textContent='Yes';
+        button2.textContent='No';
+
+        const patientid={
+          id:patient.id
+        }
+
+        button.addEventListener('click',()=>{
+          overlaydiv.style.display='flex';
+        });
+        button2.addEventListener('click',()=>{
+          overlaydiv.style.display='none';
+        });
+
+        button1.addEventListener('click',(event)=>{
+          event.preventDefault();
+          overlaydiv.style.display='none';
+          fetch(residentsAPI_URL, {//send object to the server
+            method: 'DELETE',
+            body: JSON.stringify(patientid),//make object in json format
+            headers: {
+              'content-type': 'application/json'
+            }
+          });
+          
+          // setTimeout(()=>{  
+          // },100);
+        });
+
+        overlaydiv1.appendChild(p);
+        overlaydiv1.appendChild(button1);
+        overlaydiv1.appendChild(button2);
+        overlaydiv.appendChild(overlaydiv1);
+        body.appendChild(overlaydiv); 
+
         div2.appendChild(age);
         div2.appendChild(gender);
         div1.appendChild(patientNumber);
@@ -158,6 +212,7 @@ const getPositivePatients=()=>{
         mainDiv.appendChild(div1);
         mainDiv.appendChild(barangay);
         mainDiv.appendChild(status);
+        mainDiv.appendChild(button);
         covidPatientList.appendChild(mainDiv);
       });
     })
