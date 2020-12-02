@@ -136,7 +136,6 @@ const getAnnouncements=()=>{
         title.textContent = announcement.title;
         date.textContent = new Date(announcement.date);
 
-
         div.appendChild(title);
         div.appendChild(body);
         div.appendChild(date);
