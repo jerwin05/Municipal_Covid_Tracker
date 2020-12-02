@@ -306,17 +306,11 @@ nav {
 }
 
 .announcement--section h3 {
-  font-size: 1.2em;
   margin-top: 6px;
 }
 
 .announcement--section pre {
-  font-size: 15.5px;
   line-height: 1.3;
-}
-
-.announcement--section small {
-  font-size: 12px;
 }
 
 .announcement--section button {
@@ -330,7 +324,6 @@ nav {
 .announcement--element {
   display: block;
   margin-bottom: 10px;
-  line-height: 15px;
 }
 
 .announcement--element:nth-child(3) {
@@ -453,87 +446,6 @@ nav {
 .editcovidupdate--container form button {
   margin-top: 10px;
   width: 70%;
-}
-
-.residents--container label:first-of-type {
-  border-top: 1px solid black;
-  padding-top: 5px;
-}
-
-.residents--container label {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 2fr .40fr .85fr;
-      grid-template-columns: 2fr .40fr .85fr;
-  padding-bottom: 5px;
-  margin-bottom: 5px;
-  border-bottom: 1px solid black;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.residents--container label input {
-  -ms-grid-column-align: end;
-      justify-self: end;
-  margin-right: 33px;
-}
-
-.residents--container label button {
-  -ms-grid-column-align: center;
-      justify-self: center;
-  width: 60px;
-  height: 25px;
-}
-
-.formtable--header {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 2fr .40fr .85fr;
-      grid-template-columns: 2fr .40fr .85fr;
-  padding-right: 18px;
-  margin-bottom: 10px;
-}
-
-.formtable--header div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.formtable--header .residents--details {
-  padding-right: 0;
-}
-
-.formtable--header p {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  text-align: end;
-  padding-right: 10px;
-  font-weight: bold;
-}
-
-.formtable--header p:last-of-type {
-  text-align: center;
-  padding-right: 0;
-}
-
-.residents--profile {
-  overflow-y: scroll;
-  height: 50vh;
-}
-
-.resident--details {
-  display: none;
-}
-
-.resident--name {
-  margin-bottom: 5px;
-}
-
-.resident--mobNo {
-  margin: 0;
 }
 
 .residents--submitbutton {
@@ -662,7 +574,16 @@ nav {
   grid-area: no;
 }
 
-@media only screen and (min-width: 472px) {
+@media only screen and (min-width: 441px) {
+  .main {
+    padding-top: 95px;
+  }
+}
+
+@media only screen and (min-width: 507px) {
+  .covidpatientlist--title > div h3 {
+    text-align: center;
+  }
   .covidpatientlist > div div p {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -673,9 +594,155 @@ nav {
   }
 }
 
-@media only screen and (min-width: 613px) {
+@media only screen and (min-width: 680px) {
+  .covidpatientlist--table-grid {
+    display: -ms-grid;
+    display: grid;
+  }
+  .covidpatientlist--table-templatecolumns {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+  .covidpatientlist--table-templatecolumns div {
+    -ms-grid-columns: 1fr 2fr;
+        grid-template-columns: 1fr 2fr;
+  }
+  .covidpatientlist--patientdetails h3 {
+    display: block;
+  }
+  .covidpatientlist > div, .covidpatientlist--title {
+    -ms-grid-columns: 2.5fr 1fr 1fr;
+        grid-template-columns: 2.5fr 1fr 1fr;
+  }
+  .covidpatientlist > div h3, .covidpatientlist--title h3 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .covidpatientlist > div p, .covidpatientlist--title p {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .main--title {
+    font-size: 1.4em;
+  }
+  .main--heading h3 {
+    font-size: 1.1em;
+  }
+  .main--body p, .main--body pre {
+    font-size: 15.5px;
+  }
+  .main--body small {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (min-width: 717px) {
   .main {
-    padding-top: 90px;
+    padding-top: 75px;
+  }
+  .heading {
+    padding-top: 7px;
+  }
+  .map--layer {
+    font-size: 15px;
+    bottom: 15px;
+    left: 15px;
+  }
+}
+
+@media only screen and (min-width: 740px) {
+  nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .main {
+    position: relative;
+  }
+  .hometab--containers {
+    margin-bottom: 30px;
+  }
+  .block2, .block3 {
+    margin-left: 220px;
+  }
+  .covidupdate--container {
+    position: fixed;
+    width: 200px;
+  }
+  .covidupdate--section {
+    overflow-y: scroll;
+    height: 70.5vh;
+  }
+  .announcement--section {
+    height: 72vh;
+  }
+  .map--container {
+    width: unset;
+  }
+  .hometab--containers:last-child {
+    margin-bottom: 18px;
+  }
+}
+
+@media only screen and (min-width: 901px) {
+  .main {
+    padding-top: 67px;
+  }
+  nav {
+    padding: 15px 25px;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding-top: 14px;
+  }
+  .heading {
+    width: 70%;
+    -webkit-box-flex: 5.9;
+        -ms-flex: 5.9;
+            flex: 5.9;
+    margin-left: 4px;
+    padding: 0;
+  }
+}
+
+@media only screen and (min-width: 1125px) {
+  .block2 {
+    margin-right: 28.5vw;
+  }
+  .block3 {
+    position: fixed;
+    right: 25;
+    width: 27vw;
+    margin-left: 0;
+    top: 67;
+    overflow-y: scroll;
+    height: 86vh;
+  }
+  .hometab--containers:last-child {
+    margin-bottom: 0;
   }
 }
 /*# sourceMappingURL=layout-admin.css.map */

@@ -268,15 +268,10 @@ nav{
         padding:13px;
     }
     h3{
-        font-size: 1.2em;
         margin-top: 6px;
     }
     pre{
-        font-size: 15.5px;
         line-height: 1.3;
-    }
-    small{
-        font-size: 12px;
     }
     button{
         border-radius: 5px;
@@ -290,7 +285,6 @@ nav{
 .announcement--element{
     display: block;
     margin-bottom: 10px;
-    line-height: 15px;
 }
 .announcement--element:nth-child(3){
     border-bottom: 2px solid #f5b461;
@@ -399,73 +393,73 @@ nav{
     }
 }
 
-.residents--container{
-    label:first-of-type{
-        border-top: 1px solid black;
-        padding-top: 5px;
-    }
-    label{
-        display: grid;
-        grid-template-columns:2fr .40fr .85fr;
+// .residents--container{
+//     label:first-of-type{
+//         border-top: 1px solid black;
+//         padding-top: 5px;
+//     }
+//     label{
+//         display: grid;
+//         grid-template-columns:2fr .40fr .85fr;
 
-        padding-bottom: 5px;
-        margin-bottom: 5px;
+//         padding-bottom: 5px;
+//         margin-bottom: 5px;
 
-        border-bottom: 1px solid black;
-        align-items: center;
+//         border-bottom: 1px solid black;
+//         align-items: center;
 
-        input{
-            justify-self: end;
-            margin-right: 33px;
-        }
-        button{
-            justify-self: center;
-            width: 60px;
-            height: 25px;
-        }
-    }
-}
+//         input{
+//             justify-self: end;
+//             margin-right: 33px;
+//         }
+//         button{
+//             justify-self: center;
+//             width: 60px;
+//             height: 25px;
+//         }
+//     }
+// }
 
-.formtable--header{
-    display: grid;
-    grid-template-columns:2fr .40fr .85fr;
-    padding-right: 18px;
-    margin-bottom: 10px;
+// .formtable--header{
+//     display: grid;
+//     grid-template-columns:2fr .40fr .85fr;
+//     padding-right: 18px;
+//     margin-bottom: 10px;
     
-    div{
-        display: flex;
-    }
-    .residents--details{
-        padding-right: 0;
-    }
-    p{
-        align-self: center;
-        text-align: end;
-        padding-right: 10px;
-        font-weight: bold;
-    }
-    p:last-of-type{
-        text-align: center;
-        padding-right: 0;
-    }
-}
+//     div{
+//         display: flex;
+//     }
+//     .residents--details{
+//         padding-right: 0;
+//     }
+//     p{
+//         align-self: center;
+//         text-align: end;
+//         padding-right: 10px;
+//         font-weight: bold;
+//     }
+//     p:last-of-type{
+//         text-align: center;
+//         padding-right: 0;
+//     }
+// }
 
-.residents--profile{
-    overflow-y: scroll;
-    height: 50vh;
-}
+// .residents--profile{
+//     overflow-y: scroll;
+//     height: 50vh;
+// }
 
-.resident--details{
-    display: none;
-}
+// .resident--details{
+//     display: none;
+// }
 
-.resident--name{
-    margin-bottom: 5px;
-}
+// .resident--name{
+//     margin-bottom: 5px;
+// }
 
-.resident--mobNo{
-    margin:0 ;
-}
+// .resident--mobNo{
+//     margin:0 ;
+// }
 
 .residents--submitbutton{
     margin-top: 20px;
@@ -581,7 +575,18 @@ nav{
 }
 
 
-@media only screen and (min-width: 472px) {
+@media only screen and (min-width: 441px) {
+    .main{
+        padding-top: 95px;
+    }
+}
+
+@media only screen and (min-width: 507px) {
+    .covidpatientlist--title > div{
+        h3{
+            text-align: center;
+        }
+    }
     .covidpatientlist>div{
         div p{
             justify-content: center;
@@ -591,13 +596,153 @@ nav{
         }
     }
 }
-
-@media only screen and (min-width: 613px) {
-    .main{
-        padding-top: 90px;
+@media only screen and (min-width:680px) {
+    .covidpatientlist--table-grid{
+        display: grid;
     }
-
+    .covidpatientlist--table-templatecolumns{
+        grid-template-columns: 1fr 1fr;
+        div{
+            grid-template-columns: 1fr 2fr;
+        }
+    }
+    .covidpatientlist--patientdetails{
+        h3{
+            display: block;
+        }
+    }
+    .covidpatientlist>div,.covidpatientlist--title{
+        grid-template-columns: 2.5fr 1fr 1fr;
+        h3{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        p{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 }
+
+@media only screen and (min-width:700px) {
+    .main--title{
+        font-size: 1.4em;
+    }
+    .main--heading{
+        h3{
+            font-size: 1.1em;
+        }
+    }
+    .main--body{
+        p,pre{
+            font-size: 15.5px;
+        }
+        small{
+            font-size: 13px;
+        }
+    }
+}
+
+@media only screen and (min-width:717px) {
+    .main{
+        padding-top:75px
+    }
+    .heading{
+        padding-top:7px;
+    }
+    .map--layer{
+        font-size: 15px;
+        bottom: 15px;
+        left: 15px;
+    }
+}
+
+@media only screen and (min-width: 740px) {
+    nav{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .main{
+        position: relative;
+    }
+    .hometab--containers {
+        margin-bottom: 30px;
+    }
+    .block2,.block3{
+        margin-left: 220px;
+    }
+    .covidupdate--container{
+        position: fixed;
+        width: 200px;
+    }
+    .covidupdate--section{
+        overflow-y: scroll;
+        height: 70.5vh;
+    }
+    .announcement--section {
+        height: 72vh;
+    }
+    .map--container{
+        width: unset;
+    }
+    .hometab--containers:last-child {
+        margin-bottom: 18px;
+    }
+}
+
+@media only screen and (min-width: 901px) {
+    .main{
+        padding-top: 67px;
+    }
+    nav{
+        padding:15px 25px;
+        justify-content: space-between;
+        padding-top: 14px;
+    }
+    .heading{
+        width: 70%;
+        flex: 5.9;
+        margin-left: 4px;
+        padding: 0;
+    }
+}
+
+
+@media only screen and (min-width: 1125px) {
+    .block2{
+        margin-right: 28.5vw;
+        // margin-right: 390px;
+    }
+    .block3{
+        position: fixed;
+        right: 25;
+        // width: 370px;
+        width: 27vw;
+        margin-left: 0;
+        top :67;
+        overflow-y: scroll;
+        height: 86vh;
+    }
+    .hometab--containers:last-child{
+        margin-bottom: 0;
+    }
+}
+
+
+
+
+
+// @media only screen and (min-width: 613px) {
+//     .main{
+//         padding-top: 90px;
+//     }
+
+// }
 
 // @media only screen and (min-width: 554px) {
 //     .main{

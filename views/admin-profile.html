@@ -16,86 +16,10 @@
             </ul>
         </nav>
         <div class="main page--transition" id="main">
-            <section class="tab--containers hometab--containers block1 covidupdate--container">
-                <h2 class='main--title covidupdate--heading'>Covid Update <span id='covidUpdateDate'></span></h2>
-                <div class="covidupdate--section customscrollbar">
-                    <div class='covidupdate'>
-                        <h3 id='newCasesTitle' class='covidupdate--title'>New Case</h3>
-                        <div id='newCases' class="covidupdate--count"></div>
-                    </div>
-                    <div class='covidupdate'>
-                        <h3 id='activeCasesTitle' class='covidupdate--title'>Active Cases</h3>
-                        <div id='activeCases' class="covidupdate--count"></div>
-                    </div>
-                    <div class='covidupdate'>
-                        <h3 class='covidupdate--title'>Suspected</h3>
-                        <div id='suspected' class="covidupdate--count"></div>
-                    </div>
-                    <div class='covidupdate'>
-                        <h3 class='covidupdate--title'>Probable</h3>
-                        <div id='probable' class="covidupdate--count"></div>
-                    </div>
-                    <div class='covidupdate'>
-                        <h3 class='covidupdate--title'>Confirmed Cases</h3>
-                        <div id='cofirmedCases' class="covidupdate--count"></div>
-                    </div>
-                    <div class='covidupdate'>
-                        <h3 class='covidupdate--title'>Tested Negative</h3>
-                        <div id='testedNegative' class="covidupdate--count"></div>
-                    </div>
-                    <div class='covidupdate'>
-                        <h3 class='covidupdate--title'>Recovered</h3>
-                        <div id='recovered' class="covidupdate--count"></div>
-                    </div>
-                    <div class='covidupdate'>
-                        <h3 class='covidupdate--title'>Death</h3>
-                        <div id='death' class="covidupdate--count"></div>
-                    </div>
-                </div>
-            </section>
-            <section class="tab--containers hometab--containers block2 covidpatientlist--container">
-                <div class="covidpatientlist--section">
-                    <h2 class='main--title block2--heading'>Covid Patient List</h2>
-                    <div class="covidpatientlist--title covidpatientlist--table-grid main--heading">
-                        <div class="covidpatientlist--table-templatecolumns covidpatientlist--table-grid">
-                            <h3>Patient Number</h3>
-                            <div class="covidpatientlist--patientdetails covidpatientlist--table-grid">
-                                <h3>Age</h3>
-                                <h3>Gender</h3>
-                            </div>
-                        </div>
-                        <h3>Barangay</h3>
-                        <h3>Status</h3>
-                    </div>
-                    <div id='covidPatientList' class="covidpatientlist main--body"></div>
-                </div>
-                <div class="covidupdate--notes">
-                    <h2 class="main--title block2--heading">Notes</h2>
-                    <div id='notes' class="notes main--body"></div>
-                </div>
-                <div class="covidpatientlist--history">
-                    <h2 class="main--title block2--heading">History</h2>
-                    <div id="history"></div>
-                </div>
-            </section>
-            <div class="block3  customscrollbar">
-                <section class="tab--containers hometab--containers announcement--container">
-                    <h2 class="main--title announcement--heading">Announcements</h2>
-                    <div class="announcement--section customscrollbar main--body main--heading" id='announcementSection'></div>
-                </section>
-                <section class="tab--containers hometab--containers map--container">
-                    <div class="map--layer">
-                        <h3>Base Layers</h3>
-                        <input type="radio" name='baseLayerRadioButton' value='OSMStandard' checked>Standard<br>
-                        <input type="radio" name='baseLayerRadioButton' value='OSMHumanitarian'>Humanitarian<br>        
-                    </div>
-                    <div id="js-map" class='map'></div>
-                </section>
-            </div>
-            <!-- <div id="HomeTab" class="tab--contents home--tab">
+            <div id="HomeTab" class="tab--contents home--tab">
                 <section class="tab--containers hometab--containers block1 covidupdate--container">
-                    <h2 class='main--heading covidupdate--heading'>Covid Update <span id='covidUpdateDate'></span></h2>
-                    <div class="covidupdate--section">
+                    <h2 class='main--title covidupdate--heading'>Covid Update <span id='covidUpdateDate' class="covidupdate--date"></span></h2>
+                    <div class="covidupdate--section customscrollbar">
                         <div class='covidupdate'>
                             <h3 id='newCasesTitle' class='covidupdate--title'>New Case</h3>
                             <div id='newCases' class="covidupdate--count"></div>
@@ -132,9 +56,9 @@
                 </section>
                 <section class="tab--containers hometab--containers block2 covidpatientlist--container">
                     <div class="covidpatientlist--section">
-                        <h2 class='main--heading block2--heading'>Covid Patient List</h2>
-                        <div class="covidpatientlist--title .covidpatientlist--table-templatecolumns">
-                            <div class="covidpatientlist--table-grid">
+                        <h2 class='main--title block2--heading'>Covid Patient List</h2>
+                        <div class="covidpatientlist--title covidpatientlist--table-grid main--heading">
+                            <div class="covidpatientlist--table-templatecolumns covidpatientlist--table-grid">
                                 <h3>Patient Number</h3>
                                 <div class="covidpatientlist--patientdetails covidpatientlist--table-grid">
                                     <h3>Age</h3>
@@ -144,33 +68,31 @@
                             <h3>Barangay</h3>
                             <h3>Status</h3>
                         </div>
-                        <div id='covidPatientList' class="covidpatientlist"></div>
+                        <div id='covidPatientList' class="covidpatientlist main--body"></div>
                     </div>
                     <div class="covidupdate--notes">
-                        <h2 class="main--heading block2--heading">Notes</h2>
-                        <div id='notes' class="notes"></div>
+                        <h2 class="main--title block2--heading">Notes</h2>
+                        <div id='notes' class="notes main--body"></div>
                     </div>
                     <div class="covidpatientlist--history">
-                        <h2 class="main--heading block2--heading">History</h2>
+                        <h2 class="main--title block2--heading">History</h2>
                         <div id="history"></div>
                     </div>
                 </section>
-                <section class="tab--containers hometab--containers block3 announcement--container">
-                    <h2 class="main--heading announcement--heading">Announcements</h2>
-                    <div class="announcement--section" id='announcementSection'></div>
-                </section>
-                <section class="tab--containers hometab--containers block4 map--container">
-                    <div class="map--layer">
-                        <h3>Base Layers</h3>
-                        <input type="radio" name='baseLayerRadioButton' value='OSMStandard' checked>Standard<br>
-                        <input type="radio" name='baseLayerRadioButton' value='OSMHumanitarian'>Humanitarian<br>        
-                    </div>
-                    <div id="js-map" class='map'></div>
-                </section> -->
-                <!-- <div class="overlay-container">
-                    <span class="overlay-text" id="feature-name"></span>
-                    <span class="overlay-text" id="feature-additional-info"></span>
-                </div> -->
+                <div class="block3  customscrollbar">
+                    <section class="tab--containers hometab--containers announcement--container">
+                        <h2 class="main--title announcement--heading">Announcements</h2>
+                        <div class="announcement--section customscrollbar main--body main--heading" id='announcementSection'></div>
+                    </section>
+                    <section class="tab--containers hometab--containers map--container">
+                        <div class="map--layer">
+                            <h3>Base Layers</h3>
+                            <input type="radio" name='baseLayerRadioButton' value='OSMStandard' checked>Standard<br>
+                            <input type="radio" name='baseLayerRadioButton' value='OSMHumanitarian'>Humanitarian<br>        
+                        </div>
+                        <div id="js-map" class='map'></div>
+                    </section>
+                </div>
             </div>
             <div id="ProfileTab" class="tab--contents profile--tab">
                 <section class="tab--containers profiletab--containers profile--container"> 
@@ -212,7 +134,7 @@
                     <form id='residentsForm' role='form' method="put">
                         <h2 class="main--heading">Update Patient Status</h2>
                         <div class="covidpatientlist--title">
-                            <div>
+                            <div class="formtable--header">
                                 <h3>Patient Number</h3>
                                 <div class="covidpatientlist--patientdetails">
                                     <h3>Age</h3>
