@@ -52,10 +52,10 @@ const create_table=()=>{
     }
   });
 
-  sql = `SELECT id FROM covid_positive_list;`;
+  sql = `SELECT id FROM covid_patient_list;`;
   db.query(sql, function(err, result) {
     if(err){
-      sql = `CREATE TABLE covid_positive_list (
+      sql = `CREATE TABLE covid_patient_list (
         id INT NOT NULL AUTO_INCREMENT,
         patient_no VARCHAR(50) NOT NULL,
         age VARCHAR(5) NOT NULL,
@@ -65,7 +65,7 @@ const create_table=()=>{
         PRIMARY KEY (id));`;
       db.query(sql, function(err, result) {
         if(result){
-          console.log('created covid_positive_list');
+          console.log('created covid_patient_list');
         }
       });
     }

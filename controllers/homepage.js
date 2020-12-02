@@ -20,7 +20,7 @@ exports.get_covid_updates=(req,res)=>{
 }
 
 exports.get_patient_list=(req,res)=>{
-   var sql = `SELECT * FROM covid_positive_list;`;
+   var sql = `SELECT * FROM covid_patient_list;`;
    db.query(sql, function(err, result) {
       if(result.length){
            res.json(result);

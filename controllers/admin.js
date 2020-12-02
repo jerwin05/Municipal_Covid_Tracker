@@ -89,19 +89,32 @@ exports.update_covid_stats=(req,res)=>{
  }
 
 exports.update_patient_status=(req,res)=>{
-    const remarks=req.body.remarks||'negative';
-    var sql = `UPDATE users SET remarks = '${remarks}' WHERE id=${req.body.id};`;
-    // var sql = `UPDATE users SET remarks = '${req.body.remarks}' WHERE id='${req.session.id}';`;
-    // var sql= 'DELETE FROM users;';
-    db.query(sql, function(err, result) {
-       if(result){
-           res.send();
-       }
+    var sql =`UPDATE covid_patient_list 
+      SET status = '${req.body.status}' 
+      WHERE id=${req.body.id};`;
+   db.query(sql, function(err, result) {
+      if(result){
+         res.send();
+      }
    });
 };
 
+// exports.update_resident_remarks=(req,res)=>{
+//     const remarks=req.body.remarks||'negative';
+//     var sql = `UPDATE users SET remarks = '${remarks}' WHERE id=${req.body.id};`;
+//     // var sql = `UPDATE users SET remarks = '${req.body.remarks}' WHERE id='${req.session.id}';`;
+//     // var sql= 'DELETE FROM users;';
+//     db.query(sql, function(err, result) {
+//        if(result){
+//            res.send();
+//        }
+//    });
+// };
+
 exports.add_patient=(req,res)=>{
-   var sql = `DELETE FROM users WHERE id=${req.body.id};`;
+   var sql = `INSERT INTO covid_patient_list
+      (patient_no,age,gender,barangay,status)
+      VALUES ('${req.body.patient_no}','${req.body.age}','${req.body.gender}','${req.body.barangay}','${req.body.status}');`;
    db.query(sql, function(err, result) {
       if(result){
           res.send();
@@ -109,7 +122,7 @@ exports.add_patient=(req,res)=>{
   });
 };
 exports.delete_patient=(req,res)=>{
-   var sql = `DELETE FROM users WHERE id=${req.body.id};`;
+   var sql = `DELETE FROM covid_patient_list WHERE id=${req.body.id};`;
    db.query(sql, function(err, result) {
       if(result){
           res.send();

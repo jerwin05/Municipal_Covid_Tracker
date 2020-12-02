@@ -215,6 +215,10 @@ nav {
   padding: 15px;
 }
 
+.addpatient--form {
+  display: none;
+}
+
 .covidpatientlist--container > div {
   margin-bottom: 30px;
 }
@@ -259,6 +263,18 @@ nav {
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
+}
+
+.covidpatientlist input {
+  width: 100%;
+  text-align: center;
+  border: none;
+  outline: none;
+  background-color: inherit;
+}
+
+.covidpatientlist input :focus {
+  border: 1px solid blue;
 }
 
 .covidpatientlist > div:first-child {

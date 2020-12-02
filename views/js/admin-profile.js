@@ -21,9 +21,9 @@ const editDate=document.getElementById('editDate');
 const notes=document.getElementById('notes');
 const covidPatientList=document.getElementById('covidPatientList');
 const editCovidUpdateForm=document.getElementById('editCovidUpdateForm');
+const covidPatientListForm=document.getElementById('covidPatientListForm');
 const addPatientForm=document.getElementById('addPatientForm');
-const addPatientButton1=document.getElementById('addPatientButton1');
-const addPatientButton2=document.getElementById('addPatientButton2');
+const addPatientButton=document.getElementById('addPatientButton');
 const editPatientButton=document.getElementById('editPatientButton');
 const loadingElement=document.getElementById('loadingElement');
 const main=document.getElementById('main');
@@ -48,7 +48,7 @@ const announcementAPI_URL = (window.location.hostname === '127.0.0.1' || window.
 const adminAnnouncementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/announcement' : 'https://barangay-covid-map.herokuapp.com/admin/announcement';
 const covidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/covid-update' : 'https://barangay-covid-map.herokuapp.com/covid-update';
 const adminCovidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/covid-update' : 'https://barangay-covid-map.herokuapp.com/admin/covid-update';
-const patientListAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/patientList' : 'https://barangay-covid-map.herokuapp.com/patientList';
+const patientListAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/patient-list' : 'https://barangay-covid-map.herokuapp.com/patient-list';
 const adminPatientListAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/patient-list' : 'https://barangay-covid-map.herokuapp.com/admin/patient-list';
 
 fetch(authenticateAPI_URL,{
@@ -161,6 +161,7 @@ const getPositivePatients=()=>{
         barangay.textContent=patient.barangay.toLowerCase();
         status.value=patient.status.toLowerCase();
         button.textContent='delete';
+        button.className=' profile--button orange--button';
         mainDiv.className='covidpatientlist--table-grid';
         div1.className='covidpatientlist--table-grid covidpatientlist--table-templatecolumns';
         div2.className='covidpatientlist--patientdetails covidpatientlist--table-grid';
@@ -197,8 +198,10 @@ const getPositivePatients=()=>{
             }
           });
           
-          // setTimeout(()=>{  
-          // },100);
+          setTimeout(()=>{
+            covidPatientList.innerHTML='';
+            getPositivePatients();
+          },100);
         });
 
         overlaydiv1.appendChild(p);
@@ -356,6 +359,54 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
     });
   }
 })
+
+covidPatientListForm.addEventListener('submit',(event)=>{
+  event.preventDefault();
+});
+
+addPatientButton.addEventListener('click',(event)=>{
+  addPatientForm.style.display='block';
+});
+addPatientForm.addEventListener('submit',(event)=>{
+  event.preventDefault();
+  const formData=new FormData(addPatientForm);
+  const patient_number=formData.get('patient_number');
+  const age=formData.get('age');
+  const gender=formData.get('gender');
+  const barangay=formData.get('barangay');
+  const status=formData.get('status');
+
+  if(patient_number.trim()&&age.trim()&&gender.trim()
+    &&barangay.trim()&&status.trim()){
+      loadingElement.style.display='';
+     
+    const patient = {//put announcement into object
+      patient_no:patient_number,
+      age:age,
+      gender:gender,
+      barangay:barangay,
+      status:status
+    };
+
+    fetch(adminPatientListAPI_URL, {//send object to the server
+      method: 'POST',
+      body: JSON.stringify(patient),//make object in json format
+      headers: {
+        'content-type': 'application/json'
+      }
+    }).then(()=>{
+      addPatientForm.reset();
+      addPatientForm.style.display='none';
+      successMessage.textContent='Patient Added';
+      successMessage.style.bottom='30';
+      loadingElement.style.display='none';
+      // errorMessage.style.display='none';
+      setTimeout(()=>{
+        successMessage.style.bottom='-45';
+      },3000);
+    });
+  }
+});
 
 //execute event on click of post on announcement
 announcementForm.addEventListener('submit', (event) => {
