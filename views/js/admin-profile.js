@@ -118,7 +118,7 @@ const getCovidUpdates=()=>{
       }
 
       covidUpdateDate.className='covidupdate--date';
-      covidUpdateDate.textContent=`As of ${dateResult}`;
+      covidUpdateDate.textContent=`${dateResult}`;
 
       pre.textContent=result[0].notes;
       notes.innerHTML='';
