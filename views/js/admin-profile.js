@@ -160,8 +160,11 @@ const getPositivePatients=()=>{
         gender.textContent=patient.gender.toLowerCase();
         barangay.textContent=patient.barangay.toLowerCase();
         status.value=patient.status.toLowerCase();
-        button.textContent='delete';
+        status.className=`status`;
+        status.setAttribute("name", `status${patient.id}`);
+        button.textContent='Delete';
         button.className=' profile--button orange--button';
+        button.setAttribute("type", `button`);
         mainDiv.className='covidpatientlist--table-grid patientDiv';
         div1.className='covidpatientlist--table-grid covidpatientlist--table-templatecolumns';
         div2.className='covidpatientlist--patientdetails covidpatientlist--table-grid';
@@ -362,19 +365,19 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
 
 covidPatientListForm.addEventListener('submit',(event)=>{
   event.preventDefault();
-  const patient=document.querySelectorAll('.patientDiv');//get all checkboxes
-  const formData = new FormData(residentsForm);//store form credentials
+  const patient=document.querySelectorAll('.status');
+  const formData = new FormData(covidPatientListForm);//store form credentials
 
   for(var x=0,y=patient.length;x<y;x++){//iterate over each checkbox 
     const patientId=parseInt(patient[x].name.match(/\d+/)[0]);//get checkbox id
-    const remarks= formData.get(patient[x].name);// get checkbox value
+    const status= formData.get(patient[x].name);// get checkbox value
     
     const patientDetails={//store data in a object
       id:patientId,
-      remarks:remarks
+      status:status
     }
     
-    fetch(patientsAPI_URL, {//send object to the server
+    fetch(adminPatientListAPI_URL, {//send object to the server
         method: 'PUT',
         body: JSON.stringify(patientDetails),//make object in json format
         headers: {
@@ -383,10 +386,11 @@ covidPatientListForm.addEventListener('submit',(event)=>{
     });
   }
 
-  successMessage.textContent='Remarks Updated';
+  successMessage.textContent='Patient Updated';
   successMessage.style.bottom='30';
   setTimeout(()=>{
-    getPositiveResidentCoordinates();
+    covidPatientList.innerHTML='';
+    getPositivePatients();
   },500);
   setTimeout(()=>{
     successMessage.style.bottom='-45';
