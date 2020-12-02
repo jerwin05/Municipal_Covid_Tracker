@@ -15,6 +15,9 @@ nav{
 
 .heading{
     padding: 15px 37px 5px 25px;
+    a{
+        font-size: 24px;
+    }
 }
 
 .nav--options{
@@ -54,7 +57,7 @@ nav{
     width: 200%;
     display: none;
     position: absolute;
-    padding-top: 110px;
+    padding-top: 130px;
 }
 
 .page--transition{
@@ -133,7 +136,7 @@ nav{
 .tab--containers{
     background-color: #f3eac2;
     border-radius: 6px;
-    margin-bottom:20px;
+    margin-bottom:33px;
 }
 
 .hometab--containers{
@@ -329,7 +332,8 @@ nav{
 .profile--container{
     background-color: inherit;
     border-radius: 0;
-    padding:0;
+    padding:0 6px;
+    margin-bottom: 15px;
 }
 
 .profile--name{
@@ -339,7 +343,7 @@ nav{
 
 .profile--details{
     font-size: 17px;
-    margin-bottom: 17px;
+    margin-bottom: 5px;
 }
 
 .profile--options{
@@ -383,7 +387,7 @@ nav{
             margin-top: 5px;
             grid-column: 1 /span 2;   
             textarea{
-                height: 20.7vh;
+                height: 17vh;
             }   
         }
         button{
@@ -506,13 +510,6 @@ nav{
     grid-area: no;
 }
 
-
-@media only screen and (min-width: 441px) {
-    .main{
-        padding-top: 95px;
-    }
-}
-
 @media only screen and (min-width: 507px) {
     .covidpatientlist--title > div{
         h3{
@@ -528,7 +525,24 @@ nav{
         }
     }
 }
+
+@media only screen and (min-width: 655px) {
+    
+}
+
+@media only screen and (min-width: 664px) {
+    .main{
+        padding-top: 105px;
+    }
+    nav{
+        text-align: center;
+    }
+}
+
 @media only screen and (min-width:680px) {
+    nav{
+        text-align: center;
+    }
     .covidpatientlist--table-grid{
         display: grid;
     }
@@ -577,23 +591,6 @@ nav{
     }
 }
 
-@media only screen and (min-width:717px) {
-    .main{
-        padding-top:75px
-    }
-    .heading{
-        padding-top:7px;
-    }
-}
-
-@media only screen and (min-width: 740px) {
-    nav{
-        display: flex;
-        justify-content: space-between;
-        padding:15px 25px;
-    }
-}
-
 @media only screen and (min-width: 800px) {
     .main{
         position: relative;
@@ -610,7 +607,7 @@ nav{
     }
     .covidupdate--section{
         overflow-y: scroll;
-        height: 70.5vh;
+        height: 70vh;
     }
     .announcement--section {
         height: 72vh;
@@ -619,21 +616,38 @@ nav{
         width: unset;
     }
     .hometab--containers:last-child {
-        margin-bottom: 18px;
+        margin-bottom: 20px;
     }
 }
 
-@media only screen and (min-width: 901px) {
+@media only screen and (min-width: 825px) {
     .main{
-        padding-top: 67px;
+        padding-top: 75px;
+    }
+    nav{
+        display: flex;
+        justify-content: space-between;
+        padding:0 25px;
+        text-align: start;
+    }
+    .nav--options{
+        margin-right: 23px;
+    }
+    .nav--options li {
+        padding:0;
+        button{
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            min-width: 70px;
+        }
     }
     .heading{
-        width: 70%;
-        flex: 5.9;
-        margin-left: 4px;
-        padding: 0;
-        font-size: 25px;
-    }    
+        padding:15px 0;
+    }
+    .page--transition{
+        transition: none;
+    }
     .profile--options{
         position: absolute;
         top: 0;
@@ -645,6 +659,18 @@ nav{
             z-index: 5;
         }
     }
+}
+
+@media only screen and (min-width: 901px) {
+    .main{
+        padding-top: 67px;
+    }
+    .heading{
+        width: 70%;
+        flex: 5.9;
+        margin-left: 4px;
+        font-size: 25px;
+    }    
     .map--layer{
             font-size: 18px;
             bottom: 15px;
