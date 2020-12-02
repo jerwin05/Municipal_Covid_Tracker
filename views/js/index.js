@@ -63,7 +63,6 @@ const getCovidUpdates=()=>{
         activeCasesTitle.textContent='Active Case';
       }
 
-      covidUpdateDate.className='covidupdate--date';
       const updateDate=result[0].date_updated;
       covidUpdateDate.textContent=`${updateDate}`;
 

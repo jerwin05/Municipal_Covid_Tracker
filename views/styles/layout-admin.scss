@@ -87,7 +87,7 @@ nav{
 
 
 .customscrollbar::-webkit-scrollbar{
-    width: 3px;   
+    width: 2px;   
 }
 
 .customscrollbar::-webkit-scrollbar-track {
@@ -584,17 +584,13 @@ nav{
     .heading{
         padding-top:7px;
     }
-    .map--layer{
-        font-size: 15px;
-        bottom: 15px;
-        left: 15px;
-    }
 }
 
 @media only screen and (min-width: 740px) {
     nav{
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        padding:15px 25px;
     }
 }
 
@@ -631,16 +627,38 @@ nav{
     .main{
         padding-top: 67px;
     }
-    nav{
-        padding:15px 25px;
-        justify-content: space-between;
-        padding-top: 14px;
-    }
     .heading{
         width: 70%;
         flex: 5.9;
         margin-left: 4px;
         padding: 0;
+        font-size: 25px;
+    }    
+    .profile--options{
+        position: absolute;
+        top: 0;
+        right: 25;
+        margin: 0;
+        button{
+            font-size: 15px;
+            cursor: pointer;
+            z-index: 5;
+        }
+    }
+    .map--layer{
+            font-size: 18px;
+            bottom: 15px;
+            left: 15px;
+    }
+    .success-message{
+        right: 30;
+    }
+    .popUp--container{    
+        font-size: 18px;
+        button{
+            font-size: 14px;
+            padding: 4px 0;
+        }
     }
 }
 
@@ -668,186 +686,24 @@ nav{
     }
 }
 
-
-
-
-
-// @media only screen and (min-width: 613px) {
-//     .main{
-//         padding-top: 90px;
-//     }
-
-// }
-
-// @media only screen and (min-width: 554px) {
-//     .main{
-//         padding-top: 90px;
-//     }
-// }
-
-// @media only screen and (min-width: 610px) {
-//     .residents--container label div{
-//         display: flex;
-//         justify-content: space-between;
-//     }
-
-//     .formtable--header {
-//         div{
-//             display: flex;
-//             justify-content: space-between;
-//             p:last-of-type{
-//                 margin-right: 15px;
-//             }
-//         }     
-//     }
-
-//     .resident--mobNo{
-//         margin:0 36px 0 10px;
-//     }
-
-//     .resident--details{
-//         display: inline;
-//     }
-// }
-
-// @media only screen and (min-width: 634px) {
-//     .map--layer{
-//         font-size: 15px;
-//         bottom: 15px;
-//         left: 15px;
-//     }
-// }
-
-// @media only screen and (min-width: 660px) {
-//     // .announcement--element:nth-child(3){
-//     //     margin-bottom: 15px;
-//     // }
-//     .announcement--container{
-//         button{
-//             font-size: 16px;
-//             font-weight: 500;
-//         }
-//     }
-// }
-
 // @media only screen and (min-width: 820px) {
-//     nav{
-//         display: flex;
-//         justify-content: space-between;
-//         padding:0 25px;
-//         height: 50px;
-//     }
+//    
 
-//     .heading{
-//         padding:0;
-//         font-size: 25px;
-//         align-self: center;
-//     }
 
-//     .nav--options{
-//         min-width: 200px;
-//         li{
-//             position: relative;
-//             padding: 0;
-//             text-align: center;
-//             button{
-//                 font-size: 17px;
-//                 font-weight: bold;
-//             }
-//         }
-//     }
-//     .page--transition{
-//         transition: none;
-//     }
-//     .main{
-//         width: 200%;
-//         padding-top: 65px;
-//         height: 97vh;
-//     }
-//     .home--tab{
-//         display: flex;
-//     }
-//     .hometab--containers{
-//         height: 100%;
-//     }
-//     .map--container{
-//         flex: 2;
-//     }
-//     .announcement--container{
-//         flex: 1;
-//         margin-left: 20px;
-//     }
 
-//     .profile--tab{
-//         display: grid;
-//         grid-template-columns: 2fr 1fr;
-//         grid-template-areas:
-//             'adminProfile adminProfile'
-//             'residents post';
-//         gap: 20px;
-//     }
+// 
+// 
 
-//     .profiletab--containers{
-//         padding: 20px;
-//     }
+//  
 
-//     .profile--container{
-//         grid-area: adminProfile;
-//         height: 5vh;
-//         padding: 0;
-//     }
 
-//     .profile--button {
-//         padding: 7px;
-//     }
+//
 
-//     .profile--details {
-//         margin:0;
-//     }
 
-//     .residents--container{
-//         grid-area: residents;
-//         label button{
-//             width: 75px;
-//             height: 27px;
-//         }
-//     }
+//  
 
-//     .resident--name {
-//         margin: 0;
-//     }
 
-//     .residents--submitbutton {
-//         font-size: 16px;
-//     }
 
-//     .post--container{
-//         grid-area: post;
-//         margin: 0;
-//         align-self: start;
-//     }
-
-//     .profile--options{
-//         position: absolute;
-//         top: 0;
-//         right: 25;
-//         margin: 0;
-//         button{
-//             font-size: 15px;
-//             cursor: pointer;
-//             z-index: 5;
-//         }
-//     }
-//     .popUp--container{    
-//         font-size: 18px;
-//         button{
-//             font-size: 14px;
-//             padding: 4px 0;
-//         }
-//     }
-//     .residents--profile{
-//         height: 55vh;
-//     }
 // }
 
 // @media only screen and (min-width: 850px) {
@@ -864,14 +720,7 @@ nav{
 //             font-weight: bold;
 //         }
 //     }
-//     .map--layer{
-//         font-size: 18px;
-//         bottom: 15px;
-//         left: 15px;
-//     }
-//     .success-message{
-//         right: 30;
-//     }
+// 
 // }
 
 // @media only screen and (min-width: 1200px) {

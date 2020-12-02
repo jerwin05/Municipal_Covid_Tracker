@@ -100,7 +100,7 @@ nav {
 }
 
 .customscrollbar::-webkit-scrollbar {
-  width: 3px;
+  width: 2px;
 }
 
 .customscrollbar::-webkit-scrollbar-track {
@@ -660,11 +660,6 @@ nav {
   .heading {
     padding-top: 7px;
   }
-  .map--layer {
-    font-size: 15px;
-    bottom: 15px;
-    left: 15px;
-  }
 }
 
 @media only screen and (min-width: 740px) {
@@ -672,9 +667,10 @@ nav {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 15px 25px;
   }
 }
 
@@ -711,13 +707,6 @@ nav {
   .main {
     padding-top: 67px;
   }
-  nav {
-    padding: 15px 25px;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    padding-top: 14px;
-  }
   .heading {
     width: 70%;
     -webkit-box-flex: 5.9;
@@ -725,6 +714,33 @@ nav {
             flex: 5.9;
     margin-left: 4px;
     padding: 0;
+    font-size: 25px;
+  }
+  .profile--options {
+    position: absolute;
+    top: 0;
+    right: 25;
+    margin: 0;
+  }
+  .profile--options button {
+    font-size: 15px;
+    cursor: pointer;
+    z-index: 5;
+  }
+  .map--layer {
+    font-size: 18px;
+    bottom: 15px;
+    left: 15px;
+  }
+  .success-message {
+    right: 30;
+  }
+  .popUp--container {
+    font-size: 18px;
+  }
+  .popUp--container button {
+    font-size: 14px;
+    padding: 4px 0;
   }
 }
 
