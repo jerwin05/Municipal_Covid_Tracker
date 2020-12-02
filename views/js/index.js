@@ -19,11 +19,11 @@ const loadingElement=document.getElementById('loadingElement');
 const sectionContainer=document.getElementById('sectionContainer');
 
 //api urls here
-const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-user' : 'https://barangay-covid-map.herokuapp.com/authenticate-user';
 const adminIndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin-profile.html' : 'https://barangay-covid-map.herokuapp.com/admin-profile.html';
+const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-user' : 'https://barangay-covid-map.herokuapp.com/authenticate-user';
 const announcementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/announcement' : 'https://barangay-covid-map.herokuapp.com/announcement';
-const covidupdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/covid-update' : 'https://barangay-covid-map.herokuapp.com/covid-update';
-const covidpositivelistAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/covid-positive-list' : 'https://barangay-covid-map.herokuapp.com/covid-positive-list';
+const covidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/covid-update' : 'https://barangay-covid-map.herokuapp.com/covid-update';
+const patientListAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/patient-list' : 'https://barangay-covid-map.herokuapp.com/patient-list';
 
 //authenticate user
 fetch(authenticateAPI_URL,{
@@ -36,7 +36,7 @@ fetch(authenticateAPI_URL,{
 })
 
 const getCovidUpdates=()=>{
-  fetch(covidupdateAPI_URL)
+  fetch(covidUpdateAPI_URL)
   .then(response=>{
 
     response.json()
@@ -75,7 +75,7 @@ const getCovidUpdates=()=>{
 };
 
 const getPositivePatients=()=>{
-  fetch(covidpositivelistAPI_URL)
+  fetch(patientListAPI_URL)
   .then(response=>{
     response.json()
     .then(result=>{

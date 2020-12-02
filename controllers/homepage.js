@@ -19,7 +19,7 @@ exports.get_covid_updates=(req,res)=>{
   });
 }
 
-exports.get_positive_list=(req,res)=>{
+exports.get_patient_list=(req,res)=>{
    var sql = `SELECT * FROM covid_positive_list;`;
    db.query(sql, function(err, result) {
       if(result.length){

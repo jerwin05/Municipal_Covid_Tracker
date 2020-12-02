@@ -13,6 +13,6 @@ Router
     .get    ('/positive-coordinates',   homepage.get_positive_coordinates)
     .get    ('/announcement',           homepage.get_announcement)
     .get    ('/covid-update',           homepage.get_covid_updates)
-    .get    ('/covid-positive-list',    homepage.get_positive_list);
+    .get    ('/patient-list',            homepage.get_patient_list);
 
 module.exports=Router;

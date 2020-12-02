@@ -41,13 +41,15 @@ const overlayYesButton=document.getElementById('overlayYesButton');
 const logoutButton=document.getElementById('logout');
 
 //API URLS here
-const logoutAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/logout' : 'https://barangay-covid-map.herokuapp.com/admin/logout';
-const profileAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/profile' : 'https://barangay-covid-map.herokuapp.com/admin/profile';
-const announcementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/announcement' : 'https://barangay-covid-map.herokuapp.com/announcement';
 const IndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/index.html' : 'https://barangay-covid-map.herokuapp.com/index.html';
 const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-user' : 'https://barangay-covid-map.herokuapp.com/authenticate-user';
-const covidupdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/covid-update' : 'https://barangay-covid-map.herokuapp.com/covid-update';
-const covidpositivelistAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/covid-positive-list' : 'https://barangay-covid-map.herokuapp.com/covid-positive-list';
+const profileAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/profile' : 'https://barangay-covid-map.herokuapp.com/admin/profile';
+const announcementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/announcement' : 'https://barangay-covid-map.herokuapp.com/announcement';
+const adminAnnouncementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/announcement' : 'https://barangay-covid-map.herokuapp.com/admin/announcement';
+const covidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/covid-update' : 'https://barangay-covid-map.herokuapp.com/covid-update';
+const adminCovidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/covid-update' : 'https://barangay-covid-map.herokuapp.com/admin/covid-update';
+const patientListAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/patientList' : 'https://barangay-covid-map.herokuapp.com/patientList';
+const adminPatientListAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/patient-list' : 'https://barangay-covid-map.herokuapp.com/admin/patient-list';
 
 fetch(authenticateAPI_URL,{
 }).then(response=>{
@@ -79,7 +81,7 @@ function getProfile(){
 }
 
 const getCovidUpdates=()=>{
-  fetch(covidupdateAPI_URL)
+  fetch(covidUpdateAPI_URL)
   .then(response=>{
     response.json()
     .then(result=>{
@@ -133,7 +135,7 @@ const getCovidUpdates=()=>{
 };
 
 const getPositivePatients=()=>{
-  fetch(covidpositivelistAPI_URL)
+  fetch(patientListAPI_URL)
   .then(response=>{
     response.json()
     .then(result=>{
@@ -187,7 +189,7 @@ const getPositivePatients=()=>{
         button1.addEventListener('click',(event)=>{
           event.preventDefault();
           overlaydiv.style.display='none';
-          fetch(residentsAPI_URL, {//send object to the server
+          fetch(adminPatientListAPI_URL, {//send object to the server
             method: 'DELETE',
             body: JSON.stringify(patientid),//make object in json format
             headers: {
@@ -253,7 +255,7 @@ const getAnnouncements=()=>{
         }
 
         button.addEventListener('click',()=>{
-          fetch(announcementAPI_URL, {//send object to the server
+          fetch(adminAnnouncementAPI_URL, {//send object to the server
             method: 'DELETE',
             body: JSON.stringify(announcementid),//make object in json format
             headers: {
@@ -311,7 +313,7 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
       death:formDeath,
       notes:formNotes
     }
-    fetch(covidupdateAPI_URL,{
+    fetch(adminCovidUpdateAPI_URL,{
       method:'PUT',
       body: JSON.stringify(obj),//make object in json format
       headers: {
@@ -337,7 +339,7 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
       recovered:formRecovered,
       death:formDeath
     }
-    fetch(covidupdateAPI_URL,{
+    fetch(adminCovidUpdateAPI_URL,{
       method:'PUT',
       body: JSON.stringify(obj),//make object in json format
       headers: {
@@ -369,7 +371,7 @@ announcementForm.addEventListener('submit', (event) => {
       body
     };
 
-    fetch(announcementAPI_URL, {//send object to the server
+    fetch(adminAnnouncementAPI_URL, {//send object to the server
       method: 'POST',
       body: JSON.stringify(announcement),//make object in json format
       headers: {
@@ -401,7 +403,7 @@ announcementForm.addEventListener('submit', (event) => {
 
 //execute event on logout click
 logoutButton.addEventListener('click',()=>{
-    fetch(logoutAPI_URL, {//send request
+    fetch(profileAPI_URL, {//send request
         method: 'POST',
         // headers: {
         //   'content-type': 'application/json'
