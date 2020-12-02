@@ -269,12 +269,11 @@ nav {
   width: 100%;
   text-align: center;
   border: none;
-  outline: none;
   background-color: inherit;
 }
 
 .covidpatientlist input :focus {
-  border: 1px solid blue;
+  outline: 1px solid blue;
 }
 
 .covidpatientlist > div:first-child {

@@ -162,7 +162,7 @@ const getPositivePatients=()=>{
         status.value=patient.status.toLowerCase();
         button.textContent='delete';
         button.className=' profile--button orange--button';
-        mainDiv.className='covidpatientlist--table-grid';
+        mainDiv.className='covidpatientlist--table-grid patientDiv';
         div1.className='covidpatientlist--table-grid covidpatientlist--table-templatecolumns';
         div2.className='covidpatientlist--patientdetails covidpatientlist--table-grid';
         overlaydiv.className='overlay';
@@ -362,6 +362,35 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
 
 covidPatientListForm.addEventListener('submit',(event)=>{
   event.preventDefault();
+  const patient=document.querySelectorAll('.patientDiv');//get all checkboxes
+  const formData = new FormData(residentsForm);//store form credentials
+
+  for(var x=0,y=patient.length;x<y;x++){//iterate over each checkbox 
+    const patientId=parseInt(patient[x].name.match(/\d+/)[0]);//get checkbox id
+    const remarks= formData.get(patient[x].name);// get checkbox value
+    
+    const patientDetails={//store data in a object
+      id:patientId,
+      remarks:remarks
+    }
+    
+    fetch(patientsAPI_URL, {//send object to the server
+        method: 'PUT',
+        body: JSON.stringify(patientDetails),//make object in json format
+        headers: {
+          'content-type': 'application/json'
+      }
+    });
+  }
+
+  successMessage.textContent='Remarks Updated';
+  successMessage.style.bottom='30';
+  setTimeout(()=>{
+    getPositiveResidentCoordinates();
+  },500);
+  setTimeout(()=>{
+    successMessage.style.bottom='-45';
+  },3000);
 });
 
 addPatientButton.addEventListener('click',(event)=>{
