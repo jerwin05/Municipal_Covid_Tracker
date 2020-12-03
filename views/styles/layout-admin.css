@@ -103,20 +103,24 @@ nav {
   width: 45px;
 }
 
-.customscrollbar::-webkit-scrollbar {
-  width: 2px;
+.transparent--customscrollbar::-webkit-scrollbar {
+  width: 0;
 }
 
-.customscrollbar::-webkit-scrollbar-track {
+.main--customscrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.main--customscrollbar::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.customscrollbar::-webkit-scrollbar-thumb {
-  background: rgba(136, 136, 136, 0.274);
+.main--customscrollbar::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.199);
   border-radius: 5px;
 }
 
-.customscrollbar::-webkit-scrollbar-thumb:hover {
+.main--customscrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(85, 85, 85, 0.582);
 }
 
@@ -253,6 +257,13 @@ nav {
   text-align: start;
 }
 
+.covidpatientlist {
+  overflow-y: scroll;
+  height: 45vh;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
 .covidpatientlist p {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -277,8 +288,8 @@ nav {
   outline: 1px solid blue;
 }
 
-.covidpatientlist > div:first-child {
-  border-top: 1px solid black;
+.covidpatientlist > div:last-child {
+  border-bottom: none;
 }
 
 .covidpatientlist > div {
@@ -303,6 +314,10 @@ nav {
 
 .covidpatientlist--patientdetails p:last-child {
   margin-left: 7px;
+}
+
+.patient--submitbutton {
+  margin: 10px 0 20px;
 }
 
 .announcement--heading {
@@ -365,9 +380,7 @@ nav {
 }
 
 .ol-attribution li {
-  display: inline;
-  list-style: none;
-  font-size: 12px;
+  display: none;
 }
 
 .profile--tab {
@@ -464,10 +477,6 @@ nav {
 .editcovidupdate--container form button {
   margin-top: 10px;
   width: 70%;
-}
-
-.residents--submitbutton {
-  margin-top: 20px;
 }
 
 .post--container form {
@@ -763,11 +772,6 @@ nav {
             flex: 5.9;
     margin-left: 4px;
     font-size: 25px;
-  }
-  .map--layer {
-    font-size: 18px;
-    bottom: 15px;
-    left: 15px;
   }
   .success-message {
     right: 30;

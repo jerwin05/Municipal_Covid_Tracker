@@ -140,7 +140,6 @@ const updateActiveCases=()=>{
     method: 'PUT'
   })
   .then(response=>{
-    loadingElement.style.display='none';
     response.json()
     .then(result=>{
       if(result[0].active_cases>1){
@@ -154,10 +153,16 @@ const updateActiveCases=()=>{
 };
 
 const getPositivePatients=()=>{
+  loadingElement.style.display='';
+  covidPatientList.innerHTML='';
   fetch(patientListAPI_URL)
   .then(response=>{
+
+    loadingElement.style.display='none';
+
     response.json()
     .then(result=>{
+      result.reverse();
       result.forEach((patient)=>{
         const mainDiv=document.createElement('div');
         const div1=document.createElement('div');
@@ -210,7 +215,6 @@ const getPositivePatients=()=>{
         });
 
         button1.addEventListener('click',(event)=>{
-          loadingElement.style.display='';
           event.preventDefault();
           overlaydiv.style.display='none';
           fetch(adminPatientListAPI_URL, {//send object to the server
@@ -220,7 +224,6 @@ const getPositivePatients=()=>{
               'content-type': 'application/json'
             }
           }).then(()=>{
-            covidPatientList.innerHTML='';
             getPositivePatients();
             updateActiveCases();
           });
@@ -271,7 +274,7 @@ const getAnnouncements=()=>{
         title.className = 'announcement--element';
         body.className = 'announcement--element';
         date.className = 'announcement--element';
-        date.textContent = new Date(announcement.date);
+        date.textContent =announcement.date;
         button.className = 'profile--button orange--button';
         button.textContent ='delete';
 
@@ -409,7 +412,7 @@ covidPatientListForm.addEventListener('submit',(event)=>{
   successMessage.style.bottom='30';
   setTimeout(()=>{
     updateActiveCases();
-  },200);
+  },100);
   setTimeout(()=>{
     successMessage.style.bottom='-45';
   },3000);
@@ -429,7 +432,6 @@ addPatientForm.addEventListener('submit',(event)=>{
 
   if(patient_number.trim()&&age.trim()&&gender.trim()
     &&barangay.trim()&&status.trim()){
-  loadingElement.style.display='';
      
     const patient = {//put announcement into object
       patient_no:patient_number,
@@ -447,15 +449,9 @@ addPatientForm.addEventListener('submit',(event)=>{
       }
     }).then(()=>{
       addPatientForm.reset();
-      updateActiveCases();
       addPatientForm.style.display='none';
-      covidPatientList.innerHTML='';
       getPositivePatients();
-      successMessage.textContent='Patient Added';
-      successMessage.style.bottom='30';
-      setTimeout(()=>{
-        successMessage.style.bottom='-45';
-      },3000);
+      updateActiveCases();
     });
   }
 });

@@ -19,7 +19,7 @@
             <div id="HomeTab" class="tab--contents home--tab">
                 <section class="tab--containers hometab--containers block1 covidupdate--container">
                     <h2 class='main--title covidupdate--heading'>Covid Update <span id='covidUpdateDate' class="covidupdate--date"></span></h2>
-                    <div class="covidupdate--section customscrollbar">
+                    <div class="covidupdate--section main--customscrollbar">
                         <div class='covidupdate'>
                             <h3 id='newCasesTitle' class='covidupdate--title'>New Case</h3>
                             <div id='newCases' class="covidupdate--count"></div>
@@ -68,9 +68,9 @@
                             <h3>Barangay</h3>
                             <h3>Status</h3>
                         </div>
-                        <div id='covidPatientList' class="covidpatientlist main--body"></div>
-                        <button class="residents--submitbutton profile--button blue--button" id='addPatientButton' type="button">Add Patient</button>
-                        <button class="residents--submitbutton profile--button blue--button" id='editPatientButton' type="submit">Update</button>
+                        <div id='covidPatientList' class="covidpatientlist main--body main--customscrollbar"></div>
+                        <button class="patient--submitbutton profile--button blue--button" id='addPatientButton' type="button">Add Patient</button>
+                        <button class="patient--submitbutton profile--button blue--button" id='editPatientButton' type="submit">Update</button>
                     </form>
                     <form id='addPatientForm' class="addpatient--form" role='form' method="POST">
                         <input name="patient_number" placeholder="patient number" type="text">
@@ -78,7 +78,7 @@
                         <input name="gender" placeholder="gender" type="text">
                         <input name="barangay" placeholder="barangay" type="text">
                         <input name="status" placeholder="status" type="text">
-                        <button class="residents--submitbutton profile--button blue--button" type="submit">Add</button>
+                        <button class=" profile--button blue--button" type="submit">Add</button>
                     </form>
                     <div class="covidupdate--notes">
                         <h2 class="main--title block2--heading">Notes</h2>
@@ -89,10 +89,10 @@
                         <div id="history"></div>
                     </div>
                 </section>
-                <div id="block3" class="block3  customscrollbar">
+                <div id="block3" class="block3 main--customscrollbar">
                     <section class="tab--containers hometab--containers announcement--container">
                         <h2 class="main--title announcement--heading">Announcements</h2>
-                        <div class="announcement--section customscrollbar main--body main--heading" id='announcementSection'></div>
+                        <div class="announcement--section transparent--customscrollbar main--body main--heading" id='announcementSection'></div>
                     </section>
                     <section class="tab--containers hometab--containers map--container">
                         <div class="map--layer">

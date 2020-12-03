@@ -166,7 +166,7 @@ exports.delete_patient=(req,res)=>{
 };
 
 exports.post_announcement=(req,res)=>{
-   const date= new Date();
+   const date= new Date().toString().substring(0,21);
    var sql = "INSERT INTO announcements (`title`,`body`,`date`) VALUES ('" + req.body.title + "','" + req.body.body + "','" + date + "')";
    db.query(sql, function(err, result) {
        if(result){

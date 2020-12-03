@@ -89,24 +89,41 @@ nav{
 }
 
 
-.customscrollbar::-webkit-scrollbar{
-    width: 2px;   
+.transparent--customscrollbar::-webkit-scrollbar{
+    width: 0;   
 }
 
-.customscrollbar::-webkit-scrollbar-track {
+// .transparent--customscrollbar::-webkit-scrollbar-track {
+//     background:transparent; 
+// }
+
+// .transparent--customscrollbar::-webkit-scrollbar-thumb {
+//     background: rgba(136, 136, 136, 0.274); 
+//     border-radius:5px;
+// }
+
+// .transparent--customscrollbar::-webkit-scrollbar-thumb:hover {
+//     background: rgba(85, 85, 85, 0.582); 
+// }
+
+.main--customscrollbar::-webkit-scrollbar{
+    width: 5px;   
+}
+
+.main--customscrollbar::-webkit-scrollbar-track {
     background:transparent; 
 }
 
-.customscrollbar::-webkit-scrollbar-thumb {
-    background: rgba(136, 136, 136, 0.274); 
-    // background:black;
-    // background:#f5b461;
+.main--customscrollbar::-webkit-scrollbar-thumb {
+    background: rgba(136, 136, 136, 0.199); 
     border-radius:5px;
 }
 
-.customscrollbar::-webkit-scrollbar-thumb:hover {
+.main--customscrollbar::-webkit-scrollbar-thumb:hover {
     background: rgba(85, 85, 85, 0.582); 
 }
+
+
 
 
 .main--title{
@@ -228,6 +245,10 @@ nav{
 }
 
 .covidpatientlist{
+    overflow-y: scroll;
+    height: 45vh;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
     p{
         display: flex;
         align-items: center;
@@ -245,8 +266,8 @@ nav{
     }
 }
 
-.covidpatientlist>div:first-child{
-    border-top: 1px solid black;
+.covidpatientlist>div:last-child{
+    border-bottom: none;
 }
 
 .covidpatientlist>div{
@@ -269,6 +290,11 @@ nav{
         margin-left: 7px;
     }
 }
+
+.patient--submitbutton{
+    margin: 10px 0 20px;
+}
+
 
 .announcement--heading{
     border-bottom: 2px solid black;
@@ -327,9 +353,7 @@ nav{
 }
 
 .ol-attribution li {
-    display: inline;
-    list-style: none;
-    font-size: 12px;
+    display: none;
 }
 
 .profile--tab{
@@ -410,11 +434,6 @@ nav{
         }
     }
 }
-
-.residents--submitbutton{
-    margin-top: 20px;
-}
-
 .post--container{
     form{
         display: flex;
@@ -685,11 +704,11 @@ nav{
         margin-left: 4px;
         font-size: 25px;
     }    
-    .map--layer{
-            font-size: 18px;
-            bottom: 15px;
-            left: 15px;
-    }
+    // .map--layer{
+    //         font-size: 18px;
+    //         bottom: 15px;
+    //         left: 15px;
+    // }
     .success-message{
         right: 30;
     }
