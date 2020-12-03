@@ -71,17 +71,17 @@ const create_table=()=>{
     }
   });
 
-  sql = `SELECT id FROM covid_positive_list_history;`;
+  sql = `SELECT id FROM covid_patient_list_history;`;
   db.query(sql, function(err, result) {
     if(err){
-      sql = `CREATE TABLE covid_positive_list_history (
+      sql = `CREATE TABLE covid_patient_list_history (
         id INT NOT NULL AUTO_INCREMENT,
         patient_info VARCHAR(50) NOT NULL,
         date VARCHAR(200) NOT NULL,
         PRIMARY KEY (id));`;
       db.query(sql, function(err, result) {
         if(result){
-          console.log('created covid_positive_list_history');
+          console.log('created covid_patient_list_history');
         }
       });
     }

@@ -11,7 +11,7 @@ exports.authenticate_user=(req,res)=>{
 }
 
 exports.get_covid_updates=(req,res)=>{
-   var sql = `SELECT * FROM covid_updates;`;
+   var sql = `SELECT * FROM covid_updates WHERE id=1;`;
    db.query(sql, function(err, result) {
       if(result.length){
            res.json(result);

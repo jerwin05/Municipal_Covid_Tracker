@@ -129,8 +129,23 @@ nav {
   font-size: 1em;
 }
 
-.main--body p, .main--body pre {
+.main--body p, .main--body pre, .main--body textarea {
   font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.main--body textarea {
+  resize: none;
+  display: table-cell;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  vertical-align: middle;
 }
 
 .main--body small {
@@ -265,14 +280,14 @@ nav {
   text-align: center;
 }
 
-.covidpatientlist input {
+.covidpatientlist textarea {
   width: 100%;
   text-align: center;
   border: none;
   background-color: inherit;
 }
 
-.covidpatientlist input :focus {
+.covidpatientlist textarea :focus {
   outline: 1px solid blue;
 }
 
@@ -334,10 +349,6 @@ nav {
 }
 
 .announcement--section button {
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  padding: 5px 8px;
   margin-bottom: 6px;
 }
 
@@ -672,7 +683,7 @@ nav {
   .main--heading h3 {
     font-size: 1.1em;
   }
-  .main--body p, .main--body pre {
+  .main--body p, .main--body pre, .main--body textarea {
     font-size: 15.5px;
   }
   .main--body small {

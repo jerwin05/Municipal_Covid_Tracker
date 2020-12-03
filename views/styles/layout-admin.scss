@@ -120,8 +120,18 @@ nav{
     }
 }
 .main--body{
-    p,pre{
+    p,pre,textarea{
         font-size: 14px;
+        font-family: 'Poppins', sans-serif;
+        vertical-align: middle;
+        text-align: center;
+    }
+    textarea{
+        resize: none;
+        display: table-cell;
+        align-items: center;
+        justify-content: center;
+        vertical-align: middle;
     }
     small{
         font-size: 12px;
@@ -230,7 +240,7 @@ nav{
         justify-content: center;
         text-align: center;
     }
-    input{
+    textarea{
         width: 100%;
         text-align: center;
         border: none;
@@ -291,10 +301,6 @@ nav{
         line-height: 1.3;
     }
     button{
-        border-radius: 5px;
-        border: none;
-        outline: none;
-        padding:5px 8px;   
         margin-bottom: 6px;
     }
 }
@@ -596,7 +602,7 @@ nav{
         }
     }
     .main--body{
-        p,pre{
+        p,pre,textarea{
             font-size: 15.5px;
         }
         small{

@@ -47,6 +47,7 @@ const profileAPI_URL = (window.location.hostname === '127.0.0.1' || window.locat
 const announcementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/announcement' : 'https://barangay-covid-map.herokuapp.com/announcement';
 const adminAnnouncementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/announcement' : 'https://barangay-covid-map.herokuapp.com/admin/announcement';
 const covidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/covid-update' : 'https://barangay-covid-map.herokuapp.com/covid-update';
+const activeCasesCovidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/covid-update/active-cases' : 'https://barangay-covid-map.herokuapp.com/admin/covid-update/active-cases';
 const adminCovidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/covid-update' : 'https://barangay-covid-map.herokuapp.com/admin/covid-update';
 const patientListAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/patient-list' : 'https://barangay-covid-map.herokuapp.com/patient-list';
 const adminPatientListAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/patient-list' : 'https://barangay-covid-map.herokuapp.com/admin/patient-list';
@@ -134,6 +135,21 @@ const getCovidUpdates=()=>{
   })
 };
 
+const updateActiveCases=()=>{
+  fetch(activeCasesCovidUpdateAPI_URL, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+  .then(response=>{
+    response.json()
+    .then(result=>{
+      activeCases.textContent=result[0].active_cases;
+    });
+  });
+};
+
 const getPositivePatients=()=>{
   fetch(patientListAPI_URL)
   .then(response=>{
@@ -147,7 +163,7 @@ const getPositivePatients=()=>{
         const age=document.createElement('p');
         const gender=document.createElement('p');
         const barangay=document.createElement('p');
-        const status=document.createElement('input');
+        const status=document.createElement('textarea');
         const button = document.createElement('button');
         const overlaydiv = document.createElement('div');
         const overlaydiv1 = document.createElement('div');
@@ -253,7 +269,7 @@ const getAnnouncements=()=>{
         body.className = 'announcement--element';
         date.className = 'announcement--element';
         date.textContent = new Date(announcement.date);
-        button.className = 'orange--button';
+        button.className = 'profile--button orange--button';
         button.textContent ='delete';
 
         const announcementid={
@@ -389,9 +405,8 @@ covidPatientListForm.addEventListener('submit',(event)=>{
   successMessage.textContent='Patient Updated';
   successMessage.style.bottom='30';
   setTimeout(()=>{
-    covidPatientList.innerHTML='';
-    getPositivePatients();
-  },500);
+    updateActiveCases();
+  },700);
   setTimeout(()=>{
     successMessage.style.bottom='-45';
   },3000);

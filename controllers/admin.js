@@ -86,6 +86,41 @@ exports.update_covid_stats=(req,res)=>{
       }
    });
    }
+}
+
+exports.update_covid_updates_active_cases=(req,res)=>{
+   var sql = `SELECT id FROM covid_patient_list WHERE status IN ('admitted','strict isolation');`;
+   db.query(sql, function(err, result) {
+      if(result.length){
+         sql = `UPDATE covid_updates
+            SET active_cases = ${result.length}
+            WHERE id=1;`;
+         db.query(sql,(err,result)=>{
+            if(result){
+               sql = `SELECT active_cases FROM covid_updates WHERE id=1;`;
+               db.query(sql, function(err, result) {
+                  if(result.length){
+                     res.json(result);
+                  }
+               });
+            }
+         });
+      }else if(result){
+         sql = `UPDATE covid_updates
+            SET active_cases = 0
+            WHERE id=1;`;
+         db.query(sql,(err,result)=>{
+            if(result){
+               sql = `SELECT active_cases FROM covid_updates WHERE id=1;`;
+               db.query(sql, function(err, result) {
+                  if(result.length){
+                     res.json(result);
+                  }
+               });
+            }
+         });
+      }
+   });
  }
 
 exports.update_patient_status=(req,res)=>{
