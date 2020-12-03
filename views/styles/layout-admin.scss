@@ -123,16 +123,10 @@ nav{
     p,pre,textarea{
         font-size: 14px;
         font-family: 'Poppins', sans-serif;
-        vertical-align: middle;
-        text-align: center;
     }
-    textarea{
-        resize: none;
-        display: table-cell;
-        align-items: center;
-        justify-content: center;
-        vertical-align: middle;
-    }
+    // textarea{
+    //     padding-top: 16px;
+    // }
     small{
         font-size: 12px;
         line-height: 1.3;

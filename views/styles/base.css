@@ -35,6 +35,10 @@ pre {
   line-height: 1.2;
 }
 
+textarea {
+  resize: none;
+}
+
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;

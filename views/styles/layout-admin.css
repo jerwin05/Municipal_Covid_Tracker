@@ -132,20 +132,6 @@ nav {
 .main--body p, .main--body pre, .main--body textarea {
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
-  vertical-align: middle;
-  text-align: center;
-}
-
-.main--body textarea {
-  resize: none;
-  display: table-cell;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  vertical-align: middle;
 }
 
 .main--body small {

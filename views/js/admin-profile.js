@@ -137,14 +137,17 @@ const getCovidUpdates=()=>{
 
 const updateActiveCases=()=>{
   fetch(activeCasesCovidUpdateAPI_URL, {
-    method: 'PUT',
-    headers: {
-      'content-type': 'application/json'
-    }
+    method: 'PUT'
   })
   .then(response=>{
+    loadingElement.style.display='none';
     response.json()
     .then(result=>{
+      if(result[0].active_cases>1){
+        activeCasesTitle.textContent='Active Cases';
+      }else{
+        activeCasesTitle.textContent='Active Case';
+      }
       activeCases.textContent=result[0].active_cases;
     });
   });
@@ -179,7 +182,7 @@ const getPositivePatients=()=>{
         status.className=`status`;
         status.setAttribute("name", `status${patient.id}`);
         button.textContent='Delete';
-        button.className=' profile--button orange--button';
+        button.className=' profile--button';
         button.setAttribute("type", `button`);
         mainDiv.className='covidpatientlist--table-grid patientDiv';
         div1.className='covidpatientlist--table-grid covidpatientlist--table-templatecolumns';
@@ -188,7 +191,7 @@ const getPositivePatients=()=>{
         overlaydiv1.className='popUp--container';
         p.textContent='Are you sure you want to delete this patient?';
         p.setAttribute("class", `message`);
-        button1.setAttribute("class", `yes deleteResident${patient.id}`);
+        button1.setAttribute("class", `yes deletePatient${patient.id}`);
         button2.setAttribute("class", `no`);
         button1.setAttribute("type", `button`);
         button2.setAttribute("type", `button`);
@@ -207,6 +210,7 @@ const getPositivePatients=()=>{
         });
 
         button1.addEventListener('click',(event)=>{
+          loadingElement.style.display='';
           event.preventDefault();
           overlaydiv.style.display='none';
           fetch(adminPatientListAPI_URL, {//send object to the server
@@ -215,12 +219,11 @@ const getPositivePatients=()=>{
             headers: {
               'content-type': 'application/json'
             }
-          });
-          
-          setTimeout(()=>{
+          }).then(()=>{
             covidPatientList.innerHTML='';
             getPositivePatients();
-          },100);
+            updateActiveCases();
+          });
         });
 
         overlaydiv1.appendChild(p);
@@ -406,7 +409,7 @@ covidPatientListForm.addEventListener('submit',(event)=>{
   successMessage.style.bottom='30';
   setTimeout(()=>{
     updateActiveCases();
-  },700);
+  },200);
   setTimeout(()=>{
     successMessage.style.bottom='-45';
   },3000);
@@ -426,7 +429,7 @@ addPatientForm.addEventListener('submit',(event)=>{
 
   if(patient_number.trim()&&age.trim()&&gender.trim()
     &&barangay.trim()&&status.trim()){
-      loadingElement.style.display='';
+  loadingElement.style.display='';
      
     const patient = {//put announcement into object
       patient_no:patient_number,
@@ -444,11 +447,12 @@ addPatientForm.addEventListener('submit',(event)=>{
       }
     }).then(()=>{
       addPatientForm.reset();
+      updateActiveCases();
       addPatientForm.style.display='none';
+      covidPatientList.innerHTML='';
+      getPositivePatients();
       successMessage.textContent='Patient Added';
       successMessage.style.bottom='30';
-      loadingElement.style.display='none';
-      // errorMessage.style.display='none';
       setTimeout(()=>{
         successMessage.style.bottom='-45';
       },3000);
