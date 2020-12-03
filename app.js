@@ -58,14 +58,22 @@ app.use(session({
   }
 }));
 
-// sql = `SELECT date_updated FROM covid_updates;`;
-// db.query(sql, (err,resul)=> {
-//    sql = `INSERT INTO patient_list_history_date
-//       VALUES (null,'${resul[0].date_updated}');`;
-//       console.log(resul[0].date_updated);
-//    db.query(sql, (err,result)=> {
-      
-//    });
+// var sql = `SELECT * FROM patient_list_history_date;`;
+// db.query(sql, (err,result)=> {
+//   result.forEach(element => {
+//     let counter=0;
+//     const history={
+//       date:element.date
+//     }
+//     sql = `SELECT * FROM patient_list_history WHERE date_id=${element.date_id};`;
+//     db.query(sql, (err,result)=> {
+//       result.forEach(element=>{
+//         element.count=++counter;
+//         history[`patient${counter}`]=element;
+//       })
+//     });
+//     console.log(history);
+//   });
 // });
 
 app.use('/',index);

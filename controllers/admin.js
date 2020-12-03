@@ -188,17 +188,15 @@ exports.delete_patient=(req,res)=>{
             //history_date database
             sql = `SELECT date_id FROM patient_list_history_date WHERE date='${date_updated}';`;
             db.query(sql, (err,result)=> {
-
                //if yes insert the patient with the date id
                if(result.length){
                   patient.recovered_date_id=result[0].date_id;
-                  sql = ` INSERT INTO patient_list_history
-                  VALUES (null,'${patient.recovered_date_id}','${patient.patient_no}','${patient.age}','${patient.gender}','${patient.barangay}','${patient.status}');`;
+                  sql = `INSERT INTO patient_list_history VALUES (null,'${patient.recovered_date_id}','${patient.patient_no}','${patient.age}','${patient.gender}','${patient.barangay}','${patient.status}');`;
                   db.query(sql, ()=> {
                      sql = `DELETE FROM covid_patient_list WHERE patient_id=${req.body.id};`;
                      db.query(sql, (err,result)=> {
                         if(result){
-                            res.send();
+                           res.send();
                         }
                      });
                   });
@@ -206,19 +204,17 @@ exports.delete_patient=(req,res)=>{
                //else insert the date in the database,
                //then insert the patient
                else{
-                  sql = `INSERT INTO patient_list_history_date
-                     VALUES (null,'${date_updated}');`;
+                  sql = `INSERT INTO patient_list_history_date VALUES (null,'${date_updated}');`;
                   db.query(sql, ()=> {
-                     sql = `SELECT date_id FROM patient_list_history_date WHERE date_updated='${date_updated}';`;
+                     sql = `SELECT date_id FROM patient_list_history_date WHERE date='${date_updated}';`;
                      db.query(sql, (err,result)=> {
-                        patient.recovered_date=result[0].date_id;
-                        sql = ` INSERT INTO patient_list_history
-                        VALUES (null,'${patient.recovered_date_id}','${patient.patient_no}','${patient.age}','${patient.gender}','${patient.barangay}','${patient.status}');`;
+                        patient.recovered_date_id=result[0].date_id;
+                        sql = ` INSERT INTO patient_list_history VALUES (null,'${patient.recovered_date_id}','${patient.patient_no}','${patient.age}','${patient.gender}','${patient.barangay}','${patient.status}');`;
                         db.query(sql, ()=> {
                            sql = `DELETE FROM covid_patient_list WHERE patient_id=${req.body.id};`;
                            db.query(sql, (err,result)=> {
                               if(result){
-                                  res.send();
+                                 res.send();
                               }
                            });
                         });
@@ -226,39 +222,12 @@ exports.delete_patient=(req,res)=>{
                   });
                }
             });
-
-
-            // sql = `INSERT INTO patient_list_history_date
-            //    VALUES (null,'${date_updated}');`;
-            //    console.log(patient.patient_no);
-            // db.query(sql, (err)=> {
-
-            //    sql = `SELECT date_id FROM patient_list_history_date
-            //    WHERE date_updated='${date_updated}';`;
-            //    db.query(sql, (err,result)=> {
-            //       console.log(date_updated);
-            //       console.log(result);
-            //       patient.recoverd_date=result[0].date_id;
-
-            //       sql = `INSERT INTO patient_list_history
-            //       VALUES (null,'${patient.patient_no}','${patient.age}','${patient.gender}','${patient.barangay}','${patient.status}','${patient.recoverd_date}');`;
-            //       db.query(sql, ()=> {
-
-            //          sql = `DELETE FROM covid_patient_list WHERE patient_id=${req.body.id};`;
-            //          db.query(sql, (err,result)=> {
-            //             if(result){
-            //                 res.send();
-            //             }
-            //          });
-            //       });
-            //    });
-            // });
          });
       }else{
          sql = `DELETE FROM covid_patient_list WHERE patient_id=${req.body.id};`;
          db.query(sql, (err,result)=> {
             if(result){
-                res.send();
+               res.send();
             }
          });
       }

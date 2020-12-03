@@ -36,16 +36,10 @@ exports.get_patient_list=(req,res)=>{
   });
 }
 exports.get_patient_list_history=(req,res)=>{
-   var sql = `SELECT * FROM patient_list_history;`;
-   db.query(sql, (err,result)=> {
-      if(result.length){
-         res.json(result);
-      }else{
-       res.json({
-         message:'no resident'
-       });
-      }
-  });
+//    var sql = `SELECT * FROM patient_list_history_date;`;
+//    db.query(sql, (err,result)=> {
+      
+//   });
 }
 
 exports.get_announcement=(req,res)=>{
