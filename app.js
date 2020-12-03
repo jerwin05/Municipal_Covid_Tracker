@@ -58,6 +58,16 @@ app.use(session({
   }
 }));
 
+// sql = `SELECT date_updated FROM covid_updates;`;
+// db.query(sql, (err,resul)=> {
+//    sql = `INSERT INTO patient_list_history_date
+//       VALUES (null,'${resul[0].date_updated}');`;
+//       console.log(resul[0].date_updated);
+//    db.query(sql, (err,result)=> {
+      
+//    });
+// });
+
 app.use('/',index);
 app.use('/admin',admin);
 

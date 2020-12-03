@@ -124,16 +124,14 @@ const create_table=()=>{
   //   }
   // });
 
-  var sql = `SELECT data FROM sessions WHERE id=1;`;
-  db.query(sql, (err,result)=> {
-    if(result){
-        console.log('sd');
-        if(result[0]){
-        }
-    }
-  });
-
-  console.log('hello');
+  // var sql = `SELECT data FROM sessions WHERE id=1;`;
+  // db.query(sql, (err,result)=> {
+  //   if(result){
+  //       console.log('sd');
+  //       if(result[0]){
+  //       }
+  //   }
+  // });
 
 }
 
