@@ -8,10 +8,10 @@ exports.signup=(req,res)=>{
    var mob= post.mob_no
    
    var sql="SELECT first_name FROM admin WHERE `user_name`='"+name+"'";
-   db.query(sql, function(err, result) {
+   db.query(sql, (err,result)=> {
         if(!result[0]){
             sql = "INSERT INTO admin (`first_name`,`middle_name`,`last_name`,`mob_no`,`user_name`, `password`) VALUES ('" + fname + "','" + mname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "')";
-            db.query(sql, function(err, result) {
+            db.query(sql, (err,result)=> {
                 if(result){
                     res.send('true');
                 }
@@ -71,7 +71,7 @@ exports.update_covid_stats=(req,res)=>{
      sql = `UPDATE covid_updates
        SET new_cases='${new_cases}', date_updated='${date_updated}',suspected='${suspected}',probable='${probable}',tested_negative='${tested_negative}',confirmed_cases='${confirmed_cases}',recovered='${recovered}',death='${death}',notes='${notes}'
        WHERE id=1;`;
-     db.query(sql, function(err, result) {
+     db.query(sql, (err,result)=> {
        if(result){
          res.send();
        }
@@ -80,7 +80,7 @@ exports.update_covid_stats=(req,res)=>{
      sql = `UPDATE covid_updates
        SET new_cases='${new_cases}', date_updated='${date_updated}',suspected='${suspected}',probable='${probable}',tested_negative='${tested_negative}',confirmed_cases='${confirmed_cases}',recovered='${recovered}',death='${death}'
        WHERE id=1;`;
-     db.query(sql, function(err, result) {
+     db.query(sql, (err,result)=> {
       if(result){
            res.send();
       }
@@ -89,8 +89,8 @@ exports.update_covid_stats=(req,res)=>{
 }
 
 exports.update_covid_updates_active_cases=(req,res)=>{
-   var sql = `SELECT id FROM covid_patient_list WHERE status IN ('admitted','strict isolation');`;
-   db.query(sql, function(err, result) {
+   var sql = `SELECT patient_id FROM covid_patient_list WHERE status IN ('admitted','strict isolation');`;
+   db.query(sql, (err,result)=> {
       if(result.length){
          sql = `UPDATE covid_updates
             SET active_cases = ${result.length}
@@ -98,7 +98,7 @@ exports.update_covid_updates_active_cases=(req,res)=>{
          db.query(sql,(err,result)=>{
             if(result){
                sql = `SELECT active_cases FROM covid_updates WHERE id=1;`;
-               db.query(sql, function(err, result) {
+               db.query(sql, (err,result)=> {
                   if(result.length){
                      res.json(result);
                   }
@@ -112,9 +112,11 @@ exports.update_covid_updates_active_cases=(req,res)=>{
          db.query(sql,(err,result)=>{
             if(result){
                sql = `SELECT active_cases FROM covid_updates WHERE id=1;`;
-               db.query(sql, function(err, result) {
-                  if(result.length){
-                     res.json(result);
+               db.query(sql, (err,result)=> {
+                  if(result){ 
+                     if(result.length){
+                        res.json(result);
+                     }
                   }
                });
             }
@@ -124,10 +126,10 @@ exports.update_covid_updates_active_cases=(req,res)=>{
  }
 
 exports.update_patient_status=(req,res)=>{
-    var sql =`UPDATE covid_patient_list 
+   var sql =`UPDATE covid_patient_list 
       SET status = '${req.body.status}' 
-      WHERE id=${req.body.id};`;
-   db.query(sql, function(err, result) {
+      WHERE patient_id=${req.body.id};`;
+   db.query(sql, (err,result)=> {
       if(result){
          res.send();
       }
@@ -139,7 +141,7 @@ exports.update_patient_status=(req,res)=>{
 //     var sql = `UPDATE users SET remarks = '${remarks}' WHERE id=${req.body.id};`;
 //     // var sql = `UPDATE users SET remarks = '${req.body.remarks}' WHERE id='${req.session.id}';`;
 //     // var sql= 'DELETE FROM users;';
-//     db.query(sql, function(err, result) {
+//     db.query(sql, (err,result)=> {
 //        if(result){
 //            res.send();
 //        }
@@ -147,28 +149,57 @@ exports.update_patient_status=(req,res)=>{
 // };
 
 exports.add_patient=(req,res)=>{
+   const gender=req.body.gender.toLowerCase();
+   const barangay=req.body.barangay.toLowerCase();
+   const status=req.body.status.toLowerCase();
    var sql = `INSERT INTO covid_patient_list
       (patient_no,age,gender,barangay,status)
-      VALUES ('${req.body.patient_no}','${req.body.age}','${req.body.gender}','${req.body.barangay}','${req.body.status}');`;
-   db.query(sql, function(err, result) {
-      if(result){
-          res.send();
-      }
-  });
-};
-exports.delete_patient=(req,res)=>{
-   var sql = `DELETE FROM covid_patient_list WHERE id=${req.body.id};`;
-   db.query(sql, function(err, result) {
+      VALUES ('${req.body.patient_no}','${req.body.age}','${gender}','${barangay}','${status}');`;
+   db.query(sql, (err,result)=> {
       if(result){
           res.send();
       }
   });
 };
 
+exports.delete_patient=(req,res)=>{
+   var sql = `SELECT * FROM covid_patient_list WHERE patient_id=${req.body.id};`;
+   db.query(sql, (err,result)=> {
+      if(result){
+         if(result[0].status=='recovered'){
+            sql = `INSERT INTO patient_list_history
+            (patient_no,age,gender,barangay,status)
+            VALUES ('${result[0].patient_no}','${result[0].age}','${result[0].gender}','${result[0].barangay}','${result[0].status}');`;
+            db.query(sql, (err,result)=> {
+               if(result){
+                  sql = `DELETE FROM covid_patient_list WHERE patient_id=${req.body.id};`;
+                  db.query(sql, (err,result)=> {
+                     if(result){
+                         res.send();
+                     }
+                 });
+               }
+            });
+         }else{
+            sql = `DELETE FROM covid_patient_list WHERE patient_id=${req.body.id};`;
+            db.query(sql, (err,result)=> {
+               if(result){
+                   res.send();
+               }
+            });
+         }
+      }else{
+         console.log(err);
+      }
+  });
+
+
+};
+
 exports.post_announcement=(req,res)=>{
-   const date= new Date().toString().substring(0,21);
+   const date= new Date();
    var sql = "INSERT INTO announcements (`title`,`body`,`date`) VALUES ('" + req.body.title + "','" + req.body.body + "','" + date + "')";
-   db.query(sql, function(err, result) {
+   db.query(sql, (err,result)=> {
        if(result){
            res.send('true');
        }
@@ -177,7 +208,7 @@ exports.post_announcement=(req,res)=>{
 
 exports.delete_announcement=(req,res)=>{
    var sql = `DELETE FROM announcements WHERE id='${req.body.id}';`;
-   db.query(sql, function(err, result) {
+   db.query(sql, (err,result)=> {
       if(result){
           res.send();//if query successful, send response
       }
@@ -193,7 +224,7 @@ exports.logout=(req,res)=>{
 exports.delete_profile=(req,res)=>{//delete current user from database
   
     var sql = `DELETE FROM admin WHERE id=${req.session.myID};`;
-    db.query(sql, function(err, result) {
+    db.query(sql, (err,result)=> {
        if(result){
            res.send();//if query successful, send response
            req.session.destroy();

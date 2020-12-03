@@ -28,7 +28,7 @@ connection.connect((err)=>{
   }
 });
 global.db = connection;
-table.create();
+
 
 // all environments
 // app.use(helmet());

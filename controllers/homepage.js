@@ -12,7 +12,7 @@ exports.authenticate_user=(req,res)=>{
 
 exports.get_covid_updates=(req,res)=>{
    var sql = `SELECT * FROM covid_updates WHERE id=1;`;
-   db.query(sql, function(err, result) {
+   db.query(sql, (err,result)=> {
       if(result.length){
            res.json(result);
       }
@@ -21,9 +21,25 @@ exports.get_covid_updates=(req,res)=>{
 
 exports.get_patient_list=(req,res)=>{
    var sql = `SELECT * FROM covid_patient_list;`;
-   db.query(sql, function(err, result) {
+   db.query(sql, (err,result)=> {
+      if(result){
+         if(result.length){
+            res.json(result);
+         }else{
+            res.json({
+               message:'no resident'
+            });
+         }
+      }else{
+         console.log(err);
+      }
+  });
+}
+exports.get_patient_list_history=(req,res)=>{
+   var sql = `SELECT * FROM patient_list_history;`;
+   db.query(sql, (err,result)=> {
       if(result.length){
-           res.json(result);
+         res.json(result);
       }else{
        res.json({
          message:'no resident'
@@ -48,7 +64,7 @@ exports.get_announcement=(req,res)=>{
 
 exports.get_positive_coordinates=(req,res)=>{
    var sql = `SELECT latitude,longitude FROM users WHERE remarks='positive';`;
-   db.query(sql, function(err, result) {
+   db.query(sql, (err,result)=> {
       if(result.length){
            res.json(result);
       }

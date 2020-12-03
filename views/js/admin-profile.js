@@ -185,7 +185,7 @@ const getPositivePatients=()=>{
         barangay.textContent=patient.barangay.toLowerCase();
         status.value=patient.status.toLowerCase();
         status.className=`status`;
-        status.setAttribute("name", `status${patient.id}`);
+        status.setAttribute("name", `status${patient.patient_id}`);
         button.textContent='Delete';
         button.className=' profile--button';
         button.setAttribute("type", `button`);
@@ -196,7 +196,7 @@ const getPositivePatients=()=>{
         overlaydiv1.className='popUp--container';
         p.textContent='Are you sure you want to delete this patient?';
         p.setAttribute("class", `message`);
-        button1.setAttribute("class", `yes deletePatient${patient.id}`);
+        button1.setAttribute("class", `yes deletePatient${patient.patient_id}`);
         button2.setAttribute("class", `no`);
         button1.setAttribute("type", `button`);
         button2.setAttribute("type", `button`);
@@ -204,7 +204,7 @@ const getPositivePatients=()=>{
         button2.textContent='No';
 
         const patientid={
-          id:patient.id
+          id:patient.patient_id
         }
 
         button.addEventListener('click',()=>{
