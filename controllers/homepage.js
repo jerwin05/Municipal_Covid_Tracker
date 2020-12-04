@@ -36,10 +36,32 @@ exports.get_patient_list=(req,res)=>{
   });
 }
 exports.get_patient_list_history=(req,res)=>{
-//    var sql = `SELECT * FROM patient_list_history_date;`;
-//    db.query(sql, (err,result)=> {
-      
-//   });
+   var sql = `SELECT * FROM patient_list_history_date;`;
+   db.query(sql, (err,result)=> {
+     result.forEach(element => {
+       let counter=0;
+       const history={
+         date:{
+            date_id:element.date_id,
+            date:element.date
+         }
+       }
+       sql = `SELECT patient_no,age,gender,barangay,status FROM patient_list_history WHERE date_id=${element.date_id};`;
+       db.query(sql, (err,result)=> {
+         result.forEach((element,index,array)=>{
+            history[`patient${++counter}`]=element;
+            // if(array.length==index+1){
+            //    // res.type('application/json');
+            //    // res.set('Content-Type', 'application/json');
+            //    // res.json(JSON.stringify(history));
+            //    // res.json(history);
+            // }
+         })
+         res.json(history);
+         console.log(history);
+       });
+     });
+   });
 }
 
 exports.get_announcement=(req,res)=>{

@@ -58,23 +58,44 @@ app.use(session({
   }
 }));
 
+// var counter = (function () {
+//   var count = 0;
+//   return {
+//     add:function(){count += 1;},
+//     get_count:function(){return count}
+//   }
+// })();
+
 // var sql = `SELECT * FROM patient_list_history_date;`;
-// db.query(sql, (err,result)=> {
-//   result.forEach(element => {
-//     let counter=0;
-//     const history={
-//       date:element.date
-//     }
-//     sql = `SELECT * FROM patient_list_history WHERE date_id=${element.date_id};`;
-//     db.query(sql, (err,result)=> {
-//       result.forEach(element=>{
-//         element.count=++counter;
-//         history[`patient${counter}`]=element;
-//       })
-//     });
-//     console.log(history);
-//   });
-// });
+//    db.query(sql, (err,results)=> {
+//     const history_list={}
+//      results.forEach(element => {
+//        counter.add();
+//        let counter1=0;
+//        history_list[`history${counter}`]={
+//         date:{
+//           date_id:element.date_id,
+//           date:element.date
+//         }
+//        }
+
+     
+//        sql = `SELECT patient_no,age,gender,barangay,status FROM patient_list_history WHERE date_id=${element.date_id};`;
+//        db.query(sql, function(err,result) {     
+    
+//          result.forEach((element,index,array)=>{
+//           console.log(counter.get_count());
+//            console.log(counter);
+//            console.log(counter1++);
+//             history_list[`history${counter}`][`patient${++counter1}`]=element;
+//             console.log(history_list);
+//          })
+//          console.log(history_list);
+//        });
+//      });
+//      console.log(history_list);
+//      console.log(counter);
+//    });
 
 app.use('/',index);
 app.use('/admin',admin);

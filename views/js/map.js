@@ -106,34 +106,34 @@ function init (){
     map.addLayer(vectorLayer); 
   }
 
-  function getPositiveResidentCoordinates(){
-    geojsonObject.features[0].geometry.geometries=[];
-    fetch(residentPositiveCoordinatesAPI_URL,{
-    }).then(response=>{
-      response.json().then(result=>{
-        if(result.length){
-          let newPoint;
-          result.forEach((coordinates)=>{
-            newPoint={
-              'type':'Point',
-              'coordinates':[coordinates.longitude,coordinates.latitude]
-            };    
-            geojsonObject.features[0].geometry.geometries.push(newPoint);
-          });
-          vectorSource.clear();
-          vectorSource = new ol.source.Vector({
-            features: new ol.format.GeoJSON().readFeatures(geojsonObject)
-          });
-          callvector();
-        }
-        else{
-          vectorSource.clear();
-          callvector();
-        }
-      });
-    });
-  }
-  getPositiveResidentCoordinates();
+  // function getPositiveResidentCoordinates(){
+  //   geojsonObject.features[0].geometry.geometries=[];
+  //   fetch(residentPositiveCoordinatesAPI_URL,{
+  //   }).then(response=>{
+  //     response.json().then(result=>{
+  //       if(result.length){
+  //         let newPoint;
+  //         result.forEach((coordinates)=>{
+  //           newPoint={
+  //             'type':'Point',
+  //             'coordinates':[coordinates.longitude,coordinates.latitude]
+  //           };    
+  //           geojsonObject.features[0].geometry.geometries.push(newPoint);
+  //         });
+  //         vectorSource.clear();
+  //         vectorSource = new ol.source.Vector({
+  //           features: new ol.format.GeoJSON().readFeatures(geojsonObject)
+  //         });
+  //         callvector();
+  //       }
+  //       else{
+  //         vectorSource.clear();
+  //         callvector();
+  //       }
+  //     });
+  //   });
+  // }
+  // getPositiveResidentCoordinates();
 
   button.addEventListener('click',()=>{
     getPositiveResidentCoordinates();
