@@ -272,8 +272,9 @@ const getPatientHistory=()=>{
 
         p.textContent=result[`history${a+1}`].date;
         button.textContent='Delete';
+        button.className='profile--button blue--button';
         overlaydiv.className='overlay';
-        overlaydiv1.className='popUp--container history_popup';
+        overlaydiv1.className='popUp--container history--popup';
         p1.textContent='Are you sure?';
         p1.setAttribute("class", `message`);
         button1.setAttribute("class", `yes deleteHistory${a+1}`);
@@ -286,7 +287,6 @@ const getPatientHistory=()=>{
         const history_id={
           date_id:result[`history${a+1}`].date_id
         }
-        console.log(history_id.date_id);
 
         button.addEventListener('click',()=>{
           overlaydiv.style.display='flex';
@@ -357,7 +357,7 @@ const getAnnouncements=()=>{
         date.className = 'announcement--element';
         date.textContent =announcement.date;
         button.className = 'profile--button orange--button';
-        button.textContent ='delete';
+        button.textContent ='Delete';
 
         const announcementid={
           id:announcement.id

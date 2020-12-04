@@ -581,6 +581,10 @@ nav {
   padding: 2px 0;
 }
 
+.history--popup {
+  padding: 20px 80px;
+}
+
 .message {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
