@@ -14,6 +14,6 @@ Router
     .get    ('/announcement',           homepage.get_announcement)
     .get    ('/covid-update',           homepage.get_covid_updates)
     .get    ('/patient-list',           homepage.get_patient_list)
-    .get    ('/patient-list-history',           homepage.get_patient_list_history);
+    .get    ('/patient-list-history',   homepage.get_patient_list_history);
 
 module.exports=Router;

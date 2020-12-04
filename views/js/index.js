@@ -15,6 +15,7 @@ const death=document.getElementById('death');
 const covidUpdateDate=document.getElementById('covidUpdateDate');
 const notes=document.getElementById('notes');
 const covidPatientList=document.getElementById('covidPatientList');
+const history=document.getElementById('history');
 const loadingElement=document.getElementById('loadingElement');
 const sectionContainer=document.getElementById('sectionContainer');
 
@@ -70,7 +71,6 @@ const getCovidUpdates=()=>{
       pre.className='main--body';
       pre.textContent=result[0].notes;
       notes.appendChild(pre);
-      
     })
   })
 };
@@ -114,13 +114,24 @@ const getPositivePatients=()=>{
 };
 
 const getPatientHistory=()=>{
-  // fetch(patientListHistoryAPI_URL)
-  // .then(response=>{
-  //   response.json()
-  //   .then(result=>{
-  //     console.log(result);
-  //   })
-  // })
+  fetch(patientListHistoryAPI_URL)
+  .then(response=>{
+    response.json()
+    .then(result=>{
+      for(var a=0,b=result.history_count; a<b ;a++){
+        const div=document.createElement('div');
+        const p=document.createElement('p');
+        p.textContent=result[`history${a+1}`].date;
+        div.appendChild(p);
+        for(var c=0,d=result[`history${a+1}`].recovered_count; c<d ;c++){
+          const p1 =document.createElement('p');
+          p1.textContent=result[`history${a+1}`][`recovered${c+1}`].patient_details;
+          div.appendChild(p1);
+        }
+        history.appendChild(div);
+      }
+    })
+  })
 };
 
 const getAnnouncements=()=>{

@@ -77,11 +77,7 @@ const create_table=()=>{
       sql = `CREATE TABLE patient_list_history (
         patient_id INT NOT NULL AUTO_INCREMENT,
         date_id INT,
-        patient_no VARCHAR(50) NOT NULL,
-        age VARCHAR(5) NOT NULL,
-        gender VARCHAR(20) NOT NULL,
-        barangay VARCHAR(100) NOT NULL,
-        status VARCHAR(100) NOT NULL,
+        patient_details TEXT NOT NULL,
         PRIMARY KEY (patient_id),
         FOREIGN KEY (date_id) REFERENCES patient_list_history_date(date_id));`;
       db.query(sql, (err,result)=> {

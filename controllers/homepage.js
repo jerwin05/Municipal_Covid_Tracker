@@ -36,32 +36,36 @@ exports.get_patient_list=(req,res)=>{
   });
 }
 exports.get_patient_list_history=(req,res)=>{
-   // var sql = `SELECT * FROM patient_list_history_date;`;
-   // db.query(sql, (err,result)=> {
-   //   result.forEach(element => {
-   //     let counter=0;
-   //     const history={
-   //       date:{
-   //          date_id:element.date_id,
-   //          date:element.date
-   //       }
-   //     }
-   //     sql = `SELECT patient_no,age,gender,barangay,status FROM patient_list_history WHERE date_id=${element.date_id};`;
-   //     db.query(sql, (err,result)=> {
-   //       result.forEach((element,index,array)=>{
-   //          history[`patient${++counter}`]=element;
-            // if(array.length==index+1){
-            //    // res.type('application/json');
-            //    // res.set('Content-Type', 'application/json');
-            //    // res.json(JSON.stringify(history));
-            //    // res.json(history);
-            // }
-   //       })
-   //       res.json(history);
-   //       console.log(history);
-   //     });
-   //   });
-   // });
+   var sql = `SELECT * FROM patient_list_history LEFT JOIN patient_list_history_date ON patient_list_history.date_id = patient_list_history_date.date_id;`;
+   db.query(sql, (err,results)=> {
+      results.reverse();
+      const history_list={};
+      let counter=0;
+      let counter1=0;
+      results.forEach((element,index,array)=>{
+         if(index==0){
+            history_list.history_count=1;
+            history_list[`history${++counter}`]={};
+            history_list[`history${counter}`].date_id=element.date_id;
+            history_list[`history${counter}`].date=element.date;
+            history_list[`history${counter}`][`recovered${++counter1}`]={patient_details:element.patient_details};
+            history_list[`history${counter}`].recovered_count=counter1;
+         }else{
+            if(history_list[`history${counter}`].date_id==element.date_id){
+               history_list[`history${counter}`][`recovered${++counter1}`]={patient_details:element.patient_details};
+               history_list[`history${counter}`].recovered_count=counter1;
+            }else{
+               counter1=0;
+               history_list[`history${++counter}`]={};
+               history_list.history_count=counter;
+               history_list[`history${counter}`].date_id=element.date_id;
+               history_list[`history${counter}`].date=element.date;
+               history_list[`history${counter}`][`recovered${++counter1}`]={patient_details:element.patient_details};
+            }
+         }
+      });
+      res.json(history_list);
+   });
 }
 
 exports.get_announcement=(req,res)=>{

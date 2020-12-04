@@ -63,17 +63,6 @@ app.use(session({
   }
 }));
 
-// var sql = `SELECT * FROM patient_list_history_date;`;
-var sql = `SELECT * FROM patient_list_history LEFT JOIN patient_list_history_date ON patient_list_history.date_id = patient_list_history_date.date_id;`;
-//  WHERE patient_list_history.date_id=29
-db.query(sql, (err,results)=> {
-  let sampleArray=[];
-  results.forEach(element=>{
-    sampleArray.push(element);
-  })
-  console.log(sampleArray);
-});
-
 app.use('/',index);
 app.use('/admin',admin);
 

@@ -25,6 +25,7 @@ const covidPatientListForm=document.getElementById('covidPatientListForm');
 const addPatientForm=document.getElementById('addPatientForm');
 const addPatientButton=document.getElementById('addPatientButton');
 const editPatientButton=document.getElementById('editPatientButton');
+const history=document.getElementById('history');
 const loadingElement=document.getElementById('loadingElement');
 const main=document.getElementById('main');
 
@@ -51,6 +52,8 @@ const activeCasesCovidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' 
 const adminCovidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/covid-update' : 'https://barangay-covid-map.herokuapp.com/admin/covid-update';
 const patientListAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/patient-list' : 'https://barangay-covid-map.herokuapp.com/patient-list';
 const adminPatientListAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/patient-list' : 'https://barangay-covid-map.herokuapp.com/admin/patient-list';
+const patientListHistoryAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/patient-list-history' : 'https://barangay-covid-map.herokuapp.com/patient-list-history';
+const adminPatientListHistoryAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/patient-list-history' : 'https://barangay-covid-map.herokuapp.com/admin/patient-list-history';
 
 fetch(authenticateAPI_URL,{
 }).then(response=>{
@@ -226,6 +229,7 @@ const getPositivePatients=()=>{
           }).then(()=>{
             getPositivePatients();
             updateActiveCases();
+            getPatientHistory();
           });
         });
 
@@ -245,6 +249,83 @@ const getPositivePatients=()=>{
         mainDiv.appendChild(button);
         covidPatientList.appendChild(mainDiv);
       });
+    })
+  })
+};
+
+
+const getPatientHistory=()=>{
+  history.innerHTML='';
+  fetch(patientListHistoryAPI_URL)
+  .then(response=>{
+    response.json()
+    .then(result=>{
+      for(var a=0,b=result.history_count; a<b ;a++){
+        const div=document.createElement('div');
+        const p=document.createElement('p');
+        const button=document.createElement('button');
+        const overlaydiv = document.createElement('div');
+        const overlaydiv1 = document.createElement('div');
+        const p1 = document.createElement('p');
+        const button1 = document.createElement('button');
+        const button2 = document.createElement('button');
+
+        p.textContent=result[`history${a+1}`].date;
+        button.textContent='Delete';
+        overlaydiv.className='overlay';
+        overlaydiv1.className='popUp--container history_popup';
+        p1.textContent='Are you sure?';
+        p1.setAttribute("class", `message`);
+        button1.setAttribute("class", `yes deleteHistory${a+1}`);
+        button2.setAttribute("class", `no`);
+        button1.setAttribute("type", `button`);
+        button2.setAttribute("type", `button`);
+        button1.textContent='Yes';
+        button2.textContent='No';
+
+        const history_id={
+          date_id:result[`history${a+1}`].date_id
+        }
+        console.log(history_id.date_id);
+
+        button.addEventListener('click',()=>{
+          overlaydiv.style.display='flex';
+        });
+        button2.addEventListener('click',()=>{
+          overlaydiv.style.display='none';
+        });
+
+        button1.addEventListener('click',(event)=>{
+          event.preventDefault();
+          overlaydiv.style.display='none';
+          fetch(adminPatientListHistoryAPI_URL, {//send object to the server
+            method: 'DELETE',
+            body: JSON.stringify(history_id),//make object in json format
+            headers: {
+              'content-type': 'application/json'
+            }
+          }).then(()=>{
+            getPatientHistory();
+          });
+        });
+
+        div.appendChild(p);
+
+        for(var c=0,d=result[`history${a+1}`].recovered_count; c<d ;c++){
+          const p =document.createElement('p');
+          p.textContent=result[`history${a+1}`][`recovered${c+1}`].patient_details;
+          div.appendChild(p);
+        }
+
+        overlaydiv1.appendChild(p1);
+        overlaydiv1.appendChild(button1);
+        overlaydiv1.appendChild(button2);
+        overlaydiv.appendChild(overlaydiv1);
+        body.appendChild(overlaydiv); 
+
+        div.appendChild(button);
+        history.appendChild(div);
+      }
     })
   })
 };
@@ -311,6 +392,7 @@ const getAnnouncements=()=>{
 getProfile();
 getCovidUpdates();
 getPositivePatients();
+getPatientHistory();
 getAnnouncements(); 
 
 editCovidUpdateForm.addEventListener('submit',(event)=>{
