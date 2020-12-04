@@ -1,9 +1,10 @@
-exports.create_table=()=>{
+async function create_table(db){
+  await db;
   var sql = `SELECT id FROM admin;`;
   db.query(sql, (err,result)=> {
     if(err){
       console.log(err);
-      sql = `CREATE TABLE admin (
+      var sql = `CREATE TABLE admin (
         id INT NOT NULL AUTO_INCREMENT,
         first_name VARCHAR(30) NOT NULL,
         last_name VARCHAR(30) NOT NULL,
@@ -15,7 +16,7 @@ exports.create_table=()=>{
       db.query(sql, (err,result)=> {
         if(result){
           console.log('created admin');
-          sql = `CREATE TABLE covid_updates (
+          var sql = `CREATE TABLE covid_updates (
             id INT NOT NULL AUTO_INCREMENT,
             probable VARCHAR(12) NOT NULL,
             death VARCHAR(12) NOT NULL,
@@ -36,7 +37,7 @@ exports.create_table=()=>{
               db.query(sql, (err,result)=> {
                 if(result){
                   console.log('inserted covid_updates row');            
-                  sql = `CREATE TABLE covid_patient_list (
+                  var sql = `CREATE TABLE covid_patient_list (
                     patient_id INT NOT NULL AUTO_INCREMENT,
                     patient_no VARCHAR(50) NOT NULL,
                     age VARCHAR(5) NOT NULL,
@@ -47,14 +48,14 @@ exports.create_table=()=>{
                   db.query(sql, (err,result)=> {
                     if(result){
                       console.log('created covid_patient_list');
-                      sql = `CREATE TABLE patient_list_history_date (
+                      var sql = `CREATE TABLE patient_list_history_date (
                         date_id INT NOT NULL AUTO_INCREMENT,
                         date VARCHAR(200) NOT NULL,
                         PRIMARY KEY (date_id));`;
                       db.query(sql, (err,result)=> {
                         if(result){
                           console.log('created patient_list_history_date');
-                          sql = `CREATE TABLE patient_list_history (
+                          var sql = `CREATE TABLE patient_list_history (
                             patient_id INT NOT NULL AUTO_INCREMENT,
                             date_id INT,
                             patient_details TEXT NOT NULL,
@@ -63,7 +64,7 @@ exports.create_table=()=>{
                           db.query(sql, (err,result)=> {
                             if(result){
                               console.log('created patient_list_history');
-                              sql = `CREATE TABLE announcements (
+                              var sql = `CREATE TABLE announcements (
                                 id INT NOT NULL AUTO_INCREMENT,
                                 title VARCHAR(500) NOT NULL,
                                 body VARCHAR(2000) NOT NULL,
@@ -87,5 +88,7 @@ exports.create_table=()=>{
         }
       });
     }
-  });    
+  }); 
 }
+
+module.exports.create=create_table;
