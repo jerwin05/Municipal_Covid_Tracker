@@ -11,11 +11,16 @@ const table = require('./create_table')
 
 //database configuration
 const options={  
-  host     : 'localhost',
+  // host     : 'localhost',
+  // port     : 3306,
+  // user     : 'root',
+  // password : 'a09287811206',
+  // database : 'brgy'
+  host     : 'sql12.freemysqlhosting.net',
   port     : 3306,
-  user     : 'root',
-  password : 'a09287811206',
-  database : 'brgy'
+  user     : 'sql12378014',
+  password : 'JWbYsgac5d',
+  database : 'sql12378014'
 };
 let connection = mysql.createConnection(options);
 let sessionStore = new MySQLStore({}, connection);
@@ -31,16 +36,16 @@ global.db = connection;
 
 
 // all environments
-// app.use(helmet());
-// app.use(
-//   helmet.contentSecurityPolicy({
-//     directives: {
-//       ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-//       "img-src": ["'self'", "https:"],
-//       "script-src-attr": ["'self'","'unsafe-inline'"]
-//     }
-//   })
-// );
+app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+      "img-src": ["'self'", "https:"],
+      "script-src-attr": ["'self'","'unsafe-inline'"]
+    }
+  })
+);
 app.use(compression()); //Compress all routes
 app.use(express.static('views'));
 app.use(express.json());
