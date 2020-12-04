@@ -2,6 +2,7 @@ exports.create_table=()=>{
   var sql = `SELECT id FROM admin;`;
   db.query(sql, (err,result)=> {
     if(err){
+      console.log(err);
       sql = `CREATE TABLE admin (
         id INT NOT NULL AUTO_INCREMENT,
         first_name VARCHAR(30) NOT NULL,
