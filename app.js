@@ -23,7 +23,6 @@ const options={
   database : 'sql12380309'
 };
 let connection = mysql.createConnection(options);
-let sessionStore = new MySQLStore({}, connection);
 connection.connect((err)=>{
   if (!err){
     console.log("Database Connected");
@@ -32,6 +31,7 @@ connection.connect((err)=>{
     console.log("Database Connection Failed : "+JSON.stringify(err,undefined,2));
   }
 });
+let sessionStore = new MySQLStore({}, connection);
 global.db = connection;
 table.create(db);
 
