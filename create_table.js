@@ -1,4 +1,4 @@
-const create_table=()=>{
+exports.create_table=()=>{
   var sql = `SELECT id FROM admin;`;
   db.query(sql, (err,result)=> {
     if(err){
@@ -88,5 +88,3 @@ const create_table=()=>{
     }
   });    
 }
-
-module.exports.create=create_table;
