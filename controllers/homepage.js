@@ -27,7 +27,7 @@ exports.get_patient_list=(req,res)=>{
             res.json(result);
          }else{
             res.json({
-               message:'no resident'
+               message:'no patient'
             });
          }
       }else{
@@ -35,14 +35,15 @@ exports.get_patient_list=(req,res)=>{
       }
   });
 }
+
 exports.get_patient_list_history=(req,res)=>{
    var sql = `SELECT * FROM patient_list_history LEFT JOIN patient_list_history_date ON patient_list_history.date_id = patient_list_history_date.date_id;`;
-   db.query(sql, (err,results)=> {
-      results.reverse();
+   db.query(sql, (err,result)=> {
+      result.reverse();
       const history_list={};
       let counter=0;
       let counter1=0;
-      results.forEach((element,index,array)=>{
+      result.forEach((element,index,array)=>{
          if(index==0){
             history_list.history_count=1;
             history_list[`history${++counter}`]={};
@@ -70,15 +71,17 @@ exports.get_patient_list_history=(req,res)=>{
 
 exports.get_announcement=(req,res)=>{
    var sql="SELECT * FROM announcements";                           
-   db.query(sql, function(err, results){
-       if(results.length){
-           res.json(results);
-       }
-       else{
-           res.json({
-               errorMessage:'no announcement'
-           });
-       }
+   db.query(sql, (err, result)=>{
+      if(result){
+         if(result.length){
+            res.json(result);
+        }
+        else{
+            res.send();
+        }
+      }else{
+         console.log(err);
+      }
    });
 }
 
