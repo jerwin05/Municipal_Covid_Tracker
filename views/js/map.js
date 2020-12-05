@@ -135,13 +135,13 @@ function init (){
   // }
   // getPositiveResidentCoordinates();
 
-  button.addEventListener('click',()=>{
-    getPositiveResidentCoordinates();
-    button.textContent='Refreshed';
-    setTimeout(()=>{
-      button.textContent='Refresh';
-    },1000)
-  });
+  // button.addEventListener('click',()=>{
+  //   getPositiveResidentCoordinates();
+  //   button.textContent='Refreshed';
+  //   setTimeout(()=>{
+  //     button.textContent='Refresh';
+  //   },1000)
+  // });
 
   //--------------------------------------------------------------------------------------------------------------------------------------
 

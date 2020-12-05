@@ -286,6 +286,8 @@ const getPatientHistory=()=>{
           const button2 = document.createElement('button');
   
           p.textContent=result[`history${a+1}`].date;
+          p.className='history--date';
+          div1.className='history--people';
           button.textContent='Delete';
           button.className='profile--button blue--button';
           overlaydiv.className='overlay';

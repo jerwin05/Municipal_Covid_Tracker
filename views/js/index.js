@@ -140,11 +140,11 @@ const getPatientHistory=()=>{
         for(var a=0,b=result.history_count; a<b ;a++){
           const div=document.createElement('div');
           const div1=document.createElement('div');
-          const p=document.createElement('p');
-          p.className='history--date';
+          const span=document.createElement('span');
+          span.className='history--date';
           div1.className='history--people';
-          p.textContent=result[`history${a+1}`].date;
-          div.appendChild(p);
+          span.textContent=result[`history${a+1}`].date;
+          div.appendChild(span);
           div.appendChild(div1);
           for(var c=0,d=result[`history${a+1}`].recovered_count; c<d ;c++){
             const p1 =document.createElement('p');

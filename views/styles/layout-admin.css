@@ -12,7 +12,7 @@ nav {
 }
 
 .heading {
-  padding: 15px 37px 5px 25px;
+  padding: 5px 37px 5px 25px;
 }
 
 .heading a {
@@ -34,7 +34,7 @@ nav {
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 1px 0 11px;
+  padding: 1px 0 5px;
   text-align: center;
 }
 
@@ -320,6 +320,23 @@ nav {
   margin: 10px 0 0;
 }
 
+.history button {
+  margin-bottom: 25px;
+}
+
+.history--date {
+  margin-bottom: 10px;
+}
+
+.history--people {
+  margin-bottom: 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: .7fr .3fr .5fr 1fr;
+      grid-template-columns: .7fr .3fr .5fr 1fr;
+  gap: 5px;
+}
+
 .announcement--heading {
   border-bottom: 2px solid black;
 }
@@ -335,10 +352,7 @@ nav {
 }
 
 .announcement--section .announcement--post {
-  border: 1px solid #ec524b;
-  border-radius: 5px;
-  margin-top: 10px;
-  padding: 13px;
+  padding: 8px;
 }
 
 .announcement--section h3 {

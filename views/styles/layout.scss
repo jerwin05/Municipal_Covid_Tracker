@@ -8,7 +8,7 @@ nav{
     
     display: flex;
 
-    padding: 5px 20px;
+    padding: 13px 20px;
     width: 100%;
 
     border-radius: 0 0 7px 7px;
@@ -48,9 +48,11 @@ nav{
 }
 
 .heading{
-    padding-top:4px ;
-    margin:0 30px 0 15px ;
+    margin: 3px 15px 0 10px ;
     color: black;
+    a{
+        font-size: 19px;
+    }
 }
 
 .nav-options{
@@ -139,22 +141,22 @@ nav{
 }
 
 .main{
-    padding: 100px 15px 0;
+    padding: 85px 15px 0;
 }
 
 .main--title{
-    font-size: 1.25em;
+    font-size: 24px;
     padding-bottom:15px;
 }
 
 .main--heading{
     h3{
-        font-size: 1em;
+        font-size:18px;
     }
 }
 .main--body{
     p,pre{
-        font-size: 14px;
+        font-size: 16px;
     }
     small{
         font-size: 12px;
@@ -177,8 +179,16 @@ nav{
 }
 
 .covidupdate--heading{
+    font-size: 27px;
     line-height: 1.3;
     padding-bottom: 15px;
+}
+
+.covidupdate--date{
+    display: block;
+    font-weight: 400;
+    text-decoration: underline;
+    font-size: 19px;
 }
 
 .covidupdate--section{
@@ -189,19 +199,12 @@ nav{
     gap: 10px;
 }
 
-.covidupdate--date{
-    display: block;
-    font-weight: 400;
-    text-decoration: underline;
-    font-size: .9em;
-}
-
 .covidupdate{
     background-color: white;
     padding: 10px;
     line-height: 1.2;
     border-radius: 5px;
-    height: 100%;
+    height: 13.6vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -210,8 +213,13 @@ nav{
     text-align: center;
 }
 
+.covidupdate--title{
+    font-size: 16px;
+}
+
 .covidupdate--count{
-    font-size: 30px;
+    margin-top: 4px;
+    font-size: 37px;
 }
 
 .block2{
@@ -222,7 +230,13 @@ nav{
     margin: 50px 0 50px;
 }
 
+.notes--heading{
+    font-size: 18px;
+    font-weight: normal;
+}
+
 .notes{
+    font-size: 14px;
     border: 1px solid #f5b461;
     border-radius: 5px;
     padding: 15px;
@@ -289,7 +303,9 @@ nav{
 }
 
 .history--date{
+    display: block;
     margin-bottom: 10px;
+    font-size: 21px;   
 }
 .history--people{
     margin-bottom: 25px;
@@ -305,14 +321,14 @@ nav{
 .announcement--section{
     height: 67vh;
     overflow-y: scroll;
-    margin-top: 10px;
 
     div:first-child{
-        margin: 0;
+        margin-top: 15px;
     }
     div{
-        border-radius: 5px;
-        padding:13px 8px;
+        padding:0 15px;
+        margin: 25px 15px ;
+        border-left: 1px solid black;
     }
     pre{
         line-height: 1.3;
@@ -323,6 +339,10 @@ nav{
     display: block;
     margin-bottom: 10px;
     line-height: 15px;
+}
+
+.announcement--element:nth-child(2){
+    margin-bottom: 4px;
 }
 
 .announcement--element:last-child{
