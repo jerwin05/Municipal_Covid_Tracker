@@ -48,8 +48,6 @@ const getCovidUpdates=()=>{
 
     response.json()
     .then(result=>{
-      const pre=document.createElement('pre');
-
       activeCases.textContent=result[0].active_cases;
       newCases.textContent=result[0].new_cases;
       suspected.textContent=result[0].suspected;
@@ -73,11 +71,12 @@ const getCovidUpdates=()=>{
       const updateDate=result[0].date_updated;
       covidUpdateDate.textContent=`${updateDate}`;
 
-      if(!result[0].notes||/\s+/g.test(result[0].notes)){
+      if(!result[0].notes||/^\s+/.test(result[0].notes)){
         const message=document.createElement('p');
         message.textContent='No notes';
         notes.appendChild(message);
       }else{
+        const pre=document.createElement('pre');
         pre.textContent=result[0].notes;
         pre.className='main--body';
         notes.appendChild(pre);
@@ -143,6 +142,7 @@ const getPatientHistory=()=>{
           const div1=document.createElement('div');
           const p=document.createElement('p');
           p.className='history--date';
+          div1.className='history--people';
           p.textContent=result[`history${a+1}`].date;
           div.appendChild(p);
           div.appendChild(div1);
@@ -193,7 +193,7 @@ const getAnnouncements=()=>{
         body.className = 'announcement--element main--body';
         date.className = 'announcement--element';
         title.textContent = announcement.title;
-        date.textContent = new Date(announcement.date);
+        date.textContent = announcement.date;
 
         div.appendChild(title);
         div.appendChild(body);

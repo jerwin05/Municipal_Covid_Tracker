@@ -130,7 +130,7 @@ const getCovidUpdates=()=>{
       
       covidUpdateDate.textContent=`${dateResult}`;
 
-      if(!result[0].notes||/\s+/g.test(result[0].notes)){
+      if(!result[0].notes||/^\s+/.test(result[0].notes)){
         const message=document.createElement('p');
         message.textContent='No notes';
         notes.innerHTML='';
@@ -345,6 +345,7 @@ const getPatientHistory=()=>{
           overlaydiv1.appendChild(p1);
           overlaydiv1.appendChild(button1);
           overlaydiv1.appendChild(button2);
+
           overlaydiv.appendChild(overlaydiv1);
           body.appendChild(overlaydiv); 
   

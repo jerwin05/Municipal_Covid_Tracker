@@ -13,7 +13,6 @@ exports.create_table=()=>{
         PRIMARY KEY (id));`;
       db.query(sql, (err,result)=> {
         if(result){
-          console.log('created admin');
           var sql = `CREATE TABLE covid_updates (
             id INT NOT NULL AUTO_INCREMENT,
             probable VARCHAR(12) NOT NULL,
@@ -29,12 +28,10 @@ exports.create_table=()=>{
             PRIMARY KEY (id));`;
           db.query(sql, (err,result)=> {
             if(result){
-              console.log('created covid_updates');
               let currentDate=new Date().toString().substring(4, 16);
               sql = `INSERT INTO covid_updates (probable,death,new_cases,active_cases,suspected,tested_negative,confirmed_cases,recovered,date_updated) VALUES (0,0,0,0,0,0,0,0,'${currentDate}');`;
               db.query(sql, (err,result)=> {
                 if(result){
-                  console.log('inserted covid_updates row');            
                   var sql = `CREATE TABLE covid_patient_list (
                     patient_id INT NOT NULL AUTO_INCREMENT,
                     patient_no VARCHAR(50) NOT NULL,
@@ -45,14 +42,12 @@ exports.create_table=()=>{
                     PRIMARY KEY (patient_id));`;
                   db.query(sql, (err,result)=> {
                     if(result){
-                      console.log('created covid_patient_list');
                       var sql = `CREATE TABLE patient_list_history_date (
                         date_id INT NOT NULL AUTO_INCREMENT,
                         date VARCHAR(200) NOT NULL,
                         PRIMARY KEY (date_id));`;
                       db.query(sql, (err,result)=> {
                         if(result){
-                          console.log('created patient_list_history_date');
                           var sql = `CREATE TABLE patient_list_history (
                             patient_id INT NOT NULL AUTO_INCREMENT,
                             date_id INT,
@@ -64,7 +59,6 @@ exports.create_table=()=>{
                             FOREIGN KEY (date_id) REFERENCES patient_list_history_date(date_id));`;
                           db.query(sql, (err,result)=> {
                             if(result){
-                              console.log('created patient_list_history');
                               var sql = `CREATE TABLE announcements (
                                 id INT NOT NULL AUTO_INCREMENT,
                                 title VARCHAR(500) NOT NULL,
@@ -73,7 +67,7 @@ exports.create_table=()=>{
                                 PRIMARY KEY (id));`;
                               db.query(sql, (err,result)=> {
                                 if(result){
-                                  console.log('created announcements');
+                                  console.log('create table complete');
                                 }
                               });
                             }
