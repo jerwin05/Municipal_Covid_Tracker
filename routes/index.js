@@ -2,10 +2,6 @@ const express=require('express');
 const Router=express.Router();
 const homepage= require('../controllers/homepage.js');
 
-const covidpositivehistory= require('../controllers/covidpositivehistory');
-const covidpositivelist= require('../controllers/covidpositivelist');
-const covidupdate= require('../controllers/covidupdate');
-
 Router
 
     .get    ('/',                       homepage.index)
