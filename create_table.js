@@ -101,6 +101,8 @@ exports.create_table=()=>{
           console.log(err);
         }
       });
+    }else{
+      console.log(result);
     }
   }); 
 }
