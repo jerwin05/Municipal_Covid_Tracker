@@ -73,18 +73,32 @@ async function create_table(db){
                               db.query(sql, (err,result)=> {
                                 if(result){
                                   console.log('created announcements');
-                                } 
+                                } else{
+                                  console.log(err);
+                                }
                               });
+                            }else{
+                              console.log(err);
                             }
                           });
+                        }else{
+                          console.log(err);
                         }
                       });
+                    }else{
+                      console.log(err);
                     }
                   });
+                }else{
+                  console.log(err);
                 }
               });
+            }else{
+              console.log(err);
             }
           });
+        }else{
+          console.log(err);
         }
       });
     }
