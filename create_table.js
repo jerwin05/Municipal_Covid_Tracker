@@ -77,32 +77,18 @@ exports.create_table=()=>{
                                   console.log(err);
                                 }
                               });
-                            }else{
-                              console.log(err);
                             }
                           });
-                        }else{
-                          console.log(err);
                         }
                       });
-                    }else{
-                      console.log(err);
                     }
                   });
-                }else{
-                  console.log(err);
                 }
               });
-            }else{
-              console.log(err);
             }
           });
-        }else{
-          console.log(err);
         }
       });
-    }else{
-      console.log(result);
     }
   }); 
   var sql = `SHOW TABLES;`;
@@ -114,5 +100,3 @@ exports.create_table=()=>{
     }
   });
 }
-
-// module.exports.create=create_table;
