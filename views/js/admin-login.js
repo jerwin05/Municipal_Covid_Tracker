@@ -6,9 +6,9 @@ const errorElement = document.getElementById('error-message');
 const form =document.getElementById('form');
 
 //API URLS here
-const API_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/login' : 'https://barangay-covid-map.herokuapp.com/admin/login';
-const adminIndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin-profile.html' : 'https://barangay-covid-map.herokuapp.com/admin-profile.html';
-const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-user' : 'https://barangay-covid-map.herokuapp.com/authenticate-user';
+const API_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/login' : 'https://municipal-covid-tracker.herokuapp.com/admin/login';
+const adminIndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin-profile.html' : 'https://municipal-covid-tracker.herokuapp.com/admin-profile.html';
+const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-user' : 'https://municipal-covid-tracker.herokuapp.com/authenticate-user';
 
 fetch(authenticateAPI_URL,{
 }).then(response=>{

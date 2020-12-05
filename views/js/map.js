@@ -2,7 +2,7 @@ window.onload=init;
 function init (){
   const button=document.getElementById('refresh');
 
-  const residentPositiveCoordinatesAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/positive-coordinates' : 'https://barangay-covid-map.herokuapp.com/positive-coordinates';
+  // const residentPositiveCoordinatesAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/positive-coordinates' : 'https://municipal-covid-tracker.herokuapp.com/positive-coordinates';
   
   const map= new ol.Map({
       view:new ol.View({
