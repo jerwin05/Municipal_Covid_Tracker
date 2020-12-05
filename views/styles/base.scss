@@ -21,6 +21,7 @@ time, mark, audio, video {
     scroll-behavior: smooth;
     box-sizing: border-box;
 }
+
 body {
     line-height:1;
     background-color:#9ad3bc2d;
@@ -35,6 +36,10 @@ pre {
 
 textarea{
     resize: none;
+}
+
+p,pre,input,button{
+    font-family: 'Poppins', sans-serif;
 }
 
 .ol-attribution li {

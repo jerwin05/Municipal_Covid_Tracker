@@ -7,7 +7,7 @@ function init (){
   const map= new ol.Map({
       view:new ol.View({
         projection:'EPSG:4326',
-        center:[121.21590561149567, 14.554211974185318],
+        center:[121.2071937966153, 14.559724584263174],
         zoom:15,
         maxZoom:19,
         minZoom:13,
@@ -192,7 +192,7 @@ function init (){
 
   // map.addLayer(stamenTerrain); // call a single layer
 
-  map.on('click',function(e){
-      console.log(e.coordinate);// logs coordinates from the location clicked
-  }) 
+  // map.on('click',function(e){
+  //     console.log(e.coordinate);// logs coordinates from the location clicked
+  // }) 
 };

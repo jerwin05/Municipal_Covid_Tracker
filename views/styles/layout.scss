@@ -140,8 +140,12 @@ nav{
     background: rgba(85, 85, 85, 0.582); 
 }
 
+.transparent--customscrollbar::-webkit-scrollbar{
+    width: 0;   
+}
+
 .main{
-    padding: 85px 15px 0;
+    padding: 103px 15px 0;
 }
 
 .main--title{
@@ -159,7 +163,7 @@ nav{
         font-size: 16px;
     }
     small{
-        font-size: 12px;
+        font-size: 14px;
     }
 }
 
@@ -325,8 +329,8 @@ nav{
         margin-top: 5px;
     }
     div{
-        padding:0 15px;
-        margin: 30px 7px 0;
+        padding:5px 8px;
+        margin: 22px 7px 0;
         border-left: 1px solid #f5b461;
     }
     pre{
@@ -369,7 +373,8 @@ nav{
 }
 
 .ol-attribution li {
-    display: none;
+    display: inline;
+    font-size: 11px;
 }
 
 #refresh{
@@ -390,11 +395,11 @@ nav{
     }
 }
 
-// @media only screen and (min-width: 441px) {
-//     .main{
-//         padding-top: 95px;
-//     }
-// }
+@media only screen and (min-width: 362px) {
+    .main{
+        padding-top: 80px;
+    }
+}
 
 @media only screen and (min-width: 507px) {
     .covidupdate{
@@ -508,6 +513,9 @@ nav{
         overflow-y: scroll;
         height: 69.5vh;
     }
+    .announcement--heading{
+        border-bottom: 3px solid black;
+    }
     .announcement--section {
         height: 72vh;
     }
@@ -521,7 +529,7 @@ nav{
 
 @media only screen and (min-width: 901px) {
     .heading a {
-        font-size: unset;
+        font-size: 25px;
     }
     nav{
         padding:15px 25px;
@@ -586,22 +594,25 @@ nav{
     .dropdown:hover .dropdown-menu{
         display: block;
     }
+    .main{
+        padding-top: 75px;
+    }
 }
 
 
 @media only screen and (min-width: 1125px) {
     .block2{
-        margin-right: 29.5vw;
+        margin-right: 28.6vw;
         margin-bottom: 25px;
         // margin-right: 390px;
     }
     .block3{
         position: fixed;
-        right: 25;
+        right: 15;
         // width: 370px;
         width: 27vw;
         margin-left: 0;
-        top :67;
+        top :75;
         overflow-y: scroll;
         height: 86vh;
     }

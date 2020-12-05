@@ -73,17 +73,23 @@
                         <button class="patient--submitbutton profile--button blue--button" id='addPatientButton' type="button">Add Patient</button>
                         <button class="patient--submitbutton profile--button blue--button" id='editPatientButton' type="submit">Update</button>
                     </form>
-                    <form id='addPatientForm' class="addpatient--form" role='form' method="POST">
-                        <input name="patient_number" placeholder="patient number" type="text">
-                        <input name="age" placeholder="age" type="number">
-                        <input name="gender" placeholder="gender" type="text">
-                        <input name="barangay" placeholder="barangay" type="text">
-                        <input name="status" placeholder="status" type="text">
-                        <button class=" profile--button blue--button" type="submit">Add</button>
-                    </form>
+                    <div id='addPatientFormContainer' class="addpatientform--container" >
+                        <form id='addPatientForm' class="addpatientform main--body" role='form' method="POST">
+                            <input name="patient_number" placeholder="patient number" type="text">
+                            <input name="age" placeholder="age" type="number">
+                            <input name="gender" placeholder="gender" type="text">
+                            <input name="barangay" placeholder="barangay" type="text">
+                            <input name="status" placeholder="status" type="text">
+                            <div class="addpatientbutton--container">
+                                <button class=" profile--button blue--button" type="submit">Add</button>
+                                <button id="addPatientCancelButton" class=" profile--button blue--button" type="button">Cancel</button>
+    
+                            </div>
+                        </form>
+                    </div>
                     <div class="covidupdate--notes">
                         <h2 class="main--title notes--heading block2--heading">Notes</h2>
-                        <div id='notes' class="notes main--body"></div>
+                        <div id='notes' class="notes"></div>
                     </div>
                     <div class="covidpatientlist--history">
                         <h2 class="main--title block2--heading">Recovered Patient History</h2>
@@ -141,26 +147,6 @@
                         <button class='form--element profile--button blue--button' type="submit">Submit</button>
                     </form>
                 </section>
-                <!-- <section class="tab--containers profiletab--containers residents--container">
-                    <form id='residentsForm' role='form' method="put">
-                        <h2 class="main--heading main--title">Update Patient Status</h2>
-                        <div class="covidpatientlist--title">
-                            <div class="formtable--header">
-                                <h3>Patient Number</h3>
-                                <div class="covidpatientlist--patientdetails">
-                                    <h3>Age</h3>
-                                    <h3>Gender</h3>
-                                </div>
-                            </div>
-                            <h3>Barangay</h3>
-                            <h3>Status</h3>
-                        </div>
-                        <div class='residents--profile' id="residentsFormContainer"></div>
-                        <div id='covidPatientList' class="covidpatientlist"></div>
-                        <button class="residents--submitbutton profile--button blue--button" id='addPatientButton' type="button">Add</button>
-                        <button class="residents--submitbutton profile--button blue--button" id='editPatientButton' type="submit">Update</button>
-                    </form>
-                </section> -->
                 <section class="tab--containers profiletab--containers post--container">
                     <form id='announcementForm' role="form" method="post">
                         <h3 class="form--element announcementform--element main--title">Post announcement</h3>

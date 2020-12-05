@@ -22,8 +22,10 @@ const notes=document.getElementById('notes');
 const covidPatientList=document.getElementById('covidPatientList');
 const editCovidUpdateForm=document.getElementById('editCovidUpdateForm');
 const covidPatientListForm=document.getElementById('covidPatientListForm');
+const addPatientFormContainer=document.getElementById('addPatientFormContainer');
 const addPatientForm=document.getElementById('addPatientForm');
 const addPatientButton=document.getElementById('addPatientButton');
+const addPatientCancelButton=document.getElementById('addPatientCancelButton');
 const editPatientButton=document.getElementById('editPatientButton');
 const history=document.getElementById('history');
 const loadingElement=document.getElementById('loadingElement');
@@ -181,7 +183,7 @@ const getPositivePatients=()=>{
           const age=document.createElement('p');
           const gender=document.createElement('p');
           const barangay=document.createElement('p');
-          const status=document.createElement('textarea');
+          const status=document.createElement('input');
           const button = document.createElement('button');
           const overlaydiv = document.createElement('div');
           const overlaydiv1 = document.createElement('div');
@@ -197,7 +199,7 @@ const getPositivePatients=()=>{
           status.className=`status`;
           status.setAttribute("name", `status${patient.patient_id}`);
           button.textContent='Delete';
-          button.className=' profile--button';
+          button.className=' profile--button patient--deletebutton';
           button.setAttribute("type", `button`);
           mainDiv.className='covidpatientlist--table-grid patientDiv';
           div1.className='covidpatientlist--table-grid covidpatientlist--table-templatecolumns';
@@ -269,15 +271,19 @@ const getPositivePatients=()=>{
 
 const getPatientHistory=()=>{
   history.innerHTML='';
+  loadingElement.style.display='';
   fetch(patientListHistoryAPI_URL)
   .then(response=>{
+
+    loadingElement.style.display='none';
+
     response.json()
     .then(result=>{
       if(!result.message){
         for(var a=0,b=result.history_count; a<b ;a++){
           const div=document.createElement('div');
           const div1=document.createElement('div');
-          const p=document.createElement('p');
+          const span=document.createElement('span');
           const button=document.createElement('button');
           const overlaydiv = document.createElement('div');
           const overlaydiv1 = document.createElement('div');
@@ -285,8 +291,8 @@ const getPatientHistory=()=>{
           const button1 = document.createElement('button');
           const button2 = document.createElement('button');
   
-          p.textContent=result[`history${a+1}`].date;
-          p.className='history--date';
+          span.textContent=result[`history${a+1}`].date;
+          span.className='history--date';
           div1.className='history--people';
           button.textContent='Delete';
           button.className='profile--button blue--button';
@@ -326,7 +332,7 @@ const getPatientHistory=()=>{
             });
           });
   
-          div.appendChild(p);
+          div.appendChild(span);
           div.appendChild(div1);
   
           for(var c=0,d=result[`history${a+1}`].recovered_count; c<d ;c++){
@@ -472,7 +478,7 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
       getCovidUpdates();
       loadingElement.style.display='none'; 
       successMessage.textContent='Updated';
-      successMessage.style.bottom='30';
+      successMessage.style.bottom='45';
       setTimeout(()=>{
         successMessage.style.bottom='-45';
       },3000);
@@ -498,7 +504,7 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
       getCovidUpdates();
       loadingElement.style.display='none'; 
       successMessage.textContent='Updated';
-      successMessage.style.bottom='30';
+      successMessage.style.bottom='45';
       setTimeout(()=>{
         successMessage.style.bottom='-45';
       },3000);
@@ -530,7 +536,7 @@ covidPatientListForm.addEventListener('submit',(event)=>{
   }
 
   successMessage.textContent='Patient Updated';
-  successMessage.style.bottom='30';
+  successMessage.style.bottom='45';
   setTimeout(()=>{
     updateActiveCases();
   },100);
@@ -540,8 +546,12 @@ covidPatientListForm.addEventListener('submit',(event)=>{
 });
 
 addPatientButton.addEventListener('click',(event)=>{
-  addPatientForm.style.display='block';
+  addPatientFormContainer.style.display='block';
 });
+addPatientCancelButton.addEventListener('click',(event)=>{
+  event.preventDefault();
+  addPatientFormContainer.style.display='none';
+})
 addPatientForm.addEventListener('submit',(event)=>{
   event.preventDefault();
   const formData=new FormData(addPatientForm);
@@ -570,7 +580,7 @@ addPatientForm.addEventListener('submit',(event)=>{
       }
     }).then(()=>{
       addPatientForm.reset();
-      addPatientForm.style.display='none';
+      addPatientFormContainer.style.display='none';
       getPositivePatients();
       updateActiveCases();
     });
@@ -602,7 +612,7 @@ announcementForm.addEventListener('submit', (event) => {
         if(result==='true'){//display success message
           announcementForm.reset();
           successMessage.textContent='Post Added';
-          successMessage.style.bottom='30';
+          successMessage.style.bottom='45';
           errorMessage.style.display='none';
           setTimeout(()=>{
             successMessage.style.bottom='-45';

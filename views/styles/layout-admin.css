@@ -12,11 +12,11 @@ nav {
 }
 
 .heading {
-  padding: 5px 37px 5px 25px;
+  padding: 15px 37px 5px 25px;
 }
 
 .heading a {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .nav--options {
@@ -34,7 +34,7 @@ nav {
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 1px 0 5px;
+  padding: 5px 0 10px;
   text-align: center;
 }
 
@@ -61,7 +61,7 @@ nav {
   width: 200%;
   display: none;
   position: absolute;
-  padding-top: 119px;
+  padding-top: 130px;
 }
 
 .page--transition {
@@ -125,22 +125,32 @@ nav {
 }
 
 .main--title {
-  font-size: 1.25em;
+  font-size: 24px;
   padding-bottom: 15px;
 }
 
 .main--heading h3 {
-  font-size: 1em;
+  font-size: 18px;
 }
 
-.main--body p, .main--body pre, .main--body textarea {
-  font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+.main--body {
+  font-size: 16px;
+}
+
+.main--body p, .main--body pre, .main--body input, .main--body button {
+  font-size: 16px;
 }
 
 .main--body small {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.3;
+}
+
+.profile--button {
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .tab--contents {
@@ -168,6 +178,11 @@ nav {
   padding-bottom: 15px;
 }
 
+.covidupdate--count {
+  margin-top: 4px;
+  font-size: 33px;
+}
+
 .covidupdate--section {
   display: -ms-grid;
   display: grid;
@@ -180,11 +195,15 @@ nav {
   gap: 10px;
 }
 
+.covidupdate--title {
+  font-size: 16px;
+}
+
 .covidupdate--date {
   display: block;
   font-weight: 400;
   text-decoration: underline;
-  font-size: .9em;
+  font-size: 19px;
 }
 
 .covidupdate {
@@ -192,7 +211,7 @@ nav {
   padding: 10px;
   line-height: 1.2;
   border-radius: 5px;
-  height: 100%;
+  height: 12.2vh;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -210,18 +229,63 @@ nav {
   text-align: center;
 }
 
-.covidupdate--count {
-  font-size: 30px;
+.block2 {
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.notes--heading {
+  font-size: 18px;
+  font-weight: normal;
 }
 
 .notes {
+  font-size: 14px;
   border: 1px solid #f5b461;
   border-radius: 5px;
   padding: 15px;
 }
 
-.addpatient--form {
+.addpatientform--container {
+  position: relative;
   display: none;
+}
+
+.addpatientform {
+  position: absolute;
+  bottom: 51;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  width: 73vw;
+}
+
+.addpatientform input {
+  margin-bottom: 10px;
+  border: none;
+}
+
+.addpatientform button {
+  padding: 0;
+  width: 100%;
+}
+
+.addpatientform button:first-child {
+  margin-right: 10px;
+}
+
+.addpatientbutton--container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .covidpatientlist--container > div, .covidpatientlist--container > form {
@@ -277,15 +341,11 @@ nav {
   text-align: center;
 }
 
-.covidpatientlist textarea {
+.covidpatientlist input {
   width: 100%;
   text-align: center;
   border: none;
   background-color: inherit;
-}
-
-.covidpatientlist textarea :focus {
-  outline: 1px solid blue;
 }
 
 .covidpatientlist > div:last-child {
@@ -316,16 +376,34 @@ nav {
   margin-left: 7px;
 }
 
+.patient--deletebutton {
+  background-color: inherit;
+  text-decoration: underline;
+  padding: 0;
+  text-align: start;
+}
+
+.nopatient {
+  margin: 10px 0;
+}
+
 .patient--submitbutton {
-  margin: 10px 0 0;
+  margin: 10px 10px 0 0;
+  font-size: 16px;
 }
 
 .history button {
   margin-bottom: 25px;
 }
 
+.history div:last-child button {
+  margin-bottom: 5px;
+}
+
 .history--date {
+  display: block;
   margin-bottom: 10px;
+  font-size: 21px;
 }
 
 .history--people {
@@ -348,11 +426,14 @@ nav {
 }
 
 .announcement--section .announcement--post:first-child {
-  margin: 0;
+  margin-top: 0;
 }
 
 .announcement--section .announcement--post {
-  padding: 8px;
+  padding: 5px 8px;
+  margin: 22px 7px 0;
+  margin-top: 22px;
+  border-left: 1px solid #f5b461;
 }
 
 .announcement--section h3 {
@@ -372,11 +453,6 @@ nav {
   margin-bottom: 10px;
 }
 
-.announcement--element:nth-child(3) {
-  border-bottom: 2px solid #f5b461;
-  padding-bottom: 11px;
-}
-
 .map--container {
   height: 60vh;
   position: relative;
@@ -394,7 +470,8 @@ nav {
 }
 
 .ol-attribution li {
-  display: none;
+  display: inline;
+  font-size: 11px;
 }
 
 .profile--tab {
@@ -432,13 +509,6 @@ nav {
 
 .profile--options button {
   margin-right: 4px;
-}
-
-.profile--button {
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  padding: 5px 8px;
 }
 
 .form--element {
@@ -504,7 +574,8 @@ nav {
 }
 
 .post--container form h3 {
-  padding: 0 5px;
+  padding: 0 5px 5px;
+  font-size: 20px;
 }
 
 .post--container form textarea {
@@ -619,7 +690,16 @@ nav {
   grid-area: no;
 }
 
+@media only screen and (min-width: 348px) {
+  .main {
+    padding-top: 115px;
+  }
+}
+
 @media only screen and (min-width: 507px) {
+  .covidupdate {
+    height: 100%;
+  }
   .covidpatientlist--title > div h3 {
     text-align: center;
   }
@@ -631,12 +711,23 @@ nav {
   .covidpatientlist > div div {
     text-align: center;
   }
+  .addpatientform {
+    width: 350px;
+  }
+  .patient--deletebutton {
+    text-align: center;
+    -ms-grid-column-align: center;
+        justify-self: center;
+  }
+}
+
+@media only screen and (min-width: 598px) {
+  .main {
+    padding-top: 95px;
+  }
 }
 
 @media only screen and (min-width: 664px) {
-  .main {
-    padding-top: 105px;
-  }
   nav {
     text-align: center;
   }
@@ -645,6 +736,9 @@ nav {
 @media only screen and (min-width: 680px) {
   nav {
     text-align: center;
+  }
+  .covidpatientlist {
+    height: 37vh;
   }
   .covidpatientlist--table-grid {
     display: -ms-grid;
@@ -662,8 +756,8 @@ nav {
     display: block;
   }
   .covidpatientlist > div, .covidpatientlist--title {
-    -ms-grid-columns: 2.5fr 1fr 1fr;
-        grid-template-columns: 2.5fr 1fr 1fr;
+    -ms-grid-columns: 2.9fr 1fr 1fr 1fr;
+        grid-template-columns: 2.9fr 1fr 1fr 1fr;
   }
   .covidpatientlist > div h3, .covidpatientlist--title h3 {
     display: -webkit-box;
@@ -696,11 +790,51 @@ nav {
   .main--heading h3 {
     font-size: 1.1em;
   }
-  .main--body p, .main--body pre, .main--body textarea {
+  .main--body p, .main--body pre, .main--body input, .main--body button {
     font-size: 15.5px;
   }
   .main--body small {
     font-size: 13px;
+  }
+}
+
+@media only screen and (min-width: 735px) {
+  .profile--tab {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 'userprofile userprofile' 'covidupdate postannouncement';
+    gap: 20px;
+    height: 50vh;
+  }
+  .profile--container {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-area: userprofile;
+    margin: 0;
+  }
+  .editcovidupdate--container {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    grid-area: covidupdate;
+  }
+  .post--container {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    grid-area: postannouncement;
+    height: 39vh;
+  }
+  .profile--options {
+    position: absolute;
+    top: 0;
+    right: 25;
+    margin: 0;
+  }
+  .profile--options button {
+    font-size: 15px;
+    z-index: 5;
   }
 }
 
@@ -734,8 +868,11 @@ nav {
 }
 
 @media only screen and (min-width: 825px) {
+  .heading a {
+    font-size: unset;
+  }
   .main {
-    padding-top: 75px;
+    padding-top: 70px;
   }
   nav {
     display: -webkit-box;
@@ -756,7 +893,6 @@ nav {
   .nav--options li button {
     font-size: 15px;
     font-weight: bold;
-    cursor: pointer;
     min-width: 70px;
   }
   .heading {
@@ -766,22 +902,11 @@ nav {
     -webkit-transition: none;
     transition: none;
   }
-  .profile--options {
-    position: absolute;
-    top: 0;
-    right: 25;
-    margin: 0;
-  }
-  .profile--options button {
-    font-size: 15px;
-    cursor: pointer;
-    z-index: 5;
-  }
 }
 
 @media only screen and (min-width: 901px) {
   .main {
-    padding-top: 67px;
+    padding-top: 72px;
   }
   .heading {
     width: 70%;
@@ -808,11 +933,11 @@ nav {
     display: block;
   }
   .block2 {
-    margin-right: 28.5vw;
+    margin-right: 28.6vw;
   }
   .block3 {
     position: fixed;
-    right: 25;
+    right: 15;
     width: 27vw;
     margin-left: 0;
     top: 67;

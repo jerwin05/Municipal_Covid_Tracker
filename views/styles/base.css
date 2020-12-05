@@ -39,6 +39,10 @@ textarea {
   resize: none;
 }
 
+p, pre, input, button {
+  font-family: 'Poppins', sans-serif;
+}
+
 .ol-attribution li {
   display: none;
 }
