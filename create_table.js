@@ -1,5 +1,5 @@
-async function create_table(db){
-  await db;
+exports.create_table=()=>{
+  console.log('called');
   var sql = `SELECT id FROM admin;`;
   db.query(sql, (err,result)=> {
     if(err){
@@ -105,4 +105,4 @@ async function create_table(db){
   }); 
 }
 
-module.exports.create=create_table;
+// module.exports.create=create_table;

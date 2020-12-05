@@ -33,7 +33,7 @@ connection.connect((err)=>{
 });
 let sessionStore = new MySQLStore({}, connection);
 global.db = connection;
-table.create(db);
+table.create_table();
 
 // var sql = `SELECT id FROM admin;`;
 //   db.query(sql, (err,result)=> {
