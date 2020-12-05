@@ -15,3 +15,15 @@ burger.addEventListener('click',()=>{
         }
     });
 });
+
+function myFunction(x) {
+    if (x.matches) {
+      document.body.style.backgroundColor = "yellow";
+    } else {
+      document.body.style.backgroundColor = "pink";
+    }
+  }
+  
+var x = window.matchMedia("(max-width: 1125px)");
+myFunction(x);
+x.addEventListener(myFunction);
