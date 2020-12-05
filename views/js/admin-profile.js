@@ -274,8 +274,8 @@ const getPatientHistory=()=>{
         button.textContent='Delete';
         button.className='profile--button blue--button';
         overlaydiv.className='overlay';
-        overlaydiv1.className='popUp--container history--popup';
-        p1.textContent='Are you sure?';
+        overlaydiv1.className='popUp--container';
+        p1.textContent='Are you sure you want to delete this history?';
         p1.setAttribute("class", `message`);
         button1.setAttribute("class", `yes deleteHistory${a+1}`);
         button2.setAttribute("class", `no`);
