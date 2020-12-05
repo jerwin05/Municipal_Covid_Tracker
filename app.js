@@ -1,6 +1,6 @@
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
-const table = require('./create_table')
+const table = require('./database_table')
 ,compression = require('compression')
 ,admin = require('./routes/admin')
 ,index = require('./routes/index')
@@ -11,16 +11,16 @@ const table = require('./create_table')
 
 //database configuration
 const options={  
-  host     : 'localhost',
-  port     : 3306,
-  user     : 'root',
-  password : 'a09287811206',
-  database : 'brgy'
-  // host     : 'sql12.freemysqlhosting.net',
+  // host     : 'localhost',
   // port     : 3306,
-  // user     : 'sql12380309',
-  // password : 'dAdhjVcnd8',
-  // database : 'sql12380309'
+  // user     : 'root',
+  // password : 'a09287811206',
+  // database : 'brgy'
+  host     : 'sql12.freemysqlhosting.net',
+  port     : 3306,
+  user     : 'sql12380309',
+  password : 'dAdhjVcnd8',
+  database : 'sql12380309'
 };
 let connection = mysql.createConnection(options);
 let sessionStore = new MySQLStore({}, connection);
@@ -33,7 +33,8 @@ connection.connect((err)=>{
   }
 });
 global.db = connection;
-table.create_table();
+// table.create_table();
+table.drop_table();
 
 // all environments
 app.use(helmet());

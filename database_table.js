@@ -74,8 +74,6 @@ exports.create_table=()=>{
                               db.query(sql, (err,result)=> {
                                 if(result){
                                   console.log('created announcements');
-                                } else{
-                                  console.log(err);
                                 }
                               });
                             }
@@ -102,4 +100,38 @@ exports.create_table=()=>{
     }
   }); 
 
+}
+
+exports.drop_table=()=>{
+  var sql = `DROP TABLE admin;`;
+  db.query(sql, (err,result)=> {
+    if(result){
+      var sql = `DROP TABLE covid_patient_list;`;
+      db.query(sql, (err,result)=> {
+        if(result){
+          var sql = `DROP TABLE covid_updates;`;
+          db.query(sql, (err,result)=> {
+            if(result){
+              var sql = `DROP TABLE patient_list_history;`;
+              db.query(sql, (err,result)=> {
+                if(result){
+                  var sql = `DROP TABLE patient_list_history_date;`;
+                  db.query(sql, (err,result)=> {
+                    if(result){
+                      var sql = `DROP TABLE announcements;`;
+                      db.query(sql, (err,result)=> {
+                        if(result){
+                          console.log('drop table complete');
+                        }
+                      });
+                    }
+                  });
+                }
+              });
+            }
+          });
+        }
+      });
+    }
+  });
 }
