@@ -105,6 +105,14 @@ exports.create_table=()=>{
       console.log(result);
     }
   }); 
+  var sql = `SHOW TABLES;`;
+  db.query(sql, (err,result)=> {
+    if(result){
+      console.log(result);
+    } else{
+      console.log(err);
+    }
+  });
 }
 
 // module.exports.create=create_table;
