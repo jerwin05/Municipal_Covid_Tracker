@@ -43,7 +43,7 @@ app.use(
       ...helmet.contentSecurityPolicy.getDefaultDirectives(),
       "img-src": ["'self'", "https:"],
       "script-src-attr": ["'self'","'unsafe-inline'"],
-      "connect-src": ["'self'","'unsafe-inline'"],
+      // "connect-src": ["'self'","'unsafe-inline'"],
     }
   })
 );
