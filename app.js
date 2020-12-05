@@ -33,8 +33,8 @@ connection.connect((err)=>{
   }
 });
 global.db = connection;
-// table.create_table();
-table.drop_table();
+table.create_table();
+// table.drop_table();
 
 // all environments
 app.use(helmet());
