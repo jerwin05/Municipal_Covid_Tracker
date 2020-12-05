@@ -2,22 +2,27 @@
 // import {getAnnouncements} from './common.js';
 
 //get elements here
-const newCases=document.getElementById('newCases');
-const activeCases=document.getElementById('activeCases');
+const covidUpdateDate=document.getElementById('covidUpdateDate');
 const newCasesTitle=document.getElementById('newCasesTitle');
 const activeCasesTitle=document.getElementById('activeCasesTitle');
+const newCases=document.getElementById('newCases');
+const activeCases=document.getElementById('activeCases');
 const suspected=document.getElementById('suspected');
 const probable=document.getElementById('probable');
 const confirmedCases=document.getElementById('cofirmedCases');
 const testedNegative=document.getElementById('testedNegative');
 const recovered=document.getElementById('recovered');
 const death=document.getElementById('death');
-const covidUpdateDate=document.getElementById('covidUpdateDate');
 const notes=document.getElementById('notes');
 const covidPatientList=document.getElementById('covidPatientList');
 const history=document.getElementById('history');
 const loadingElement=document.getElementById('loadingElement');
 const sectionContainer=document.getElementById('sectionContainer');
+
+const noPatientMessage=document.getElementById('noPatientMessage');
+const noNotesMessage=document.getElementById('noNotesMessage');
+const noHistoryMessage=document.getElementById('noHistoryMessage');
+const noAnnouncementMessage=document.getElementById('noAnnouncementMessage');
 
 //api urls here
 const adminIndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin-profile.html' : 'https://municipal-covid-tracker.herokuapp.com/admin-profile.html';
@@ -68,9 +73,16 @@ const getCovidUpdates=()=>{
       const updateDate=result[0].date_updated;
       covidUpdateDate.textContent=`${updateDate}`;
 
-      pre.className='main--body';
-      pre.textContent=result[0].notes;
-      notes.appendChild(pre);
+      if(!result[0].notes||/\s+/g.test(result[0].notes)){
+        const message=document.createElement('p');
+        message.textContent='No notes';
+        notes.appendChild(message);
+      }else{
+        pre.textContent=result[0].notes;
+        pre.className='main--body';
+        notes.appendChild(pre);
+      }
+
     })
   })
 };
@@ -80,35 +92,42 @@ const getPositivePatients=()=>{
   .then(response=>{
     response.json()
     .then(result=>{
-      result.forEach((element,index,array)=>{
-        const mainDiv=document.createElement('div');
-        const div1=document.createElement('div');
-        const div2=document.createElement('div');
-        const patientNumber=document.createElement('p');
-        const age=document.createElement('p');
-        const gender=document.createElement('p');
-        const barangay=document.createElement('p');
-        const status=document.createElement('p');
-
-        patientNumber.textContent=element.patient_no;
-        age.textContent=element.age;
-        gender.textContent=element.gender;
-        barangay.textContent=element.barangay;
-        status.textContent=element.status;
-
-        mainDiv.className='covidpatientlist--table-grid';
-        div1.className='covidpatientlist--table-grid covidpatientlist--table-templatecolumns';
-        div2.className='covidpatientlist--patientdetails covidpatientlist--table-grid';
-
-        div2.appendChild(age);
-        div2.appendChild(gender);
-        div1.appendChild(patientNumber);
-        div1.appendChild(div2);
-        mainDiv.appendChild(div1);
-        mainDiv.appendChild(barangay);
-        mainDiv.appendChild(status);
-        covidPatientList.appendChild(mainDiv);
-      });
+      if(!result.message){
+        result.forEach((element,index,array)=>{
+          const mainDiv=document.createElement('div');
+          const div1=document.createElement('div');
+          const div2=document.createElement('div');
+          const patientNumber=document.createElement('p');
+          const age=document.createElement('p');
+          const gender=document.createElement('p');
+          const barangay=document.createElement('p');
+          const status=document.createElement('p');
+  
+          patientNumber.textContent=element.patient_no;
+          age.textContent=element.age;
+          gender.textContent=element.gender;
+          barangay.textContent=element.barangay;
+          status.textContent=element.status;
+  
+          mainDiv.className='covidpatientlist--table-grid';
+          div1.className='covidpatientlist--table-grid covidpatientlist--table-templatecolumns';
+          div2.className='covidpatientlist--patientdetails covidpatientlist--table-grid';
+  
+          div2.appendChild(age);
+          div2.appendChild(gender);
+          div1.appendChild(patientNumber);
+          div1.appendChild(div2);
+          mainDiv.appendChild(div1);
+          mainDiv.appendChild(barangay);
+          mainDiv.appendChild(status);
+          covidPatientList.appendChild(mainDiv);
+        });
+      }else{
+        const message=document.createElement('p');
+        message.textContent='No patient';
+        message.className='nopatient';
+        covidPatientList.appendChild(message);
+      }
     })
   })
 };
@@ -118,17 +137,35 @@ const getPatientHistory=()=>{
   .then(response=>{
     response.json()
     .then(result=>{
-      for(var a=0,b=result.history_count; a<b ;a++){
-        const div=document.createElement('div');
-        const p=document.createElement('p');
-        p.textContent=result[`history${a+1}`].date;
-        div.appendChild(p);
-        for(var c=0,d=result[`history${a+1}`].recovered_count; c<d ;c++){
-          const p1 =document.createElement('p');
-          p1.textContent=result[`history${a+1}`][`recovered${c+1}`].patient_details;
-          div.appendChild(p1);
+      if(!result.message){
+        for(var a=0,b=result.history_count; a<b ;a++){
+          const div=document.createElement('div');
+          const div1=document.createElement('div');
+          const p=document.createElement('p');
+          p.className='history--date';
+          p.textContent=result[`history${a+1}`].date;
+          div.appendChild(p);
+          div.appendChild(div1);
+          for(var c=0,d=result[`history${a+1}`].recovered_count; c<d ;c++){
+            const p1 =document.createElement('p');
+            const p2 =document.createElement('p');
+            const p3 =document.createElement('p');
+            const p4 =document.createElement('p');
+            p1.textContent=result[`history${a+1}`][`recovered${c+1}`].patient_no;
+            p2.textContent=result[`history${a+1}`][`recovered${c+1}`].age;
+            p3.textContent=result[`history${a+1}`][`recovered${c+1}`].gender;
+            p4.textContent=result[`history${a+1}`][`recovered${c+1}`].barangay;
+            div1.appendChild(p1);
+            div1.appendChild(p2);
+            div1.appendChild(p3);
+            div1.appendChild(p4);
+          }
+          history.appendChild(div);
         }
-        history.appendChild(div);
+      }else{
+        const message=document.createElement('p');
+        message.textContent='No history';
+        history.appendChild(message); 
       }
     })
   })
@@ -143,7 +180,8 @@ const getAnnouncements=()=>{
 
     response.json()
     .then(result=>{
-      result.reverse();
+      if(!result.message){
+        result.reverse();
       result.forEach(announcement => {
         const body=document.createElement('pre');
         const div = document.createElement('div');
@@ -163,6 +201,11 @@ const getAnnouncements=()=>{
 
         announcementSection.appendChild(div);
       });
+      }else{
+        const message=document.createElement('p');
+        message.textContent='No announcement';
+        announcementSection.appendChild(message); 
+      }
     });
   });
 }

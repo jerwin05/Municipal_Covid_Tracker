@@ -11,16 +11,16 @@ const table = require('./create_table')
 
 //database configuration
 const options={  
-  // host     : 'localhost',
-  // port     : 3306,
-  // user     : 'root',
-  // password : 'a09287811206',
-  // database : 'brgy'
-  host     : 'sql12.freemysqlhosting.net',
+  host     : 'localhost',
   port     : 3306,
-  user     : 'sql12380309',
-  password : 'dAdhjVcnd8',
-  database : 'sql12380309'
+  user     : 'root',
+  password : 'a09287811206',
+  database : 'brgy'
+  // host     : 'sql12.freemysqlhosting.net',
+  // port     : 3306,
+  // user     : 'sql12380309',
+  // password : 'dAdhjVcnd8',
+  // database : 'sql12380309'
 };
 let connection = mysql.createConnection(options);
 let sessionStore = new MySQLStore({}, connection);
@@ -42,7 +42,7 @@ app.use(
     directives: {
       ...helmet.contentSecurityPolicy.getDefaultDirectives(),
       "img-src": ["'self'", "https:"],
-      "script-src-attr": ["'self'","'unsafe-inline'"],
+      "script-src-attr": ["'self'","'unsafe-inline'"]
     }
   })
 );

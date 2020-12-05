@@ -191,7 +191,7 @@ exports.delete_patient=(req,res)=>{
                //if yes insert the patient with the date id
                if(result.length){
                   patient.recovered_date_id=result[0].date_id;
-                  sql = `INSERT INTO patient_list_history VALUES (null,'${patient.recovered_date_id}','${patient.patient_no} ${patient.age} ${patient.gender} ${patient.barangay}');`;
+                  sql = `INSERT INTO patient_list_history VALUES (null,'${patient.recovered_date_id}','${patient.patient_no}','${patient.age}','${patient.gender}','${patient.barangay}');`;
                   db.query(sql, ()=> {
                      sql = `DELETE FROM covid_patient_list WHERE patient_id=${req.body.id};`;
                      db.query(sql, (err,result)=> {
@@ -209,7 +209,7 @@ exports.delete_patient=(req,res)=>{
                      sql = `SELECT date_id FROM patient_list_history_date WHERE date='${date_updated}';`;
                      db.query(sql, (err,result)=> {
                         patient.recovered_date_id=result[0].date_id;
-                        sql = ` INSERT INTO patient_list_history VALUES (null,'${patient.recovered_date_id}','${patient.patient_no} ${patient.age} ${patient.gender} ${patient.barangay}');`;
+                        sql = ` INSERT INTO patient_list_history VALUES (null,'${patient.recovered_date_id}','${patient.patient_no}','${patient.age}','${patient.gender}','${patient.barangay}');`;
                         db.query(sql, ()=> {
                            sql = `DELETE FROM covid_patient_list WHERE patient_id=${req.body.id};`;
                            db.query(sql, (err,result)=> {

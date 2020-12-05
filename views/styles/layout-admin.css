@@ -61,7 +61,7 @@ nav {
   width: 200%;
   display: none;
   position: absolute;
-  padding-top: 130px;
+  padding-top: 119px;
 }
 
 .page--transition {
@@ -145,7 +145,7 @@ nav {
 
 .tab--contents {
   width: 100%;
-  padding: 0 25px;
+  padding: 0 15px;
 }
 
 .tab--containers {
@@ -164,7 +164,7 @@ nav {
 }
 
 .covidupdate--heading {
-  line-height: 1.2;
+  line-height: 1.3;
   padding-bottom: 15px;
 }
 

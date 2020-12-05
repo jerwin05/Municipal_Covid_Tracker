@@ -127,13 +127,19 @@ const getCovidUpdates=()=>{
       }else{
         activeCasesTitle.textContent='Active Case';
       }
-
+      
       covidUpdateDate.textContent=`${dateResult}`;
 
-      pre.textContent=result[0].notes;
-      notes.innerHTML='';
-      notes.appendChild(pre);
-      
+      if(!result[0].notes||/\s+/g.test(result[0].notes)){
+        const message=document.createElement('p');
+        message.textContent='No notes';
+        notes.innerHTML='';
+        notes.appendChild(message);
+      }else{
+        pre.textContent=result[0].notes;
+        notes.innerHTML='';
+        notes.appendChild(pre);
+      }
     })
   })
 };
@@ -165,90 +171,97 @@ const getPositivePatients=()=>{
 
     response.json()
     .then(result=>{
-      result.reverse();
-      result.forEach((patient)=>{
-        const mainDiv=document.createElement('div');
-        const div1=document.createElement('div');
-        const div2=document.createElement('div');
-        const patientNumber=document.createElement('p');
-        const age=document.createElement('p');
-        const gender=document.createElement('p');
-        const barangay=document.createElement('p');
-        const status=document.createElement('textarea');
-        const button = document.createElement('button');
-        const overlaydiv = document.createElement('div');
-        const overlaydiv1 = document.createElement('div');
-        const p = document.createElement('p');
-        const button1 = document.createElement('button');
-        const button2 = document.createElement('button');
-
-        patientNumber.textContent=patient.patient_no;
-        age.textContent=patient.age;
-        gender.textContent=patient.gender.toLowerCase();
-        barangay.textContent=patient.barangay.toLowerCase();
-        status.value=patient.status.toLowerCase();
-        status.className=`status`;
-        status.setAttribute("name", `status${patient.patient_id}`);
-        button.textContent='Delete';
-        button.className=' profile--button';
-        button.setAttribute("type", `button`);
-        mainDiv.className='covidpatientlist--table-grid patientDiv';
-        div1.className='covidpatientlist--table-grid covidpatientlist--table-templatecolumns';
-        div2.className='covidpatientlist--patientdetails covidpatientlist--table-grid';
-        overlaydiv.className='overlay';
-        overlaydiv1.className='popUp--container';
-        p.textContent='Are you sure you want to delete this patient?';
-        p.setAttribute("class", `message`);
-        button1.setAttribute("class", `yes deletePatient${patient.patient_id}`);
-        button2.setAttribute("class", `no`);
-        button1.setAttribute("type", `button`);
-        button2.setAttribute("type", `button`);
-        button1.textContent='Yes';
-        button2.textContent='No';
-
-        const patientid={
-          id:patient.patient_id
-        }
-
-        button.addEventListener('click',()=>{
-          overlaydiv.style.display='flex';
-        });
-        button2.addEventListener('click',()=>{
-          overlaydiv.style.display='none';
-        });
-
-        button1.addEventListener('click',(event)=>{
-          event.preventDefault();
-          overlaydiv.style.display='none';
-          fetch(adminPatientListAPI_URL, {//send object to the server
-            method: 'DELETE',
-            body: JSON.stringify(patientid),//make object in json format
-            headers: {
-              'content-type': 'application/json'
-            }
-          }).then(()=>{
-            getPositivePatients();
-            updateActiveCases();
-            getPatientHistory();
+      if(!result.message){
+        result.reverse();
+        result.forEach((patient)=>{
+          const mainDiv=document.createElement('div');
+          const div1=document.createElement('div');
+          const div2=document.createElement('div');
+          const patientNumber=document.createElement('p');
+          const age=document.createElement('p');
+          const gender=document.createElement('p');
+          const barangay=document.createElement('p');
+          const status=document.createElement('textarea');
+          const button = document.createElement('button');
+          const overlaydiv = document.createElement('div');
+          const overlaydiv1 = document.createElement('div');
+          const p = document.createElement('p');
+          const button1 = document.createElement('button');
+          const button2 = document.createElement('button');
+  
+          patientNumber.textContent=patient.patient_no;
+          age.textContent=patient.age;
+          gender.textContent=patient.gender.toLowerCase();
+          barangay.textContent=patient.barangay.toLowerCase();
+          status.value=patient.status.toLowerCase();
+          status.className=`status`;
+          status.setAttribute("name", `status${patient.patient_id}`);
+          button.textContent='Delete';
+          button.className=' profile--button';
+          button.setAttribute("type", `button`);
+          mainDiv.className='covidpatientlist--table-grid patientDiv';
+          div1.className='covidpatientlist--table-grid covidpatientlist--table-templatecolumns';
+          div2.className='covidpatientlist--patientdetails covidpatientlist--table-grid';
+          overlaydiv.className='overlay';
+          overlaydiv1.className='popUp--container';
+          p.textContent='Are you sure you want to delete this patient?';
+          p.setAttribute("class", `message`);
+          button1.setAttribute("class", `yes deletePatient${patient.patient_id}`);
+          button2.setAttribute("class", `no`);
+          button1.setAttribute("type", `button`);
+          button2.setAttribute("type", `button`);
+          button1.textContent='Yes';
+          button2.textContent='No';
+  
+          const patientid={
+            id:patient.patient_id
+          }
+  
+          button.addEventListener('click',()=>{
+            overlaydiv.style.display='flex';
           });
+          button2.addEventListener('click',()=>{
+            overlaydiv.style.display='none';
+          });
+  
+          button1.addEventListener('click',(event)=>{
+            event.preventDefault();
+            overlaydiv.style.display='none';
+            fetch(adminPatientListAPI_URL, {//send object to the server
+              method: 'DELETE',
+              body: JSON.stringify(patientid),//make object in json format
+              headers: {
+                'content-type': 'application/json'
+              }
+            }).then(()=>{
+              getPositivePatients();
+              updateActiveCases();
+              getPatientHistory();
+            });
+          });
+  
+          overlaydiv1.appendChild(p);
+          overlaydiv1.appendChild(button1);
+          overlaydiv1.appendChild(button2);
+          overlaydiv.appendChild(overlaydiv1);
+          body.appendChild(overlaydiv); 
+  
+          div2.appendChild(age);
+          div2.appendChild(gender);
+          div1.appendChild(patientNumber);
+          div1.appendChild(div2);
+          mainDiv.appendChild(div1);
+          mainDiv.appendChild(barangay);
+          mainDiv.appendChild(status);
+          mainDiv.appendChild(button);
+          covidPatientList.appendChild(mainDiv);
         });
-
-        overlaydiv1.appendChild(p);
-        overlaydiv1.appendChild(button1);
-        overlaydiv1.appendChild(button2);
-        overlaydiv.appendChild(overlaydiv1);
-        body.appendChild(overlaydiv); 
-
-        div2.appendChild(age);
-        div2.appendChild(gender);
-        div1.appendChild(patientNumber);
-        div1.appendChild(div2);
-        mainDiv.appendChild(div1);
-        mainDiv.appendChild(barangay);
-        mainDiv.appendChild(status);
-        mainDiv.appendChild(button);
-        covidPatientList.appendChild(mainDiv);
-      });
+      }else{
+        const message=document.createElement('p');
+        message.textContent='No patient';
+        message.className='nopatient';
+        covidPatientList.appendChild(message);
+      }
     })
   })
 };
@@ -260,71 +273,88 @@ const getPatientHistory=()=>{
   .then(response=>{
     response.json()
     .then(result=>{
-      for(var a=0,b=result.history_count; a<b ;a++){
-        const div=document.createElement('div');
-        const p=document.createElement('p');
-        const button=document.createElement('button');
-        const overlaydiv = document.createElement('div');
-        const overlaydiv1 = document.createElement('div');
-        const p1 = document.createElement('p');
-        const button1 = document.createElement('button');
-        const button2 = document.createElement('button');
-
-        p.textContent=result[`history${a+1}`].date;
-        button.textContent='Delete';
-        button.className='profile--button blue--button';
-        overlaydiv.className='overlay';
-        overlaydiv1.className='popUp--container';
-        p1.textContent='Are you sure you want to delete this history?';
-        p1.setAttribute("class", `message`);
-        button1.setAttribute("class", `yes deleteHistory${a+1}`);
-        button2.setAttribute("class", `no`);
-        button1.setAttribute("type", `button`);
-        button2.setAttribute("type", `button`);
-        button1.textContent='Yes';
-        button2.textContent='No';
-
-        const history_id={
-          date_id:result[`history${a+1}`].date_id
-        }
-
-        button.addEventListener('click',()=>{
-          overlaydiv.style.display='flex';
-        });
-        button2.addEventListener('click',()=>{
-          overlaydiv.style.display='none';
-        });
-
-        button1.addEventListener('click',(event)=>{
-          event.preventDefault();
-          overlaydiv.style.display='none';
-          fetch(adminPatientListHistoryAPI_URL, {//send object to the server
-            method: 'DELETE',
-            body: JSON.stringify(history_id),//make object in json format
-            headers: {
-              'content-type': 'application/json'
-            }
-          }).then(()=>{
-            getPatientHistory();
+      if(!result.message){
+        for(var a=0,b=result.history_count; a<b ;a++){
+          const div=document.createElement('div');
+          const div1=document.createElement('div');
+          const p=document.createElement('p');
+          const button=document.createElement('button');
+          const overlaydiv = document.createElement('div');
+          const overlaydiv1 = document.createElement('div');
+          const p1 = document.createElement('p');
+          const button1 = document.createElement('button');
+          const button2 = document.createElement('button');
+  
+          p.textContent=result[`history${a+1}`].date;
+          button.textContent='Delete';
+          button.className='profile--button blue--button';
+          overlaydiv.className='overlay';
+          overlaydiv1.className='popUp--container';
+          p1.textContent='Are you sure you want to delete this history?';
+          p1.setAttribute("class", `message`);
+          button1.setAttribute("class", `yes deleteHistory${a+1}`);
+          button2.setAttribute("class", `no`);
+          button1.setAttribute("type", `button`);
+          button2.setAttribute("type", `button`);
+          button1.textContent='Yes';
+          button2.textContent='No';
+  
+          const history_id={
+            date_id:result[`history${a+1}`].date_id
+          }
+  
+          button.addEventListener('click',()=>{
+            overlaydiv.style.display='flex';
           });
-        });
-
-        div.appendChild(p);
-
-        for(var c=0,d=result[`history${a+1}`].recovered_count; c<d ;c++){
-          const p =document.createElement('p');
-          p.textContent=result[`history${a+1}`][`recovered${c+1}`].patient_details;
+          button2.addEventListener('click',()=>{
+            overlaydiv.style.display='none';
+          });
+  
+          button1.addEventListener('click',(event)=>{
+            event.preventDefault();
+            overlaydiv.style.display='none';
+            fetch(adminPatientListHistoryAPI_URL, {//send object to the server
+              method: 'DELETE',
+              body: JSON.stringify(history_id),//make object in json format
+              headers: {
+                'content-type': 'application/json'
+              }
+            }).then(()=>{
+              getPatientHistory();
+            });
+          });
+  
           div.appendChild(p);
+          div.appendChild(div1);
+  
+          for(var c=0,d=result[`history${a+1}`].recovered_count; c<d ;c++){
+            const p1 =document.createElement('p');
+            const p2 =document.createElement('p');
+            const p3 =document.createElement('p');
+            const p4 =document.createElement('p');
+            p1.textContent=result[`history${a+1}`][`recovered${c+1}`].patient_no;
+            p2.textContent=result[`history${a+1}`][`recovered${c+1}`].age;
+            p3.textContent=result[`history${a+1}`][`recovered${c+1}`].gender;
+            p4.textContent=result[`history${a+1}`][`recovered${c+1}`].barangay;
+            div1.appendChild(p1);
+            div1.appendChild(p2);
+            div1.appendChild(p3);
+            div1.appendChild(p4);
+          }
+  
+          overlaydiv1.appendChild(p1);
+          overlaydiv1.appendChild(button1);
+          overlaydiv1.appendChild(button2);
+          overlaydiv.appendChild(overlaydiv1);
+          body.appendChild(overlaydiv); 
+  
+          div.appendChild(button);
+          history.appendChild(div);
         }
-
-        overlaydiv1.appendChild(p1);
-        overlaydiv1.appendChild(button1);
-        overlaydiv1.appendChild(button2);
-        overlaydiv.appendChild(overlaydiv1);
-        body.appendChild(overlaydiv); 
-
-        div.appendChild(button);
-        history.appendChild(div);
+      }else{
+        const message=document.createElement('p');
+        message.textContent='No history';
+        history.appendChild(message);
       }
     })
   })
@@ -333,6 +363,7 @@ const getPatientHistory=()=>{
 //get announcements from db
 const getAnnouncements=()=>{
   loadingElement.style.display=''; 
+  announcementSection.innerHTML = "";
   fetch(announcementAPI_URL,{
   }).then(response=>{
 
@@ -340,51 +371,56 @@ const getAnnouncements=()=>{
     loadingElement.style.display='none'; 
 
     response.json().then(result=>{
-      result.reverse();
-      result.forEach(announcement => {
-
-        const div = document.createElement('div');
-        const title = document.createElement('h3');
-        const body = document.createElement('pre');
-        const date = document.createElement('small');
-        const button =document.createElement('button');
-
-        div.className='announcement--post';
-        title.textContent = announcement.title;
-        body.textContent = announcement.body;
-        title.className = 'announcement--element';
-        body.className = 'announcement--element';
-        date.className = 'announcement--element';
-        date.textContent =announcement.date;
-        button.className = 'profile--button orange--button';
-        button.textContent ='Delete';
-
-        const announcementid={
-          id:announcement.id
-        }
-
-        button.addEventListener('click',()=>{
-          fetch(adminAnnouncementAPI_URL, {//send object to the server
-            method: 'DELETE',
-            body: JSON.stringify(announcementid),//make object in json format
-            headers: {
-              'content-type': 'application/json'
-            }
+      if(!result.message){
+        result.reverse();
+        result.forEach(announcement => {
+  
+          const div = document.createElement('div');
+          const title = document.createElement('h3');
+          const body = document.createElement('pre');
+          const date = document.createElement('small');
+          const button =document.createElement('button');
+  
+          div.className='announcement--post';
+          title.textContent = announcement.title;
+          body.textContent = announcement.body;
+          title.className = 'announcement--element';
+          body.className = 'announcement--element';
+          date.className = 'announcement--element';
+          date.textContent =announcement.date;
+          button.className = 'profile--button orange--button';
+          button.textContent ='Delete';
+  
+          const announcementid={
+            id:announcement.id
+          }
+  
+          button.addEventListener('click',()=>{
+            fetch(adminAnnouncementAPI_URL, {//send object to the server
+              method: 'DELETE',
+              body: JSON.stringify(announcementid),//make object in json format
+              headers: {
+                'content-type': 'application/json'
+              }
+          });
+  
+          setTimeout(()=>{  
+            getAnnouncements();
+          },100);
+          });
+  
+          div.appendChild(title);
+          div.appendChild(body);
+          div.appendChild(date);
+          div.appendChild(button);
+  
+          announcementSection.appendChild(div);
         });
-
-        setTimeout(()=>{  
-          announcementSection.innerHTML = "";
-          getAnnouncements();
-        },100);
-        });
-
-        div.appendChild(title);
-        div.appendChild(body);
-        div.appendChild(date);
-        div.appendChild(button);
-
-        announcementSection.appendChild(div);
-      });
+      }else{
+        const message=document.createElement('p');
+        message.textContent='No announcement';
+        announcementSection.appendChild(message);
+      }
     });
   });
 }

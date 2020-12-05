@@ -2,7 +2,6 @@ exports.create_table=()=>{
   var sql = `SELECT id FROM admin;`;
   db.query(sql, (err,result)=> {
     if(err){
-      console.log(err);
       var sql = `CREATE TABLE admin (
         id INT NOT NULL AUTO_INCREMENT,
         first_name VARCHAR(30) NOT NULL,
@@ -57,7 +56,10 @@ exports.create_table=()=>{
                           var sql = `CREATE TABLE patient_list_history (
                             patient_id INT NOT NULL AUTO_INCREMENT,
                             date_id INT,
-                            patient_details TEXT NOT NULL,
+                            patient_no VARCHAR(20) NOT NULL,
+                            age VARCHAR(5) NOT NULL,
+                            gender VARCHAR(15) NOT NULL,
+                            barangay VARCHAR(100) NOT NULL,
                             PRIMARY KEY (patient_id),
                             FOREIGN KEY (date_id) REFERENCES patient_list_history_date(date_id));`;
                           db.query(sql, (err,result)=> {
@@ -88,14 +90,16 @@ exports.create_table=()=>{
           });
         }
       });
+    }else{
+      // var sql = `SHOW TABLES;`;
+      // db.query(sql, (err,result)=> {
+      //   if(result){
+      //     console.log(result);
+      //   } else{
+      //     console.log(err);
+      //   }
+      // });
     }
   }); 
-  var sql = `SHOW TABLES;`;
-  db.query(sql, (err,result)=> {
-    if(result){
-      console.log(result);
-    } else{
-      console.log(err);
-    }
-  });
+
 }

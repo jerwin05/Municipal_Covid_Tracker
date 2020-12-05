@@ -1,6 +1,6 @@
-.main--container{
-    margin: 0 25px ;
-}
+// .main--container{
+//     margin: 0 25px ;
+// }
 
 nav{
     background-color: #f5e9b0;
@@ -139,7 +139,7 @@ nav{
 }
 
 .main{
-    padding: 115px 25px 0;
+    padding: 115px 15px 0;
 }
 
 .main--title{
@@ -177,7 +177,7 @@ nav{
 }
 
 .covidupdate--heading{
-    line-height: 1.2;
+    line-height: 1.3;
     padding-bottom: 15px;
 }
 
@@ -212,6 +212,10 @@ nav{
 
 .covidupdate--count{
     font-size: 30px;
+}
+
+.nopatient{
+    margin: 50px 0 50px;
 }
 
 .notes{
