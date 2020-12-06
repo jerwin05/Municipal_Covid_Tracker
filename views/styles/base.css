@@ -26,7 +26,7 @@ time, mark, audio, video {
 body {
   line-height: 1;
   background-color: #9ad3bc2d;
-  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 pre {
