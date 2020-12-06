@@ -1,6 +1,7 @@
 .wrapper--div {
   overflow-x: hidden;
   width: 100%;
+  position: relative;
 }
 
 nav {
@@ -207,7 +208,7 @@ nav {
   padding: 10px;
   line-height: 1.2;
   border-radius: 5px;
-  height: 14vh;
+  height: 13.8vh;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -254,6 +255,14 @@ nav {
 .addpatientform--container {
   position: relative;
   display: none;
+}
+
+.addpatientform--errormessage {
+  display: none;
+  border: 1px solid #ec524b;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .addpatientform {
@@ -713,6 +722,12 @@ nav {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: no;
+}
+
+@media screen and (max-width: 400px) {
+  body {
+    overflow-x: hidden !important;
+  }
 }
 
 @media only screen and (min-width: 348px) {

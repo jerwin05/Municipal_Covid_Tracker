@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./styles/layout-admin.css">
 </head>
 <body>
-    <div class="wrapper--div">
+    <!-- <div class="wrapper--div"> -->
         <nav>
             <h1 class="heading"><a href="admin-profile.html">Covid-19 Tracker for the Municipality of Teresa, Rizal</a></h1>
             <ul class="nav--options" id="nav-options">
@@ -80,6 +80,7 @@
                     </form>
                     <div id='addPatientFormContainer' class="addpatientform--container" >
                         <form id='addPatientForm' class="addpatientform main--body" role='form' method="POST">
+                            <p id="addPatientFormErrorMessage" class="addpatientform--errormessage">Please supply the missing fields!</p>
                             <input name="patient_number" placeholder="patient number" type="text">
                             <input name="age" placeholder="age" type="number">
                             <input name="gender" placeholder="gender" type="text">
@@ -88,7 +89,6 @@
                             <div class="addpatientbutton--container">
                                 <button class=" profile--button blue--button" type="submit">Add</button>
                                 <button id="addPatientCancelButton" class=" profile--button blue--button" type="button">Cancel</button>
-    
                             </div>
                         </form>
                     </div>
@@ -166,7 +166,7 @@
                     <button class="profile--button blue--button" id="deleteAccount" type="button">Delete my Account</button>
                 </div>  
             </div>
-        </div>
+        <!-- </div> -->
             
         <div id="loadingElement" class="loading--element">
             <img src="./images/loading.svg">

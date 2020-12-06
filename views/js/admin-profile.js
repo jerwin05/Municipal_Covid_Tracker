@@ -26,6 +26,7 @@ const addPatientFormContainer=document.getElementById('addPatientFormContainer')
 const addPatientForm=document.getElementById('addPatientForm');
 const addPatientButton=document.getElementById('addPatientButton');
 const addPatientCancelButton=document.getElementById('addPatientCancelButton');
+const addPatientFormErrorMessage=document.getElementById('addPatientFormErrorMessage');
 const editPatientButton=document.getElementById('editPatientButton');
 const history=document.getElementById('history');
 const loadingElement=document.getElementById('loadingElement');
@@ -66,8 +67,13 @@ fetch(authenticateAPI_URL,{
   })
 })
 
+const loadSpinner=(element)=>{
+  loadingElement.style.display='';
+  element.innerHTML='';
+}
+
 //gets admin profile from server
-function getProfile(){
+const getProfile =()=>{
   fetch(profileAPI_URL,{
   }).then(response => 
     response.json().then((result)=>{//get results from server
@@ -167,9 +173,7 @@ const updateActiveCases=()=>{
   });
 };
 
-const getPositivePatients=()=>{
-  loadingElement.style.display='';
-  covidPatientList.innerHTML='';
+const getPatientList=()=>{
   fetch(patientListAPI_URL)
   .then(response=>{
 
@@ -232,6 +236,7 @@ const getPositivePatients=()=>{
   
           button1.addEventListener('click',(event)=>{
             event.preventDefault();
+            loadSpinner(covidPatientList);
             overlaydiv.style.display='none';
             fetch(adminPatientListAPI_URL, {//send object to the server
               method: 'DELETE',
@@ -240,7 +245,7 @@ const getPositivePatients=()=>{
                 'content-type': 'application/json'
               }
             }).then(()=>{
-              getPositivePatients();
+              getPatientList();
               updateActiveCases();
               getPatientHistory();
             });
@@ -274,8 +279,6 @@ const getPositivePatients=()=>{
 
 
 const getPatientHistory=()=>{
-  history.innerHTML='';
-  loadingElement.style.display='';
   fetch(patientListHistoryAPI_URL)
   .then(response=>{
 
@@ -324,6 +327,7 @@ const getPatientHistory=()=>{
   
           button1.addEventListener('click',(event)=>{
             event.preventDefault();
+            loadSpinner(history);
             overlaydiv.style.display='none';
             fetch(adminPatientListHistoryAPI_URL, {//send object to the server
               method: 'DELETE',
@@ -375,8 +379,6 @@ const getPatientHistory=()=>{
 
 //get announcements from db
 const getAnnouncements=()=>{
-  loadingElement.style.display=''; 
-  announcementSection.innerHTML = "";
   fetch(announcementAPI_URL,{
   }).then(response=>{
    
@@ -408,6 +410,7 @@ const getAnnouncements=()=>{
           }
   
           button.addEventListener('click',()=>{
+            loadSpinner(announcementSection);
             fetch(adminAnnouncementAPI_URL, {//send object to the server
               method: 'DELETE',
               body: JSON.stringify(announcementid),//make object in json format
@@ -415,7 +418,6 @@ const getAnnouncements=()=>{
                 'content-type': 'application/json'
               }
           });
-  
           setTimeout(()=>{  
             getAnnouncements();
           },100);
@@ -439,7 +441,7 @@ const getAnnouncements=()=>{
 
 getProfile();
 getCovidUpdates();
-getPositivePatients();
+getPatientList();
 getPatientHistory();
 getAnnouncements(); 
 
@@ -562,8 +564,14 @@ addPatientForm.addEventListener('submit',(event)=>{
   const barangay=formData.get('barangay');
   const status=formData.get('status');
 
-  if(patient_number.trim()&&age.trim()&&gender.trim()
-    &&barangay.trim()&&status.trim()){
+  if(patient_number.trim().toString()&&age.trim().toString()&&gender.trim().toString()
+    &&barangay.trim().toString()&&status.trim().toString()){
+
+    loadSpinner(covidPatientList);
+
+    addPatientFormErrorMessage.style.display='none';
+    addPatientFormContainer.style.display='none';
+    addPatientForm.reset();
      
     const patient = {//put announcement into object
       patient_no:patient_number,
@@ -580,23 +588,28 @@ addPatientForm.addEventListener('submit',(event)=>{
         'content-type': 'application/json'
       }
     }).then(()=>{
-      addPatientForm.reset();
-      addPatientFormContainer.style.display='none';
-      getPositivePatients();
+      getPatientList();
       updateActiveCases();
     });
+  }else{
+    addPatientFormErrorMessage.style.display='block';
   }
 });
 
 //execute event on click of post on announcement
 announcementForm.addEventListener('submit', (event) => {
   event.preventDefault();
+  
   const formData = new FormData(announcementForm);//store form credentials
   const title = formData.get('Title');
   const body = formData.get('Body');
 
   if (title.trim() && body.trim()) {//execute if form fields are all filled
     
+    loadSpinner(announcementSection);
+    errorMessage.style.display='none';
+    announcementForm.reset();
+
     const announcement = {//put announcement into object
       title,
       body
@@ -611,10 +624,8 @@ announcementForm.addEventListener('submit', (event) => {
     }).then(response => {
       response.text().then(result=>{//get text response from server
         if(result==='true'){//display success message
-          announcementForm.reset();
           successMessage.textContent='Post Added';
           successMessage.style.bottom='50';
-          errorMessage.style.display='none';
           setTimeout(()=>{
             successMessage.style.bottom='-45';
           },3000);
@@ -622,7 +633,6 @@ announcementForm.addEventListener('submit', (event) => {
       });
     });
     setTimeout(()=>{  
-      announcementSection.innerHTML = "";
       getAnnouncements();
     },100);
   } else {
