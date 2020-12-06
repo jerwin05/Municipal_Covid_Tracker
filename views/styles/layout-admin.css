@@ -68,13 +68,6 @@ nav {
   padding-top: 130px;
 }
 
-.page--transition {
-  -webkit-transition: -webkit-transform 0.23s cubic-bezier(0.1, 0.93, 0.1, 0.93);
-  transition: -webkit-transform 0.23s cubic-bezier(0.1, 0.93, 0.1, 0.93);
-  transition: transform 0.23s cubic-bezier(0.1, 0.93, 0.1, 0.93);
-  transition: transform 0.23s cubic-bezier(0.1, 0.93, 0.1, 0.93), -webkit-transform 0.23s cubic-bezier(0.1, 0.93, 0.1, 0.93);
-}
-
 .tab--slide {
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
@@ -972,10 +965,6 @@ nav {
   }
   .heading {
     padding: 15px 0;
-  }
-  .page--transition {
-    -webkit-transition: none;
-    transition: none;
   }
 }
 

@@ -64,10 +64,6 @@ nav{
     padding-top: 130px;
 }
 
-.page--transition{
-    transition: transform .23s cubic-bezier(.1,.93,.1,.93);
-}
-
 .tab--slide{
     transform: translateX(100%);
 }
@@ -855,9 +851,6 @@ nav{
     }
     .heading{
         padding:15px 0;
-    }
-    .page--transition{
-        transition: none;
     }
 }
 
