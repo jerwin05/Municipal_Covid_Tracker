@@ -417,10 +417,9 @@ const getAnnouncements=()=>{
               headers: {
                 'content-type': 'application/json'
               }
-          });
-          setTimeout(()=>{  
-            getAnnouncements();
-          },100);
+            }).then(response=>{
+              getAnnouncements();
+            });
           });
   
           div.appendChild(title);
@@ -605,7 +604,6 @@ announcementForm.addEventListener('submit', (event) => {
   const body = formData.get('Body');
 
   if (title.trim() && body.trim()) {//execute if form fields are all filled
-    
     loadSpinner(announcementSection);
     errorMessage.style.display='none';
     announcementForm.reset();
@@ -622,6 +620,9 @@ announcementForm.addEventListener('submit', (event) => {
         'content-type': 'application/json'
       }
     }).then(response => {
+
+      getAnnouncements();
+
       response.text().then(result=>{//get text response from server
         if(result==='true'){//display success message
           successMessage.textContent='Post Added';
@@ -632,9 +633,6 @@ announcementForm.addEventListener('submit', (event) => {
         }
       });
     });
-    setTimeout(()=>{  
-      getAnnouncements();
-    },100);
   } else {
     errorMessage.textContent='Title and Body are required!';
     errorMessage.style.display='block';
