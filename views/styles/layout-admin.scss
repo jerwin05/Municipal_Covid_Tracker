@@ -632,13 +632,19 @@ nav{
     padding: 20px 80px;
 }
 .message{
+    grid-row: 1;
+    grid-column: 1;
     grid-area: message;
     text-align: center;
 }
 .yes{
+    grid-row: 2;
+    grid-column: 1;
     grid-area: yes;
 }
 .no{
+    grid-row: 2;
+    grid-column: 2;
     grid-area: no;
 }
 
@@ -752,13 +758,19 @@ nav{
         height: 50vh;
     }
     .profile--container{
+        grid-row: 1;
+        grid-column: 1;
         grid-area: userprofile;
         margin: 0;
     }
     .editcovidupdate--container{
+        grid-row: 2;
+        grid-column: 1;
         grid-area: covidupdate;
     }
     .post--container{
+        grid-row: 2;
+        grid-column: 2;
         grid-area: postannouncement;
         height: 39vh;
     }

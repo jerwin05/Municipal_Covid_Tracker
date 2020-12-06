@@ -704,6 +704,10 @@ nav {
 
 .message {
   -ms-grid-row: 1;
+  grid-row: 1;
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 1;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: message;
@@ -712,11 +716,19 @@ nav {
 
 .yes {
   -ms-grid-row: 2;
+  grid-row: 2;
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: yes;
 }
 
 .no {
+  -ms-grid-row: 2;
+  grid-row: 2;
+  -ms-grid-column: 2;
+  grid-column: 2;
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: no;
@@ -842,6 +854,10 @@ nav {
   }
   .profile--container {
     -ms-grid-row: 1;
+    grid-row: 1;
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 1;
     -ms-grid-column: 1;
     -ms-grid-column-span: 2;
     grid-area: userprofile;
@@ -849,10 +865,18 @@ nav {
   }
   .editcovidupdate--container {
     -ms-grid-row: 2;
+    grid-row: 2;
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 2;
     -ms-grid-column: 1;
     grid-area: covidupdate;
   }
   .post--container {
+    -ms-grid-row: 2;
+    grid-row: 2;
+    -ms-grid-column: 2;
+    grid-column: 2;
     -ms-grid-row: 2;
     -ms-grid-column: 2;
     grid-area: postannouncement;
