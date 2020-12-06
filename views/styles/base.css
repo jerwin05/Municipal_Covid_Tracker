@@ -23,6 +23,10 @@ time, mark, audio, video {
           box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   line-height: 1;
   background-color: #9ad3bc2d;
