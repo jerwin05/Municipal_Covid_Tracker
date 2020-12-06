@@ -19,11 +19,6 @@ const history=document.getElementById('history');
 const loadingElement=document.getElementById('loadingElement');
 const sectionContainer=document.getElementById('sectionContainer');
 
-const noPatientMessage=document.getElementById('noPatientMessage');
-const noNotesMessage=document.getElementById('noNotesMessage');
-const noHistoryMessage=document.getElementById('noHistoryMessage');
-const noAnnouncementMessage=document.getElementById('noAnnouncementMessage');
-
 //api urls here
 const adminIndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin-profile.html' : 'https://municipal-covid-tracker.herokuapp.com/admin-profile.html';
 const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-user' : 'https://municipal-covid-tracker.herokuapp.com/authenticate-user';

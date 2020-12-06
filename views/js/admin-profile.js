@@ -277,7 +277,6 @@ const getPatientList=()=>{
   })
 };
 
-
 const getPatientHistory=()=>{
   fetch(patientListHistoryAPI_URL)
   .then(response=>{
@@ -369,6 +368,7 @@ const getPatientHistory=()=>{
           history.appendChild(div);
         }
       }else{
+        history.innerHTML='';
         const message=document.createElement('p');
         message.textContent='No history';
         history.appendChild(message);
