@@ -89,6 +89,10 @@ function getProfile(){
 const getCovidUpdates=()=>{
   fetch(covidUpdateAPI_URL)
   .then(response=>{
+
+    main.style.display='flex'; 
+    loadingElement.style.display='none';
+
     response.json()
     .then(result=>{
       const pre=document.createElement('pre');
@@ -375,8 +379,7 @@ const getAnnouncements=()=>{
   announcementSection.innerHTML = "";
   fetch(announcementAPI_URL,{
   }).then(response=>{
-
-    main.style.display='flex';    
+   
     loadingElement.style.display='none'; 
 
     response.json().then(result=>{
@@ -475,10 +478,9 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
         'content-type': 'application/json'
       }
     }).then(()=>{
-      getCovidUpdates();
-      loadingElement.style.display='none'; 
+      getCovidUpdates(); 
       successMessage.textContent='Updated';
-      successMessage.style.bottom='45';
+      successMessage.style.bottom='50';
       setTimeout(()=>{
         successMessage.style.bottom='-45';
       },3000);
@@ -502,9 +504,8 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
       }
     }).then(()=>{
       getCovidUpdates();
-      loadingElement.style.display='none'; 
       successMessage.textContent='Updated';
-      successMessage.style.bottom='45';
+      successMessage.style.bottom='50';
       setTimeout(()=>{
         successMessage.style.bottom='-45';
       },3000);
@@ -536,7 +537,7 @@ covidPatientListForm.addEventListener('submit',(event)=>{
   }
 
   successMessage.textContent='Patient Updated';
-  successMessage.style.bottom='45';
+  successMessage.style.bottom='50';
   setTimeout(()=>{
     updateActiveCases();
   },100);
@@ -612,7 +613,7 @@ announcementForm.addEventListener('submit', (event) => {
         if(result==='true'){//display success message
           announcementForm.reset();
           successMessage.textContent='Post Added';
-          successMessage.style.bottom='45';
+          successMessage.style.bottom='50';
           errorMessage.style.display='none';
           setTimeout(()=>{
             successMessage.style.bottom='-45';

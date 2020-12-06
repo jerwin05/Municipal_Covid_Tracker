@@ -46,6 +46,9 @@ const getCovidUpdates=()=>{
   fetch(covidUpdateAPI_URL)
   .then(response=>{
 
+    sectionContainer.style.display='block';    
+    loadingElement.style.display='none'; 
+
     response.json()
     .then(result=>{
       activeCases.textContent=result[0].active_cases;
@@ -173,10 +176,7 @@ const getPatientHistory=()=>{
 
 const getAnnouncements=()=>{
   fetch(announcementAPI_URL)
-  .then(response=>{
-
-    sectionContainer.style.display='block';    
-    loadingElement.style.display='none';  
+  .then(response=>{ 
 
     response.json()
     .then(result=>{
