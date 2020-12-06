@@ -194,7 +194,7 @@ nav{
     padding: 10px;
     line-height: 1.2;
     border-radius: 5px;
-    height:13.8vh;
+    height:14vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -642,12 +642,6 @@ nav{
 }
 .no{
     grid-area: no;
-}
-
-@media screen and (max-width: 400px) {
-    body {
-        overflow-x: hidden!important;
-    }
 }
 
 @media only screen and (min-width: 348px) {

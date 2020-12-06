@@ -208,7 +208,7 @@ nav {
   padding: 10px;
   line-height: 1.2;
   border-radius: 5px;
-  height: 13.8vh;
+  height: 14vh;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -722,12 +722,6 @@ nav {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: no;
-}
-
-@media screen and (max-width: 400px) {
-  body {
-    overflow-x: hidden !important;
-  }
 }
 
 @media only screen and (min-width: 348px) {
