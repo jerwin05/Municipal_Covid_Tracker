@@ -83,14 +83,14 @@ exports.create_table=()=>{
         }
       });
     }else{
-      // var sql = `SHOW TABLES;`;
-      // db.query(sql, (err,result)=> {
-      //   if(result){
-      //     console.log(result);
-      //   } else{
-      //     console.log(err);
-      //   }
-      // });
+      var sql = `SHOW TABLES;`;
+      db.query(sql, (err,result)=> {
+        if(result){
+          console.log(result);
+        } else{
+          console.log(err);
+        }
+      });
     }
   }); 
 
