@@ -245,6 +245,7 @@ const getPatientList=()=>{
                 'content-type': 'application/json'
               }
             }).then(()=>{
+              history.innerHTML='';
               getPatientList();
               updateActiveCases();
               getPatientHistory();
@@ -341,7 +342,7 @@ const getPatientHistory=()=>{
   
           div.appendChild(span);
           div.appendChild(div1);
-  
+
           for(var c=0,d=result[`history${a+1}`].recovered_count; c<d ;c++){
             const p1 =document.createElement('p');
             const p2 =document.createElement('p');
@@ -368,7 +369,6 @@ const getPatientHistory=()=>{
           history.appendChild(div);
         }
       }else{
-        history.innerHTML='';
         const message=document.createElement('p');
         message.textContent='No history';
         history.appendChild(message);

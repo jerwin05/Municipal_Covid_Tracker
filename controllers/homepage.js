@@ -63,6 +63,7 @@ exports.get_patient_list_history=(req,res)=>{
                history_list[`history${counter}`].date_id=element.date_id;
                history_list[`history${counter}`].date=element.date;
                history_list[`history${counter}`][`recovered${++counter1}`]={patient_no:element.patient_no,age:element.age,gender:element.gender,barangay:element.barangay};
+               history_list[`history${counter}`].recovered_count=counter1;
             }
          }
       });

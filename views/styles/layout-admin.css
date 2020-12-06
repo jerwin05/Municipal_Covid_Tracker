@@ -128,6 +128,53 @@ nav {
   background: rgba(85, 85, 85, 0.582);
 }
 
+.patient--deletebutton {
+  -webkit-transition: background-color .2s ease;
+  transition: background-color .2s ease;
+  background-color: inherit;
+  text-decoration: underline;
+  padding: 0;
+  text-align: start;
+  border-radius: 5px;
+  padding: 1px 10px;
+}
+
+.patient--deletebutton:hover {
+  background-color: #9ad3bc;
+}
+
+.patient--deletebutton:active {
+  background-color: #328162;
+}
+
+.orange--button {
+  background-color: #f5b461;
+  -webkit-transition: background-color .2s ease;
+  transition: background-color .2s ease;
+}
+
+.orange--button:hover {
+  background-color: #dba45c;
+}
+
+.orange--button:active {
+  background-color: #b37b31;
+}
+
+.blue--button {
+  background-color: #9ad3bc;
+  -webkit-transition: background-color .2s ease;
+  transition: background-color .2s ease;
+}
+
+.blue--button:hover {
+  background-color: #72b99d;
+}
+
+.blue--button:active {
+  background-color: #328162;
+}
+
 .main--title {
   font-size: 24px;
   padding-bottom: 15px;
@@ -388,13 +435,6 @@ nav {
   margin-left: 7px;
 }
 
-.patient--deletebutton {
-  background-color: inherit;
-  text-decoration: underline;
-  padding: 0;
-  text-align: start;
-}
-
 .nopatient {
   margin: 10px 0;
 }
@@ -422,8 +462,8 @@ nav {
   margin-bottom: 10px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: .7fr .3fr .5fr 1fr;
-      grid-template-columns: .7fr .3fr .5fr 1fr;
+  -ms-grid-columns: .7fr .3fr .7fr 1.2fr;
+      grid-template-columns: .7fr .3fr .7fr 1.2fr;
   gap: 5px;
 }
 
@@ -617,34 +657,6 @@ nav {
   margin: 0;
 }
 
-.orange--button {
-  background-color: #f5b461;
-  -webkit-transition: background-color .2s ease;
-  transition: background-color .2s ease;
-}
-
-.orange--button:hover {
-  background-color: #dba45c;
-}
-
-.orange--button:active {
-  background-color: #b37b31;
-}
-
-.blue--button {
-  background-color: #9ad3bc;
-  -webkit-transition: background-color .2s ease;
-  transition: background-color .2s ease;
-}
-
-.blue--button:hover {
-  background-color: #72b99d;
-}
-
-.blue--button:active {
-  background-color: #328162;
-}
-
 .error-message {
   display: none;
 }
@@ -737,6 +749,13 @@ nav {
 @media only screen and (min-width: 348px) {
   .main {
     padding-top: 115px;
+  }
+}
+
+@media only screen and (min-width: 445px) {
+  .history--people {
+    -ms-grid-columns: .7fr .3fr .7fr 1.8fr;
+        grid-template-columns: .7fr .3fr .7fr 1.8fr;
   }
 }
 

@@ -344,8 +344,8 @@ nav {
   margin-bottom: 25px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: .7fr .3fr .5fr 1fr;
-      grid-template-columns: .7fr .3fr .5fr 1fr;
+  -ms-grid-columns: .7fr .3fr .5fr 1.2fr;
+      grid-template-columns: .7fr .3fr .5fr 1.2fr;
   gap: 5px;
 }
 
@@ -446,6 +446,13 @@ nav {
 @media only screen and (min-width: 362px) {
   .main {
     padding-top: 80px;
+  }
+}
+
+@media only screen and (min-width: 445px) {
+  .history--people {
+    -ms-grid-columns: .7fr .3fr .7fr 1.8fr;
+        grid-template-columns: .7fr .3fr .7fr 1.8fr;
   }
 }
 

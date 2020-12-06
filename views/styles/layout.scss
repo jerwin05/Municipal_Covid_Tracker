@@ -312,7 +312,7 @@ nav{
 .history--people{
     margin-bottom: 25px;
     display: grid;
-    grid-template-columns: .7fr .3fr .5fr 1fr;
+    grid-template-columns: .7fr .3fr .5fr 1.2fr;
     gap :5px;
 }
 
@@ -399,6 +399,12 @@ nav{
     .main{
         padding-top: 80px;
     }
+}
+
+@media only screen and (min-width: 445px) {
+    .history--people{
+        grid-template-columns: .7fr .3fr .7fr 1.8fr;
+    }    
 }
 
 @media only screen and (min-width: 507px) {
