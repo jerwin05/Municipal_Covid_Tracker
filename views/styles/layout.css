@@ -213,7 +213,7 @@ nav {
   padding: 10px;
   line-height: 1.2;
   border-radius: 5px;
-  height: 13.6vh;
+  height: 14vh;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -232,12 +232,12 @@ nav {
 }
 
 .covidupdate--title {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .covidupdate--count {
   margin-top: 4px;
-  font-size: 33px;
+  font-size: 37px;
 }
 
 .block2 {

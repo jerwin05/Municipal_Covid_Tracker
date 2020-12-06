@@ -173,9 +173,11 @@ nav{
     padding-bottom: 15px;
 }
 
-.covidupdate--count{
-    margin-top: 4px;
-    font-size: 33px;
+.covidupdate--date{
+    display: block;
+    font-weight: 400;
+    text-decoration: underline;
+    font-size: 19px;
 }
 
 .covidupdate--section{
@@ -186,29 +188,27 @@ nav{
     gap: 10px;
 }
 
-.covidupdate--title {
-    font-size: 16px;
-}
-
-.covidupdate--date{
-    display: block;
-    font-weight: 400;
-    text-decoration: underline;
-    font-size: 19px;
-}
-
 .covidupdate{
     background-color: white;
     padding: 10px;
     line-height: 1.2;
     border-radius: 5px;
-    height:12.2vh;
+    height:14vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+.covidupdate--title{
+    font-size: 18px;
+}
+
+.covidupdate--count{
+    margin-top: 4px;
+    font-size: 37px;
 }
 
 .block2 {
