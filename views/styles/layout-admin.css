@@ -137,42 +137,6 @@ nav {
   background-color: inherit;
 }
 
-.patient--deletebutton:hover {
-  background-color: #9ad3bc;
-}
-
-.patient--deletebutton:active {
-  background-color: #328162;
-}
-
-.orange--button {
-  background-color: #f5b461;
-  -webkit-transition: background-color .2s ease;
-  transition: background-color .2s ease;
-}
-
-.orange--button:hover {
-  background-color: #dba45c;
-}
-
-.orange--button:active {
-  background-color: #b37b31;
-}
-
-.blue--button {
-  background-color: #9ad3bc;
-  -webkit-transition: background-color .2s ease;
-  transition: background-color .2s ease;
-}
-
-.blue--button:hover {
-  background-color: #72b99d;
-}
-
-.blue--button:active {
-  background-color: #328162;
-}
-
 .main--title {
   font-size: 24px;
   padding-bottom: 15px;
@@ -744,6 +708,43 @@ nav {
   grid-area: no;
 }
 
+.patient--deletebutton:hover {
+  background-color: #9ad3bc;
+}
+
+.patient--deletebutton:active {
+  background-color: #328162;
+}
+
+.orange--button {
+  background-color: #f5b461;
+  -webkit-transition: background-color .2s ease;
+  transition: background-color .2s ease;
+  font-size: 14px;
+}
+
+.orange--button:hover {
+  background-color: #dba45c;
+}
+
+.orange--button:active {
+  background-color: #b37b31;
+}
+
+.blue--button {
+  background-color: #9ad3bc;
+  -webkit-transition: background-color .2s ease;
+  transition: background-color .2s ease;
+}
+
+.blue--button:hover {
+  background-color: #72b99d;
+}
+
+.blue--button:active {
+  background-color: #328162;
+}
+
 @media only screen and (min-width: 348px) {
   .main {
     padding-top: 115px;
@@ -1003,6 +1004,7 @@ nav {
   }
   .block2 {
     margin-right: 28.6vw;
+    margin-bottom: 20px;
   }
   .block3 {
     position: fixed;

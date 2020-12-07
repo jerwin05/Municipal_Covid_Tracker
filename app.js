@@ -64,6 +64,10 @@ app.use(session({
   }
 }));
 
+db.query('SELECT * FROM admin;',(err,res)=>{
+  console.log(res);
+});
+
 console.log('production: ',process.env.NODE_ENV === 'production');
 
 app.use('/',index);

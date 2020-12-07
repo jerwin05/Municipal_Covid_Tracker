@@ -390,7 +390,7 @@ nav {
 .map--container {
   position: relative;
   width: 100%;
-  height: 60vh;
+  height: 70vh;
   padding: 0;
 }
 
@@ -676,7 +676,7 @@ nav {
 @media only screen and (min-width: 1125px) {
   .block2 {
     margin-right: 28.6vw;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
   }
   .block3 {
     position: fixed;

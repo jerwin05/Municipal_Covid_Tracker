@@ -238,6 +238,7 @@ const getPatientList=()=>{
             event.preventDefault();
             loadSpinner(covidPatientList);
             overlaydiv.style.display='none';
+            history.innerHTML='';
             fetch(adminPatientListAPI_URL, {//send object to the server
               method: 'DELETE',
               body: JSON.stringify(patientid),//make object in json format
@@ -245,7 +246,6 @@ const getPatientList=()=>{
                 'content-type': 'application/json'
               }
             }).then(()=>{
-              history.innerHTML='';
               getPatientList();
               updateActiveCases();
               getPatientHistory();
@@ -477,7 +477,6 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
         'content-type': 'application/json'
       }
     }).then(()=>{
-      loadingElement.style.display='none'; 
       getCovidUpdates();
       successMessage.textContent='Updated';
       successMessage.style.bottom='50';
@@ -503,7 +502,6 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
         'content-type': 'application/json'
       }
     }).then(()=>{
-      loadingElement.style.display='none';
       getCovidUpdates();
       successMessage.textContent='Updated';
       successMessage.style.bottom='50';
@@ -553,6 +551,7 @@ addPatientButton.addEventListener('click',(event)=>{
 addPatientCancelButton.addEventListener('click',(event)=>{
   event.preventDefault();
   addPatientFormContainer.style.display='none';
+  addPatientFormErrorMessage.style.display='none';
 })
 addPatientForm.addEventListener('submit',(event)=>{
   event.preventDefault();
