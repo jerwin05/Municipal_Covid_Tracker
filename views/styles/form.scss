@@ -14,6 +14,7 @@ body{
     background-color: #f5e9b0;
     padding:20px;
     border-radius: 5px;
+    margin-bottom: 40px;
 }
 
 form{
@@ -38,7 +39,7 @@ form{
 }
 
 .form--element{
-    width: 300px;
+    width: 285px;
     margin: 5px 0;
     border-radius: 4px;
     padding:9px 10px;
@@ -61,8 +62,10 @@ form{
     padding: 10px;
 }
 
-
 @media only screen and (min-width: 750px) {
+    .form--container{
+        margin-bottom: 0;
+    }
     .form--header div{
         font-size: 21px;
     }

@@ -5,22 +5,28 @@ exports.signup=(req,res)=>{
    var fname= post.first_name;
    var mname= post.middle_name;
    var lname= post.last_name;
-   var mob= post.mob_no
-   
-   var sql="SELECT first_name FROM admin WHERE `user_name`='"+name+"'";
-   db.query(sql, (err,result)=> {
-        if(!result[0]){
-            sql = "INSERT INTO admin (`first_name`,`middle_name`,`last_name`,`mob_no`,`user_name`, `password`) VALUES ('" + fname + "','" + mname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "')";
-            db.query(sql, (err,result)=> {
-                if(result){
-                    res.send('true');
-                }
-            });
-        }
-        else{
-            res.send('false');
-        }
-   });
+   var mob= post.mob_no;
+   // var municipal_id= post.municipal_id;
+
+   // if(/\d{10}/.test(municipal_id)){
+      var sql="SELECT first_name FROM admin WHERE `user_name`='"+name+"'";
+      db.query(sql, (err,result)=> {
+           if(!result[0]){
+               sql = "INSERT INTO admin (`first_name`,`middle_name`,`last_name`,`mob_no`,`user_name`, `password`) VALUES ('" + fname + "','" + mname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "')";
+               db.query(sql, (err,result)=> {
+                   if(result){
+                       res.send('success');
+                   }
+               });
+           }
+           else{
+               res.send('username taken');
+           }
+      });
+   // }else{
+   //    res.send('wrong id');
+   // }
+
 }
 
 exports.login = function(req, res){

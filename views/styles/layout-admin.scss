@@ -120,6 +120,10 @@ nav{
     padding: 1px 10px;
 }
 
+.nav--links:active{
+    background-color:inherit;
+}
+
 .patient--deletebutton:hover{
     background-color: #9ad3bc;
 }
@@ -196,7 +200,7 @@ nav{
 
 .hometab--containers:last-child{
     padding:0;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
 }
 
 .covidupdate--heading{
@@ -446,7 +450,7 @@ nav{
 // }
 
 .map--container{
-    height: 60vh;
+    height: 70vh;
     position: relative;
   
 }

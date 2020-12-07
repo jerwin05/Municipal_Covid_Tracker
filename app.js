@@ -64,6 +64,8 @@ app.use(session({
   }
 }));
 
+console.log(process.env.NODE_ENV === 'production');
+
 app.use('/',index);
 app.use('/admin',admin);
 

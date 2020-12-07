@@ -381,9 +381,6 @@ const getPatientHistory=()=>{
 const getAnnouncements=()=>{
   fetch(announcementAPI_URL,{
   }).then(response=>{
-   
-    loadingElement.style.display='none'; 
-
     response.json().then(result=>{
       if(!result.message){
         result.reverse();
@@ -418,6 +415,7 @@ const getAnnouncements=()=>{
                 'content-type': 'application/json'
               }
             }).then(response=>{
+              loadingElement.style.display='none';
               getAnnouncements();
             });
           });
@@ -479,7 +477,8 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
         'content-type': 'application/json'
       }
     }).then(()=>{
-      getCovidUpdates(); 
+      loadingElement.style.display='none'; 
+      getCovidUpdates();
       successMessage.textContent='Updated';
       successMessage.style.bottom='50';
       setTimeout(()=>{
@@ -504,6 +503,7 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
         'content-type': 'application/json'
       }
     }).then(()=>{
+      loadingElement.style.display='none';
       getCovidUpdates();
       successMessage.textContent='Updated';
       successMessage.style.bottom='50';
@@ -621,6 +621,7 @@ announcementForm.addEventListener('submit', (event) => {
       }
     }).then(response => {
 
+      loadingElement.style.display='none';
       getAnnouncements();
 
       response.text().then(result=>{//get text response from server
