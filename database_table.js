@@ -82,18 +82,19 @@ exports.create_table=()=>{
           });
         }
       });
-    }else{
-      var sql = `SHOW TABLES;`;
-      db.query(sql, (err,result)=> {
-        if(result){
-          console.log(result);
-        } else{
-          console.log(err);
-        }
-      });
     }
   }); 
+}
 
+exports.show_table=()=>{
+  var sql = `SHOW TABLES;`;
+  db.query(sql, (err,result)=> {
+    if(result){
+      console.log(result);
+    } else{
+      console.log(err);
+    }
+  });
 }
 
 exports.drop_table=()=>{
