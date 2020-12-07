@@ -116,6 +116,12 @@ exports.drop_table=()=>{
                       db.query(sql, (err,result)=> {
                         if(result){
                           console.log('drop table complete');
+                          var sql = `TRUNCATE TABLE sessions;`;
+                          db.query(sql, (err,result)=> {
+                            if(result){
+                              console.log('truncate sessions complete');
+                            }
+                          });
                         }
                       });
                     }
