@@ -855,6 +855,9 @@ nav{
     .heading{
         padding:15px 0;
     }
+    .covidupdate--section{
+        height: 70vh;
+    }
 }
 
 @media only screen and (min-width: 901px) {
@@ -886,9 +889,6 @@ nav{
 
 
 @media only screen and (min-width: 1125px) {
-    .covidupdate--section{
-        height: 70vh;
-    }
     .block2{
         margin-right: 28.6vw;
         margin-bottom: 20px;
