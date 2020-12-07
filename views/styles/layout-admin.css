@@ -928,7 +928,7 @@ nav {
   }
   .covidupdate--section {
     overflow-y: scroll;
-    height: 70vh;
+    height: 66.5vh;
   }
   .announcement--section {
     height: 72vh;
@@ -999,8 +999,8 @@ nav {
 }
 
 @media only screen and (min-width: 1125px) {
-  body {
-    display: block;
+  .covidupdate--section {
+    height: 70vh;
   }
   .block2 {
     margin-right: 28.6vw;
