@@ -62,7 +62,7 @@ exports.create_table=()=>{
                               var sql = `CREATE TABLE announcements (
                                 id INT NOT NULL AUTO_INCREMENT,
                                 title VARCHAR(500) NOT NULL,
-                                body VARCHAR(2000) NOT NULL,
+                                body TEXT NOT NULL,
                                 date VARCHAR(100) NOT NULL,
                                 PRIMARY KEY (id));`;
                               db.query(sql, (err,result)=> {

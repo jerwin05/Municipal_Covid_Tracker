@@ -602,7 +602,7 @@ announcementForm.addEventListener('submit', (event) => {
   const title = formData.get('Title');
   const body = formData.get('Body');
 
-  if (title.trim() && body.trim()) {//execute if form fields are all filled
+  if (title.trim().toString() && body.trim().toString()) {//execute if form fields are all filled
     loadSpinner(announcementSection);
     errorMessage.style.display='none';
     announcementForm.reset();
