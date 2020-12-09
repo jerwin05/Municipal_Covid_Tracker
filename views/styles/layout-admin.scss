@@ -641,13 +641,6 @@ nav{
     grid-area: no;
 }
 
-.patient--deletebutton:hover{
-    background-color: #9ad3bc;
-}
-.patient--deletebutton:active{
-    background-color: #328162;
-}
-
 .orange--button{
     background-color: #f5b461;
     transition: background-color .2s ease;
@@ -706,7 +699,8 @@ nav{
     .patient--deletebutton{
         text-align: center;
         justify-self: center;
-    }
+        padding: 1px 10px;
+    }  
 }
 
 @media only screen and (min-width: 598px) {
@@ -773,6 +767,12 @@ nav{
         small{
             font-size: 13px;
         }
+    }
+    .patient--deletebutton:hover{
+        background-color: #9ad3bc;
+    }
+    .patient--deletebutton:active{
+        background-color: #328162;
     }
 }
 
