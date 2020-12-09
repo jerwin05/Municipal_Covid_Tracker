@@ -8,7 +8,7 @@ exports.signup=(req,res)=>{
    var mob= post.mob_no;
    var admin_id= post.admin_id;
 
-   if(/\d{4}-\d{4}/.test(admin_id)){
+   if(/1880-\d{4}/.test(admin_id)){
       var sql="SELECT first_name FROM admin WHERE `user_name`='"+name+"'";
       db.query(sql, (err,result)=> {
            if(!result[0]){
