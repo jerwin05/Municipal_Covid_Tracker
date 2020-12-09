@@ -35,6 +35,7 @@ connection.connect((err)=>{
 global.db = connection;
 table.create_table();
 // table.drop_table();
+// table.show_table();
 
 // all environments
 app.use(helmet());

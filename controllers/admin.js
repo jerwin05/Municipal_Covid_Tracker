@@ -6,13 +6,13 @@ exports.signup=(req,res)=>{
    var mname= post.middle_name;
    var lname= post.last_name;
    var mob= post.mob_no;
-   // var municipal_id= post.municipal_id;
+   var admin_id= post.admin_id;
 
-   // if(/\d{10}/.test(municipal_id)){
+   if(/\d{4}-\d{4}/.test(admin_id)){
       var sql="SELECT first_name FROM admin WHERE `user_name`='"+name+"'";
       db.query(sql, (err,result)=> {
            if(!result[0]){
-               sql = "INSERT INTO admin (`first_name`,`middle_name`,`last_name`,`mob_no`,`user_name`, `password`) VALUES ('" + fname + "','" + mname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "')";
+               sql = "INSERT INTO admin (`first_name`,`middle_name`,`last_name`,`mob_no`,`admin_id`,`user_name`, `password`) VALUES ('" + fname + "','" + mname + "','" + lname + "','" + mob + "','" + admin_id + "','" + name + "','" + pass + "')";
                db.query(sql, (err,result)=> {
                    if(result){
                        res.send('success');
@@ -23,9 +23,9 @@ exports.signup=(req,res)=>{
                res.send('username taken');
            }
       });
-   // }else{
-   //    res.send('wrong id');
-   // }
+   }else{
+      res.send('wrong id');
+   }
 
 }
 
@@ -34,7 +34,7 @@ exports.login = function(req, res){
    var name= post.user_name;
    var pass= post.password;
    
-   var sql="SELECT id,mob_no,first_name,middle_name,last_name,user_name FROM admin WHERE `user_name`='"+name+"' and password = '"+pass+"'";                           
+   var sql="SELECT id,mob_no,first_name,middle_name,last_name,admin_id,user_name FROM admin WHERE `user_name`='"+name+"' and password = '"+pass+"'";                           
    
    db.query(sql, function(err, results){      
       if(results.length){
@@ -43,6 +43,7 @@ exports.login = function(req, res){
          req.session.mname = results[0].middle_name;
          req.session.lname = results[0].last_name;
          req.session.mNum = results[0].mob_no;
+         req.session.admin_id = results[0].admin_id;
          req.session.myID = results[0].id;
          res.send('true');
       }
@@ -57,6 +58,7 @@ exports.profile=(req,res)=>{//send admin credentials
       fname:req.session.fname,
       mname:req.session.mname,
       lname:req.session.lname,
+      admin_id:req.session.admin_id,
       mob_no:req.session.mNum
    });
 };

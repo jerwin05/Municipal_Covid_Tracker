@@ -8,6 +8,7 @@ exports.create_table=()=>{
         last_name VARCHAR(30) NOT NULL,
         middle_name VARCHAR(30) NOT NULL,
         mob_no VARCHAR(11) NOT NULL,
+        admin_id VARCHAR(20) NOT NULL,
         user_name VARCHAR(50) NOT NULL,
         password VARCHAR(50) NOT NULL,
         PRIMARY KEY (id));`;

@@ -30,6 +30,7 @@ const addPatientFormErrorMessage=document.getElementById('addPatientFormErrorMes
 const editPatientButton=document.getElementById('editPatientButton');
 const history=document.getElementById('history');
 const loadingElement=document.getElementById('loadingElement');
+const announcementLoadingElement=document.getElementById('announcementLoadingElement');
 const main=document.getElementById('main');
 
 const body=document.querySelector('body');
@@ -80,14 +81,20 @@ const getProfile =()=>{
       
       //append user credentials
       const name=document.createElement('h2');
+      const div=document.createElement('div');
       const number=document.createElement('p');
+      const adminID=document.createElement('p');
       
       name.textContent=`Name: ${result.fname} ${result.mname} ${result.lname}`;
       name.className='profile--name';
       number.className='profile--details';
       number.textContent=`Mobile Number: ${result.mob_no}`;
+      adminID.textContent=`Admin ID: ${result.admin_id}`;
+
+      div.appendChild(number);
+      div.appendChild(adminID);
       profileElement.appendChild(name);
-      profileElement.appendChild(number);
+      profileElement.appendChild(div);
     })
   );
 }
@@ -407,7 +414,8 @@ const getAnnouncements=()=>{
           }
   
           button.addEventListener('click',()=>{
-            loadSpinner(announcementSection);
+            announcementSection.innerHTML='';
+            announcementLoadingElement.style.display='block';
             fetch(adminAnnouncementAPI_URL, {//send object to the server
               method: 'DELETE',
               body: JSON.stringify(announcementid),//make object in json format
@@ -415,7 +423,7 @@ const getAnnouncements=()=>{
                 'content-type': 'application/json'
               }
             }).then(response=>{
-              loadingElement.style.display='none';
+              announcementLoadingElement.style.display='none';
               getAnnouncements();
             });
           });

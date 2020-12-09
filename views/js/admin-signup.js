@@ -28,12 +28,12 @@ form.addEventListener('submit', (event) => {
   const mob_no = formData.get('mob_no');
   const user_name = formData.get('user_name');
   const password = formData.get('password');
-  // const municipalID=formData.get('municipal_id');
+  const admin_id=formData.get('admin_id');
 
   if (fname.trim() && lname.trim()
     &&password.trim()&&user_name.trim()
     &&mob_no.trim()&&mname.trim()
-    // &&municipalID.trim()
+    &&admin_id.trim()
     ) {
 
     const first_name = capitalize(fname);
@@ -47,7 +47,7 @@ form.addEventListener('submit', (event) => {
       mob_no,
       password,
       user_name,
-      // municipalID
+      admin_id
     };
 
     fetch(API_URL, {//send object to the server
@@ -61,9 +61,9 @@ form.addEventListener('submit', (event) => {
         if(result==='success'){//display success message
           registerSuccess(form,errorElement,successElement,'Regisrered Successfully');
         }
-        // else if(result==='wrong id'){
-        //   errorMessage(errorElement,'Invalid ID!');
-        // }
+        else if(result==='wrong id'){
+          errorMessage(errorElement,'Invalid ID!');
+        }
         else{
           errorMessage(errorElement,'Username already taken!');
         }
