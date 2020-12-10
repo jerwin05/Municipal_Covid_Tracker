@@ -56,55 +56,55 @@ function init (){
 
   //----------------------------------------------------------------------------------------------------------------------------
 
-  var styles = {
-    'GeometryCollection': new ol.style.Style({
-      image: new ol.style.Circle({
-        radius: 7,
-        fill: new ol.style.Fill({
-          color:'orange'
-        }),
-        stroke: new ol.style.Stroke({
-          color: 'black',
-        })
-      })
-    })
-  };
+  // var styles = {
+  //   'GeometryCollection': new ol.style.Style({
+  //     image: new ol.style.Circle({
+  //       radius: 7,
+  //       fill: new ol.style.Fill({
+  //         color:'orange'
+  //       }),
+  //       stroke: new ol.style.Stroke({
+  //         color: 'black',
+  //       })
+  //     })
+  //   })
+  // };
 
-  var styleFunction = function (feature) {
-    return styles[feature.getGeometry().getType()];
-  };
+  // var styleFunction = function (feature) {
+  //   return styles[feature.getGeometry().getType()];
+  // };
 
-  var geojsonObject = {
-    'type': 'FeatureCollection',
-    'crs': {
-      'type': 'name',
-      'properties': {
-        'name': 'EPSG:4326',
-      },
-    },
-    'features': [
-      {
-        'type': 'Feature',
-        'geometry': {
-          'type': 'GeometryCollection',
-          'geometries': []
-        },
-      }],
-  };
+  // var geojsonObject = {
+  //   'type': 'FeatureCollection',
+  //   'crs': {
+  //     'type': 'name',
+  //     'properties': {
+  //       'name': 'EPSG:4326',
+  //     },
+  //   },
+  //   'features': [
+  //     {
+  //       'type': 'Feature',
+  //       'geometry': {
+  //         'type': 'GeometryCollection',
+  //         'geometries': []
+  //       },
+  //     }],
+  // };
 
-  var vectorSource = new ol.source.Vector({
-    features: new ol.format.GeoJSON().readFeatures(geojsonObject)
-  });
+  // var vectorSource = new ol.source.Vector({
+  //   features: new ol.format.GeoJSON().readFeatures(geojsonObject)
+  // });
 
-  var vectorLayer;
+  // var vectorLayer;
 
-  function callvector(){
-    vectorLayer = new ol.layer.Vector({
-      source: vectorSource,
-      style: styleFunction,
-    });
-    map.addLayer(vectorLayer); 
-  }
+  // function callvector(){
+  //   vectorLayer = new ol.layer.Vector({
+  //     source: vectorSource,
+  //     style: styleFunction,
+  //   });
+  //   map.addLayer(vectorLayer); 
+  // }
 
   // function getPositiveResidentCoordinates(){
   //   geojsonObject.features[0].geometry.geometries=[];

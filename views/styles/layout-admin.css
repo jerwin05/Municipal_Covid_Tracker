@@ -1031,6 +1031,9 @@ nav {
     overflow-y: scroll;
     height: 86vh;
   }
+  .announcement--section {
+    height: 58vh;
+  }
   .hometab--containers:last-child {
     margin-bottom: 0;
   }
