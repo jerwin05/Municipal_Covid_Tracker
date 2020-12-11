@@ -114,10 +114,6 @@ function init (){
   //--------------------------------------------------------------------------------------------------------------------------------------
 
     // vector layers
-    const fillStyle= new ol.style.Fill({
-        color:[84,118,225,1]
-    });
-
     const strokeStyle=new ol.style.Stroke({
         color:'#F4A647',
         // color:[245, 180, 97, 0.71],
@@ -133,7 +129,6 @@ function init (){
         visible:true,
         title:'teresaBoundaries',
         style: new ol.style.Style({
-            fill:fillStyle,
             stroke:strokeStyle
         })
     });
@@ -167,46 +162,10 @@ function init (){
                     radius: 0
                 }),
                 text: new ol.style.Text({
-                    font: 'bold 0px "Open Sans", "Arial Unicode MS", "sans-serif"',
+                    font: 'bold 0px',
                 }),
             });
-        }
-        else if(zoom<=14&&zoom>13){
-            style = new ol.style.Style({
-                image: new ol.style.Circle({
-                    radius: 0
-                }),
-                text: new ol.style.Text({
-                    font: 'bold 13px "Open Sans", "Arial Unicode MS", "sans-serif"',
-                    fill: new ol.style.Fill({color: '#7F7F7F'}),
-                    stroke: new ol.style.Stroke({color: '#fff', width: 2}),
-                }),
-            });
-        }
-        else if (zoom <= 13&&zoom>12.5) {
-            style = new ol.style.Style({
-                image: new ol.style.Circle({
-                    radius: 0
-                }),
-                text: new ol.style.Text({
-                    font: 'bold 11.5px "Open Sans", "Arial Unicode MS", "sans-serif"',
-                    fill: new ol.style.Fill({color: '#2D2D2D'}),
-                    stroke: new ol.style.Stroke({color: '#fff', width: 1}),
-                }),
-            });
-        }else if(zoom<=12.5){
-            style = new ol.style.Style({
-                image: new ol.style.Circle({
-                    radius: 0
-                }),
-                text: new ol.style.Text({
-                    font: 'bold 10px "Open Sans", "Arial Unicode MS", "sans-serif"',
-                    fill: new ol.style.Fill({color: '#212121'}),
-                    stroke: new ol.style.Stroke({color: '#fff', width: 0.5}),
-                }),
-            });
-        }
-        else{
+        }else{
             style = new ol.style.Style({
                 image: new ol.style.Circle({
                     radius: 0
