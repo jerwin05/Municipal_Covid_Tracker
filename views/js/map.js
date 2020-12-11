@@ -1,6 +1,6 @@
 window.onload=init;
 function init (){
-  const button=document.getElementById('refresh');
+//   const button=document.getElementById('refresh');
 
   // const residentPositiveCoordinatesAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/positive-coordinates' : 'https://teresa-covid-tracker.herokuapp.com/positive-coordinates';
   
@@ -8,9 +8,9 @@ function init (){
       view:new ol.View({
         projection:'EPSG:4326',
         center:[121.2071937966153, 14.559724584263174],
-        zoom:15,
-        maxZoom:19,
-        minZoom:13,
+        zoom:16,
+        maxZoom:18,
+        minZoom:12,
 
         // extent: [minx, miny, maxx, maxy]
         // extent: [121.20594589887112,14.546594500583023, 121.22581570325345, 14.564833521884292],
@@ -74,38 +74,6 @@ function init (){
   //   return styles[feature.getGeometry().getType()];
   // };
 
-  // var geojsonObject = {
-  //   'type': 'FeatureCollection',
-  //   'crs': {
-  //     'type': 'name',
-  //     'properties': {
-  //       'name': 'EPSG:4326',
-  //     },
-  //   },
-  //   'features': [
-  //     {
-  //       'type': 'Feature',
-  //       'geometry': {
-  //         'type': 'GeometryCollection',
-  //         'geometries': []
-  //       },
-  //     }],
-  // };
-
-  // var vectorSource = new ol.source.Vector({
-  //   features: new ol.format.GeoJSON().readFeatures(geojsonObject)
-  // });
-
-  // var vectorLayer;
-
-  // function callvector(){
-  //   vectorLayer = new ol.layer.Vector({
-  //     source: vectorSource,
-  //     style: styleFunction,
-  //   });
-  //   map.addLayer(vectorLayer); 
-  // }
-
   // function getPositiveResidentCoordinates(){
   //   geojsonObject.features[0].geometry.geometries=[];
   //   fetch(residentPositiveCoordinatesAPI_URL,{
@@ -145,32 +113,187 @@ function init (){
 
   //--------------------------------------------------------------------------------------------------------------------------------------
 
-  // // vector layers
-  // const fillStyle= new ol.style.Fill({
-  //     color:[84,118,225,1]
-  // });
+    // vector layers
+    const fillStyle= new ol.style.Fill({
+        color:[84,118,225,1]
+    });
 
-  // const strokeStyle=new ol.style.Stroke({
-  //     color:[155,145,105,1],
-  //     // color:[0,0,0,0.2],
-  //     // color:'#D2B336',
-  //     width:4
-  // });
+    const strokeStyle=new ol.style.Stroke({
+        color:'#F4A647',
+        // color:[245, 180, 97, 0.71],
+        // color:'black',
+        width:2
+    });
 
-  // const antipoloGeojson= new ol.layer.VectorImage({
-  //     source: new ol.source.Vector({
-  //         url:'./data/vector data/map.geojson',
-  //         format: new  ol.format.GeoJSON()
-  //     }),
-  //     visible:true,
-  //     title:'antipoloSquare',
-  //     style: new ol.style.Style({
-  //         fill:fillStyle,
-  //         stroke:strokeStyle
-  //     })
-  // });
+    const teresaGEOJSON= new ol.layer.Vector({
+        source: new ol.source.Vector({
+            url:'./data/vector data/map.geojson',
+            format: new  ol.format.GeoJSON()
+        }),
+        visible:true,
+        title:'teresaBoundaries',
+        style: new ol.style.Style({
+            fill:fillStyle,
+            stroke:strokeStyle
+        })
+    });
 
-  // map.addLayer(antipoloGeojson);
+    map.addLayer(teresaGEOJSON);
+
+    var style 
+    = new ol.style.Style({
+        image: new ol.style.Circle({
+            radius: 0
+        }),
+        text: new ol.style.Text({
+            font: 'bold 14.5px "Open Sans", "Arial Unicode MS", "sans-serif"',
+            fill: new ol.style.Fill({color: '#7F7F7F'}),
+            stroke: new ol.style.Stroke({color: '#fff', width: 2}),
+        }),
+    })
+    ;
+
+    var styleFunction = function(feature) {
+        style.getText().setText(feature.get('name'));
+        return style;
+    }
+    
+    map.on('moveend', function(e) {
+        var zoom = map.getView().getZoom();
+        console.log(zoom);
+        if(zoom>16.415){
+            style = new ol.style.Style({
+                image: new ol.style.Circle({
+                    radius: 0
+                }),
+                text: new ol.style.Text({
+                    font: 'bold 0px "Open Sans", "Arial Unicode MS", "sans-serif"',
+                }),
+            });
+        }
+        else if(zoom<=14&&zoom>13){
+            style = new ol.style.Style({
+                image: new ol.style.Circle({
+                    radius: 0
+                }),
+                text: new ol.style.Text({
+                    font: 'bold 13px "Open Sans", "Arial Unicode MS", "sans-serif"',
+                    fill: new ol.style.Fill({color: '#7F7F7F'}),
+                    stroke: new ol.style.Stroke({color: '#fff', width: 2}),
+                }),
+            });
+        }
+        else if (zoom <= 13&&zoom>12.5) {
+            style = new ol.style.Style({
+                image: new ol.style.Circle({
+                    radius: 0
+                }),
+                text: new ol.style.Text({
+                    font: 'bold 11.5px "Open Sans", "Arial Unicode MS", "sans-serif"',
+                    fill: new ol.style.Fill({color: '#2D2D2D'}),
+                    stroke: new ol.style.Stroke({color: '#fff', width: 1}),
+                }),
+            });
+        }else if(zoom<=12.5){
+            style = new ol.style.Style({
+                image: new ol.style.Circle({
+                    radius: 0
+                }),
+                text: new ol.style.Text({
+                    font: 'bold 10px "Open Sans", "Arial Unicode MS", "sans-serif"',
+                    fill: new ol.style.Fill({color: '#212121'}),
+                    stroke: new ol.style.Stroke({color: '#fff', width: 0.5}),
+                }),
+            });
+        }
+        else{
+            style = new ol.style.Style({
+                image: new ol.style.Circle({
+                    radius: 0
+                }),
+                text: new ol.style.Text({
+                    font: 'bold 14.5px "Open Sans", "Arial Unicode MS", "sans-serif"',
+                    fill: new ol.style.Fill({color: '#7F7F7F'}),
+                    stroke: new ol.style.Stroke({color: '#fff', width: 2}),
+                }),
+            });
+        }
+    });
+
+    var geojsonObject = 
+        {
+            'type': 'FeatureCollection',
+            'crs': {
+                'type': 'name',
+                'properties': {
+                    'name': 'EPSG:4326',
+                }
+            },
+            'features': [
+            {
+                "type": "Feature",
+                "properties": {
+                "name": "Poblacion",
+                },
+                "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.20279474536595, 
+                    14.562156334590009
+                ]
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                "name": "Prinza",
+                },
+                "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.21395056628894,
+                    14.539799266351995
+                ]
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                "name": "San Roque",
+                },
+                "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.21470582252093,
+                    14.552316640672384
+                ]
+                }
+            },
+            // {
+            //     "type": "Feature",
+            //     "properties": {
+            //     "name": "Dalig",
+            //     },
+            //     "geometry": {
+            //     "type": "Point",
+            //     "coordinates": [
+            //         121.23115009659746,
+            //         14.571688019526668
+            //     ]
+            //     }
+            // }
+        ]
+    };
+
+    var vectorSource = new ol.source.Vector({
+        features: new ol.format.GeoJSON().readFeatures(geojsonObject)
+    });
+
+    var vectorLayer = new ol.layer.Vector({
+        source: vectorSource,
+        style: styleFunction
+    });
+    map.addLayer(vectorLayer); 
 
   // //vector feature popup logic
   // const overlayContainerElement=document.querySelector('.overlay-container');
@@ -192,7 +315,7 @@ function init (){
 
   // map.addLayer(stamenTerrain); // call a single layer
 
-  // map.on('click',function(e){
-  //     console.log(e.coordinate);// logs coordinates from the location clicked
-  // }) 
+//   map.on('click',function(e){
+//       console.log(e.coordinate);// logs coordinates from the location clicked
+//   }) 
 };

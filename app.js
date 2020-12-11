@@ -11,22 +11,22 @@ const table = require('./database_table')
 
 //database configuration
 const options={  
-  // host     : 'localhost',
-  // port     : 3306,
-  // user     : 'root',
-  // password : 'a09287811206',
-  // database : 'brgy'
-  host     : 'sql12.freemysqlhosting.net',
+  host     : 'localhost',
   port     : 3306,
-  user     : 'sql12380309',
-  password : 'dAdhjVcnd8',
-  database : 'sql12380309'
+  user     : 'root',
+  password : 'a09287811206',
+  database : 'brgy'
+  // host     : 'sql12.freemysqlhosting.net',
+  // port     : 3306,
+  // user     : 'sql12380309',
+  // password : 'dAdhjVcnd8',
+  // database : 'sql12380309'
 };
 let connection = mysql.createConnection(options);
 let sessionStore = new MySQLStore({}, connection);
 connection.connect((err)=>{
   if (!err){
-    console.log("Database Connected");
+    console.log(`${options.host} Database Connected`);
   }
   else{
     console.log("Database Connection Failed : "+JSON.stringify(err,undefined,2));
