@@ -69,7 +69,7 @@ const getCovidUpdates=()=>{
       const updateDate=result[0].date_updated;
       covidUpdateDate.textContent=`${updateDate}`;
 
-      if(!result[0].notes||/^\s+/.test(result[0].notes)){
+      if(!result[0].notes||/\s+$/.test(result[0].notes)){
         const message=document.createElement('p');
         message.textContent='No notes';
         notes.appendChild(message);

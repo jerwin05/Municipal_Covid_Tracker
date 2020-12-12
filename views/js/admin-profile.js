@@ -21,6 +21,7 @@ const editDate=document.getElementById('editDate');
 const notes=document.getElementById('notes');
 const covidPatientList=document.getElementById('covidPatientList');
 const editCovidUpdateForm=document.getElementById('editCovidUpdateForm');
+const editCovidUpdateFormErrorMessage=document.getElementById('editCovidUpdateFormErrorMessage');
 const covidPatientListForm=document.getElementById('covidPatientListForm');
 const addPatientFormContainer=document.getElementById('addPatientFormContainer');
 const addPatientForm=document.getElementById('addPatientForm');
@@ -33,6 +34,7 @@ const loadingElement=document.getElementById('loadingElement');
 const announcementLoadingElement=document.getElementById('announcementLoadingElement');
 const main=document.getElementById('main');
 
+const block23Container=document.getElementById('block23Container');
 const body=document.querySelector('body');
 const overlay=document.getElementById('overlay');
 const successMessage=document.getElementById('successMessage');
@@ -149,7 +151,7 @@ const getCovidUpdates=()=>{
       
       covidUpdateDate.textContent=`${dateResult}`;
 
-      if(!result[0].notes||/^\s+/.test(result[0].notes)){
+      if(!result[0].notes||/\s+$/.test(result[0].notes)){
         const message=document.createElement('p');
         message.textContent='No notes';
         notes.innerHTML='';
@@ -460,7 +462,6 @@ getAnnouncements();
 
 editCovidUpdateForm.addEventListener('submit',(event)=>{
   event.preventDefault();
-  loadingElement.style.display=''; 
   const formData = new FormData(editCovidUpdateForm);
   const formDate = formData.get('date');
   const formNewCases = formData.get('newCases');
@@ -471,60 +472,80 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
   const formRecovered = formData.get('recovered');
   const formDeath = formData.get('death');
   const formNotes = formData.get('notes');
-  editCovidUpdateForm.reset();
+  
   let obj={};  
 
-  if(formNotes){
-    obj={
-      date_updated:formDate,
-      new_cases:formNewCases,
-      suspected:formSuspected,
-      probable:formProbable,
-      confirmed_cases:formConfirmedCases,
-      tested_negative:formTestedNegative,
-      recovered:formRecovered,
-      death:formDeath,
-      notes:formNotes
-    }
-    fetch(adminCovidUpdateAPI_URL,{
-      method:'PUT',
-      body: JSON.stringify(obj),//make object in json format
-      headers: {
-        'content-type': 'application/json'
-      }
-    }).then(()=>{
-      getCovidUpdates();
-      successMessage.textContent='Updated';
-      successMessage.style.bottom='50';
-      setTimeout(()=>{
-        successMessage.style.bottom='-45';
-      },3000);
-    });
+  const newDate=new Date(formDate);
+  const oldDate=new Date(covidUpdateDate.textContent);
+
+  if(newDate<oldDate){
+    editCovidUpdateFormErrorMessage.textContent='Invalid Date!';
+    editCovidUpdateFormErrorMessage.style.display='block';
+    setTimeout(()=>{
+      editCovidUpdateFormErrorMessage.style.display='none';
+    },3000);
+  }
+  else if(formNewCases<0||formSuspected<0||formProbable<0||formConfirmedCases<0||formTestedNegative<0||formRecovered<0||formDeath<0){
+    editCovidUpdateFormErrorMessage.textContent='Invalid Number!';
+    editCovidUpdateFormErrorMessage.style.display='block';
+    setTimeout(()=>{
+      editCovidUpdateFormErrorMessage.style.display='none';
+    },3000);
   }else{
-    obj={
-      date_updated:formDate,
-      new_cases:formNewCases,
-      suspected:formSuspected,
-      probable:formProbable,
-      confirmed_cases:formConfirmedCases,
-      tested_negative:formTestedNegative,
-      recovered:formRecovered,
-      death:formDeath
-    }
-    fetch(adminCovidUpdateAPI_URL,{
-      method:'PUT',
-      body: JSON.stringify(obj),//make object in json format
-      headers: {
-        'content-type': 'application/json'
+    editCovidUpdateForm.reset();
+    loadingElement.style.display=''; 
+    if(formNotes){
+      obj={
+        date_updated:formDate,
+        new_cases:formNewCases,
+        suspected:formSuspected,
+        probable:formProbable,
+        confirmed_cases:formConfirmedCases,
+        tested_negative:formTestedNegative,
+        recovered:formRecovered,
+        death:formDeath,
+        notes:formNotes
       }
-    }).then(()=>{
-      getCovidUpdates();
-      successMessage.textContent='Updated';
-      successMessage.style.bottom='50';
-      setTimeout(()=>{
-        successMessage.style.bottom='-45';
-      },3000);
-    });
+      fetch(adminCovidUpdateAPI_URL,{
+        method:'PUT',
+        body: JSON.stringify(obj),//make object in json format
+        headers: {
+          'content-type': 'application/json'
+        }
+      }).then(()=>{
+        getCovidUpdates();
+        successMessage.textContent='Updated';
+        successMessage.style.bottom='50';
+        setTimeout(()=>{
+          successMessage.style.bottom='-45';
+        },3000);
+      });
+    }else{
+      obj={
+        date_updated:formDate,
+        new_cases:formNewCases,
+        suspected:formSuspected,
+        probable:formProbable,
+        confirmed_cases:formConfirmedCases,
+        tested_negative:formTestedNegative,
+        recovered:formRecovered,
+        death:formDeath
+      }
+      fetch(adminCovidUpdateAPI_URL,{
+        method:'PUT',
+        body: JSON.stringify(obj),//make object in json format
+        headers: {
+          'content-type': 'application/json'
+        }
+      }).then(()=>{
+        getCovidUpdates();
+        successMessage.textContent='Updated';
+        successMessage.style.bottom='50';
+        setTimeout(()=>{
+          successMessage.style.bottom='-45';
+        },3000);
+      });
+    }
   }
 })
 
@@ -594,7 +615,6 @@ addPatientForm.addEventListener('submit',(event)=>{
 
     loadSpinner(covidPatientList);
 
-    addPatientFormErrorMessage.style.display='none';
     addPatientFormContainer.style.display='none';
     addPatientForm.reset();
      
@@ -663,7 +683,9 @@ announcementForm.addEventListener('submit', (event) => {
   } else {
     errorMessage.textContent='Title and Body are required!';
     errorMessage.style.display='block';
-    successMessage.style.display='-45';
+    setTimeout(()=>{
+      errorMessage.style.display='none';
+    },3000);
   }
 });
 

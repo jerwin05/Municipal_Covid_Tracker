@@ -60,63 +60,65 @@
                         </div>
                     </div>
                 </section>
-                <section class="tab--containers hometab--containers block2 covidpatientlist--container">
-                    <form class="covidpatientlist--form" id='covidPatientListForm' role='form' method="put">
-                        <h2 class='main--title block2--heading'>Covid Patient List</h2>
-                        <div class="covidpatientlist--title covidpatientlist--table-grid main--heading">
-                            <div class="covidpatientlist--table-templatecolumns covidpatientlist--table-grid">
-                                <h3>Patient Number</h3>
-                                <div class="covidpatientlist--patientdetails covidpatientlist--table-grid">
-                                    <h3>Age</h3>
-                                    <h3>Gender</h3>
+                <div id="block23Container" class="block23--container">
+                    <section class="tab--containers hometab--containers block2 covidpatientlist--container">
+                        <form class="covidpatientlist--form" id='covidPatientListForm' role='form' method="put">
+                            <h2 class='main--title block2--heading'>Covid Patient List</h2>
+                            <div class="covidpatientlist--title covidpatientlist--table-grid main--heading">
+                                <div class="covidpatientlist--table-templatecolumns covidpatientlist--table-grid">
+                                    <h3>Patient Number</h3>
+                                    <div class="covidpatientlist--patientdetails covidpatientlist--table-grid">
+                                        <h3>Age</h3>
+                                        <h3>Gender</h3>
+                                    </div>
                                 </div>
+                                <h3>Barangay</h3>
+                                <h3>Status</h3>
                             </div>
-                            <h3>Barangay</h3>
-                            <h3>Status</h3>
-                        </div>
-                        <div id='covidPatientList' class="covidpatientlist main--body main--customscrollbar"></div>
-                        <button class="patient--submitbutton profile--button blue--button" id='addPatientButton' type="button">Add Patient</button>
-                        <button class="patient--submitbutton profile--button blue--button" id='editPatientButton' type="submit">Update</button>
-                    </form>
-                    <div id='addPatientFormContainer' class="addpatientform--container" >
-                        <form id='addPatientForm' class="addpatientform main--body" role='form' method="POST">
-                            <p id="addPatientFormErrorMessage" class="addpatientform--errormessage">Please supply the missing fields!</p>
-                            <input name="patient_number" placeholder="patient number" type="text">
-                            <input name="age" placeholder="age" type="number">
-                            <input name="gender" placeholder="gender" type="text">
-                            <input name="barangay" placeholder="barangay" type="text">
-                            <input name="status" placeholder="status" type="text">
-                            <div class="addpatientbutton--container">
-                                <button class=" profile--button blue--button" type="submit">Add</button>
-                                <button id="addPatientCancelButton" class=" profile--button blue--button" type="button">Cancel</button>
-                            </div>
+                            <div id='covidPatientList' class="covidpatientlist main--body main--customscrollbar"></div>
+                            <button class="patient--submitbutton profile--button blue--button" id='addPatientButton' type="button">Add Patient</button>
+                            <button class="patient--submitbutton profile--button blue--button" id='editPatientButton' type="submit">Update</button>
                         </form>
-                    </div>
-                    <div class="covidupdate--notes">
-                        <h2 class="main--title notes--heading block2--heading">Notes</h2>
-                        <div id='notes' class="notes"></div>
-                    </div>
-                    <div class="covidpatientlist--history">
-                        <h2 class="main--title block2--heading">Recovered Patient History</h2>
-                        <div id="history" class="history main--body"></div>
-                    </div>
-                </section>
-                <div id="block3" class="block3 main--customscrollbar">
-                    <section class="tab--containers hometab--containers announcement--container">
-                        <h2 class="main--title announcement--heading">Announcements</h2>
-                        <div class="announcement--section transparent--customscrollbar main--body main--heading" id='announcementSection'></div>
-                        <div id="announcementLoadingElement" class="announcement--loadingelement">
-                            <img src="./images/loading.svg">
+                        <div id='addPatientFormContainer' class="addpatientform--container" >
+                            <form id='addPatientForm' class="addpatientform main--body" role='form' method="POST">
+                                <p id="addPatientFormErrorMessage" class="addpatientform--errormessage">Please supply the missing fields!</p>
+                                <input name="patient_number" placeholder="patient number" type="text">
+                                <input name="age" placeholder="age" type="number">
+                                <input name="gender" placeholder="gender" type="text">
+                                <input name="barangay" placeholder="barangay" type="text">
+                                <input name="status" placeholder="status" type="text">
+                                <div class="addpatientbutton--container">
+                                    <button class=" profile--button blue--button" type="submit">Add</button>
+                                    <button id="addPatientCancelButton" class=" profile--button blue--button" type="button">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="covidupdate--notes">
+                            <h2 class="main--title notes--heading block2--heading">Notes</h2>
+                            <div id='notes' class="notes"></div>
+                        </div>
+                        <div class="covidpatientlist--history">
+                            <h2 class="main--title block2--heading">Recovered Patient History</h2>
+                            <div id="history" class="history main--body"></div>
                         </div>
                     </section>
-                    <section class="tab--containers hometab--containers map--container">
-                        <div class="map--layer">
-                            <h3>Base Layers</h3>
-                            <input type="radio" name='baseLayerRadioButton' value='OSMStandard' checked>Standard<br>
-                            <input type="radio" name='baseLayerRadioButton' value='OSMHumanitarian'>Humanitarian<br>        
-                        </div>
-                        <div id="js-map" class='map'></div>
-                    </section>
+                    <div id="block3" class="block3 main--customscrollbar">
+                        <section class="tab--containers hometab--containers announcement--container">
+                            <h2 class="main--title announcement--heading">Announcements</h2>
+                            <div class="announcement--section transparent--customscrollbar main--body main--heading" id='announcementSection'></div>
+                            <div id="announcementLoadingElement" class="announcement--loadingelement">
+                                <img src="./images/loading.svg">
+                            </div>
+                        </section>
+                        <section class="tab--containers hometab--containers map--container">
+                            <div class="map--layer">
+                                <h3>Base Layers</h3>
+                                <input type="radio" name='baseLayerRadioButton' value='OSMStandard' checked>Standard<br>
+                                <input type="radio" name='baseLayerRadioButton' value='OSMHumanitarian'>Humanitarian<br>        
+                            </div>
+                            <div id="js-map" class='map'></div>
+                        </section>
+                    </div>
                 </div>
             </div>
             <div id="ProfileTab" class="tab--contents profile--tab">
@@ -124,6 +126,7 @@
                     <div id="profile"></div>
                 </section>
                 <section class="tab--containers profiletab--containers editcovidupdate--container"> 
+                    <p id="editCovidUpdateFormErrorMessage" class="editcovidupdateform--errormessage"></p>
                     <form id='editCovidUpdateForm' method="put">
                         <label for="date">Date
                             <input class="form--element" type="text" name="date" id="editDate">
