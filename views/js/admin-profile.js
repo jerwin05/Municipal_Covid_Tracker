@@ -492,6 +492,7 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
       editCovidUpdateFormErrorMessage.style.display='none';
     },3000);
   }else{
+    editCovidUpdateFormErrorMessage.style.display='none';
     editCovidUpdateForm.reset();
     loadingElement.style.display=''; 
     if(formNotes){
