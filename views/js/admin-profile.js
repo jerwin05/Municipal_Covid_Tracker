@@ -531,16 +531,27 @@ covidPatientListForm.addEventListener('submit',(event)=>{
     
     const patientDetails={//store data in a object
       id:patientId,
-      status:status
+      status:status,
+      // patient_length:
     }
-    
-    fetch(adminPatientListAPI_URL, {//send object to the server
+
+    // if(x!=y-1){
+      fetch(adminPatientListAPI_URL, {//send object to the server
         method: 'PUT',
         body: JSON.stringify(patientDetails),//make object in json format
         headers: {
           'content-type': 'application/json'
-      }
-    });
+        }
+      });
+    // }else{
+    //   fetch(adminPatientListAPI_URL, {//send object to the server
+    //     method: 'PUT',
+    //     body: JSON.stringify(patientDetails),//make object in json format
+    //     headers: {
+    //       'content-type': 'application/json'
+    //     }
+    //   });
+    // }
   }
 
   successMessage.textContent='Patient Updated';
