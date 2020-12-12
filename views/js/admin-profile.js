@@ -245,17 +245,25 @@ const getPatientList=()=>{
             event.preventDefault();
             loadSpinner(covidPatientList);
             overlaydiv.style.display='none';
-            history.innerHTML='';
             fetch(adminPatientListAPI_URL, {//send object to the server
               method: 'DELETE',
               body: JSON.stringify(patientid),//make object in json format
               headers: {
                 'content-type': 'application/json'
               }
-            }).then(()=>{
-              getPatientList();
-              updateActiveCases();
-              getPatientHistory();
+            }).then((response)=>{
+              response.text()
+              .then(result=>{
+                if(result==='recovered'){
+                  history.innerHTML='';
+                  getPatientList();
+                  updateActiveCases();
+                  getPatientHistory();
+                }else{
+                  getPatientList();
+                  updateActiveCases();
+                }
+              })
             });
           });
   

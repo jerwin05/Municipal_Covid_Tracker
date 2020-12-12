@@ -204,7 +204,7 @@ exports.delete_patient=(req,res)=>{
                      sql = `DELETE FROM covid_patient_list WHERE patient_id=${req.body.id};`;
                      db.query(sql, (err,result)=> {
                         if(result){
-                           res.send();
+                           res.send('recovered');
                         }
                      });
                   });
@@ -222,7 +222,7 @@ exports.delete_patient=(req,res)=>{
                            sql = `DELETE FROM covid_patient_list WHERE patient_id=${req.body.id};`;
                            db.query(sql, (err,result)=> {
                               if(result){
-                                 res.send();
+                                 res.send('recovered');
                               }
                            });
                         });
