@@ -30,45 +30,41 @@ form.addEventListener('submit', (event) => {
   const password = formData.get('password');
   const admin_id=formData.get('admin_id');
 
-  if (fname.trim() && lname.trim()
-    &&password.trim()&&user_name.trim()
-    &&mob_no.trim()&&mname.trim()
-    &&admin_id.trim()
-    ) {
-
-    const first_name = capitalize(fname);
-    const middle_name = capitalize(mname);
-    const last_name = capitalize(lname);
+  if (fname.trim() && lname.trim()&&password.trim()&&user_name.trim()&&mob_no.trim()&&mname.trim()&&admin_id.trim()) {
+    if(/1880-\d{4}/.test(admin_id)){
+      const first_name = capitalize(fname);
+      const middle_name = capitalize(mname);
+      const last_name = capitalize(lname);
+    
+      const user = {//put admin credentials into object
+        first_name,
+        middle_name,
+        last_name,
+        mob_no,
+        password,
+        user_name,
+        admin_id
+      };
   
-    const user = {//put admin credentials into object
-      first_name,
-      middle_name,
-      last_name,
-      mob_no,
-      password,
-      user_name,
-      admin_id
-    };
-
-    fetch(API_URL, {//send object to the server
-      method: 'POST',
-      body: JSON.stringify(user),//make object in json format
-      headers: {
-        'content-type': 'application/json',
-      }
-    }).then(response => {
-      response.text().then(result=>{//get text response from server
-        if(result==='success'){//display success message
-          registerSuccess(form,errorElement,successElement,'Regisrered Successfully');
+      fetch(API_URL, {//send object to the server
+        method: 'POST',
+        body: JSON.stringify(user),//make object in json format
+        headers: {
+          'content-type': 'application/json',
         }
-        else if(result==='wrong id'){
-          errorMessage(errorElement,'Invalid ID!');
-        }
-        else{
-          errorMessage(errorElement,'Username already taken!');
-        }
-      });
-    });
+      }).then(response => {
+        response.text().then(result=>{//get text response from server
+          if(result==='success'){//display success message
+            registerSuccess(form,errorElement,successElement,'Regisrered Successfully');
+          }
+          else{
+            errorMessage(errorElement,'Username already taken!');
+          }
+        });
+      });    
+    }else{
+      errorMessage(errorElement,'Invalid ID!');
+    }
   } else {
     errorMessage(errorElement,'Fill the missing fields');
   }

@@ -126,31 +126,31 @@
                     <div id="profile"></div>
                 </section>
                 <section class="tab--containers profiletab--containers editcovidupdate--container"> 
-                    <p id="editCovidUpdateFormErrorMessage" class="editcovidupdateform--errormessage"></p>
+                    <p id="editCovidUpdateFormErrorMessage" class="editcovidupdateform--errormessage">Invalid Date!</p>
                     <form id='editCovidUpdateForm' method="put">
                         <label for="date">Date
                             <input class="form--element" type="text" name="date" id="editDate">
                         </label>
                         <label for="newCases">New Case
-                            <input class="form--element" type="number" name="newCases" id="editNewCases">
+                            <input class="form--element" type="number" min="0" name="newCases" id="editNewCases">
                         </label>
                         <label for="suspected">Suspected
-                            <input class="form--element" type="number" name="suspected" id="editSuspected">
+                            <input class="form--element" type="number" min="0" name="suspected" id="editSuspected">
                         </label>
                         <label for="probable">Probable
-                            <input class="form--element" type="number" name="probable" id="editProbable">
+                            <input class="form--element" type="number" min="0" name="probable" id="editProbable">
                         </label>
                         <label for="confirmedCases">Confirmed Cases
-                            <input class="form--element" type="number" name="confirmedCases" id="editConfirmedCases">
+                            <input class="form--element" type="number" min="0" name="confirmedCases" id="editConfirmedCases">
                         </label>
                         <label for="testedNegative">Tested Negative
-                            <input class="form--element" type="number" name="testedNegative" id="editTestedNegative">
+                            <input class="form--element" type="number" min="0" name="testedNegative" id="editTestedNegative">
                         </label>
                         <label for="recovered">Recovered
-                            <input class="form--element" type="number" name="recovered" id="editRecovered">
+                            <input class="form--element" type="number" min="0" name="recovered" id="editRecovered">
                         </label>
                         <label for="death">Death
-                            <input class="form--element" type="number" name="death" id="editDeath">
+                            <input class="form--element" type="number" min="0" name="death" id="editDeath">
                         </label>
                         <label for="notes">Notes (Optional)
                             <textarea class="form--element" name="notes" placeholder=""></textarea>

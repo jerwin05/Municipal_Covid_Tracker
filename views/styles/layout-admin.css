@@ -216,7 +216,7 @@ nav {
   padding: 10px;
   line-height: 1.2;
   border-radius: 5px;
-  height: 14vh;
+  height: 14.8vh;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -235,12 +235,11 @@ nav {
 }
 
 .covidupdate--title {
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .covidupdate--count {
-  margin-top: 4px;
-  font-size: 37px;
+  font-size: 43px;
 }
 
 .block2 {
@@ -275,7 +274,7 @@ nav {
 
 .addpatientform {
   position: absolute;
-  bottom: 51;
+  bottom: 55;
   left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -287,7 +286,7 @@ nav {
   padding: 10px;
   background-color: #fff;
   border-radius: 5px;
-  width: 73vw;
+  width: 78.7vw;
 }
 
 .addpatientform input {
@@ -586,7 +585,7 @@ nav {
 }
 
 .editcovidupdate--container form label:last-of-type textarea {
-  height: 14vh;
+  height: 14.2vh;
 }
 
 .editcovidupdate--container form button {
@@ -736,8 +735,8 @@ nav {
 
 .orange--button {
   background-color: #f5b461;
-  -webkit-transition: background-color .2s ease;
-  transition: background-color .2s ease;
+  -webkit-transition: background-color .1s ease;
+  transition: background-color .1s ease;
   font-size: 14px;
 }
 
@@ -751,8 +750,8 @@ nav {
 
 .blue--button {
   background-color: #9ad3bc;
-  -webkit-transition: background-color .2s ease;
-  transition: background-color .2s ease;
+  -webkit-transition: background-color .1s ease;
+  transition: background-color .1s ease;
 }
 
 .blue--button:hover {
@@ -792,7 +791,7 @@ nav {
     text-align: center;
   }
   .addpatientform {
-    width: 350px;
+    width: 310px;
   }
   .patient--deletebutton {
     text-align: center;
@@ -862,6 +861,12 @@ nav {
         -ms-flex-align: center;
             align-items: center;
   }
+  .patient--deletebutton:hover {
+    background-color: #9ad3bc;
+  }
+  .patient--deletebutton:active {
+    background-color: #328162;
+  }
 }
 
 @media only screen and (min-width: 700px) {
@@ -876,12 +881,6 @@ nav {
   }
   .main--body small {
     font-size: 13px;
-  }
-  .patient--deletebutton:hover {
-    background-color: #9ad3bc;
-  }
-  .patient--deletebutton:active {
-    background-color: #328162;
   }
 }
 

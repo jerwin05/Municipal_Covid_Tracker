@@ -170,14 +170,14 @@ const updateActiveCases=()=>{
     method: 'PUT'
   })
   .then(response=>{
-    response.json()
+    response.text()
     .then(result=>{
-      if(result[0].active_cases>1){
+      if(result>1){
         activeCasesTitle.textContent='Active Cases';
       }else{
         activeCasesTitle.textContent='Active Case';
       }
-      activeCases.textContent=result[0].active_cases;
+      activeCases.textContent=result;
     });
   });
 };
@@ -479,14 +479,6 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
   const oldDate=new Date(covidUpdateDate.textContent);
 
   if(newDate<oldDate){
-    editCovidUpdateFormErrorMessage.textContent='Invalid Date!';
-    editCovidUpdateFormErrorMessage.style.display='block';
-    setTimeout(()=>{
-      editCovidUpdateFormErrorMessage.style.display='none';
-    },3000);
-  }
-  else if(formNewCases<0||formSuspected<0||formProbable<0||formConfirmedCases<0||formTestedNegative<0||formRecovered<0||formDeath<0){
-    editCovidUpdateFormErrorMessage.textContent='Invalid Number!';
     editCovidUpdateFormErrorMessage.style.display='block';
     setTimeout(()=>{
       editCovidUpdateFormErrorMessage.style.display='none';
@@ -599,6 +591,7 @@ addPatientButton.addEventListener('click',(event)=>{
 });
 addPatientCancelButton.addEventListener('click',(event)=>{
   event.preventDefault();
+  addPatientForm.reset();
   addPatientFormContainer.style.display='none';
   addPatientFormErrorMessage.style.display='none';
 })

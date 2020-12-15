@@ -20,6 +20,7 @@ exports.get_covid_updates=(req,res)=>{
 }
 
 exports.get_patient_list=(req,res)=>{
+   //update this code write a join query
    var sql = `SELECT * FROM covid_patient_list;`;
    db.query(sql, (err,result)=> {
       if(result){

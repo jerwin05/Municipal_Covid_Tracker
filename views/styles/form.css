@@ -79,6 +79,20 @@ form {
   padding: 10px;
 }
 
+.orange--button {
+  background-color: #f5b461;
+  -webkit-transition: background-color .1s ease;
+  transition: background-color .1s ease;
+}
+
+.orange--button:hover {
+  background-color: #dba45c;
+}
+
+.orange--button:active {
+  background-color: #b37b31;
+}
+
 @media only screen and (min-width: 750px) {
   .form--container {
     margin-bottom: 0;

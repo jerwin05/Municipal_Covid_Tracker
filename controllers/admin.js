@@ -97,44 +97,26 @@ exports.update_covid_stats=(req,res)=>{
 }
 
 exports.update_covid_updates_active_cases=(req,res)=>{
-   var sql = `SELECT patient_id FROM covid_patient_list WHERE status IN ('admitted','strict isolation');`;
+   var sql = `SELECT patient_id FROM covid_patient_status WHERE status IN ('admitted','strict isolation');`;
    db.query(sql, (err,result)=> {
       if(result.length){
          sql = `UPDATE covid_updates
             SET active_cases = ${result.length}
             WHERE id=1;`;
-         db.query(sql,(err,result)=>{
-            if(result){
-               sql = `SELECT active_cases FROM covid_updates WHERE id=1;`;
-               db.query(sql, (err,result)=> {
-                  if(result.length){
-                     res.json(result);
-                  }
-               });
-            }
-         });
+         res.send(result.length);
+         db.query(sql);
       }else if(result){
          sql = `UPDATE covid_updates
             SET active_cases = 0
             WHERE id=1;`;
-         db.query(sql,(err,result)=>{
-            if(result){
-               sql = `SELECT active_cases FROM covid_updates WHERE id=1;`;
-               db.query(sql, (err,result)=> {
-                  if(result){ 
-                     if(result.length){
-                        res.json(result);
-                     }
-                  }
-               });
-            }
-         });
+         res.send('0');
+         db.query(sql);
       }
    });
  }
 
 exports.update_patient_status=(req,res)=>{
-   var sql =`UPDATE covid_patient_list 
+   var sql =`UPDATE covid_patient_status 
       SET status = '${req.body.status}' 
       WHERE patient_id=${req.body.id};`;
    db.query(sql, (err,result)=> {
@@ -172,6 +154,8 @@ exports.add_patient=(req,res)=>{
 
 exports.delete_patient=(req,res)=>{
 
+   //update this code from change done in patient status table
+
    //get information about the patient that is about to be deleted
    var sql = `SELECT * FROM covid_patient_list WHERE patient_id=${req.body.id};`;
    db.query(sql, (err,result)=> {
@@ -183,8 +167,7 @@ exports.delete_patient=(req,res)=>{
             patient_no:result[0].patient_no,
             age:result[0].age,
             gender:result[0].gender,
-            barangay:result[0].barangay,
-            status:result[0].status
+            barangay:result[0].barangay
          }
 
          //select the current date in the covid updates
