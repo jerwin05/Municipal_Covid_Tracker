@@ -178,7 +178,6 @@ const updateActiveCases=()=>{
         activeCasesTitle.textContent='Active Case';
       }
       activeCases.textContent=result;
-      console.log(result);
     });
   });
 };
@@ -547,8 +546,6 @@ covidPatientListForm.addEventListener('submit',(event)=>{
   event.preventDefault();
   const patient=document.querySelectorAll('.status');
   const formData = new FormData(covidPatientListForm);//store form credentials
-
-  console.log(patient);
 
   for(var x=0,y=patient.length;x<y;x++){//iterate over each checkbox 
     const patientId=parseInt(patient[x].name.match(/\d+/)[0]);//get checkbox id
