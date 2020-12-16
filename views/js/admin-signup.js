@@ -6,9 +6,9 @@ const errorElement = document.getElementById('error-message');
 const successElement = document.getElementById('success-message');
 const form = document.getElementById('form');
 //API URLS here
-const API_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/signup' : 'https://teresa-covid-tracker.herokuapp.com/admin/signup';
-const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-user' : 'https://teresa-covid-tracker.herokuapp.com/authenticate-user';
-const adminIndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin-profile.html' : 'https://teresa-covid-tracker.herokuapp.com/admin-profile.html';
+const API_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/signup' : 'https://teresa-covid-tracker-test.herokuapp.com/admin/signup';
+const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-user' : 'https://teresa-covid-tracker-test.herokuapp.com/authenticate-user';
+const adminIndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin-profile.html' : 'https://teresa-covid-tracker-test.herokuapp.com/admin-profile.html';
 
 fetch(authenticateAPI_URL,{
 }).then(response=>{

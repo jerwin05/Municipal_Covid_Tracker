@@ -21,7 +21,10 @@ exports.get_covid_updates=(req,res)=>{
 
 exports.get_patient_list=(req,res)=>{
    //update this code write a join query
-   var sql = `SELECT * FROM covid_patient_list;`;
+   var sql = `SELECT covid_patient_details.id,patient_no,age,gender,barangay,status
+      FROM covid_patient_details
+      INNER JOIN covid_patient_status
+      ON covid_patient_details.id = covid_patient_status.id;`;
    db.query(sql, (err,result)=> {
       if(result){
          if(result.length){
@@ -100,16 +103,16 @@ exports.get_announcement=(req,res)=>{
    });
 }
 
-exports.get_positive_coordinates=(req,res)=>{
-   var sql = `SELECT latitude,longitude FROM users WHERE remarks='positive';`;
-   db.query(sql, (err,result)=> {
-      if(result.length){
-           res.json(result);
-      }
-      else{
-         res.json({
-            message:'no resident'
-         });
-      }
-  });
-}
+// exports.get_positive_coordinates=(req,res)=>{
+//    var sql = `SELECT latitude,longitude FROM users WHERE remarks='positive';`;
+//    db.query(sql, (err,result)=> {
+//       if(result.length){
+//            res.json(result);
+//       }
+//       else{
+//          res.json({
+//             message:'no resident'
+//          });
+//       }
+//   });
+// }

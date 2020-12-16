@@ -48,18 +48,18 @@ const overlayYesButton=document.getElementById('overlayYesButton');
 const logoutButton=document.getElementById('logout');
 
 //API URLS here
-const IndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/index.html' : 'https://teresa-covid-tracker.herokuapp.com/index.html';
-const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-user' : 'https://teresa-covid-tracker.herokuapp.com/authenticate-user';
-const profileAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/profile' : 'https://teresa-covid-tracker.herokuapp.com/admin/profile';
-const announcementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/announcement' : 'https://teresa-covid-tracker.herokuapp.com/announcement';
-const adminAnnouncementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/announcement' : 'https://teresa-covid-tracker.herokuapp.com/admin/announcement';
-const covidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/covid-update' : 'https://teresa-covid-tracker.herokuapp.com/covid-update';
-const activeCasesCovidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/covid-update/active-cases' : 'https://teresa-covid-tracker.herokuapp.com/admin/covid-update/active-cases';
-const adminCovidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/covid-update' : 'https://teresa-covid-tracker.herokuapp.com/admin/covid-update';
-const patientListAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/patient-list' : 'https://teresa-covid-tracker.herokuapp.com/patient-list';
-const adminPatientListAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/patient-list' : 'https://teresa-covid-tracker.herokuapp.com/admin/patient-list';
-const patientListHistoryAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/patient-list-history' : 'https://teresa-covid-tracker.herokuapp.com/patient-list-history';
-const adminPatientListHistoryAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/patient-list-history' : 'https://teresa-covid-tracker.herokuapp.com/admin/patient-list-history';
+const IndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/index.html' : 'https://teresa-covid-tracker-test-test.herokuapp.com/index.html';
+const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-user' : 'https://teresa-covid-tracker-test-test.herokuapp.com/authenticate-user';
+const profileAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/profile' : 'https://teresa-covid-tracker-test-test.herokuapp.com/admin/profile';
+const announcementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/announcement' : 'https://teresa-covid-tracker-test-test.herokuapp.com/announcement';
+const adminAnnouncementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/announcement' : 'https://teresa-covid-tracker-test-test.herokuapp.com/admin/announcement';
+const covidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/covid-update' : 'https://teresa-covid-tracker-test-test.herokuapp.com/covid-update';
+const activeCasesCovidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/covid-update/active-cases' : 'https://teresa-covid-tracker-test-test.herokuapp.com/admin/covid-update/active-cases';
+const adminCovidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/covid-update' : 'https://teresa-covid-tracker-test-test.herokuapp.com/admin/covid-update';
+const patientListAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/patient-list' : 'https://teresa-covid-tracker-test-test.herokuapp.com/patient-list';
+const adminPatientListAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/patient-list' : 'https://teresa-covid-tracker-test-test.herokuapp.com/admin/patient-list';
+const patientListHistoryAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/patient-list-history' : 'https://teresa-covid-tracker-test-test.herokuapp.com/patient-list-history';
+const adminPatientListHistoryAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/patient-list-history' : 'https://teresa-covid-tracker-test-test.herokuapp.com/admin/patient-list-history';
 
 fetch(authenticateAPI_URL,{
 }).then(response=>{
@@ -178,6 +178,7 @@ const updateActiveCases=()=>{
         activeCasesTitle.textContent='Active Case';
       }
       activeCases.textContent=result;
+      console.log(result);
     });
   });
 };
@@ -214,7 +215,7 @@ const getPatientList=()=>{
           barangay.textContent=patient.barangay.toLowerCase();
           status.value=patient.status.toLowerCase();
           status.className=`status`;
-          status.setAttribute("name", `status${patient.patient_id}`);
+          status.setAttribute("name", `status${patient.id}`);
           button.textContent='Delete';
           button.className=' profile--button patient--deletebutton';
           button.setAttribute("type", `button`);
@@ -225,7 +226,7 @@ const getPatientList=()=>{
           overlaydiv1.className='popUp--container';
           p.textContent='Are you sure you want to delete this patient?';
           p.setAttribute("class", `message`);
-          button1.setAttribute("class", `yes deletePatient${patient.patient_id}`);
+          button1.setAttribute("class", `yes deletePatient${patient.id}`);
           button2.setAttribute("class", `no`);
           button1.setAttribute("type", `button`);
           button2.setAttribute("type", `button`);
@@ -233,7 +234,7 @@ const getPatientList=()=>{
           button2.textContent='No';
   
           const patientid={
-            id:patient.patient_id
+            id:patient.id
           }
   
           button.addEventListener('click',()=>{
@@ -547,13 +548,15 @@ covidPatientListForm.addEventListener('submit',(event)=>{
   const patient=document.querySelectorAll('.status');
   const formData = new FormData(covidPatientListForm);//store form credentials
 
+  console.log(patient);
+
   for(var x=0,y=patient.length;x<y;x++){//iterate over each checkbox 
     const patientId=parseInt(patient[x].name.match(/\d+/)[0]);//get checkbox id
     const status= formData.get(patient[x].name);// get checkbox value
     
     const patientDetails={//store data in a object
       id:patientId,
-      status:status,
+      status:status
       // patient_length:
     }
 

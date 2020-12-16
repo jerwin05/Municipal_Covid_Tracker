@@ -97,19 +97,19 @@ exports.update_covid_stats=(req,res)=>{
 }
 
 exports.update_covid_updates_active_cases=(req,res)=>{
-   var sql = `SELECT patient_id FROM covid_patient_status WHERE status IN ('admitted','strict isolation');`;
+   var sql = `SELECT id FROM covid_patient_status WHERE status IN ('admitted','strict isolation');`;
    db.query(sql, (err,result)=> {
       if(result.length){
+         res.send(`${result.length}`);
          sql = `UPDATE covid_updates
             SET active_cases = ${result.length}
             WHERE id=1;`;
-         res.send(result.length);
          db.query(sql);
       }else if(result){
+         res.send('0');
          sql = `UPDATE covid_updates
             SET active_cases = 0
             WHERE id=1;`;
-         res.send('0');
          db.query(sql);
       }
    });
@@ -118,7 +118,7 @@ exports.update_covid_updates_active_cases=(req,res)=>{
 exports.update_patient_status=(req,res)=>{
    var sql =`UPDATE covid_patient_status 
       SET status = '${req.body.status}' 
-      WHERE patient_id=${req.body.id};`;
+      WHERE id=${req.body.id};`;
    db.query(sql, (err,result)=> {
       if(result){
          res.send();
@@ -142,22 +142,28 @@ exports.add_patient=(req,res)=>{
    const gender=req.body.gender.toLowerCase();
    const barangay=req.body.barangay.toLowerCase();
    const status=req.body.status.toLowerCase();
-   var sql = `INSERT INTO covid_patient_list
-      (patient_no,age,gender,barangay,status)
-      VALUES ('${req.body.patient_no}','${req.body.age}','${gender}','${barangay}','${status}');`;
+   var sql = `INSERT INTO covid_patient_status
+      VALUES (null,'${status}');`;
    db.query(sql, (err,result)=> {
       if(result){
-          res.send();
+         var sql = `INSERT INTO covid_patient_details
+         VALUES (null,'${req.body.patient_no}','${req.body.age}','${gender}','${barangay}');`;
+         db.query(sql, (err,result)=> {
+            if(result){
+               res.send();
+            }
+         });
       }
   });
 };
 
 exports.delete_patient=(req,res)=>{
-
-   //update this code from change done in patient status table
-
    //get information about the patient that is about to be deleted
-   var sql = `SELECT * FROM covid_patient_list WHERE patient_id=${req.body.id};`;
+   var sql = `SELECT patient_no,age,gender,barangay,status
+      FROM covid_patient_details
+      INNER JOIN covid_patient_status
+      ON covid_patient_details.id = covid_patient_status.id 
+      WHERE covid_patient_status.id=${req.body.id};`;
    db.query(sql, (err,result)=> {
 
       //if the patient status is recovered,
@@ -184,10 +190,15 @@ exports.delete_patient=(req,res)=>{
                   patient.recovered_date_id=result[0].date_id;
                   sql = `INSERT INTO patient_list_history VALUES (null,'${patient.recovered_date_id}','${patient.patient_no}','${patient.age}','${patient.gender}','${patient.barangay}');`;
                   db.query(sql, ()=> {
-                     sql = `DELETE FROM covid_patient_list WHERE patient_id=${req.body.id};`;
+                     sql = `DELETE FROM covid_patient_status WHERE id=${req.body.id};`;
                      db.query(sql, (err,result)=> {
                         if(result){
-                           res.send('recovered');
+                           sql = `DELETE FROM covid_patient_details WHERE id=${req.body.id};`;
+                           db.query(sql, (err,result)=> {
+                              if(result){
+                                 res.send('recovered');
+                              }
+                           });
                         }
                      });
                   });
@@ -202,10 +213,15 @@ exports.delete_patient=(req,res)=>{
                         patient.recovered_date_id=result[0].date_id;
                         sql = ` INSERT INTO patient_list_history VALUES (null,'${patient.recovered_date_id}','${patient.patient_no}','${patient.age}','${patient.gender}','${patient.barangay}');`;
                         db.query(sql, ()=> {
-                           sql = `DELETE FROM covid_patient_list WHERE patient_id=${req.body.id};`;
+                           sql = `DELETE FROM covid_patient_status WHERE id=${req.body.id};`;
                            db.query(sql, (err,result)=> {
                               if(result){
-                                 res.send('recovered');
+                                 sql = `DELETE FROM covid_patient_details WHERE id=${req.body.id};`;
+                                 db.query(sql, (err,result)=> {
+                                    if(result){
+                                       res.send('recovered');
+                                    }
+                                 });
                               }
                            });
                         });
@@ -215,10 +231,15 @@ exports.delete_patient=(req,res)=>{
             });
          });
       }else{
-         sql = `DELETE FROM covid_patient_list WHERE patient_id=${req.body.id};`;
+         sql = `DELETE FROM covid_patient_status WHERE id=${req.body.id};`;
          db.query(sql, (err,result)=> {
             if(result){
-               res.send();
+               sql = `DELETE FROM covid_patient_details WHERE id=${req.body.id};`;
+               db.query(sql, (err,result)=> {
+                  if(result){
+                     res.send();
+                  }
+               });
             }
          });
       }
@@ -229,12 +250,12 @@ exports.delete_history=(req,res)=>{
    var sql = `DELETE FROM patient_list_history WHERE date_id=${req.body.date_id};`;
    db.query(sql, (err,result)=> {
       if(result){
-      sql = `DELETE FROM patient_list_history_date WHERE date_id=${req.body.date_id};`;
-      db.query(sql, (err,result)=> {
-         if(result){
-            res.send();
-         }
-      });
+         sql = `DELETE FROM patient_list_history_date WHERE date_id=${req.body.date_id};`;
+         db.query(sql, (err,result)=> {
+            if(result){
+               res.send();
+            }
+         });
       }
    });
 }
@@ -243,9 +264,9 @@ exports.post_announcement=(req,res)=>{
    const date= new Date().toString().substring(0,21);
    var sql = "INSERT INTO announcements (`title`,`body`,`date`) VALUES ('" + req.body.title + "','" + req.body.body + "','" + date + "')";
    db.query(sql, (err,result)=> {
-       if(result){
-           res.send('true');
-       }
+      if(result){
+         res.send('true');
+      }
    });
 }
 

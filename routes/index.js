@@ -6,7 +6,6 @@ Router
 
     .get    ('/',                       homepage.index)
     .get    ('/authenticate-user',      homepage.authenticate_user)
-    .get    ('/positive-coordinates',   homepage.get_positive_coordinates)
     .get    ('/announcement',           homepage.get_announcement)
     .get    ('/covid-update',           homepage.get_covid_updates)
     .get    ('/patient-list',           homepage.get_patient_list)
