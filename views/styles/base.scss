@@ -22,15 +22,14 @@ time, mark, audio, video {
     box-sizing: border-box;
 }
 
-html{
-    overflow-x: hidden;
+html, body {
+    overflow-x:hidden;
+    position:relative;
 }
 
 body {
     line-height:1;
     background-color:#9ad3bc2d;
-    // width: 100%;
-    overflow-x: hidden;
 }
 
 pre {

@@ -1,6 +1,11 @@
-.wrapper--div{
-    overflow-x: hidden !important;
-    width: 100%;
+.noHighlight{
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 nav{
@@ -72,6 +77,10 @@ nav{
     transform: translateX(-50%);
 }
 
+.page--transition{
+    transition: transform .2s cubic-bezier(.14,.96,0,1.03);
+}
+
 .loading--element{
     position: fixed;
     top: 0;
@@ -119,10 +128,6 @@ nav{
     line-height: .5;
     border-radius: 5px;
     padding: 1px 0;
-}
-
-.nav--links:active{
-    background-color:inherit;
 }
 
 .main--title{
@@ -857,9 +862,6 @@ nav{
     .heading a{
         font-size: unset;
     }
-    .main{
-        padding-top: 70px;
-    }
     nav{
         display: flex;
         justify-content: space-between;
@@ -879,6 +881,12 @@ nav{
     }
     .heading{
         padding:15px 0;
+    }
+    .main{
+        padding-top: 70px;
+    }
+    .page--transition{
+        transition: none;
     }
     .covidupdate--section{
         height: 70vh;

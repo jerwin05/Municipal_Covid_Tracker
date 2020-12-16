@@ -26,7 +26,7 @@ let connection = mysql.createConnection(options);
 let sessionStore = new MySQLStore({}, connection);
 connection.connect((err)=>{
   if (!err){
-    console.log(`${options.host} Database Connected`);
+    console.log(`Database Connected on: \t${options.host}`);
   }
   else{
     console.log("Database Connection Failed : "+JSON.stringify(err,undefined,2));
@@ -60,19 +60,18 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     sameSite: 'strict',
-    // secure: process.env.NODE_ENV === 'production',
     originalMaxAge: 1000*60*60*24*200 //200 days
   }
 }));
 
-db.query('SELECT * FROM admin;',(err,res)=>{
+db.query('SELECT id,user_name FROM admin;',(err,res)=>{
   console.log(res);
 });
 
-console.log('production: ',process.env.NODE_ENV === 'production');
+console.log('production:\t\t',process.env.NODE_ENV === 'production');
 
 app.use('/',index);
 app.use('/admin',admin);
 
 const port=process.env.PORT||3000;  
-app.listen(port,()=>console.log(`Listening on port ${port}`));
+app.listen(port,()=>console.log(`Listening on port: \t${port}`));
