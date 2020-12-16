@@ -109,26 +109,31 @@ exports.drop_table=()=>{
   var sql = `DROP TABLE admin;`;
   db.query(sql, (err,result)=> {
     if(result){
-      var sql = `DROP TABLE covid_patient_list;`;
+      var sql = `DROP TABLE covid_patient_status;`;
       db.query(sql, (err,result)=> {
         if(result){
-          var sql = `DROP TABLE covid_updates;`;
+          var sql = `DROP TABLE covid_patient_details;`;
           db.query(sql, (err,result)=> {
             if(result){
-              var sql = `DROP TABLE patient_list_history;`;
+              var sql = `DROP TABLE covid_updates;`;
               db.query(sql, (err,result)=> {
                 if(result){
-                  var sql = `DROP TABLE patient_list_history_date;`;
+                  var sql = `DROP TABLE patient_list_history;`;
                   db.query(sql, (err,result)=> {
                     if(result){
-                      var sql = `DROP TABLE announcements;`;
+                      var sql = `DROP TABLE patient_list_history_date;`;
                       db.query(sql, (err,result)=> {
                         if(result){
-                          console.log('drop table complete');
-                          var sql = `TRUNCATE TABLE sessions;`;
+                          var sql = `DROP TABLE announcements;`;
                           db.query(sql, (err,result)=> {
                             if(result){
-                              console.log('truncate sessions complete');
+                              console.log('drop table complete');
+                              var sql = `TRUNCATE TABLE sessions;`;
+                              db.query(sql, (err,result)=> {
+                                if(result){
+                                  console.log('truncate sessions complete');
+                                }
+                              });
                             }
                           });
                         }
@@ -144,3 +149,4 @@ exports.drop_table=()=>{
     }
   });
 }
+
