@@ -1,22 +1,18 @@
 window.onload=init;
 function init (){
-//   const button=document.getElementById('refresh');
-
-  // const residentPositiveCoordinatesAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/positive-coordinates' : 'https://teresa-covid-tracker-test-test.herokuapp.com/positive-coordinates';
-  
-  const map= new ol.Map({
-      view:new ol.View({
-        projection:'EPSG:4326',
-        center:[121.2071937966153, 14.559724584263174],
-        zoom:16,
-        maxZoom:18,
-        minZoom:12,
-
-        // extent: [minx, miny, maxx, maxy]
-        // extent: [121.20594589887112,14.546594500583023, 121.22581570325345, 14.564833521884292],
-      }),
-      target:'js-map'
-  });
+    const map= new ol.Map({
+        view:new ol.View({
+            projection:'EPSG:4326',
+            center:[121.2071937966153, 14.559724584263174],
+            // zoom:16,
+            zoom:16.415,
+            maxZoom:18,
+            minZoom:12,
+            // extent: [minx, miny, maxx, maxy]
+            extent: [115.73596754571534,4.342163340984037,129.2297322655699, 21.54980825896372],
+        }),
+        target:'js-map'
+    });
 
   //basemaps 
   const openStreetMapStandard = new ol.layer.Tile({
@@ -137,9 +133,6 @@ function init (){
 
     var style 
     = new ol.style.Style({
-        image: new ol.style.Circle({
-            radius: 0
-        }),
         text: new ol.style.Text({
             font: 'bold 14.5px "Open Sans", "Arial Unicode MS", "sans-serif"',
             fill: new ol.style.Fill({color: '#7F7F7F'}),
@@ -158,25 +151,31 @@ function init (){
         console.log(zoom);
         if(zoom>16.415){
             style = new ol.style.Style({
-                image: new ol.style.Circle({
-                    radius: 0
-                }),
                 text: new ol.style.Text({
-                    font: 'bold 0px',
-                }),
+                    font: 'bold 0px "Open Sans"',
+                }), 
             });
-        }else{
+        }else if(zoom<=16.415){
             style = new ol.style.Style({
-                image: new ol.style.Circle({
-                    radius: 0
-                }),
                 text: new ol.style.Text({
-                    font: 'bold 14.5px "Open Sans", "Arial Unicode MS", "sans-serif"',
+                    font: `bold ${(zoom/1.5)*1.8}px "Open Sans", "Arial Unicode MS", "sans-serif"`,
                     fill: new ol.style.Fill({color: '#7F7F7F'}),
                     stroke: new ol.style.Stroke({color: '#fff', width: 2}),
                 }),
             });
         }
+        // else{
+        //     style = new ol.style.Style({
+        //         image: new ol.style.Circle({
+        //             radius: 0
+        //         }),
+        //         text: new ol.style.Text({
+        //             font: 'bold 14.5px "Open Sans", "Arial Unicode MS", "sans-serif"',
+        //             fill: new ol.style.Fill({color: '#7F7F7F'}),
+        //             stroke: new ol.style.Stroke({color: '#fff', width: 2}),
+        //         }),
+        //     });
+        // }
     });
 
     var geojsonObject = 

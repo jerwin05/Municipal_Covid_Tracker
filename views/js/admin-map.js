@@ -1,13 +1,5 @@
 window.onload=init;
 function init (){
-  const residentsFormSection=document.getElementById('residentsFormContainer');
-  const residentsForm=document.getElementById('residentsForm');
-  const successMessage=document.getElementById('successMessage');
-  const body=document.querySelector('body');
-
-  // const residentPositiveCoordinatesAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/positive-coordinates' : 'https://teresa-covid-tracker-test.herokuapp.com/positive-coordinates';
-  // const residentsAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/residentList' : 'https://teresa-covid-tracker-test.herokuapp.com/admin/residentList';
-  
   const map= new ol.Map({
       view:new ol.View({
           projection:'EPSG:4326',

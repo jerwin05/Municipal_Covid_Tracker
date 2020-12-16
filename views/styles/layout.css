@@ -9,6 +9,7 @@
 
 nav {
   background-color: #f5e9b0;
+  z-index: 3;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
