@@ -1,11 +1,11 @@
 window.onload=init;
-function init (){
+function init(){
     const map= new ol.Map({
         view:new ol.View({
             projection:'EPSG:4326',
             center:[121.2071937966153, 14.559724584263174],
-            // zoom:16,
-            zoom:16.415,
+            zoom:16,
+            // zoom:16.415,
             maxZoom:18,
             minZoom:12,
             // extent: [minx, miny, maxx, maxy]
@@ -41,7 +41,7 @@ function init (){
   //layer switcher logic for basemaps
   const baseLayerElements=document.querySelectorAll('.map--layer>input[type=radio]');
   for (let baseLayerElemet of baseLayerElements){
-      baseLayerElemet.addEventListener('change',function(){
+      baseLayerElemet.addEventListener('change',()=>{
           let baseLayerElementValue =this.value;
           baseLayerGroup.getLayers().forEach((element,index,array)=>{
               let baseLayerTitle=element.get('title');
@@ -66,7 +66,7 @@ function init (){
   //   })
   // };
 
-  // var styleFunction = function (feature) {
+  // var styleFunction = (feature)=> {
   //   return styles[feature.getGeometry().getType()];
   // };
 
@@ -141,41 +141,60 @@ function init (){
     })
     ;
 
-    var styleFunction = function(feature) {
+    var styleFunction = (feature)=> {
         style.getText().setText(feature.get('name'));
         return style;
     }
-    
-    map.on('moveend', function(e) {
-        var zoom = map.getView().getZoom();
-        console.log(zoom);
-        if(zoom>16.415){
+
+    var currZoom = map.getView().getZoom(); 
+    var weightedZoom=0;
+    var fontSize=14.5;
+    map.on('moveend', (e)=>{
+        var newZoom = map.getView().getZoom();
+
+        // console.log(newZoom);
+
+        if(currZoom>16.415){
             style = new ol.style.Style({
                 text: new ol.style.Text({
-                    font: 'bold 0px "Open Sans"',
-                }), 
-            });
-        }else if(zoom<=16.415){
-            style = new ol.style.Style({
-                text: new ol.style.Text({
-                    font: `bold ${(zoom/1.5)*1.8}px "Open Sans", "Arial Unicode MS", "sans-serif"`,
-                    fill: new ol.style.Fill({color: '#7F7F7F'}),
-                    stroke: new ol.style.Stroke({color: '#fff', width: 2}),
-                }),
+                    font: 'bold 0px "Open Sans"'
+                })
             });
         }
-        // else{
-        //     style = new ol.style.Style({
-        //         image: new ol.style.Circle({
-        //             radius: 0
-        //         }),
-        //         text: new ol.style.Text({
-        //             font: 'bold 14.5px "Open Sans", "Arial Unicode MS", "sans-serif"',
-        //             fill: new ol.style.Fill({color: '#7F7F7F'}),
-        //             stroke: new ol.style.Stroke({color: '#fff', width: 2}),
-        //         }),
-        //     });
-        // }
+
+        if (currZoom > newZoom) {
+            if(newZoom<=16.415){
+                // weightedZoom+=1;
+                fontSize=fontSize-(currZoom-newZoom);
+            }
+            currZoom = newZoom;
+        }else if(currZoom<newZoom){
+            if(newZoom<=16.415){
+                // weightedZoom-=1;
+                fontSize=fontSize+(newZoom-currZoom);
+            }
+            currZoom = newZoom;
+        }
+
+        // console.log('before: ',fontSize);
+
+        if(currZoom<=16.415&&currZoom>12.2){
+            style = new ol.style.Style({
+                text: new ol.style.Text({
+                    font: `bold ${fontSize}px "Open Sans", "Arial Unicode MS", "sans-serif"`,
+                    fill: new ol.style.Fill({color: '#8E8E8E'}),
+                    stroke: new ol.style.Stroke({color: '#fff', width: 2})
+                })
+            });
+        }else if(currZoom<=12.2){
+            style = new ol.style.Style({
+                text: new ol.style.Text({
+                    font: 'bold 0px "Open Sans"'
+                })
+            });
+        }
+
+        console.log('after: ',fontSize);
     });
 
     var geojsonObject = 
@@ -227,19 +246,19 @@ function init (){
                 ]
                 }
             },
-            // {
-            //     "type": "Feature",
-            //     "properties": {
-            //     "name": "Dalig",
-            //     },
-            //     "geometry": {
-            //     "type": "Point",
-            //     "coordinates": [
-            //         121.23115009659746,
-            //         14.571688019526668
-            //     ]
-            //     }
-            // }
+            {
+                "type": "Feature",
+                "properties": {
+                "name": "Dalig",
+                },
+                "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.23115009659746,
+                    14.571688019526668
+                ]
+                }
+            }
         ]
     };
 

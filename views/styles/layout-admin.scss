@@ -77,9 +77,9 @@ nav{
     transform: translateX(-50%);
 }
 
-.page--transition{
-    transition: transform .2s cubic-bezier(.14,.96,0,1.03);
-}
+// .page--transition{
+//     transition: transform .2s cubic-bezier(.14,.96,0,1.03);
+// }
 
 .loading--element{
     position: fixed;
@@ -885,9 +885,9 @@ nav{
     .main{
         padding-top: 70px;
     }
-    .page--transition{
-        transition: none;
-    }
+    // .page--transition{
+    //     transition: none;
+    // }
     .covidupdate--section{
         height: 70vh;
     }

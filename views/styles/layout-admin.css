@@ -83,13 +83,6 @@ nav {
           transform: translateX(-50%);
 }
 
-.page--transition {
-  -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.14, 0.96, 0, 1.03);
-  transition: -webkit-transform 0.2s cubic-bezier(0.14, 0.96, 0, 1.03);
-  transition: transform 0.2s cubic-bezier(0.14, 0.96, 0, 1.03);
-  transition: transform 0.2s cubic-bezier(0.14, 0.96, 0, 1.03), -webkit-transform 0.2s cubic-bezier(0.14, 0.96, 0, 1.03);
-}
-
 .loading--element {
   position: fixed;
   top: 0;
@@ -1002,10 +995,6 @@ nav {
   }
   .main {
     padding-top: 70px;
-  }
-  .page--transition {
-    -webkit-transition: none;
-    transition: none;
   }
   .covidupdate--section {
     height: 70vh;
