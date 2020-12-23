@@ -507,6 +507,7 @@ nav {
 
 .profile--tab {
   position: relative;
+  height: 100%;
 }
 
 .profiletab--containers {
