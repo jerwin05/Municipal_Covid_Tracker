@@ -205,7 +205,7 @@ const getAnnouncements=()=>{
   });
 }
 
-getCovidUpdates();
 getPositivePatients();
 getPatientHistory();
 getAnnouncements();
+getCovidUpdates();
