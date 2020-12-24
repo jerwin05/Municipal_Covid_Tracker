@@ -545,45 +545,50 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
 covidPatientListForm.addEventListener('submit',(event)=>{
   event.preventDefault();
   const patient=document.querySelectorAll('.status');
-  const formData = new FormData(covidPatientListForm);//store form credentials
+  
+  if(patient.length){
+    const formData = new FormData(covidPatientListForm);//store form credentials
 
-  for(var x=0,y=patient.length;x<y;x++){//iterate over each checkbox 
-    const patientId=parseInt(patient[x].name.match(/\d+/)[0]);//get checkbox id
-    const status= formData.get(patient[x].name);// get checkbox value
-    
-    const patientDetails={//store data in a object
-      id:patientId,
-      status:status
-      // patient_length:
+    for(var x=0,y=patient.length;x<y;x++){//iterate over each checkbox 
+      const patientId=parseInt(patient[x].name.match(/\d+/)[0]);//get checkbox id
+      const status= formData.get(patient[x].name);// get checkbox value
+      
+      const patientDetails={//store data in a object
+        id:patientId,
+        status:status
+        // patient_length:
+      }
+  
+      // if(x!=y-1){
+        fetch(adminPatientListAPI_URL, {//send object to the server
+          method: 'PUT',
+          body: JSON.stringify(patientDetails),//make object in json format
+          headers: {
+            'content-type': 'application/json'
+          }
+        });
+      // }else{
+      //   fetch(adminPatientListAPI_URL, {//send object to the server
+      //     method: 'PUT',
+      //     body: JSON.stringify(patientDetails),//make object in json format
+      //     headers: {
+      //       'content-type': 'application/json'
+      //     }
+      //   });
+      // }
     }
+  
+    successMessage.textContent='Patient Updated';
+    successMessage.style.bottom='50';
+    setTimeout(()=>{
+      updateActiveCases();
+    },100);
+    setTimeout(()=>{
+      successMessage.style.bottom='-45';
+    },3000);
+  }else{
 
-    // if(x!=y-1){
-      fetch(adminPatientListAPI_URL, {//send object to the server
-        method: 'PUT',
-        body: JSON.stringify(patientDetails),//make object in json format
-        headers: {
-          'content-type': 'application/json'
-        }
-      });
-    // }else{
-    //   fetch(adminPatientListAPI_URL, {//send object to the server
-    //     method: 'PUT',
-    //     body: JSON.stringify(patientDetails),//make object in json format
-    //     headers: {
-    //       'content-type': 'application/json'
-    //     }
-    //   });
-    // }
   }
-
-  successMessage.textContent='Patient Updated';
-  successMessage.style.bottom='50';
-  setTimeout(()=>{
-    updateActiveCases();
-  },100);
-  setTimeout(()=>{
-    successMessage.style.bottom='-45';
-  },3000);
 });
 
 addPatientButton.addEventListener('click',(event)=>{
