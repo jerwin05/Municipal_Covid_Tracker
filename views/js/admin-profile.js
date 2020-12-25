@@ -191,6 +191,14 @@ const getPatientList=()=>{
     response.json()
     .then(result=>{
       if(!result.message){
+
+        if(result.length>1){
+          activeCasesTitle.textContent='Active Cases';
+        }else{
+          activeCasesTitle.textContent='Active Case';
+        }
+        activeCases.textContent=result.length;
+
         result.reverse();
         result.forEach((patient)=>{
           const mainDiv=document.createElement('div');
@@ -286,6 +294,8 @@ const getPatientList=()=>{
           covidPatientList.appendChild(mainDiv);
         });
       }else{
+        activeCasesTitle.textContent='Active Case';
+        activeCases.textContent='0';
         const message=document.createElement('p');
         message.textContent='No patient';
         message.className='nopatient';
