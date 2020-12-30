@@ -65,7 +65,6 @@ exports.profile=(req,res)=>{//send admin credentials
 
 exports.update_covid_stats=(req,res)=>{
    const date_updated=req.body.date_updated;
-   const new_cases=req.body.new_cases;
    const suspected=req.body.suspected;
    const probable=req.body.probable;
    const tested_negative=req.body.tested_negative;
@@ -77,7 +76,7 @@ exports.update_covid_stats=(req,res)=>{
    let sql='';
    if(notes){
      sql = `UPDATE covid_updates
-       SET new_cases='${new_cases}', date_updated='${date_updated}',suspected='${suspected}',probable='${probable}',tested_negative='${tested_negative}',confirmed_cases='${confirmed_cases}',recovered='${recovered}',death='${death}',notes='${notes}'
+       SET date_updated='${date_updated}',suspected='${suspected}',probable='${probable}',tested_negative='${tested_negative}',confirmed_cases='${confirmed_cases}',recovered='${recovered}',death='${death}',notes='${notes}'
        WHERE id=1;`;
      db.query(sql, (err,result)=> {
        if(result){
@@ -86,13 +85,13 @@ exports.update_covid_stats=(req,res)=>{
      });
    }else{
      sql = `UPDATE covid_updates
-       SET new_cases='${new_cases}', date_updated='${date_updated}',suspected='${suspected}',probable='${probable}',tested_negative='${tested_negative}',confirmed_cases='${confirmed_cases}',recovered='${recovered}',death='${death}'
+       SET date_updated='${date_updated}',suspected='${suspected}',probable='${probable}',tested_negative='${tested_negative}',confirmed_cases='${confirmed_cases}',recovered='${recovered}',death='${death}'
        WHERE id=1;`;
-     db.query(sql, (err,result)=> {
-      if(result){
+      db.query(sql, (err,result)=> {
+         if(result){
            res.send();
-      }
-   });
+         }
+      });
    }
 }
 
@@ -102,10 +101,15 @@ exports.reset_covid_updates_new_cases=(req,res)=>{
       WHERE id=1;`;
    db.query(sql, (err,result)=> {
       if(result){
-         res.send();
+         var sql = `TRUNCATE TABLE covid_new_case`;
+         db.query(sql, (err,result)=> {
+            if(result){
+               res.send();
+            }
+      });
       }
    });
- }
+}
 
 exports.update_covid_updates_active_cases=(req,res)=>{
    var sql = `SELECT id FROM covid_patient_status WHERE status IN ('admitted','strict isolation');`;
@@ -124,7 +128,7 @@ exports.update_covid_updates_active_cases=(req,res)=>{
          db.query(sql);
       }
    });
- }
+}
 
 exports.update_patient_status=(req,res)=>{
    var sql =`UPDATE covid_patient_status 
@@ -137,22 +141,10 @@ exports.update_patient_status=(req,res)=>{
    });
 };
 
-// exports.update_resident_remarks=(req,res)=>{
-//     const remarks=req.body.remarks||'negative';
-//     var sql = `UPDATE users SET remarks = '${remarks}' WHERE id=${req.body.id};`;
-//     // var sql = `UPDATE users SET remarks = '${req.body.remarks}' WHERE id='${req.session.id}';`;
-//     // var sql= 'DELETE FROM users;';
-//     db.query(sql, (err,result)=> {
-//        if(result){
-//            res.send();
-//        }
-//    });
-// };
-
 exports.add_patient=(req,res)=>{
-   const gender=req.body.gender.toLowerCase();
-   const barangay=req.body.barangay.toLowerCase();
-   const status=req.body.status.toLowerCase();
+   const gender=req.body.gender;
+   const barangay=req.body.barangay;
+   const status=req.body.status;
    var sql = `INSERT INTO covid_patient_status
       VALUES (null,'${status}');`;
    db.query(sql, (err,result)=> {
@@ -167,13 +159,18 @@ exports.add_patient=(req,res)=>{
                   WHERE id=1;`;
                   db.query(sql, (err,result)=> {
                      if(result){
-                        // sql = `INSERT INTO patient_list_history VALUES (null,'${patient.recovered_date_id}','${patient.patient_no}','${patient.age}','${patient.gender}','${patient.barangay}');`;
-                        // db.query(sql, (err,result)=> {
-                        //    if(result){
-                        //       res.send();
-                        //    }
-                        // });
-                        res.send();
+                        sql = `SELECT barangay_id FROM barangay WHERE barangay='${barangay}';`;
+                        db.query(sql, (err,result)=> {
+                           if(result){
+                              sql = `INSERT INTO covid_new_case VALUES
+                                 (null,'${result[0].barangay_id}','${req.body.patient_no}')`;
+                              db.query(sql, (err,result)=> {
+                                 if(result){
+                                    res.send();
+                                 }
+                              });
+                           }
+                        });
                      }
                   });
                }else{
@@ -182,18 +179,21 @@ exports.add_patient=(req,res)=>{
                   WHERE id=1;`;
                   db.query(sql, (err,result)=> {
                      if(result){
-                        // sql = `INSERT INTO patient_list_history VALUES (null,'${patient.recovered_date_id}','${patient.patient_no}','${patient.age}','${patient.gender}','${patient.barangay}');`;
-                        // db.query(sql, (err,result)=> {
-                        //    if(result){
-                        //       res.send();
-                        //    }
-                        // });
-                        res.send();
+                        sql = `SELECT barangay_id FROM barangay WHERE barangay='${barangay}';`;
+                        db.query(sql, (err,result)=> {
+                           if(result){
+                              sql = `INSERT INTO covid_new_case VALUES
+                                 (null,'${result[0].barangay_id}','${req.body.patient_no}')`;
+                              db.query(sql, (err,result)=> {
+                                 if(result){
+                                    res.send();
+                                 }
+                              });
+                           }
+                        });
                      }
                   });
-                  
                }
-
             }
          });
       }
@@ -329,13 +329,11 @@ exports.logout=(req,res)=>{
 };
 
 exports.delete_profile=(req,res)=>{//delete current user from database
-  
-    var sql = `DELETE FROM admin WHERE id=${req.session.myID};`;
-    db.query(sql, (err,result)=> {
-       if(result){
-           res.send();//if query successful, send response
-           req.session.destroy();
-       }
-    });
- };
-
+   var sql = `DELETE FROM admin WHERE id=${req.session.myID};`;
+   db.query(sql, (err,result)=> {
+      if(result){
+         res.send();//if query successful, send response
+         req.session.destroy();
+      }
+   });
+};

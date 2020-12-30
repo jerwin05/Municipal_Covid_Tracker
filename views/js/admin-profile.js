@@ -220,9 +220,9 @@ const getPatientList=()=>{
   
           patientNumber.textContent=patient.patient_no;
           age.textContent=patient.age;
-          gender.textContent=patient.gender.toLowerCase();
-          barangay.textContent=patient.barangay.toLowerCase();
-          status.value=patient.status.toLowerCase();
+          gender.textContent=patient.gender;
+          barangay.textContent=patient.barangay;
+          status.value=patient.status;
           status.className=`status`;
           status.setAttribute("name", `status${patient.id}`);
           button.textContent='Delete';
@@ -268,12 +268,12 @@ const getPatientList=()=>{
               .then(result=>{
                 if(result==='recovered'){
                   history.innerHTML='';
-                  getPatientList();
                   updateActiveCases();
+                  getPatientList();
                   getPatientHistory();
                 }else{
-                  getPatientList();
                   updateActiveCases();
+                  getPatientList();
                 }
               })
             });
@@ -565,15 +565,15 @@ addNewCaseForm.addEventListener('submit',(event)=>{
   const formData=new FormData(addNewCaseForm);
   const patient_number=formData.get('patient_number');
   const age=formData.get('age');
-  const gender=formData.get('gender');
-  const barangay=formData.get('barangay');
-  const status=formData.get('status');
+  const gender=formData.get('gender').toLowerCase();
+  const barangay=formData.get('barangay').toLowerCase();
+  const status=formData.get('status').toLowerCase();
 
-  if(patient_number.trim().toString()&&age.trim().toString()&&gender.trim().toString()
-    &&barangay.trim().toString()&&status.trim().toString()){
+  if(patient_number.trim()&&age.trim()&&gender.trim()
+    &&barangay.trim()&&status.trim()){
 
     loadSpinner(covidPatientList);
-
+      
     addNewCaseFormContainer.style.display='none';
     addNewCaseForm.reset();
 
@@ -583,11 +583,11 @@ addNewCaseForm.addEventListener('submit',(event)=>{
     newCases.textContent=newCase;
     newCasesTitleModifier(newCase);
     
-    if(status.toLowerCase()=='admitted'||status.toLowerCase()=='strict isolation'){
+    if(status.toString().toLowerCase()=='admitted'||status.toString().toLowerCase()=='strict isolation'){
       const activeCase=parseInt(activeCases.textContent)+1;
       activeCasesTitleModifier(activeCase);
       activeCases.textContent=activeCase;
-        patient = {//put announcement into object
+      patient = {//put announcement into object
         patient_no:patient_number,
         age:age,
         gender:gender,
@@ -597,13 +597,13 @@ addNewCaseForm.addEventListener('submit',(event)=>{
         'active_case':activeCases.textContent
       };
     }else{
-        patient = {//put announcement into object
+      patient = {//put announcement into object
         patient_no:patient_number,
         age:age,
         gender:gender,
         barangay:barangay,
         status:status,
-        'new_case':newCases.textContent,
+        'new_case':newCases.textContent
       };
     }
 

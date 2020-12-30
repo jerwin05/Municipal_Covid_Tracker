@@ -33,7 +33,8 @@ connection.connect((err)=>{
   }
 });
 global.db = connection;
-table.create_table();
+// table.create_table_one();
+// table.create_table_two();
 // table.drop_table();
 // table.show_table();
 
