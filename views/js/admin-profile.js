@@ -1,3 +1,6 @@
+//module imports here
+import {errorMessage} from './common.js';
+
 //get elements here
 const newCases=document.getElementById('newCases');
 const activeCases=document.getElementById('activeCases');
@@ -10,7 +13,6 @@ const testedNegative=document.getElementById('testedNegative');
 const recovered=document.getElementById('recovered');
 const death=document.getElementById('death');
 const covidUpdateDate=document.getElementById('covidUpdateDate');
-const editNewCases=document.getElementById('editNewCases');
 const editSuspected=document.getElementById('editSuspected');
 const editProbable=document.getElementById('editProbable');
 const editConfirmedCases=document.getElementById('editConfirmedCases');
@@ -29,17 +31,15 @@ const addNewCaseButton=document.getElementById('addNewCaseButton');
 const addNewCaseCancelButton=document.getElementById('addNewCaseCancelButton');
 const addNewCaseFormErrorMessage=document.getElementById('addNewCaseFormErrorMessage');
 const resetNewCaseButton=document.getElementById('resetNewCaseButton');
-const editPatientButton=document.getElementById('editPatientButton');
 const history=document.getElementById('history');
 const loadingElement=document.getElementById('loadingElement');
 const announcementLoadingElement=document.getElementById('announcementLoadingElement');
 const main=document.getElementById('main');
 
-const block23Container=document.getElementById('block23Container');
 const body=document.querySelector('body');
 const overlay=document.getElementById('overlay');
 const successMessage=document.getElementById('successMessage');
-const errorMessage=document.getElementById('errorMessage');
+const postAnnouncementErrorMessage=document.getElementById('postAnnouncementErrorMessage');
 const profileElement=document.getElementById('profile');
 const announcementSection=document.getElementById('announcementSection');
 const announcementForm=document.getElementById('announcementForm');
@@ -572,29 +572,20 @@ addNewCaseForm.addEventListener('submit',(event)=>{
   if(patient_number.trim()&&age.trim()&&gender.trim()
     &&barangay.trim()&&status.trim()){
 
-    loadSpinner(covidPatientList);
-      
-    addNewCaseFormContainer.style.display='none';
-    addNewCaseForm.reset();
-
     let patient={};
 
     const newCase=parseInt(newCases.textContent)+1;
-    newCases.textContent=newCase;
-    newCasesTitleModifier(newCase);
+    const activeCase=parseInt(activeCases.textContent)+1;
     
-    if(status.toString().toLowerCase()=='admitted'||status.toString().toLowerCase()=='strict isolation'){
-      const activeCase=parseInt(activeCases.textContent)+1;
-      activeCasesTitleModifier(activeCase);
-      activeCases.textContent=activeCase;
+    if(status.toLowerCase()=='admitted'||status.toLowerCase()=='strict isolation'){
       patient = {//put announcement into object
         patient_no:patient_number,
         age:age,
         gender:gender,
         barangay:barangay,
         status:status,
-        'new_case':newCases.textContent,
-        'active_case':activeCases.textContent
+        'new_case':newCase,
+        'active_case':activeCase
       };
     }else{
       patient = {//put announcement into object
@@ -603,7 +594,7 @@ addNewCaseForm.addEventListener('submit',(event)=>{
         gender:gender,
         barangay:barangay,
         status:status,
-        'new_case':newCases.textContent
+        'new_case':newCase
       };
     }
 
@@ -613,11 +604,27 @@ addNewCaseForm.addEventListener('submit',(event)=>{
       headers: {
         'content-type': 'application/json'
       }
-    }).then(()=>{
-      getPatientList();
+    }).then(response=>{
+      response.text()
+      .then(result=>{
+        if(result==='patient exist'){
+          errorMessage(addNewCaseFormErrorMessage,'Patient already exist!')
+        }else{
+          newCases.textContent=newCase;
+          newCasesTitleModifier(newCase);
+          activeCasesTitleModifier(activeCase);
+          activeCases.textContent=activeCase;
+
+          loadSpinner(covidPatientList);
+          addNewCaseFormErrorMessage.style.display='none';
+          addNewCaseFormContainer.style.display='none';
+          addNewCaseForm.reset();
+          getPatientList();
+        }
+      });
     });
   }else{
-    addNewCaseFormErrorMessage.style.display='block';
+    errorMessage(addNewCaseFormErrorMessage,'Please supply the missing fields!')
   }
 });
 
@@ -692,7 +699,7 @@ announcementForm.addEventListener('submit', (event) => {
 
   if (title.trim().toString() && body.trim().toString()) {//execute if form fields are all filled
     loadSpinner(announcementSection);
-    errorMessage.style.display='none';
+    postAnnouncementErrorMessage.style.display='none';
     announcementForm.reset();
 
     const announcement = {//put announcement into object
@@ -722,10 +729,10 @@ announcementForm.addEventListener('submit', (event) => {
       });
     });
   } else {
-    errorMessage.textContent='Title and Body are required!';
-    errorMessage.style.display='block';
+    postAnnouncementErrorMessage.textContent='Title and Body are required!';
+    postAnnouncementErrorMessage.style.display='block';
     setTimeout(()=>{
-      errorMessage.style.display='none';
+      postAnnouncementErrorMessage.style.display='none';
     },3000);
   }
 });

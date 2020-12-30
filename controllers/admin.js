@@ -142,62 +142,81 @@ exports.update_patient_status=(req,res)=>{
 };
 
 exports.add_patient=(req,res)=>{
+   const patient_no=req.body.patient_no;
+   const age=req.body.age;
    const gender=req.body.gender;
    const barangay=req.body.barangay;
    const status=req.body.status;
-   var sql = `INSERT INTO covid_patient_status
-      VALUES (null,'${status}');`;
-   db.query(sql, (err,result)=> {
-      if(result){
-         sql = `INSERT INTO covid_patient_details
-         VALUES (null,'${req.body.patient_no}','${req.body.age}','${gender}','${barangay}');`;
-         db.query(sql, (err,result)=> {
-            if(result){
-               if(req.body.active_case){
-                  sql = `UPDATE covid_updates
-                  SET new_cases='${req.body.new_case}',active_cases='${req.body.active_case}'
-                  WHERE id=1;`;
-                  db.query(sql, (err,result)=> {
-                     if(result){
-                        sql = `SELECT barangay_id FROM barangay WHERE barangay='${barangay}';`;
-                        db.query(sql, (err,result)=> {
-                           if(result){
-                              sql = `INSERT INTO covid_new_case VALUES
-                                 (null,'${result[0].barangay_id}','${req.body.patient_no}')`;
+   const new_case=req.body.new_case;
+   const active_case=req.body.active_case;
+
+   var sql=`SELECT id FROM covid_patient_details WHERE patient_no='${patient_no}'`;
+   db.query(sql,(err,result)=>{
+      if(result.length){
+         res.send('patient exist');
+      }else{
+         sql=`SELECT patient_id FROM patient_list_history WHERE patient_no='${patient_no}'`;
+         db.query(sql,(err,result)=>{
+            if(result.length){
+               res.send('patient exist');
+            }else{
+               sql = `INSERT INTO covid_patient_status
+               VALUES (null,'${status}');`;
+               db.query(sql, (err,result)=> {
+                  if(result){
+                     sql = `INSERT INTO covid_patient_details
+                     VALUES (null,'${patient_no}','${age}','${gender}','${barangay}');`;
+                     db.query(sql, (err,result)=> {
+                        if(result){
+                           if(active_case){
+                              sql = `UPDATE covid_updates
+                              SET new_cases='${new_case}',active_cases='${active_case}'
+                              WHERE id=1;`;
                               db.query(sql, (err,result)=> {
                                  if(result){
-                                    res.send();
+                                    sql = `SELECT barangay_id FROM barangay WHERE barangay='${barangay}';`;
+                                    db.query(sql, (err,result)=> {
+                                       if(result){
+                                          sql = `INSERT INTO covid_new_case VALUES
+                                             (null,'${result[0].barangay_id}','${patient_no}')`;
+                                          db.query(sql, (err,result)=> {
+                                             if(result){
+                                                res.send();
+                                             }
+                                          });
+                                       }
+                                    });
+                                 }
+                              });
+                           }else{
+                              sql = `UPDATE covid_updates
+                              SET new_cases='${new_case}'
+                              WHERE id=1;`;
+                              db.query(sql, (err,result)=> {
+                                 if(result){
+                                    sql = `SELECT barangay_id FROM barangay WHERE barangay='${barangay}';`;
+                                    db.query(sql, (err,result)=> {
+                                       if(result){
+                                          sql = `INSERT INTO covid_new_case VALUES
+                                             (null,'${result[0].barangay_id}','${patient_no}')`;
+                                          db.query(sql, (err,result)=> {
+                                             if(result){
+                                                res.send();
+                                             }
+                                          });
+                                       }
+                                    });
                                  }
                               });
                            }
-                        });
-                     }
-                  });
-               }else{
-                  sql = `UPDATE covid_updates
-                  SET new_cases='${req.body.new_case}'
-                  WHERE id=1;`;
-                  db.query(sql, (err,result)=> {
-                     if(result){
-                        sql = `SELECT barangay_id FROM barangay WHERE barangay='${barangay}';`;
-                        db.query(sql, (err,result)=> {
-                           if(result){
-                              sql = `INSERT INTO covid_new_case VALUES
-                                 (null,'${result[0].barangay_id}','${req.body.patient_no}')`;
-                              db.query(sql, (err,result)=> {
-                                 if(result){
-                                    res.send();
-                                 }
-                              });
-                           }
-                        });
-                     }
-                  });
-               }
+                        }
+                     });
+                  }
+               });
             }
          });
       }
-  });
+   });
 };
 
 exports.delete_patient=(req,res)=>{

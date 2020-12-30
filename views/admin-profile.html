@@ -81,7 +81,7 @@
                     </form>
                     <div id='addNewCaseFormContainer' class="addpatientform--container" >
                         <form id='addNewCaseForm' class="addpatientform main--body" role='form' method="POST">
-                            <p id="addNewCaseFormErrorMessage" class="addpatientform--errormessage">Please supply the missing fields!</p>
+                            <p id="addNewCaseFormErrorMessage" class="addpatientform--errormessage"></p>
                             <input name="patient_number" placeholder="patient number" type="text">
                             <input name="age" placeholder="age" min="0" type="number">
                             <input name="gender" placeholder="gender" type="text">
@@ -158,7 +158,7 @@
             <section class="tab--containers profiletab--containers post--container">
                 <form id='announcementForm' role="form" method="post">
                     <h3 class="form--element announcementform--element main--title">Post announcement</h3>
-                    <div class="form--element announcementform--element error-message" id="errorMessage"></div>
+                    <div class="form--element announcementform--element error-message" id="postAnnouncementErrorMessage"></div>
                     <input class="form--element announcementform--element" type="text" name="Title" placeholder="Title">
                     <textarea class="form--element announcementform--element  " name="Body" placeholder="Body"></textarea>
                     <button class="form--element announcementform--element profile--button blue--button" id='postAnnouncementButton' type="submit">Post</button>
