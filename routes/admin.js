@@ -9,6 +9,7 @@ adminRouter
     .get    ('/profile',                    admin.profile)
     .put    ('/covid-update',               admin.update_covid_stats)
     .put    ('/covid-update/active-cases',  admin.update_covid_updates_active_cases)
+    .post   ('/covid-update/new-cases',     admin.reset_covid_updates_new_cases)
     .post   ('/patient-list',               admin.add_patient)
     .put    ('/patient-list',               admin.update_patient_status)
     .delete ('/patient-list',               admin.delete_patient)

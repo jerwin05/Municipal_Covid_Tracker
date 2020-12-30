@@ -23,11 +23,12 @@ const covidPatientList=document.getElementById('covidPatientList');
 const editCovidUpdateForm=document.getElementById('editCovidUpdateForm');
 const editCovidUpdateFormErrorMessage=document.getElementById('editCovidUpdateFormErrorMessage');
 const covidPatientListForm=document.getElementById('covidPatientListForm');
-const addPatientFormContainer=document.getElementById('addPatientFormContainer');
-const addPatientForm=document.getElementById('addPatientForm');
-const addPatientButton=document.getElementById('addPatientButton');
-const addPatientCancelButton=document.getElementById('addPatientCancelButton');
-const addPatientFormErrorMessage=document.getElementById('addPatientFormErrorMessage');
+const addNewCaseFormContainer=document.getElementById('addNewCaseFormContainer');
+const addNewCaseForm=document.getElementById('addNewCaseForm');
+const addNewCaseButton=document.getElementById('addNewCaseButton');
+const addNewCaseCancelButton=document.getElementById('addNewCaseCancelButton');
+const addNewCaseFormErrorMessage=document.getElementById('addNewCaseFormErrorMessage');
+const resetNewCaseButton=document.getElementById('resetNewCaseButton');
 const editPatientButton=document.getElementById('editPatientButton');
 const history=document.getElementById('history');
 const loadingElement=document.getElementById('loadingElement');
@@ -55,6 +56,7 @@ const announcementAPI_URL = (window.location.hostname === '127.0.0.1' || window.
 const adminAnnouncementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/announcement' : 'https://teresa-covid-tracker-test.herokuapp.com/admin/announcement';
 const covidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/covid-update' : 'https://teresa-covid-tracker-test.herokuapp.com/covid-update';
 const activeCasesCovidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/covid-update/active-cases' : 'https://teresa-covid-tracker-test.herokuapp.com/admin/covid-update/active-cases';
+const newCasesCovidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/covid-update/new-cases' : 'https://teresa-covid-tracker-test.herokuapp.com/admin/covid-update/new-cases';
 const adminCovidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/covid-update' : 'https://teresa-covid-tracker-test.herokuapp.com/admin/covid-update';
 const patientListAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/patient-list' : 'https://teresa-covid-tracker-test.herokuapp.com/patient-list';
 const adminPatientListAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin/patient-list' : 'https://teresa-covid-tracker-test.herokuapp.com/admin/patient-list';
@@ -73,6 +75,22 @@ fetch(authenticateAPI_URL,{
 const loadSpinner=(element)=>{
   loadingElement.style.display='';
   element.innerHTML='';
+}
+
+const activeCasesTitleModifier =(number)=>{
+  if(number>1){
+    activeCasesTitle.textContent='Active Cases';
+  }else{
+    activeCasesTitle.textContent='Active Case';
+  }
+}
+
+const newCasesTitleModifier =(number)=>{
+  if(number>1){
+    newCasesTitle.textContent='New Cases';
+  }else{
+    newCasesTitle.textContent='New Case';
+  }
 }
 
 //gets admin profile from server
@@ -129,7 +147,6 @@ const getCovidUpdates=()=>{
       testedNegative.textContent=testedNegativeResult;
       recovered.textContent=recoveredResult;
       death.textContent=deathResult;
-      editNewCases.value=newCasesResult;
       editSuspected.value=suspectedResult;
       editProbable.value=probableResult;
       editConfirmedCases.value=confirmedCasesResult;
@@ -138,16 +155,8 @@ const getCovidUpdates=()=>{
       editDeath.value=deathResult;
       editDate.value=dateResult;
 
-      if(result[0].new_cases>1){
-        newCasesTitle.textContent='New Cases';
-      }else{
-        newCasesTitle.textContent='New Case';
-      }
-      if(result[0].active_cases>1){
-        activeCasesTitle.textContent='Active Cases';
-      }else{
-        activeCasesTitle.textContent='Active Case';
-      }
+      newCasesTitleModifier(result[0].new_cases);
+      activeCasesTitleModifier(result[0].active_cases);
       
       covidUpdateDate.textContent=`${dateResult}`;
 
@@ -172,11 +181,7 @@ const updateActiveCases=()=>{
   .then(response=>{
     response.text()
     .then(result=>{
-      if(result>1){
-        activeCasesTitle.textContent='Active Cases';
-      }else{
-        activeCasesTitle.textContent='Active Case';
-      }
+      activeCasesTitleModifier(result);
       activeCases.textContent=result;
     });
   });
@@ -192,12 +197,9 @@ const getPatientList=()=>{
     .then(result=>{
       if(!result.message){
 
-        if(result.length>1){
-          activeCasesTitle.textContent='Active Cases';
-        }else{
-          activeCasesTitle.textContent='Active Case';
-        }
-        activeCases.textContent=result.length;
+        const active = result.filter(patient => patient.status==='admitted'||patient.status==='strict isolation');
+        activeCasesTitleModifier(active.length);
+        activeCases.textContent=active.length;
 
         result.reverse();
         result.forEach((patient)=>{
@@ -474,7 +476,6 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
   event.preventDefault();
   const formData = new FormData(editCovidUpdateForm);
   const formDate = formData.get('date');
-  const formNewCases = formData.get('newCases');
   const formSuspected = formData.get('suspected');
   const formProbable = formData.get('probable');
   const formConfirmedCases = formData.get('confirmedCases');
@@ -500,7 +501,6 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
     if(formNotes){
       obj={
         date_updated:formDate,
-        new_cases:formNewCases,
         suspected:formSuspected,
         probable:formProbable,
         confirmed_cases:formConfirmedCases,
@@ -526,7 +526,6 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
     }else{
       obj={
         date_updated:formDate,
-        new_cases:formNewCases,
         suspected:formSuspected,
         probable:formProbable,
         confirmed_cases:formConfirmedCases,
@@ -550,6 +549,88 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
       });
     }
   }
+})
+
+addNewCaseButton.addEventListener('click',(event)=>{
+  addNewCaseFormContainer.style.display='block';
+});
+addNewCaseCancelButton.addEventListener('click',(event)=>{
+  event.preventDefault();
+  addNewCaseForm.reset();
+  addNewCaseFormContainer.style.display='none';
+  addNewCaseFormErrorMessage.style.display='none';
+})
+addNewCaseForm.addEventListener('submit',(event)=>{
+  event.preventDefault();
+  const formData=new FormData(addNewCaseForm);
+  const patient_number=formData.get('patient_number');
+  const age=formData.get('age');
+  const gender=formData.get('gender');
+  const barangay=formData.get('barangay');
+  const status=formData.get('status');
+
+  if(patient_number.trim().toString()&&age.trim().toString()&&gender.trim().toString()
+    &&barangay.trim().toString()&&status.trim().toString()){
+
+    loadSpinner(covidPatientList);
+
+    addNewCaseFormContainer.style.display='none';
+    addNewCaseForm.reset();
+
+    let patient={};
+
+    const newCase=parseInt(newCases.textContent)+1;
+    newCases.textContent=newCase;
+    newCasesTitleModifier(newCase);
+    
+    if(status.toLowerCase()=='admitted'||status.toLowerCase()=='strict isolation'){
+      const activeCase=parseInt(activeCases.textContent)+1;
+      activeCasesTitleModifier(activeCase);
+      activeCases.textContent=activeCase;
+        patient = {//put announcement into object
+        patient_no:patient_number,
+        age:age,
+        gender:gender,
+        barangay:barangay,
+        status:status,
+        'new_case':newCases.textContent,
+        'active_case':activeCases.textContent
+      };
+    }else{
+        patient = {//put announcement into object
+        patient_no:patient_number,
+        age:age,
+        gender:gender,
+        barangay:barangay,
+        status:status,
+        'new_case':newCases.textContent,
+      };
+    }
+
+    fetch(adminPatientListAPI_URL, {//send object to the server
+      method: 'POST',
+      body: JSON.stringify(patient),//make object in json format
+      headers: {
+        'content-type': 'application/json'
+      }
+    }).then(()=>{
+      getPatientList();
+    });
+  }else{
+    addNewCaseFormErrorMessage.style.display='block';
+  }
+});
+
+resetNewCaseButton.addEventListener('click',(event)=>{
+  event.preventDefault();
+  newCases.textContent='0';
+  newCasesTitle.textContent='New Case';
+  fetch(newCasesCovidUpdateAPI_URL, {//send object to the server
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    }
+  });
 })
 
 covidPatientListForm.addEventListener('submit',(event)=>{
@@ -598,55 +679,6 @@ covidPatientListForm.addEventListener('submit',(event)=>{
     },3000);
   }else{
 
-  }
-});
-
-addPatientButton.addEventListener('click',(event)=>{
-  addPatientFormContainer.style.display='block';
-});
-addPatientCancelButton.addEventListener('click',(event)=>{
-  event.preventDefault();
-  addPatientForm.reset();
-  addPatientFormContainer.style.display='none';
-  addPatientFormErrorMessage.style.display='none';
-})
-addPatientForm.addEventListener('submit',(event)=>{
-  event.preventDefault();
-  const formData=new FormData(addPatientForm);
-  const patient_number=formData.get('patient_number');
-  const age=formData.get('age');
-  const gender=formData.get('gender');
-  const barangay=formData.get('barangay');
-  const status=formData.get('status');
-
-  if(patient_number.trim().toString()&&age.trim().toString()&&gender.trim().toString()
-    &&barangay.trim().toString()&&status.trim().toString()){
-
-    loadSpinner(covidPatientList);
-
-    addPatientFormContainer.style.display='none';
-    addPatientForm.reset();
-     
-    const patient = {//put announcement into object
-      patient_no:patient_number,
-      age:age,
-      gender:gender,
-      barangay:barangay,
-      status:status
-    };
-
-    fetch(adminPatientListAPI_URL, {//send object to the server
-      method: 'POST',
-      body: JSON.stringify(patient),//make object in json format
-      headers: {
-        'content-type': 'application/json'
-      }
-    }).then(()=>{
-      getPatientList();
-      updateActiveCases();
-    });
-  }else{
-    addPatientFormErrorMessage.style.display='block';
   }
 });
 

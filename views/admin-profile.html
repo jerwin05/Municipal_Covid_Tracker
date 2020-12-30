@@ -75,20 +75,21 @@
                             <h3>Status</h3>
                         </div>
                         <div id='covidPatientList' class="covidpatientlist main--body main--customscrollbar"></div>
-                        <button class="patient--submitbutton profile--button blue--button" id='addPatientButton' type="button">Add Patient</button>
+                        <button class="patient--submitbutton profile--button blue--button" id='addNewCaseButton' type="button">New Case</button>
+                        <button class="patient--submitbutton profile--button blue--button" id='resetNewCaseButton' type="button">Reset New Case</button>
                         <button class="patient--submitbutton profile--button blue--button" id='editPatientButton' type="submit">Update</button>
                     </form>
-                    <div id='addPatientFormContainer' class="addpatientform--container" >
-                        <form id='addPatientForm' class="addpatientform main--body" role='form' method="POST">
-                            <p id="addPatientFormErrorMessage" class="addpatientform--errormessage">Please supply the missing fields!</p>
+                    <div id='addNewCaseFormContainer' class="addpatientform--container" >
+                        <form id='addNewCaseForm' class="addpatientform main--body" role='form' method="POST">
+                            <p id="addNewCaseFormErrorMessage" class="addpatientform--errormessage">Please supply the missing fields!</p>
                             <input name="patient_number" placeholder="patient number" type="text">
-                            <input name="age" placeholder="age" type="number">
+                            <input name="age" placeholder="age" min="0" type="number">
                             <input name="gender" placeholder="gender" type="text">
                             <input name="barangay" placeholder="barangay" type="text">
                             <input name="status" placeholder="status" type="text">
                             <div class="addpatientbutton--container">
                                 <button class=" profile--button blue--button" type="submit">Add</button>
-                                <button id="addPatientCancelButton" class=" profile--button blue--button" type="button">Cancel</button>
+                                <button id="addNewCaseCancelButton" class=" profile--button blue--button" type="button">Cancel</button>
                             </div>
                         </form>
                     </div>
@@ -129,9 +130,6 @@
                 <form id='editCovidUpdateForm' method="put">
                     <label for="date">Date
                         <input class="form--element" type="text" name="date" id="editDate">
-                    </label>
-                    <label for="newCases">New Case
-                        <input class="form--element" type="number" min="0" name="newCases" id="editNewCases">
                     </label>
                     <label for="suspected">Suspected
                         <input class="form--element" type="number" min="0" name="suspected" id="editSuspected">

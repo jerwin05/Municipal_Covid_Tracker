@@ -29,51 +29,59 @@ exports.create_table=()=>{
             PRIMARY KEY (id));`;
           db.query(sql, (err,result)=> {
             if(result){
-              let currentDate=new Date().toString().substring(4, 16);
-              sql = `INSERT INTO covid_updates (probable,death,new_cases,active_cases,suspected,tested_negative,confirmed_cases,recovered,date_updated) VALUES (0,0,0,0,0,0,0,0,'${currentDate}');`;
+              var sql = `CREATE TABLE covid_new_cases (
+                id INT NOT NULL AUTO_INCREMENT,
+                
+                PRIMARY KEY (id));`;
               db.query(sql, (err,result)=> {
                 if(result){
-                  var sql = `CREATE TABLE covid_patient_status (
-                    id INT NOT NULL AUTO_INCREMENT,
-                    status VARCHAR(100) NOT NULL,
-                    PRIMARY KEY (id));`;
+                  let currentDate=new Date().toString().substring(4, 16);
+                  sql = `INSERT INTO covid_updates (probable,death,new_cases,active_cases,suspected,tested_negative,confirmed_cases,recovered,date_updated) VALUES (0,0,0,0,0,0,0,0,'${currentDate}');`;
                   db.query(sql, (err,result)=> {
                     if(result){
-                      var sql = `CREATE TABLE covid_patient_details (
+                      var sql = `CREATE TABLE covid_patient_status (
                         id INT NOT NULL AUTO_INCREMENT,
-                        patient_no VARCHAR(50) NOT NULL,
-                        age VARCHAR(5) NOT NULL,
-                        gender VARCHAR(20) NOT NULL,
-                        barangay VARCHAR(100) NOT NULL,
+                        status VARCHAR(100) NOT NULL,
                         PRIMARY KEY (id));`;
                       db.query(sql, (err,result)=> {
                         if(result){
-                          var sql = `CREATE TABLE patient_list_history_date (
-                            date_id INT NOT NULL AUTO_INCREMENT,
-                            date VARCHAR(200) NOT NULL,
-                            PRIMARY KEY (date_id));`;
+                          var sql = `CREATE TABLE covid_patient_details (
+                            id INT NOT NULL AUTO_INCREMENT,
+                            patient_no VARCHAR(50) NOT NULL,
+                            age VARCHAR(5) NOT NULL,
+                            gender VARCHAR(20) NOT NULL,
+                            barangay VARCHAR(100) NOT NULL,
+                            PRIMARY KEY (id));`;
                           db.query(sql, (err,result)=> {
                             if(result){
-                              var sql = `CREATE TABLE patient_list_history (
-                                patient_id INT NOT NULL AUTO_INCREMENT,
-                                date_id INT,
-                                patient_no VARCHAR(20) NOT NULL,
-                                age VARCHAR(5) NOT NULL,
-                                gender VARCHAR(15) NOT NULL,
-                                barangay VARCHAR(100) NOT NULL,
-                                PRIMARY KEY (patient_id),
-                                FOREIGN KEY (date_id) REFERENCES patient_list_history_date(date_id));`;
+                              var sql = `CREATE TABLE patient_list_history_date (
+                                date_id INT NOT NULL AUTO_INCREMENT,
+                                date VARCHAR(200) NOT NULL,
+                                PRIMARY KEY (date_id));`;
                               db.query(sql, (err,result)=> {
                                 if(result){
-                                  var sql = `CREATE TABLE announcements (
-                                    id INT NOT NULL AUTO_INCREMENT,
-                                    title VARCHAR(500) NOT NULL,
-                                    body TEXT NOT NULL,
-                                    date VARCHAR(100) NOT NULL,
-                                    PRIMARY KEY (id));`;
+                                  var sql = `CREATE TABLE patient_list_history (
+                                    patient_id INT NOT NULL AUTO_INCREMENT,
+                                    date_id INT,
+                                    patient_no VARCHAR(20) NOT NULL,
+                                    age VARCHAR(5) NOT NULL,
+                                    gender VARCHAR(15) NOT NULL,
+                                    barangay VARCHAR(100) NOT NULL,
+                                    PRIMARY KEY (patient_id),
+                                    FOREIGN KEY (date_id) REFERENCES patient_list_history_date(date_id));`;
                                   db.query(sql, (err,result)=> {
                                     if(result){
-                                      console.log('create table complete');
+                                      var sql = `CREATE TABLE announcements (
+                                        id INT NOT NULL AUTO_INCREMENT,
+                                        title VARCHAR(500) NOT NULL,
+                                        body TEXT NOT NULL,
+                                        date VARCHAR(100) NOT NULL,
+                                        PRIMARY KEY (id));`;
+                                      db.query(sql, (err,result)=> {
+                                        if(result){
+                                          console.log('create table complete');
+                                        }
+                                      });
                                     }
                                   });
                                 }

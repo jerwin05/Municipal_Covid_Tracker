@@ -96,6 +96,17 @@ exports.update_covid_stats=(req,res)=>{
    }
 }
 
+exports.reset_covid_updates_new_cases=(req,res)=>{
+   var sql = `UPDATE covid_updates
+      SET new_cases = 0
+      WHERE id=1;`;
+   db.query(sql, (err,result)=> {
+      if(result){
+         res.send();
+      }
+   });
+ }
+
 exports.update_covid_updates_active_cases=(req,res)=>{
    var sql = `SELECT id FROM covid_patient_status WHERE status IN ('admitted','strict isolation');`;
    db.query(sql, (err,result)=> {
@@ -146,11 +157,43 @@ exports.add_patient=(req,res)=>{
       VALUES (null,'${status}');`;
    db.query(sql, (err,result)=> {
       if(result){
-         var sql = `INSERT INTO covid_patient_details
+         sql = `INSERT INTO covid_patient_details
          VALUES (null,'${req.body.patient_no}','${req.body.age}','${gender}','${barangay}');`;
          db.query(sql, (err,result)=> {
             if(result){
-               res.send();
+               if(req.body.active_case){
+                  sql = `UPDATE covid_updates
+                  SET new_cases='${req.body.new_case}',active_cases='${req.body.active_case}'
+                  WHERE id=1;`;
+                  db.query(sql, (err,result)=> {
+                     if(result){
+                        // sql = `INSERT INTO patient_list_history VALUES (null,'${patient.recovered_date_id}','${patient.patient_no}','${patient.age}','${patient.gender}','${patient.barangay}');`;
+                        // db.query(sql, (err,result)=> {
+                        //    if(result){
+                        //       res.send();
+                        //    }
+                        // });
+                        res.send();
+                     }
+                  });
+               }else{
+                  sql = `UPDATE covid_updates
+                  SET new_cases='${req.body.new_case}'
+                  WHERE id=1;`;
+                  db.query(sql, (err,result)=> {
+                     if(result){
+                        // sql = `INSERT INTO patient_list_history VALUES (null,'${patient.recovered_date_id}','${patient.patient_no}','${patient.age}','${patient.gender}','${patient.barangay}');`;
+                        // db.query(sql, (err,result)=> {
+                        //    if(result){
+                        //       res.send();
+                        //    }
+                        // });
+                        res.send();
+                     }
+                  });
+                  
+               }
+
             }
          });
       }
