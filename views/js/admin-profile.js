@@ -573,6 +573,7 @@ addNewCaseForm.addEventListener('submit',(event)=>{
     &&barangay.trim()&&status.trim()){
 
     let patient={};
+    loadingElement.style.display='';
 
     const newCase=parseInt(newCases.textContent)+1;
     const activeCase=parseInt(activeCases.textContent)+1;
@@ -609,6 +610,7 @@ addNewCaseForm.addEventListener('submit',(event)=>{
       .then(result=>{
         if(result==='patient exist'){
           errorMessage(addNewCaseFormErrorMessage,'Patient already exist!')
+          loadingElement.style.display='none';
         }else{
           newCases.textContent=newCase;
           newCasesTitleModifier(newCase);
