@@ -77,6 +77,10 @@ const loadSpinner=(element)=>{
   element.innerHTML='';
 }
 
+const spinner=(state)=>{
+    loadingElement.style.display=state;
+}
+
 const activeCasesTitleModifier =(number)=>{
   if(number>1){
     activeCasesTitle.textContent='Active Cases';
@@ -124,7 +128,7 @@ const getCovidUpdates=()=>{
   .then(response=>{
 
     main.style.display='flex'; 
-    loadingElement.style.display='none';
+    spinner('none');
 
     response.json()
     .then(result=>{
@@ -187,11 +191,11 @@ const updateActiveCases=()=>{
   });
 };
 
-const getPatientList=()=>{
+const getPatientList=(callback)=>{
   fetch(patientListAPI_URL)
   .then(response=>{
 
-    loadingElement.style.display='none';
+    spinner('none');
 
     response.json()
     .then(result=>{
@@ -307,11 +311,11 @@ const getPatientList=()=>{
   })
 };
 
-const getPatientHistory=()=>{
+const getPatientHistory=(callback)=>{
   fetch(patientListHistoryAPI_URL)
   .then(response=>{
 
-    loadingElement.style.display='none';
+    spinner('none');
 
     response.json()
     .then(result=>{
@@ -407,7 +411,7 @@ const getPatientHistory=()=>{
 };
 
 //get announcements from db
-const getAnnouncements=()=>{
+const getAnnouncements=(callback)=>{
   fetch(announcementAPI_URL,{
   }).then(response=>{
     response.json().then(result=>{
@@ -438,7 +442,7 @@ const getAnnouncements=()=>{
           button.addEventListener('click',()=>{
             announcementSection.innerHTML='';
             announcementLoadingElement.style.display='block';
-            fetch(adminAnnouncementAPI_URL, {//send object to the server
+            fetch(adminAnnouncementAPI_URL, { //send object to the server
               method: 'DELETE',
               body: JSON.stringify(announcementid),//make object in json format
               headers: {
@@ -497,7 +501,7 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
   }else{
     editCovidUpdateFormErrorMessage.style.display='none';
     editCovidUpdateForm.reset();
-    loadingElement.style.display=''; 
+    spinner('');
     if(formNotes){
       obj={
         date_updated:formDate,
@@ -573,7 +577,8 @@ addNewCaseForm.addEventListener('submit',(event)=>{
     &&barangay.trim()&&status.trim()){
 
     let patient={};
-    loadingElement.style.display='';
+
+    spinner('');
 
     const newCase=parseInt(newCases.textContent)+1;
     const activeCase=parseInt(activeCases.textContent)+1;
@@ -610,7 +615,7 @@ addNewCaseForm.addEventListener('submit',(event)=>{
       .then(result=>{
         if(result==='patient exist'){
           errorMessage(addNewCaseFormErrorMessage,'Patient already exist!')
-          loadingElement.style.display='none';
+          spinner('none');
         }else{
           newCases.textContent=newCase;
           newCasesTitleModifier(newCase);
@@ -717,7 +722,7 @@ announcementForm.addEventListener('submit', (event) => {
       }
     }).then(response => {
 
-      loadingElement.style.display='none';
+      spinner('none');
       getAnnouncements();
 
       response.text().then(result=>{//get text response from server

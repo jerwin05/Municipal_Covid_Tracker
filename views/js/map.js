@@ -131,15 +131,13 @@ function init(){
 
     map.addLayer(teresaGEOJSON);
 
-    var style 
-    = new ol.style.Style({
+    var style = new ol.style.Style({
         text: new ol.style.Text({
             font: 'bold 14.5px "Open Sans", "Arial Unicode MS", "sans-serif"',
             fill: new ol.style.Fill({color: '#7F7F7F'}),
-            stroke: new ol.style.Stroke({color: '#fff', width: 2}),
+            stroke: new ol.style.Stroke({color: '#fff', width: 2})
         }),
-    })
-    ;
+    });
 
     var styleFunction = (feature)=> {
         style.getText().setText(feature.get('name'));
@@ -213,11 +211,11 @@ function init(){
                 "name": "Poblacion",
                 },
                 "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    121.20279474536595, 
-                    14.562156334590009
-                ]
+                    "type": "Point",
+                    "coordinates": [
+                        121.20279474536595, 
+                        14.562156334590009
+                    ]
                 }
             },
             {
@@ -226,11 +224,11 @@ function init(){
                 "name": "Prinza",
                 },
                 "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    121.21395056628894,
-                    14.539799266351995
-                ]
+                    "type": "Point",
+                    "coordinates": [
+                        121.21395056628894,
+                        14.539799266351995
+                    ]
                 }
             },
             {
@@ -239,11 +237,11 @@ function init(){
                 "name": "San Roque",
                 },
                 "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    121.21470582252093,
-                    14.552316640672384
-                ]
+                    "type": "Point",
+                    "coordinates": [
+                        121.21470582252093,
+                        14.552316640672384
+                    ]
                 }
             },
             {
@@ -252,11 +250,11 @@ function init(){
                 "name": "Dalig",
                 },
                 "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    121.23115009659746,
-                    14.571688019526668
-                ]
+                    "type": "Point",
+                    "coordinates": [
+                        121.23115009659746,
+                        14.571688019526668
+                    ]
                 }
             }
         ]
@@ -268,31 +266,40 @@ function init(){
 
     var vectorLayer = new ol.layer.Vector({
         source: vectorSource,
-        style: styleFunction
+        style: styleFunction,
+        title:'newCase'
     });
+    
     map.addLayer(vectorLayer); 
 
-  // //vector feature popup logic
-  // const overlayContainerElement=document.querySelector('.overlay-container');
-  // const overlayLayer= new ol.Overlay({
-  //     element:overlayContainerElement
-  // })
-  // map.addOverlay(overlayLayer);
-  // const overlayFeatureName=document.getElementById('feature-name');
+    //vector feature popup logic
+    const overlayContainerElement=document.getElementById('mapOverlay');
+    const overlayFeatureName=document.getElementById('newCaseCount');
+    
+    const overlayLayer= new ol.Overlay({
+        element:overlayContainerElement
+    })
+    
+    map.addOverlay(overlayLayer);
 
-  // map.on('click',(e)=>{
-  //     overlayLayer.setPosition(undefined);
-  //     map.forEachFeatureAtPixel(e.pixel,(feature,layer)=>{
-  //         let clickedCoordinate=e.coordinate;
-  //         let clickedFeatureName=feature.get('name');
-  //         overlayLayer.setPosition(clickedCoordinate);
-  //         overlayFeatureName.innerHTML=clickedFeatureName;
-  //     });
-  // });
+    map.on('click',(e)=>{
+        overlayLayer.setPosition(undefined);
+        map.forEachFeatureAtPixel(e.pixel,(feature,layer)=>{
+            let clickedCoordinate=e.coordinate;
+            let clickedFeatureName=feature.get('name');
+            overlayLayer.setPosition(clickedCoordinate);
+            overlayFeatureName.innerHTML=clickedFeatureName;
+        },
+        {
+            layerFilter:function (layerCandidate){
+                return layerCandidate.get('title') ==='newCase'
+            }
+        });
+    });
 
-  // map.addLayer(stamenTerrain); // call a single layer
+    // map.addLayer(stamenTerrain); // call a single layer
 
-//   map.on('click',function(e){
-//       console.log(e.coordinate);// logs coordinates from the location clicked
-//   }) 
+    //   map.on('click',function(e){
+    //       console.log(e.coordinate);// logs coordinates from the location clicked
+    //   }) 
 };

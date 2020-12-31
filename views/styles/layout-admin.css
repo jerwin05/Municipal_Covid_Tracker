@@ -136,6 +136,10 @@ nav {
   line-height: .5;
   border-radius: 5px;
   padding: 1px 0;
+  height: 25px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .main--title {
@@ -961,9 +965,6 @@ nav {
   }
   .map--container {
     width: unset;
-  }
-  .hometab--containers:last-child {
-    margin-bottom: 20px;
   }
 }
 
