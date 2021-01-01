@@ -423,13 +423,6 @@ nav {
   font-size: 11px;
 }
 
-#refresh {
-  position: absolute;
-  top: 12px;
-  left: 45px;
-  z-index: 2;
-}
-
 @-webkit-keyframes navLinksFade {
   from {
     opacity: 0;

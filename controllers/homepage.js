@@ -19,6 +19,18 @@ exports.get_covid_updates=(req,res)=>{
   });
 }
 
+exports.get_new_cases=(req,res)=>{
+   var sql = `SELECT barangay
+      FROM barangay
+      INNER JOIN covid_new_case
+      ON barangay.barangay_id = covid_new_case.barangay_id;`;
+   db.query(sql, (err,result)=> {
+      if(result){
+         res.json(result);
+      }
+   });
+}
+
 exports.get_patient_list=(req,res)=>{
    //update this code write a join query
    var sql = `SELECT covid_patient_details.id,patient_no,age,gender,barangay,status
@@ -46,33 +58,33 @@ exports.get_patient_list_history=(req,res)=>{
       if(result){
          if(result.length){
             result.reverse();
-         const history_list={};
-         let counter=0;
-         let counter1=0;
-         result.forEach((element,index,array)=>{
-            if(index==0){
-               history_list.history_count=1;
-               history_list[`history${++counter}`]={};
-               history_list[`history${counter}`].date_id=element.date_id;
-               history_list[`history${counter}`].date=element.date;
-               history_list[`history${counter}`][`recovered${++counter1}`]={patient_no:element.patient_no,age:element.age,gender:element.gender,barangay:element.barangay};
-               history_list[`history${counter}`].recovered_count=counter1;
-            }else{
-               if(history_list[`history${counter}`].date_id==element.date_id){
-                  history_list[`history${counter}`][`recovered${++counter1}`]={patient_no:element.patient_no,age:element.age,gender:element.gender,barangay:element.barangay};
-                  history_list[`history${counter}`].recovered_count=counter1;
-               }else{
-                  counter1=0;
+            const history_list={};
+            let counter=0;
+            let counter1=0;
+            result.forEach((element,index)=>{
+               if(index==0){
+                  history_list.history_count=1;
                   history_list[`history${++counter}`]={};
-                  history_list.history_count=counter;
                   history_list[`history${counter}`].date_id=element.date_id;
                   history_list[`history${counter}`].date=element.date;
                   history_list[`history${counter}`][`recovered${++counter1}`]={patient_no:element.patient_no,age:element.age,gender:element.gender,barangay:element.barangay};
                   history_list[`history${counter}`].recovered_count=counter1;
+               }else{
+                  if(history_list[`history${counter}`].date_id==element.date_id){
+                     history_list[`history${counter}`][`recovered${++counter1}`]={patient_no:element.patient_no,age:element.age,gender:element.gender,barangay:element.barangay};
+                     history_list[`history${counter}`].recovered_count=counter1;
+                  }else{
+                     counter1=0;
+                     history_list[`history${++counter}`]={};
+                     history_list.history_count=counter;
+                     history_list[`history${counter}`].date_id=element.date_id;
+                     history_list[`history${counter}`].date=element.date;
+                     history_list[`history${counter}`][`recovered${++counter1}`]={patient_no:element.patient_no,age:element.age,gender:element.gender,barangay:element.barangay};
+                     history_list[`history${counter}`].recovered_count=counter1;
+                  }
                }
-            }
-         });
-         res.json(history_list);
+            });
+            res.json(history_list);
          }else{
             res.json({
                message:'no history'

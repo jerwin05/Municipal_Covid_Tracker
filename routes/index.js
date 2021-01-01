@@ -8,6 +8,7 @@ Router
     .get    ('/authenticate-user',      homepage.authenticate_user)
     .get    ('/announcement',           homepage.get_announcement)
     .get    ('/covid-update',           homepage.get_covid_updates)
+    .get    ('/new-cases',              homepage.get_new_cases)
     .get    ('/patient-list',           homepage.get_patient_list)
     .get    ('/patient-list-history',   homepage.get_patient_list_history);
 
