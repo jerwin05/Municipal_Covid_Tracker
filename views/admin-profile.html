@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./openlayers/v6.4.3-dist/ol.css">
     <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/layout-admin.css">
 </head>
 <body>
@@ -111,14 +112,11 @@
                         </div>
                     </section>
                     <section class="tab--containers hometab--containers map--container">
-                        <div class="map--layer">
-                            <h3>Base Layers</h3>
-                            <input type="radio" name='baseLayerRadioButton' value='OSMStandard' checked>Standard<br>
-                            <input type="radio" name='baseLayerRadioButton' value='OSMHumanitarian'>Humanitarian<br>        
-                        </div>
                         <div id="js-map" class='map'></div>
-                        <div id="mapOverlay">
-                            <p id='newCaseCount'></p>
+                        <div class="mapoverlay" id="mapOverlay">
+                            <p class="mapoverlay--newcasecount" id='overlayNewCaseCount'></p>
+                            <p class="mapoverlay--newcasetitle">New Case</p>
+                            <p class="mapoverlay--newbarangay" id='overlayNewCaseCountBarangay'></p>
                         </div>
                     </section>
                 </div>

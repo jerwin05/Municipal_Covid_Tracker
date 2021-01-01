@@ -1,0 +1,44 @@
+.mapoverlay{
+    background-color: #fff;
+    padding:10px 5px;
+
+    position: absolute;
+    top:-120px;
+    left: -46px;
+
+    display:grid;
+    gap: 5px;
+    grid-template-rows: auto auto auto;
+    
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    width: 95px;
+    height: 110px;
+    border-radius: 10px;
+}
+
+.mapoverlay::before{
+    content:'';
+    position: absolute;
+    top: 100%;
+    left:50%;
+    margin-left:-10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.mapoverlay--newcasecount{
+    font-size: 40px;
+    margin-bottom: 2px;
+}
+
+.mapoverlay--newcasetitle{
+    font-size: 12px;
+}
+
+.mapoverlay--newbarangay{
+    font-size: 12px;
+}

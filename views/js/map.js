@@ -5,7 +5,6 @@ function init(){
             projection:'EPSG:4326',
             center:[121.2071937966153, 14.559724584263174],
             zoom:16,
-            // zoom:16.415,
             maxZoom:18,
             minZoom:12,
             // extent: [minx, miny, maxx, maxy]
@@ -14,106 +13,20 @@ function init(){
         target:'js-map'
     });
 
-  //basemaps 
-  const openStreetMapStandard = new ol.layer.Tile({
-      source: new ol.source.OSM(),
-      visible:true,
-      title:'OSMStandard'
-  });
+    //basemaps 
+    const openStreetMapStandard = new ol.layer.Tile({
+        source: new ol.source.OSM(),
+        visible:true,
+        title:'OSMStandard'
+    });
 
-  const openStreetMapHumanitarian= new ol.layer.Tile({
-      source:new ol.source.OSM({
-          url:'http://{a-c}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
-      }),
-      visible:false,
-      title:"OSMHumanitarian"
-  });
+    map.addLayer(openStreetMapStandard);
 
-  const baseLayerGroup= new ol.layer.Group({
-      layers:[
-          openStreetMapStandard,
-          openStreetMapHumanitarian,
-      ]
-  });
-
-  map.addLayer(baseLayerGroup);
-
-  //layer switcher logic for basemaps
-  const baseLayerElements=document.querySelectorAll('.map--layer>input[type=radio]');
-  for (let baseLayerElemet of baseLayerElements){
-      baseLayerElemet.addEventListener('change',()=>{
-          let baseLayerElementValue =this.value;
-          baseLayerGroup.getLayers().forEach((element,index,array)=>{
-              let baseLayerTitle=element.get('title');
-              element.setVisible(baseLayerTitle === baseLayerElementValue);
-          });
-      });
-  };
-
-  //----------------------------------------------------------------------------------------------------------------------------
-
-  // var styles = {
-  //   'GeometryCollection': new ol.style.Style({
-  //     image: new ol.style.Circle({
-  //       radius: 7,
-  //       fill: new ol.style.Fill({
-  //         color:'orange'
-  //       }),
-  //       stroke: new ol.style.Stroke({
-  //         color: 'black',
-  //       })
-  //     })
-  //   })
-  // };
-
-  // var styleFunction = (feature)=> {
-  //   return styles[feature.getGeometry().getType()];
-  // };
-
-  // function getPositiveResidentCoordinates(){
-  //   geojsonObject.features[0].geometry.geometries=[];
-  //   fetch(residentPositiveCoordinatesAPI_URL,{
-  //   }).then(response=>{
-  //     response.json().then(result=>{
-  //       if(result.length){
-  //         let newPoint;
-  //         result.forEach((coordinates)=>{
-  //           newPoint={
-  //             'type':'Point',
-  //             'coordinates':[coordinates.longitude,coordinates.latitude]
-  //           };    
-  //           geojsonObject.features[0].geometry.geometries.push(newPoint);
-  //         });
-  //         vectorSource.clear();
-  //         vectorSource = new ol.source.Vector({
-  //           features: new ol.format.GeoJSON().readFeatures(geojsonObject)
-  //         });
-  //         callvector();
-  //       }
-  //       else{
-  //         vectorSource.clear();
-  //         callvector();
-  //       }
-  //     });
-  //   });
-  // }
-  // getPositiveResidentCoordinates();
-
-  // button.addEventListener('click',()=>{
-  //   getPositiveResidentCoordinates();
-  //   button.textContent='Refreshed';
-  //   setTimeout(()=>{
-  //     button.textContent='Refresh';
-  //   },1000)
-  // });
-
-  //--------------------------------------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------------------------------------------------
 
     // vector layers
     const strokeStyle=new ol.style.Stroke({
         color:'#F4A647',
-        // color:[245, 180, 97, 0.71],
-        // color:'black',
         width:2
     });
 
@@ -132,68 +45,25 @@ function init(){
     map.addLayer(teresaGEOJSON);
 
     var style = new ol.style.Style({
+        image: new ol.style.Circle({
+            radius: 6,
+            fill: new ol.style.Fill({
+                color: '#ffffff'
+            }),
+            stroke: new ol.style.Stroke({
+                color: '#f5b461',
+                width: 5
+            }),
+          }),
         text: new ol.style.Text({
-            font: 'bold 14.5px "Open Sans", "Arial Unicode MS", "sans-serif"',
-            fill: new ol.style.Fill({color: '#7F7F7F'}),
-            stroke: new ol.style.Stroke({color: '#fff', width: 2})
+            font: 'bold 0px "Open Sans"',
         }),
     });
 
     var styleFunction = (feature)=> {
-        style.getText().setText(feature.get('name'));
+        style.getText().setText(feature.get('barangay'));
         return style;
     }
-
-    var currZoom = map.getView().getZoom(); 
-    var weightedZoom=0;
-    var fontSize=14.5;
-    map.on('moveend', (e)=>{
-        var newZoom = map.getView().getZoom();
-
-        // console.log(newZoom);
-
-        if(currZoom>16.415){
-            style = new ol.style.Style({
-                text: new ol.style.Text({
-                    font: 'bold 0px "Open Sans"'
-                })
-            });
-        }
-
-        if (currZoom > newZoom) {
-            if(newZoom<=16.415){
-                // weightedZoom+=1;
-                fontSize=fontSize-(currZoom-newZoom);
-            }
-            currZoom = newZoom;
-        }else if(currZoom<newZoom){
-            if(newZoom<=16.415){
-                // weightedZoom-=1;
-                fontSize=fontSize+(newZoom-currZoom);
-            }
-            currZoom = newZoom;
-        }
-
-        // console.log('before: ',fontSize);
-
-        if(currZoom<=16.415&&currZoom>12.2){
-            style = new ol.style.Style({
-                text: new ol.style.Text({
-                    font: `bold ${fontSize}px "Open Sans", "Arial Unicode MS", "sans-serif"`,
-                    fill: new ol.style.Fill({color: '#8E8E8E'}),
-                    stroke: new ol.style.Stroke({color: '#fff', width: 2})
-                })
-            });
-        }else if(currZoom<=12.2){
-            style = new ol.style.Style({
-                text: new ol.style.Text({
-                    font: 'bold 0px "Open Sans"'
-                })
-            });
-        }
-
-        console.log('after: ',fontSize);
-    });
 
     var geojsonObject = 
         {
@@ -208,7 +78,8 @@ function init(){
             {
                 "type": "Feature",
                 "properties": {
-                "name": "Poblacion",
+                "barangay": "Poblacion",
+                "newCaseCount":''
                 },
                 "geometry": {
                     "type": "Point",
@@ -221,7 +92,8 @@ function init(){
             {
                 "type": "Feature",
                 "properties": {
-                "name": "Prinza",
+                "barangay": "Prinza",
+                "newCaseCount":''
                 },
                 "geometry": {
                     "type": "Point",
@@ -234,7 +106,8 @@ function init(){
             {
                 "type": "Feature",
                 "properties": {
-                "name": "San Roque",
+                "barangay": "San Roque",
+                "newCaseCount":''
                 },
                 "geometry": {
                     "type": "Point",
@@ -247,13 +120,84 @@ function init(){
             {
                 "type": "Feature",
                 "properties": {
-                "name": "Dalig",
+                "barangay": "Dalig",
+                "newCaseCount":''
                 },
                 "geometry": {
                     "type": "Point",
                     "coordinates": [
                         121.23115009659746,
                         14.571688019526668
+                    ]
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                "barangay": "Calumpang Sto Cristo",
+                "newCaseCount":'3'
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        121.20648581495578,
+                        14.559188461392802
+                    ]
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                "barangay": "Dulumbayan",
+                "newCaseCount":''
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        121.20526272764499, 
+                        14.557858085721415
+                    ]
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                "barangay": "May-Iba",
+                "newCaseCount":''
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        121.20660826975435, 
+                        14.56445688154543
+                    ]
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                "barangay": "San Gabriel",
+                "newCaseCount":''
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        121.21130713152817,
+                        14.556701591311798
+                    ]
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                "barangay": "Bagumbayan",
+                "newCaseCount":''
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        121.21864030611829,
+                        14.550742524657448
                     ]
                 }
             }
@@ -274,7 +218,8 @@ function init(){
 
     //vector feature popup logic
     const overlayContainerElement=document.getElementById('mapOverlay');
-    const overlayFeatureName=document.getElementById('newCaseCount');
+    const overlayNewCaseCount=document.getElementById('overlayNewCaseCount');
+    const overlayNewCaseCountBarangay=document.getElementById('overlayNewCaseCountBarangay');
     
     const overlayLayer= new ol.Overlay({
         element:overlayContainerElement
@@ -286,9 +231,11 @@ function init(){
         overlayLayer.setPosition(undefined);
         map.forEachFeatureAtPixel(e.pixel,(feature,layer)=>{
             let clickedCoordinate=e.coordinate;
-            let clickedFeatureName=feature.get('name');
+            let clickedFeatureBarangay=feature.get('barangay');
+            let clickedFeatureNewCaseCount=feature.get('newCaseCount');
             overlayLayer.setPosition(clickedCoordinate);
-            overlayFeatureName.innerHTML=clickedFeatureName;
+            overlayNewCaseCountBarangay.innerHTML=clickedFeatureBarangay;
+            overlayNewCaseCount.innerHTML=clickedFeatureNewCaseCount;
         },
         {
             layerFilter:function (layerCandidate){
@@ -299,7 +246,7 @@ function init(){
 
     // map.addLayer(stamenTerrain); // call a single layer
 
-    //   map.on('click',function(e){
-    //       console.log(e.coordinate);// logs coordinates from the location clicked
-    //   }) 
+    // map.on('click',function(e){
+    //     console.log(e.coordinate);// logs coordinates from the location clicked
+    // }) 
 };

@@ -450,18 +450,6 @@ nav{
   
 }
 
-.map--layer{
-    position: absolute;
-    bottom: 20px;
-    left: 9px;
-    
-    font-size: 13px;
-    z-index: 2;
-    padding:7px;
-    border-radius: 6px;
-    background-color: rgba(255, 255, 255, 0.685);
-}
-
 .ol-attribution li {
     display: inline;
     font-size: 11px;
@@ -904,11 +892,6 @@ nav{
         margin-left: 4px;
         font-size: 25px;
     }    
-    // .map--layer{
-    //         font-size: 18px;
-    //         bottom: 15px;
-    //         left: 15px;
-    // }
     .success-message{
         right: 30;
     }
