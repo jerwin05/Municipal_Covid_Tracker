@@ -238,35 +238,45 @@ function init(){
     
     //--------------------------------------------------------------------------------------------------------------------------------------
 
-    // const getNewCases=()=>{
-    //     fetch(newCaseAPI_URL)
-    //     .then(response=>{
-    //         response.json()
-    //         .then(result=>{
-    //             result.forEach(element=>{
-    //                 geojsonObject.features.forEach(element1=>{
-    //                     if(element.barangay==element1.properties.barangay){
-    //                         // ++element1.properties.newCaseCount;
-    //                     }
-    //                 });
-    //             });
-    //         });
-    //     })
-    // }
 
-    // getNewCases();
+    const newCaseLayer = geojsonObject.features;
+    let newCaseContainer=[];
 
-    var vectorSource = new ol.source.Vector({
-        features: new ol.format.GeoJSON().readFeatures(geojsonObject)
-    });
+    const getNewCases=()=>{
+        fetch(newCaseAPI_URL)
+        .then(response=>{
+            response.json()
+            .then(result=>{
+                newCaseContainer=[...result];
+                newCaseContainer.forEach(count=>{
+                    newCaseLayer.forEach(count1=>{
+                        console.log(count);
+                        if(count.barangay==count1.properties.barangay.toLowerCase()){
+                            count1.properties.newCaseCount=count1.properties.newCaseCount+1;
+                        }
+                    })
+                })
+                
+                var vectorSource = new ol.source.Vector({
+                    features: new ol.format.GeoJSON().readFeatures(geojsonObject)
+                });
 
-    var vectorLayer = new ol.layer.Vector({
-        source: vectorSource,
-        style: styleFunction,
-        title:'newCase'
-    });
-    
-    map.addLayer(vectorLayer); 
+                var vectorLayer = new ol.layer.Vector({
+                    source: vectorSource,
+                    style: styleFunction,
+                    title:'newCase'
+                });
+                
+                map.addLayer(vectorLayer); 
+            });
+        });
+    }
+
+    getNewCases();
+
+    // console.log(geojsonObject.features[5].properties.barangay);
+    // console.log(geojsonObject.features[5].properties.newCaseCount);
+
 
     // map.addLayer(stamenTerrain); // call a single layer
 
