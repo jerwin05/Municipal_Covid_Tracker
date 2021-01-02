@@ -1,5 +1,5 @@
 //module imports here
-import {errorMessage} from './common.js';
+import {errorMessage} from './module.js';
 
 //get elements here
 const newCases=document.getElementById('newCases');
@@ -36,6 +36,7 @@ const loadingElement=document.getElementById('loadingElement');
 const announcementLoadingElement=document.getElementById('announcementLoadingElement');
 const main=document.getElementById('main');
 
+const postContainer = document.getElementById('postContainer');
 const body=document.querySelector('body');
 const overlay=document.getElementById('overlay');
 const successMessage=document.getElementById('successMessage');
@@ -738,8 +739,10 @@ announcementForm.addEventListener('submit', (event) => {
   } else {
     postAnnouncementErrorMessage.textContent='Title and Body are required!';
     postAnnouncementErrorMessage.style.display='block';
+    postContainer.style.height='45.5vh';
     setTimeout(()=>{
       postAnnouncementErrorMessage.style.display='none';
+      postContainer.style.height='39vh';
     },3000);
   }
 });

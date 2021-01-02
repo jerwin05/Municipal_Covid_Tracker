@@ -1,5 +1,5 @@
 //module imports
-import {errorMessage,capitalize,registerSuccess} from './common.js';
+import {errorMessage,capitalize,registerSuccess} from './module.js';
 
 //get elemets here
 const errorElement = document.getElementById('error-message');

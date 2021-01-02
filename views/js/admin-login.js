@@ -1,5 +1,5 @@
 //module imports here
-import {errorMessage} from './common.js';
+import {errorMessage} from './module.js';
 
 //get elements here
 const errorElement = document.getElementById('error-message');

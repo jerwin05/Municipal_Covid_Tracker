@@ -1,17 +1,8 @@
-const errorMessage=(errorElement,message)=>{
-    errorElement.textContent=message;
-    errorElement.style.display='block';
-}
+const block2 = document.querySelector('.block2');
 
-const registerSuccess=(form,errorElement,successElement,message)=>{
-  form.style.display='none';
-  successElement.textContent=message;
-  successElement.style.display='block';
-  errorElement.style.display='none';
-}
+let height = block2.offsetHeight;
 
-const capitalize=(str)=>{
-  return str.replace(/^./, str[0].toUpperCase());
-}
+let windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
-export {errorMessage,capitalize,registerSuccess};
+console.log(height);
+console.log(windowHeight);
