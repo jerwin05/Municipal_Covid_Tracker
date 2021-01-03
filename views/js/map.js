@@ -81,7 +81,7 @@ function init(){
             {
                 "type": "Feature",
                 "properties": {
-                "barangay": "Poblacion",
+                "barangay": "poblacion",
                 "newCaseCount":0
                 },
                 "geometry": {
@@ -95,7 +95,7 @@ function init(){
             {
                 "type": "Feature",
                 "properties": {
-                "barangay": "Prinza",
+                "barangay": "prinza",
                 "newCaseCount":0
                 },
                 "geometry": {
@@ -109,7 +109,7 @@ function init(){
             {
                 "type": "Feature",
                 "properties": {
-                "barangay": "San Roque",
+                "barangay": "san roque",
                 "newCaseCount":0
                 },
                 "geometry": {
@@ -123,7 +123,7 @@ function init(){
             {
                 "type": "Feature",
                 "properties": {
-                "barangay": "Dalig",
+                "barangay": "dalig",
                 "newCaseCount":0
                 },
                 "geometry": {
@@ -137,7 +137,7 @@ function init(){
             {
                 "type": "Feature",
                 "properties": {
-                "barangay": "Calumpang Sto Cristo",
+                "barangay": "calumpang sto cristo",
                 "newCaseCount":0
                 },
                 "geometry": {
@@ -151,7 +151,7 @@ function init(){
             {
                 "type": "Feature",
                 "properties": {
-                "barangay": "Dulumbayan",
+                "barangay": "dulumbayan",
                 "newCaseCount":0
                 },
                 "geometry": {
@@ -165,7 +165,7 @@ function init(){
             {
                 "type": "Feature",
                 "properties": {
-                "barangay": "May-Iba",
+                "barangay": "may-iba",
                 "newCaseCount":0
                 },
                 "geometry": {
@@ -179,7 +179,7 @@ function init(){
             {
                 "type": "Feature",
                 "properties": {
-                "barangay": "San Gabriel",
+                "barangay": "san gabriel",
                 "newCaseCount":0
                 },
                 "geometry": {
@@ -193,7 +193,7 @@ function init(){
             {
                 "type": "Feature",
                 "properties": {
-                "barangay": "Bagumbayan",
+                "barangay": "bagumbayan",
                 "newCaseCount":0
                 },
                 "geometry": {
@@ -247,7 +247,7 @@ function init(){
             .then(result=>{
                 result.forEach(count=>{
                     newCaseLayer.forEach(count1=>{
-                        if(count.barangay==count1.properties.barangay.toLowerCase()){
+                        if(count.barangay==count1.properties.barangay){
                             count1.properties.newCaseCount=count1.properties.newCaseCount+1;
                         }
                     })

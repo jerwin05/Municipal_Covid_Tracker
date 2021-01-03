@@ -1,6 +1,6 @@
-const body=document.querySelector('body');
 const borderBottom=document.getElementById('border--bottom');
 const main=document.getElementById('main');
+const body=document.querySelector('body');
 
 var homeScrollTop=0;
 var profileScrollTop=0;
@@ -14,15 +14,20 @@ function openTab(pageName) {
     if(pageName=='ProfileTab'){
         borderBottom.className += " tab--slide";
         main.className += " page--slide";
+        // main.style.height='100vh';
         homeScrollTop=body.scrollTop;
         if(!counter){
             body.scrollTop=0;
+            // window.scrollTo(0, 0);
             counter++;
         }else{
+            // window.scrollTo(0, profileScrollTop);
             body.scrollTop=profileScrollTop;
         }
     }else{
         profileScrollTop=body.scrollTop;
+        // window.scrollTo(0, hokmeScrollTop);
+        // main.style.height='unset';
         body.scrollTop=homeScrollTop;
     }
 }
