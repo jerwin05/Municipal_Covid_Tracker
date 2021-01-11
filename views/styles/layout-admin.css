@@ -597,6 +597,10 @@ nav {
   margin-bottom: 10px;
 }
 
+.post--container {
+  height: 260px;
+}
+
 .post--container form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -917,7 +921,6 @@ nav {
     -ms-grid-row: 2;
     -ms-grid-column: 2;
     grid-area: postannouncement;
-    height: 39vh;
   }
   .profile--options {
     position: absolute;
@@ -1027,8 +1030,6 @@ nav {
   }
   .block3 {
     margin-left: 0;
-    overflow-y: scroll;
-    height: 86vh;
   }
   .announcement--section {
     height: 58vh;

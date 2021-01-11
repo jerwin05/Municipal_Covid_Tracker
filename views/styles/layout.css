@@ -689,8 +689,6 @@ nav {
   }
   .block3 {
     margin-left: 0;
-    overflow-y: scroll;
-    height: 86vh;
   }
   .announcement--section {
     height: 58vh;
@@ -699,7 +697,4 @@ nav {
     margin-bottom: 0;
   }
 }
-
-/* @media only screen and (min-width: 401px) and (max-width: 400px) {
-} */
 /*# sourceMappingURL=layout.css.map */

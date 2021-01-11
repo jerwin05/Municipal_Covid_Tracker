@@ -739,10 +739,10 @@ announcementForm.addEventListener('submit', (event) => {
   } else {
     postAnnouncementErrorMessage.textContent='Title and Body are required!';
     postAnnouncementErrorMessage.style.display='block';
-    postContainer.style.height='45.5vh';
+    postContainer.style.height='300px';
     setTimeout(()=>{
       postAnnouncementErrorMessage.style.display='none';
-      postContainer.style.height='39vh';
+      postContainer.style.height='260px';
     },3000);
   }
 });
