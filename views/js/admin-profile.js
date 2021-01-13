@@ -477,6 +477,9 @@ getAnnouncements();
 getProfile();
 getCovidUpdates();
 
+
+
+
 editCovidUpdateForm.addEventListener('submit',(event)=>{
   event.preventDefault();
   const formData = new FormData(editCovidUpdateForm);
@@ -491,10 +494,13 @@ editCovidUpdateForm.addEventListener('submit',(event)=>{
   
   let obj={};  
 
-  const newDate=new Date(formDate);
-  const oldDate=new Date(covidUpdateDate.textContent);
+  // const pastDate=new Date(covidUpdateDate.textContent);
+  const currentDate=new Date(formDate);
+  const dateCap = new Date();
+  // dateCap.setDate(dateCap.getDate() + 1);
+  dateCap.setHours(23,59,59);
 
-  if(newDate<oldDate){
+  if(currentDate>dateCap){//checks if the users entered a date in the future
     editCovidUpdateFormErrorMessage.style.display='block';
     setTimeout(()=>{
       editCovidUpdateFormErrorMessage.style.display='none';
