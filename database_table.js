@@ -1,31 +1,31 @@
-exports.create_table_one=(callback)=>{
-  // var sql = `CREATE TABLE admin (
-  //   id INT NOT NULL AUTO_INCREMENT,
-  //   first_name VARCHAR(30) NOT NULL,
-  //   last_name VARCHAR(30) NOT NULL,
-  //   middle_name VARCHAR(30) NOT NULL,
-  //   mob_no VARCHAR(11) NOT NULL,
-  //   admin_id VARCHAR(20) NOT NULL,
-  //   user_name VARCHAR(50) NOT NULL,
-  //   password VARCHAR(50) NOT NULL,
-  //   PRIMARY KEY (id));`;
-  // db.query(sql, (err,result)=> {
-  //   if(result){
-  //     var sql = `CREATE TABLE covid_updates (
-  //       id INT NOT NULL AUTO_INCREMENT,
-  //       probable VARCHAR(12) NOT NULL,
-  //       death VARCHAR(12) NOT NULL,
-  //       new_cases VARCHAR(12) NOT NULL,
-  //       active_cases VARCHAR(12) NOT NULL,
-  //       suspected VARCHAR(12) NOT NULL,
-  //       tested_negative VARCHAR(12) NOT NULL,
-  //       confirmed_cases VARCHAR(12) NOT NULL,
-  //       recovered VARCHAR(12) NOT NULL,
-  //       date_updated VARCHAR(100) NOT NULL,
-  //       notes VARCHAR(2000) NULL,
-  //       PRIMARY KEY (id));`;
-  //     db.query(sql, (err,result)=> {
-  //       if(result){
+exports.create_table_one=()=>{
+  var sql = `CREATE TABLE admin (
+    id INT NOT NULL AUTO_INCREMENT,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    middle_name VARCHAR(30) NOT NULL,
+    mob_no VARCHAR(11) NOT NULL,
+    admin_id VARCHAR(20) NOT NULL,
+    user_name VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id));`;
+  db.query(sql, (err,result)=> {
+    if(result){
+      var sql = `CREATE TABLE covid_updates (
+        id INT NOT NULL AUTO_INCREMENT,
+        probable VARCHAR(12) NOT NULL,
+        death VARCHAR(12) NOT NULL,
+        new_cases VARCHAR(12) NOT NULL,
+        active_cases VARCHAR(12) NOT NULL,
+        suspected VARCHAR(12) NOT NULL,
+        tested_negative VARCHAR(12) NOT NULL,
+        confirmed_cases VARCHAR(12) NOT NULL,
+        recovered VARCHAR(12) NOT NULL,
+        date_updated VARCHAR(100) NOT NULL,
+        notes VARCHAR(2000) NULL,
+        PRIMARY KEY (id));`;
+      db.query(sql, (err,result)=> {
+        if(result){
           var sql = `CREATE TABLE barangay (
             barangay_id INT NOT NULL AUTO_INCREMENT,
             barangay TEXT NOT NULL,
@@ -53,7 +53,6 @@ exports.create_table_one=(callback)=>{
                   db.query(sql, (err,result)=> {
                     if(result){
                       console.log('create part one table complete');
-                      callback();
                     }
                   });
                 }
@@ -61,10 +60,10 @@ exports.create_table_one=(callback)=>{
             }
           });
         }
-//       });
-//     }
-//   });
-// }
+      });
+    }
+  });
+}
 
 exports.create_table_two=()=>{
   let currentDate=new Date().toString().substring(4, 16);
