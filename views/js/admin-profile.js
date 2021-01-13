@@ -577,62 +577,77 @@ addNewCaseForm.addEventListener('submit',(event)=>{
   if(patient_number.trim()&&age.trim()&&gender.trim()
     &&barangay.trim()&&status.trim()){
 
-    let patient={};
+    if(gender=='male'||gender=='female'){
 
-    spinner('');
+      if(barangay=='dulumbayan'||barangay=='may-iba'||barangay=='prinza'||barangay=='poblacion'||barangay=='san gabriel'||barangay=='san roque'||barangay=='bagumbayan'||barangay=='calumpang sto cristo'||barangay=='dalig'){
 
-    const newCase=parseInt(newCases.textContent)+1;
-    const activeCase=parseInt(activeCases.textContent)+1;
-    
-    if(status.toLowerCase()=='admitted'||status.toLowerCase()=='strict isolation'){
-      patient = {//put announcement into object
-        patient_no:patient_number,
-        age:age,
-        gender:gender,
-        barangay:barangay,
-        status:status,
-        'new_case':newCase,
-        'active_case':activeCase
-      };
-    }else{
-      patient = {//put announcement into object
-        patient_no:patient_number,
-        age:age,
-        gender:gender,
-        barangay:barangay,
-        status:status,
-        'new_case':newCase
-      };
-    }
+        if(status=='admitted'||status=='strict isolation'||status=='recovered'){
 
-    fetch(adminPatientListAPI_URL, {//send object to the server
-      method: 'POST',
-      body: JSON.stringify(patient),//make object in json format
-      headers: {
-        'content-type': 'application/json'
-      }
-    }).then(response=>{
-      response.text()
-      .then(result=>{
-        if(result==='patient exist'){
-          errorMessage(addNewCaseFormErrorMessage,'Patient already exist!')
-          spinner('none');
+          let patient={};
+
+          spinner('');
+
+          const newCase=parseInt(newCases.textContent)+1;
+          const activeCase=parseInt(activeCases.textContent)+1;
+          
+          if(status=='admitted'||status=='strict isolation'){
+            patient = {//put announcement into object
+              patient_no:patient_number,
+              age:age,
+              gender:gender,
+              barangay:barangay,
+              status:status,
+              'new_case':newCase,
+              'active_case':activeCase
+            };
+          }else{
+            patient = {//put announcement into object
+              patient_no:patient_number,
+              age:age,
+              gender:gender,
+              barangay:barangay,
+              status:status,
+              'new_case':newCase
+            };
+          }
+
+          fetch(adminPatientListAPI_URL, {//send object to the server
+            method: 'POST',
+            body: JSON.stringify(patient),//make object in json format
+            headers: {
+              'content-type': 'application/json'
+            }
+          }).then(response=>{
+            response.text()
+            .then(result=>{
+              if(result==='patient exist'){
+                errorMessage(addNewCaseFormErrorMessage,'Patient already exist!')
+                spinner('none');
+              }else{
+                newCases.textContent=newCase;
+                newCasesTitleModifier(newCase);
+                activeCasesTitleModifier(activeCase);
+                activeCases.textContent=activeCase;
+
+                loadSpinner(covidPatientList);
+                addNewCaseFormErrorMessage.style.display='none';
+                addNewCaseFormContainer.style.display='none';
+                addNewCaseForm.reset();
+                getPatientList();
+              }
+            });
+          });
         }else{
-          newCases.textContent=newCase;
-          newCasesTitleModifier(newCase);
-          activeCasesTitleModifier(activeCase);
-          activeCases.textContent=activeCase;
-
-          loadSpinner(covidPatientList);
-          addNewCaseFormErrorMessage.style.display='none';
-          addNewCaseFormContainer.style.display='none';
-          addNewCaseForm.reset();
-          getPatientList();
+          errorMessage(addNewCaseFormErrorMessage,'Invalid input!');
         }
-      });
-    });
+      }else{
+        errorMessage(addNewCaseFormErrorMessage,'Invalid input!');
+      }
+    }else{
+      errorMessage(addNewCaseFormErrorMessage,'Invalid input!');
+    }
   }else{
-    errorMessage(addNewCaseFormErrorMessage,'Please supply the missing fields!')
+    errorMessage(addNewCaseFormErrorMessage,'Please supply the missing fields!');
   }
 });
 

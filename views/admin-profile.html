@@ -84,10 +84,33 @@
                         <form id='addNewCaseForm' class="addpatientform main--body" role='form' method="POST">
                             <p id="addNewCaseFormErrorMessage" class="addpatientform--errormessage"></p>
                             <input name="patient_number" placeholder="patient number" type="text">
-                            <input name="age" placeholder="age" min="0" type="number">
-                            <input name="gender" placeholder="gender" type="text">
-                            <input name="barangay" placeholder="barangay" type="text">
-                            <input name="status" placeholder="status" type="text">
+                            <input name="age" placeholder="age" min="1" type="number">
+                            <!-- <input name="gender" placeholder="gender" type="text"> -->
+                            <!-- <input name="barangay" placeholder="barangay" type="text"> -->
+                            <!-- <input name="status" placeholder="status" type="text"> -->
+                            <input list="sex" placeholder="gender" name="gender">
+                            <input list="barangay" placeholder="barangay" name="barangay">
+                            <input list="status" placeholder="status" name="status">
+                            <datalist id="sex">
+                              <option value="Male">
+                              <option value="Female">
+                            </datalist>
+                            <datalist id="barangay">
+                              <option value="dulumbayan">
+                              <option value="may-iba">
+                              <option value="prinza">
+                              <option value="san gabriel">
+                              <option value="san roque">
+                              <option value="dalig">
+                              <option value="calumpang sto cristo">
+                              <option value="bagumbayan">
+                              <option value="poblacion">
+                            </datalist>
+                            <datalist id="status">
+                              <option value="admitted">
+                              <option value="strict isolation">
+                              <option value="recovered">
+                            </datalist>
                             <div class="addpatientbutton--container">
                                 <button class=" profile--button blue--button" type="submit">Add</button>
                                 <button id="addNewCaseCancelButton" class=" profile--button blue--button" type="button">Cancel</button>

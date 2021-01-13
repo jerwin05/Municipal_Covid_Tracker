@@ -13,14 +13,14 @@ const table = require('./database_table')
 const options={  
   port     : 3306,
 
-  // host     : 'localhost',
-  // user     : 'root',
-  // password : 'a09287811206',
-  // database : 'brgy'
-  host     : 'sql12.freemysqlhosting.net',
-  user     : 'sql12380309',
-  password : 'dAdhjVcnd8',
-  database : 'sql12380309'
+  host     : 'localhost',
+  user     : 'root',
+  password : 'a09287811206',
+  database : 'brgy'
+  // host     : 'sql12.freemysqlhosting.net',
+  // user     : 'sql12380309',
+  // password : 'dAdhjVcnd8',
+  // database : 'sql12380309'
 };
 let connection = mysql.createConnection(options);
 let sessionStore = new MySQLStore({}, connection);
@@ -66,10 +66,6 @@ app.use(session({
 }));
 
 db.query('SELECT id,user_name FROM admin;',(err,res)=>{
-  console.log(res);
-});
-
-db.query('SHOW TABLES',(err,res)=>{
   console.log(res);
 });
 

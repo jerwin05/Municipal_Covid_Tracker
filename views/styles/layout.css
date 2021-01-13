@@ -694,7 +694,7 @@ nav {
     height: 58vh;
   }
   .container:last-child {
-    margin-bottom: 0;
+    margin-bottom: 30px;
   }
 }
 /*# sourceMappingURL=layout.css.map */
