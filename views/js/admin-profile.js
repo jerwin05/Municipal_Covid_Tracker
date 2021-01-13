@@ -477,9 +477,6 @@ getAnnouncements();
 getProfile();
 getCovidUpdates();
 
-
-
-
 editCovidUpdateForm.addEventListener('submit',(event)=>{
   event.preventDefault();
   const formData = new FormData(editCovidUpdateForm);

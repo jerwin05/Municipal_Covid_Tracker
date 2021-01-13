@@ -498,7 +498,7 @@ nav {
   font-size: 11px;
 }
 
-.profile--tab {
+.profile--tabinnercontainer {
   position: relative;
   height: 100%;
 }
@@ -884,7 +884,7 @@ nav {
 }
 
 @media only screen and (min-width: 735px) {
-  .profile--tab {
+  .profile--tabinnercontainer {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: 1fr 1fr;
@@ -1020,6 +1020,13 @@ nav {
   }
 }
 
+@media only screen and (min-width: 1000px) {
+  .profile--tabinnercontainer {
+    width: 900px;
+    margin: 0 auto;
+  }
+}
+
 @media only screen and (min-width: 1125px) {
   .block23--container {
     display: -ms-grid;
@@ -1035,7 +1042,10 @@ nav {
     height: 58vh;
   }
   .hometab--containers:last-child {
-    margin-bottom: 30px;
+    margin-bottom: 30;
+  }
+  .profile--tabinnercontainer {
+    margin-top: 10px;
   }
 }
 /*# sourceMappingURL=layout-admin.css.map */

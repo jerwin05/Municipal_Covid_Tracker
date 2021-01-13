@@ -146,52 +146,54 @@
             </div>
         </div>
         <div id="ProfileTab" class="tab--contents profile--tab">
-            <section class="tab--containers profiletab--containers profile--container"> 
-                <div id="profile"></div>
-            </section>
-            <section class="tab--containers profiletab--containers editcovidupdate--container"> 
-                <p id="editCovidUpdateFormErrorMessage" class="editcovidupdateform--errormessage">Invalid Date!</p>
-                <form id='editCovidUpdateForm' method="put">
-                    <label for="date">Date
-                        <input class="form--element" type="text" name="date" id="editDate">
-                    </label>
-                    <label for="suspected">Suspected
-                        <input class="form--element" type="number" min="0" name="suspected" id="editSuspected">
-                    </label>
-                    <label for="probable">Probable
-                        <input class="form--element" type="number" min="0" name="probable" id="editProbable">
-                    </label>
-                    <label for="confirmedCases">Confirmed Cases
-                        <input class="form--element" type="number" min="0" name="confirmedCases" id="editConfirmedCases">
-                    </label>
-                    <label for="testedNegative">Tested Negative
-                        <input class="form--element" type="number" min="0" name="testedNegative" id="editTestedNegative">
-                    </label>
-                    <label for="recovered">Recovered
-                        <input class="form--element" type="number" min="0" name="recovered" id="editRecovered">
-                    </label>
-                    <label for="death">Death
-                        <input class="form--element" type="number" min="0" name="death" id="editDeath">
-                    </label>
-                    <label for="notes">Notes (Optional)
-                        <textarea class="form--element" name="notes" placeholder=""></textarea>
-                    </label>
-                    <button class='form--element profile--button blue--button' type="submit">Submit</button>
-                </form>
-            </section>
-            <section id="postContainer" class="tab--containers profiletab--containers post--container">
-                <form id='announcementForm' role="form" method="post">
-                    <h3 class="form--element announcementform--element main--title">Post announcement</h3>
-                    <div class="form--element announcementform--element error-message" id="postAnnouncementErrorMessage"></div>
-                    <input class="form--element announcementform--element" type="text" name="Title" placeholder="Title">
-                    <textarea class="form--element announcementform--element  " name="Body" placeholder="Body"></textarea>
-                    <button class="form--element announcementform--element profile--button blue--button" id='postAnnouncementButton' type="submit">Post</button>
-                </form>
-            </section>
-            <div class='profile--options'>
-                <button class="profile--button blue--button" id="logout" type="button">Logout</button>
-                <button class="profile--button blue--button" id="deleteAccount" type="button">Delete my Account</button>
-            </div>  
+            <div class="profile--tabinnercontainer">
+                <section class="tab--containers profiletab--containers profile--container"> 
+                    <div id="profile"></div>
+                </section>
+                <section class="tab--containers profiletab--containers editcovidupdate--container"> 
+                    <p id="editCovidUpdateFormErrorMessage" class="editcovidupdateform--errormessage">Invalid Date!</p>
+                    <form id='editCovidUpdateForm' method="put">
+                        <label for="date">Date
+                            <input class="form--element" type="text" name="date" id="editDate">
+                        </label>
+                        <label for="suspected">Suspected
+                            <input class="form--element" type="number" min="0" name="suspected" id="editSuspected">
+                        </label>
+                        <label for="probable">Probable
+                            <input class="form--element" type="number" min="0" name="probable" id="editProbable">
+                        </label>
+                        <label for="confirmedCases">Confirmed Cases
+                            <input class="form--element" type="number" min="0" name="confirmedCases" id="editConfirmedCases">
+                        </label>
+                        <label for="testedNegative">Tested Negative
+                            <input class="form--element" type="number" min="0" name="testedNegative" id="editTestedNegative">
+                        </label>
+                        <label for="recovered">Recovered
+                            <input class="form--element" type="number" min="0" name="recovered" id="editRecovered">
+                        </label>
+                        <label for="death">Death
+                            <input class="form--element" type="number" min="0" name="death" id="editDeath">
+                        </label>
+                        <label for="notes">Notes (Optional)
+                            <textarea class="form--element" name="notes" placeholder=""></textarea>
+                        </label>
+                        <button class='form--element profile--button blue--button' type="submit">Submit</button>
+                    </form>
+                </section>
+                <section id="postContainer" class="tab--containers profiletab--containers post--container">
+                    <form id='announcementForm' role="form" method="post">
+                        <h3 class="form--element announcementform--element main--title">Post announcement</h3>
+                        <div class="form--element announcementform--element error-message" id="postAnnouncementErrorMessage"></div>
+                        <input class="form--element announcementform--element" type="text" name="Title" placeholder="Title">
+                        <textarea class="form--element announcementform--element  " name="Body" placeholder="Body"></textarea>
+                        <button class="form--element announcementform--element profile--button blue--button" id='postAnnouncementButton' type="submit">Post</button>
+                    </form>
+                </section>
+                <div class='profile--options'>
+                    <button class="profile--button blue--button" id="logout" type="button">Logout</button>
+                    <button class="profile--button blue--button" id="deleteAccount" type="button">Delete my Account</button>
+                </div>      
+            </div>
         </div>
     </div>
     <div id="loadingElement" class="loading--element">
