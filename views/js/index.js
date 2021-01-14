@@ -183,6 +183,7 @@ const getAnnouncements=()=>{
         const title = document.createElement('h3');
         const date = document.createElement('small');
 
+        div.className='announcement--post';
         body.textContent = announcement.body;
         title.className = 'announcement--element main--heading';
         body.className = 'announcement--element main--body';

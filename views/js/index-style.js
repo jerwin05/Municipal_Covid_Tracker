@@ -1,9 +1,9 @@
 const burger=document.getElementById('burger');
 const navSide=document.getElementById('navSide');
-const navOptions=document.getElementById('nav-options');
+const navOptions=document.getElementById('nav--options');
 
 burger.addEventListener('click',()=>{
-    const navLinks= document.querySelectorAll('.nav-options li');
+    const navLinks= document.querySelectorAll('.nav--options li');
     navOptions.classList.toggle('navoptions-active');
     burger.classList.toggle('toggle');
     navSide.classList.toggle('nav--side-active');
@@ -19,7 +19,7 @@ burger.addEventListener('click',()=>{
 });
 
 navSide.addEventListener('click',()=>{
-    const navLinks= document.querySelectorAll('.nav-options li');
+    const navLinks= document.querySelectorAll('.nav--options li');
     navOptions.classList.toggle('navoptions-active');
     burger.classList.toggle('toggle');
     navSide.classList.toggle('nav--side-active');

@@ -1,29 +1,10 @@
-.noHighlight{
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
 nav{
-    background-color: #f5e9b0;
-    z-index: 3;
-    
     display: flex;
 
     padding: 13px 20px;
     width: 100%;
 
     border-radius: 0 0 7px 7px;
-
-    font-size: 22px;
-
-    position: fixed;
-    top: 0;
-    left: 0;
 }
 
 .burger{
@@ -49,7 +30,7 @@ nav{
     }
 }
 
-.nav-options{
+.nav--options{
     background-image: url(../images/patternpad.jpeg);
     background-position: -174px 0;
     background-repeat: no-repeat;
@@ -66,10 +47,8 @@ nav{
     left: -255;
     top: 0;
 
-    display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 
     transition: left .5s ease;
 
@@ -88,7 +67,7 @@ nav{
     display: none;
 }
 
-.nav-options>li{
+.nav--options>li{
     margin:10px 0;
 }
 
@@ -126,66 +105,12 @@ nav{
 }
 
 .loading--element{
-    position: fixed;
-    top: 0;
-    left: 0;
-
     height: 100vh;
     width: 100vw;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img{
-        height: 50px;
-        width: 50px;
-    }
-}
-
-.customscrollbar::-webkit-scrollbar{
-    width: 3px;   
-}
-
-.customscrollbar::-webkit-scrollbar-track {
-    background:transparent; 
-}
-
-.customscrollbar::-webkit-scrollbar-thumb {
-    background: rgba(136, 136, 136, 0.274); 
-    // background:black;
-    // background:#f5b461;
-    border-radius:5px;
-}
-
-.customscrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(85, 85, 85, 0.582); 
-}
-
-.transparent--customscrollbar::-webkit-scrollbar{
-    width: 0;   
 }
 
 .main{
     padding: 103px 15px 0;
-}
-
-.main--title{
-    font-size: 24px;
-    padding-bottom:15px;
-}
-
-.main--heading{
-    h3{
-        font-size:18px;
-    }
-}
-.main--body{
-    p,pre{
-        font-size: 16px;
-    }
-    small{
-        font-size: 14px;
-    }
 }
 
 .section--container{
@@ -203,86 +128,16 @@ nav{
     margin-bottom: 20px;
 }
 
-.covidupdate--heading{
-    line-height: 1.3;
-}
-
-.covidupdate--date{
-    display: block;
-    font-weight: 400;
-    text-decoration: underline;
-    font-size: 16px;
-}
-
-.covidupdate--section{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    align-items: center;
-    justify-items: center;
-    gap: 10px;
-}
-
 .covidupdate{
-    background-color: white;
-    padding: 10px;
-    line-height: 1.2;
-    border-radius: 5px;
     height: 14vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.covidupdate--title{
-    font-size: 15px;
-}
-
-.covidupdate--count{
-    font-size: 43px;
-}
-
-.block2{
-    padding-bottom: 5px;
 }
 
 .nopatient{
     margin: 50px 0 50px;
 }
 
-.notes--heading{
-    font-size: 18px;
-    font-weight: normal;
-}
-
-.notes{
-    font-size: 14px;
-    border: 1px solid #f5b461;
-    border-radius: 5px;
-    padding: 15px;
-}
-
 .covidpatientlist--container>div{
     margin-bottom: 30px;
-}
-
-.covidpatientlist>div,.covidpatientlist--title{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 5px;
-}
-
-.covidpatientlist--title{
-    margin-bottom: 5px;
-    padding: 6px;
-    h3{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
 }
 
 .covidpatientlist--title>div{
@@ -291,78 +146,18 @@ nav{
     }
 }
 
-.covidpatientlist{
-    p{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-}
-
 .covidpatientlist>div:first-child{
     border-top: 1px solid black;
 }
 
-.covidpatientlist>div{
-    border-bottom: 1px solid black;
-    padding: 6px;
-    line-height: 1.2;
-    div p{
-        justify-content: flex-start;
-    }
-}
-
-.covidpatientlist--patientdetails{
-    h3{
-        display: none;
-    }
-    p{
-        display: inline;
-    }
-    p:last-child{
-        margin-left: 7px;
-    }
-}
-
-.history--date{
-    display: block;
-    margin-bottom: 10px;
-    font-size: 19px;   
-}
 .history--people{
-    margin-bottom: 25px;
-    display: grid;
-    grid-template-columns: .7fr .3fr .5fr 1.2fr;
-    gap :5px;
-}
-
-.announcement--heading{
-    border-bottom: 2px solid black;
+    margin-bottom: 35px;
 }
 
 .announcement--section{
-    height: 67vh;
-    overflow-y: scroll;
-    margin-top:10px;
-
     div:first-child{
         margin-top: 5px;
     }
-    div{
-        padding:0 8px;
-        margin: 22px 7px 0;
-        border-left: 1px solid #f5b461;
-    }
-    pre{
-        line-height: 1.3;
-    }
-}
-
-.announcement--element{
-    display: block;
-    margin-bottom: 10px;
-    line-height: 15px;
 }
 
 .announcement--element:nth-child(2){
@@ -374,15 +169,7 @@ nav{
 }
 
 .map--container{
-    position: relative;
-    width: 100%;
-    height: 70vh;
     padding: 0;
-}
-
-.ol-attribution li {
-    display: inline;
-    font-size: 11px;
 }
 
 @keyframes navLinksFade{
@@ -402,31 +189,6 @@ nav{
     }
 }
 
-@media only screen and (min-width: 445px) {
-    .history--people{
-        grid-template-columns: .7fr .3fr .7fr 1.8fr;
-    }    
-}
-
-@media only screen and (min-width: 507px) {
-    .covidupdate{
-        height: 100%;
-    }
-    .covidpatientlist--title > div{
-        h3{
-            text-align: center;
-        }
-    }
-    .covidpatientlist>div{
-        div p{
-            justify-content: center;
-        }
-        div{
-            text-align: center;
-        }
-    }
-}
-
 @media only screen and (min-width:616px) {
     .heading{
         padding-top:5px;
@@ -436,7 +198,6 @@ nav{
     }
 
 }
-
 
 @media only screen and (min-width: 650px) {
     .burger{
@@ -454,80 +215,21 @@ nav{
 }
 
 @media only screen and (min-width:680px) {
-    .covidpatientlist--table-grid{
-        display: grid;
-    }
-    .covidpatientlist--table-templatecolumns{
-        grid-template-columns: 1fr 1fr;
-        div{
-            grid-template-columns: 1fr 2fr;
-        }
-    }
-    .covidpatientlist--patientdetails{
-        h3{
-            display: block;
-        }
-    }
     .covidpatientlist>div,.covidpatientlist--title{
-        grid-template-columns: 2.5fr 1fr 1fr;
-        h3{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        p{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    }
-}
-
-@media only screen and (min-width:700px) {
-    .main--title{
-        font-size: 1.4em;
-    }
-    .main--heading{
-        h3{
-            font-size: 1.1em;
-        }
-    }
-    .main--body{
-        p,pre{
-            font-size: 15.5px;
-        }
-        small{
-            font-size: 13px;
-        }
+        grid-template-columns: 2.9fr 1fr 1fr;
     }
 }
 
 @media only screen and (min-width: 800px) {
-    .main{
-        position: relative;
-    }
     .container {
         margin-bottom: 30px;
-    }
-    .block2,.block3{
-        margin-left: 220px;
     }
     .covidupdate--container{
         position: fixed;
         width: 200px;
     }
-    .covidupdate--section{
-        overflow-y: scroll;
-        height: 66.5vh;
-    }
     .announcement--heading{
         border-bottom: 3px solid black;
-    }
-    .announcement--section {
-        height: 72vh;
-    }
-    .map--container{
-        width: unset;
     }
     .container:last-child {
         margin-bottom: 25px;
@@ -552,7 +254,7 @@ nav{
         margin-left: 4px;
         padding: 0;
     }
-    .nav-options{
+    .nav--options{
         position: static;
         background-image: none;
         transform: none;
@@ -608,17 +310,6 @@ nav{
 
 
 @media only screen and (min-width: 1125px) {
-    .block23--container{
-        display: grid;
-        grid-template-columns: 5fr 1.8fr;
-        gap: 20px;
-    }
-    .block3{
-        margin-left: 0;
-    }
-    .announcement--section{
-        height: 58vh;
-    }
     .container:last-child{
         margin-bottom: 30px;
     }
