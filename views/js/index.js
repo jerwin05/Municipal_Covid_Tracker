@@ -20,12 +20,12 @@ const loadingElement=document.getElementById('loadingElement');
 const sectionContainer=document.getElementById('sectionContainer');
 
 //api urls here
-const adminIndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin-profile.html' : 'https://teresa-covid-tracker-test.herokuapp.com/admin-profile.html';
-const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-user' : 'https://teresa-covid-tracker-test.herokuapp.com/authenticate-user';
-const covidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/covid-update' : 'https://teresa-covid-tracker-test.herokuapp.com/covid-update';
-const patientListAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/patient-list' : 'https://teresa-covid-tracker-test.herokuapp.com/patient-list';
-const patientListHistoryAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/patient-list-history' : 'https://teresa-covid-tracker-test.herokuapp.com/patient-list-history';
-const announcementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/announcement' : 'https://teresa-covid-tracker-test.herokuapp.com/announcement';
+const adminIndexUrl = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/admin-profile.html' : 'https://teresa-covid-tracker.herokuapp.com/admin-profile.html';
+const authenticateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/authenticate-user' : 'https://teresa-covid-tracker.herokuapp.com/authenticate-user';
+const covidUpdateAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/covid-update' : 'https://teresa-covid-tracker.herokuapp.com/covid-update';
+const patientListAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/patient-list' : 'https://teresa-covid-tracker.herokuapp.com/patient-list';
+const patientListHistoryAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/patient-list-history' : 'https://teresa-covid-tracker.herokuapp.com/patient-list-history';
+const announcementAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/announcement' : 'https://teresa-covid-tracker.herokuapp.com/announcement';
 
 //authenticate user
 fetch(authenticateAPI_URL,{

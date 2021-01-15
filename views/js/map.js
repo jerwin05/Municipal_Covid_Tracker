@@ -1,7 +1,7 @@
 window.onload=init;
 function init(){
 
-    const newCaseAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/new-cases' : 'https://teresa-covid-tracker-test.herokuapp.com/new-cases';
+    const newCaseAPI_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? 'http://localhost:3000/new-cases' : 'https://teresa-covid-tracker.herokuapp.com/new-cases';
 
     const map= new ol.Map({
         view:new ol.View({
