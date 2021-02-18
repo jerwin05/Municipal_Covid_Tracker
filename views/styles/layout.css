@@ -130,6 +130,7 @@ nav {
 }
 
 .container:last-child {
+  background-color: none;
   margin-bottom: 20px;
 }
 

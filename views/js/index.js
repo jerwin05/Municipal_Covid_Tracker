@@ -135,13 +135,20 @@ const getPatientHistory=()=>{
     response.json()
     .then(result=>{
       if(!result.message){
+
+        const timeRegexp= /\d?\d:\d{2} ?am|\d?\d:\d{2} ?pm|\d?\d:\d{2}/g;
+
         for(var a=0,b=result.history_count; a<b ;a++){
           const div=document.createElement('div');
           const div1=document.createElement('div');
           const span=document.createElement('span');
+          const span1=document.createElement('span');
           span.className='history--date';
+          span1.className='history--time';
           div1.className='history--people';
-          span.textContent=result[`history${a+1}`].date;
+          span.textContent=result[`history${a+1}`].date.replace(timeRegexp,'');
+          span1.textContent=result[`history${a+1}`].date.match(timeRegexp)[0];
+          span.appendChild(span1);
           div.appendChild(span);
           div.appendChild(div1);
           for(var c=0,d=result[`history${a+1}`].recovered_count; c<d ;c++){

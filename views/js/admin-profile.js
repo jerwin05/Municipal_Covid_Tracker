@@ -144,6 +144,8 @@ const getCovidUpdates=()=>{
       const deathResult= result[0].death;
       const dateResult=result[0].date_updated;
 
+      covidUpdateDate.textContent=`${dateResult}`;
+
       activeCases.textContent=activeCasesResult;
       newCases.textContent=newCasesResult;
       suspected.textContent=suspectedResult;
@@ -163,8 +165,6 @@ const getCovidUpdates=()=>{
       newCasesTitleModifier(result[0].new_cases);
       activeCasesTitleModifier(result[0].active_cases);
       
-      covidUpdateDate.textContent=`${dateResult}`;
-
       if(!result[0].notes||/\s+$/.test(result[0].notes)){
         const message=document.createElement('p');
         message.textContent='No notes';
@@ -321,19 +321,25 @@ const getPatientHistory=(callback)=>{
     response.json()
     .then(result=>{
       if(!result.message){
+
+        const timeRegexp= /\d?\d:\d{2} ?am|\d?\d:\d{2} ?pm|\d?\d:\d{2}/g;
+
         for(var a=0,b=result.history_count; a<b ;a++){
           const div=document.createElement('div');
           const div1=document.createElement('div');
           const span=document.createElement('span');
+          const span1=document.createElement('span');
           const button=document.createElement('button');
           const overlaydiv = document.createElement('div');
           const overlaydiv1 = document.createElement('div');
           const p1 = document.createElement('p');
           const button1 = document.createElement('button');
           const button2 = document.createElement('button');
-  
-          span.textContent=result[`history${a+1}`].date;
+
+          span.textContent=result[`history${a+1}`].date.replace(timeRegexp,'');
+          span1.textContent=result[`history${a+1}`].date.match(timeRegexp)[0];
           span.className='history--date';
+          span1.className='history--time';
           div1.className='history--people';
           button.textContent='Delete';
           button.className='profile--button blue--button';
@@ -374,6 +380,7 @@ const getPatientHistory=(callback)=>{
             });
           });
   
+          span.appendChild(span1);
           div.appendChild(span);
           div.appendChild(div1);
 
@@ -445,7 +452,7 @@ const getAnnouncements=(callback)=>{
             announcementLoadingElement.style.display='block';
             fetch(adminAnnouncementAPI_URL, { //send object to the server
               method: 'DELETE',
-              body: JSON.stringify(announcementid),//make object in json format
+              body: JSON.stringify(announcementid), //make object in json format
               headers: {
                 'content-type': 'application/json'
               }

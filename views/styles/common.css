@@ -226,6 +226,10 @@ nav {
   font-size: 20px;
 }
 
+.history--time {
+  font-size: 15px;
+}
+
 .history--people {
   display: -ms-grid;
   display: grid;
