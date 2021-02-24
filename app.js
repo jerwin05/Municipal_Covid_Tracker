@@ -13,10 +13,13 @@ const table = require('./database_table')
 const options={  
   port     : 3306,
 
+  //----local----
   host     : 'localhost',
   user     : 'root',
   password : 'a09287811206',
   database : 'brgy'
+
+  //----remote----
   // host     : 'sql12.freemysqlhosting.net',
   // user     : 'sql12380309',
   // password : 'dAdhjVcnd8',
@@ -74,5 +77,5 @@ console.log('production:\t\t',process.env.NODE_ENV === 'production');
 app.use('/',index);
 app.use('/admin',admin);
 
-const port=process.env.PORT||3000;  
+const port=process.env.PORT||3000;
 app.listen(port,()=>console.log(`Listening on port: \t${port}`));
