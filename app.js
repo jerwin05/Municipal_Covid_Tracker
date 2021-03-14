@@ -13,27 +13,17 @@ const table = require('./database_table')
 const options={  
   port     : 3306,
 
-<<<<<<< HEAD
-=======
   //----local----
->>>>>>> v3.3
   // host     : 'localhost',
   // user     : 'root',
   // password : 'a09287811206',
   // database : 'brgy'
-<<<<<<< HEAD
-  host     : 'sql12.freemysqlhosting.net',
-  user     : 'sql12380309',
-  password : 'dAdhjVcnd8',
-  database : 'sql12380309'
-=======
 
   //----remote----
   host     : 'sql6.freemysqlhosting.net',
   user     : 'sql6398823',
   password : 'RaDqUL5azX',
   database : 'sql6398823'
->>>>>>> v3.3
 };
 let connection = mysql.createConnection(options);
 let sessionStore = new MySQLStore({}, connection);
