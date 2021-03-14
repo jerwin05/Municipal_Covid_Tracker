@@ -13,14 +13,27 @@ const table = require('./database_table')
 const options={  
   port     : 3306,
 
+<<<<<<< HEAD
+=======
+  //----local----
+>>>>>>> v3.3
   // host     : 'localhost',
   // user     : 'root',
   // password : 'a09287811206',
   // database : 'brgy'
+<<<<<<< HEAD
   host     : 'sql12.freemysqlhosting.net',
   user     : 'sql12380309',
   password : 'dAdhjVcnd8',
   database : 'sql12380309'
+=======
+
+  //----remote----
+  host     : 'sql6.freemysqlhosting.net',
+  user     : 'sql6398823',
+  password : 'RaDqUL5azX',
+  database : 'sql6398823'
+>>>>>>> v3.3
 };
 let connection = mysql.createConnection(options);
 let sessionStore = new MySQLStore({}, connection);
@@ -36,7 +49,7 @@ global.db = connection;
 // table.create_table_one();
 // table.create_table_two();
 // table.drop_table();
-// table.show_table();
+table.show_table();
 
 // all environments
 app.use(helmet());
@@ -68,11 +81,14 @@ app.use(session({
 db.query('SELECT id,user_name FROM admin;',(err,res)=>{
   console.log(res);
 });
+// db.query('SELECT * FROM covid_updates;',(err,res)=>{
+//   console.log(res);
+// });
 
 console.log('production:\t\t',process.env.NODE_ENV === 'production');
 
 app.use('/',index);
 app.use('/admin',admin);
 
-const port=process.env.PORT||3000;  
+const port=process.env.PORT||3000;
 app.listen(port,()=>console.log(`Listening on port: \t${port}`));

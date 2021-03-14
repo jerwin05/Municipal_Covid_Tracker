@@ -212,16 +212,16 @@ nav {
   font-size: 14px;
 }
 
+.history--people {
+  margin-bottom: 7px;
+}
+
 .history button {
   margin-bottom: 35px;
 }
 
 .history div:last-child button {
   margin-bottom: 5px;
-}
-
-.history--people {
-  margin-bottom: 7px;
 }
 
 .announcement--container {
