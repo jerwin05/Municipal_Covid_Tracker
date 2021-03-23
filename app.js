@@ -21,9 +21,9 @@ const options={
 
   //----remote----
   host     : 'sql6.freemysqlhosting.net',
-  user     : 'sql6398823',
-  password : 'RaDqUL5azX',
-  database : 'sql6398823'
+  user     : 'sql6400793',
+  password : 'gdDx2l3ADJ',
+  database : 'sql6400793'
 };
 let connection = mysql.createConnection(options);
 let sessionStore = new MySQLStore({}, connection);
@@ -39,7 +39,7 @@ global.db = connection;
 // table.create_table_one();
 // table.create_table_two();
 // table.drop_table();
-table.show_table();
+// table.show_table();
 
 // all environments
 app.use(helmet());
