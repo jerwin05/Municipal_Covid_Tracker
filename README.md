@@ -4,7 +4,7 @@ This is our research project for our final year at BS-Computer Engineering
 <div style="align-self: center;">
     <img src="./system_preview/admin_home_page/desktop.png" alt="">
     <div style="display: flex;">
-        <div style="height: 400px; width: auto;">
+        <div style="height: auto; width: 200px;">
             <img src="./system_preview/admin_home_page/mobile.png" alt="">
         </div>
         <img src="./system_preview/admin_home_page/add_patient.png" alt="">  
