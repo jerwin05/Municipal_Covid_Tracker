@@ -9,7 +9,7 @@ This is our research project for our final year at BS-Computer Engineering
         <div align='center'>
             <img src="./system_preview/admin_home_page/desktop.png" alt="">
             <p>     </p>
-            <img width="380px" src="./system_preview/admin_home_page/mobile.png" alt="">
+            <img width="300px" src="./system_preview/admin_home_page/mobile.png" alt="">
             <img src="./system_preview/admin_home_page/add_patient.png" alt="">  
         </div>
     </li>
