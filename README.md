@@ -1,5 +1,6 @@
 This is our research project for our final year at BS-Computer Engineering
 
+
 <ul>
     <li>
         <p>
@@ -8,7 +9,9 @@ This is our research project for our final year at BS-Computer Engineering
         <br>
         <div align='center'>
             <img src="./system_preview/admin_home_page/desktop.png" alt="">
+            <br>
             <img width="200px" src="./system_preview/admin_home_page/mobile.png" alt="">
+            <p>   </p>
             <img src="./system_preview/admin_home_page/add_patient.png" alt="">  
         </div>
     </li>
@@ -30,6 +33,7 @@ This is our research project for our final year at BS-Computer Engineering
         <br>
         <div align='center'>
             <img src="./system_preview/index_page/desktop.png" alt="">
+            <br>
             <img src="./system_preview/index_page/tablet.png" alt="">
         </div>
     </li>
